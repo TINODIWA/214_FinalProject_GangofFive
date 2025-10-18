@@ -39,3 +39,11 @@
 
 # debug information files
 *.dwo
+
+#TestingMain
+TestingMain.cpp
+
+#Covergae files
+*.gcno 
+*.gcda 
+*.gcov
