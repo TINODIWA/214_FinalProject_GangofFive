@@ -5,6 +5,9 @@ Plant::Plant() {
 	throw "Not yet implemented";
 }
 
+Plant::~Plant() {
+}
+
 Plant::Plant(const Plant& other) {
 	// TODO - implement Plant::Plant
 	throw "Not yet implemented";
@@ -44,31 +47,31 @@ void Plant::setAttention(int attention) {
 	throw "Not yet implemented";
 }
 
-string Plant::getName() {
+string Plant::getName() const {
 	return this->name;
 }
 
-string Plant::getType() {
+string Plant::getType() const {
 	// TODO - implement Plant::getType
 	throw "Not yet implemented";
 }
 
-int Plant::getWater() {
+int Plant::getWater() const {
 	// TODO - implement Plant::getWater
 	throw "Not yet implemented";
 }
 
-int Plant::getSun() {
+int Plant::getSun() const {
 	// TODO - implement Plant::getSun
 	throw "Not yet implemented";
 }
 
-int Plant::getFertiliser() {
+int Plant::getFertiliser() const {
 	// TODO - implement Plant::getFertiliser
 	throw "Not yet implemented";
 }
 
-int Plant::getAttention() {
+int Plant::getAttention() const {
 	// TODO - implement Plant::getAttention
 	throw "Not yet implemented";
 }

@@ -28,11 +28,13 @@ public:
 
 	Plant(const Plant& other);
 
+	Plant(string name, string type, int water, int sun, int fertiliser, int attention)
+
 	void setName(string name);
 
 	void setType(string type);
 
-	void setWaterLevel(int water);
+	void setWater(int water);
 
 	void setSun(int sun);
 
@@ -44,7 +46,7 @@ public:
 
 	string getType() const;
 
-	int getWaterLevel() const;
+	int getWater() const;
 
 	int getSun() const;
 
