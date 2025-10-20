@@ -5,8 +5,13 @@ Flower::Flower() {
 	throw "Not yet implemented";
 }
 
-Flower::Flower(const Plant& other, const Plant& other) {
+Flower::Flower(const Plant& other) {
 	// TODO - implement Flower::Flower
+	throw "Not yet implemented";
+}
+
+Flower::~Flower() {
+	// TODO - implement Flower::~Flower
 	throw "Not yet implemented";
 }
 

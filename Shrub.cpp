@@ -5,8 +5,13 @@ Shrub::Shrub() {
 	throw "Not yet implemented";
 }
 
-Shrub::Shrub(const Plant& other, const Plant& other) {
+Shrub::Shrub(const Plant& other) {
 	// TODO - implement Shrub::Shrub
+	throw "Not yet implemented";
+}
+
+Shrub::~Shrub() {
+	// TODO - implement Shrub::~Shrub
 	throw "Not yet implemented";
 }
 

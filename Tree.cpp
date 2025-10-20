@@ -5,8 +5,13 @@ Tree::Tree() {
 	throw "Not yet implemented";
 }
 
-Tree::Tree(const Plant& other, const Plant& other) {
+Tree::Tree(const Plant& other) {
 	// TODO - implement Tree::Tree
+	throw "Not yet implemented";
+}
+
+Tree::~Tree() {
+	// TODO - implement Tree::~Tree
 	throw "Not yet implemented";
 }
 

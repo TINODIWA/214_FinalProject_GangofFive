@@ -1,12 +1,22 @@
 #ifndef PLANT_H
 #define PLANT_H
 
-class Plant {
+#include <string>
+#include <vector>
+#include <map>
+
+#include "PlantState.h"
+#include "PlantCare.h"
+#include "Staff.h"
+
+using namespace std;
+
+class Plant {	
 
 protected:
-	String type;
+	string type;
 	string name;
-	string requirements;
+	map<string, vector<int>> requirements;
 	PlantState* state;
 	PlantCare* strategy;
 	Staff* staff;
@@ -14,15 +24,15 @@ protected:
 public:
 	Plant();
 
+	~Plant();	
+
 	Plant(const Plant& other);
 
 	void setName(string name);
 
 	void setType(string type);
 
-	Plant(string name, string type, int water, int sun, int fertiliser, int attention);
-
-	void setWater(int water);
+	void setWaterLevel(int water);
 
 	void setSun(int sun);
 
@@ -30,17 +40,17 @@ public:
 
 	void setAttention(int attention);
 
-	string getName();
+	string getName() const;
 
-	string getType();
+	string getType() const;
 
-	int getWater();
+	int getWaterLevel() const;
 
-	int getSun();
+	int getSun() const;
 
-	int getFertiliser();
+	int getFertiliser() const;
 
-	int getAttention();
+	int getAttention() const;
 
 	virtual Plant* clone() = 0;
 
