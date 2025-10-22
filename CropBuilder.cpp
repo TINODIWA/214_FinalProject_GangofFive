@@ -1,36 +1,64 @@
 #include "CropBuilder.h"
 
-CropBuilder::CropBuilder() {
-	// TODO - implement CropBuilder::CropBuilder
-	throw "Not yet implemented";
+/**
+ * @brief Construct a new Crop Builder:: Crop Builder object
+ *
+ */
+CropBuilder::CropBuilder() : Builder()
+{}
+
+/**
+ * @brief ads a crop to the garden
+ *
+ * @param name
+ */
+void CropBuilder::addCrop(string name)
+{
+	Crop *crop = new Crop(name);
+	root->addPlant(crop);
+	currCrop = crop;
 }
 
-void CropBuilder::addCrop(Crop* c, Crop* c) {
-	// TODO - implement CropBuilder::addCrop
-	throw "Not yet implemented";
+/**
+ * @brief adds a plant to the current crop
+ *
+ * @param type
+ * @param amount
+ */
+void CropBuilder::addPlant(PlantInfo p)
+{
+	try
+	{
+		Plant *plant = factories.at(p.getType())->create(&p);
+		for (int i = 0; i < p.getAmount()-1; i++)
+		{
+			currCrop->addPlant(plant->clone());
+		}
+		currCrop->addPlant(plant);
+	}
+	catch (std::out_of_range err)
+	{
+		return;
+	}
 }
 
-void CropBuilder::addTree(Tree* t, Tree* t) {
-	// TODO - implement CropBuilder::addTree
-	throw "Not yet implemented";
+void CropBuilder::setFactories(map<string, PlantCreator *> factories) {
+	for(auto f: this->factories){
+		factories[f.first] = f.second;
+	}
+}
+void CropBuilder::addFactory(std::string type,PlantCreator *factory) {
+	if(factory)
+		factories[type] = factory;
 }
 
-void CropBuilder::addFlower(Flower* f, Flower* f) {
-	// TODO - implement CropBuilder::addFlower
-	throw "Not yet implemented";
-}
+/**
+ * @brief initialises a new garden
+ *
+ */
+void CropBuilder::reset()
+{
 
-void CropBuilder::addShrub(Shrub* s, Shrub* s) {
-	// TODO - implement CropBuilder::addShrub
-	throw "Not yet implemented";
-}
-
-void CropBuilder::reset() {
-	// TODO - implement CropBuilder::reset
-	throw "Not yet implemented";
-}
-
-Plant* CropBuilder::getCrop() {
-	// TODO - implement CropBuilder::getCrop
-	throw "Not yet implemented";
+	root = new Crop("Garden");
+	currCrop = root;
 }

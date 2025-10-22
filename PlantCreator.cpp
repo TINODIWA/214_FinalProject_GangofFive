@@ -1,6 +1,6 @@
 #include "PlantCreator.h"
 
-void PlantCreator::create() {
+Plant* PlantCreator::create(PlantInfo* plantInfo) {
 	// TODO - implement PlantCreator::create
 	throw "Not yet implemented";
 }
