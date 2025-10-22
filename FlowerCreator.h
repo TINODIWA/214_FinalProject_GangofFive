@@ -2,12 +2,15 @@
 #define FLOWERCREATOR_H
 
 #include "PlantCreator.h"
-#include "Plant.h"
+#include "Flower.h"	
+
+class PlantInfo;
+
 class FlowerCreator : PlantCreator
 {
 
 public:
-	Plant *produce();
+	Plant *produce(PlantInfo* info);
 };
 
 #endif

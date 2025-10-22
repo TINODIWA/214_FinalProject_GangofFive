@@ -8,11 +8,9 @@ class Flower : public Plant {
 
 public:
 	Flower();
-
+	Flower(PlantInfo info);
 	Flower(const Plant& other);
-
 	~Flower();
-
 	Plant* clone();
 };
 

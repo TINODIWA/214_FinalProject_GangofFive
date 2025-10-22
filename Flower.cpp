@@ -1,19 +1,30 @@
 #include "Flower.h"
 
-Flower::Flower() {
-	// TODO - implement Flower::Flower
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Flower:: Flower object
+ * 
+ */
+Flower::Flower():Plant() {}
 
-Flower::Flower(const Plant& other) {
-	// TODO - implement Flower::Flower
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Flower:: Flower object
+ * 
+ * @param info 
+ */
+Flower::Flower(PlantInfo info):Plant(info){}
 
-Flower::~Flower() {
-	// TODO - implement Flower::~Flower
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Flower:: Flower object
+ * 
+ * @param other 
+ */
+Flower::Flower(const Plant& other): Plant(other) {}
+
+/**
+ * @brief Destroy the Flower:: Flower object
+ * 
+ */
+Flower::~Flower()  {}
 
 Plant* Flower::clone() {
 	// TODO - implement Flower::clone

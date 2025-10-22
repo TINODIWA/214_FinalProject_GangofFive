@@ -25,17 +25,17 @@ void Order::purchase() {
 	throw "Not yet implemented";
 }
 
-void Order::setMemento(Memento* m, Memento* m) {
+void Order::setMemento(Memento* m) {
 	// TODO - implement Order::setMemento
 	throw "Not yet implemented";
 }
 
-void Order::addPlant(Plant* p, Plant* p) {
+void Order::addPlant(Plant* p) {
 	// TODO - implement Order::addPlant
 	throw "Not yet implemented";
 }
 
-void Order::removePlant(Plant* p, Plant* p) {
+void Order::removePlant(Plant* p) {
 	// TODO - implement Order::removePlant
 	throw "Not yet implemented";
 }

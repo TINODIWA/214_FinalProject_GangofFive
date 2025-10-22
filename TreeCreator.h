@@ -1,11 +1,16 @@
 #ifndef TREECREATOR_H
 #define TREECREATOR_H
 
-class TreeCreator : PlantCreator {
+#include "PlantCreator.h"
+#include "Tree.h"
 
+class PlantInfo;
+
+class TreeCreator : PlantCreator
+{
 
 public:
-	Plant* produce();
+	Plant *produce(PlantInfo* info);
 };
 
 #endif

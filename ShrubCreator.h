@@ -2,13 +2,14 @@
 #define SHRUBCREATOR_H
 
 #include "PlantCreator.h"
-#include "Plant.h"
+#include "Shrub.h"
+
+class PlantInfo;
 
 class ShrubCreator : PlantCreator {
 
-
 public:
-	Plant* produce();
+	Plant* produce(PlantInfo* info);
 };
 
 #endif

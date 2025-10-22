@@ -10,17 +10,10 @@ private:
 	Plant* plant;
 
 protected:
-	virtual Plant* produce() = 0;
+	virtual Plant* produce(PlantInfo* info) = 0;
 
 public:
 
-/**
- * @brief 
- * 
- * @param plantInfo  - string holding the plants attributes in the form 
- * 						requirement:<water,sun,fertilise>*strategy:PlantCareObject[water-waterImpl,sun-sunImpl,fertilise-impl]#staff:StaffObject\n;
- * @return Plant* 
- */
 	Plant* create(PlantInfo* plantInfo);
 };
 

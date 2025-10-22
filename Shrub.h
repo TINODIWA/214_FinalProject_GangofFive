@@ -3,17 +3,15 @@
 
 #include "Plant.h"
 
-class Shrub : public Plant {
-
+class Shrub : public Plant
+{
 
 public:
 	Shrub();
-
-	Shrub(const Plant& other);
-
+	Shrub(PlantInfo info);
+	Shrub(const Plant &other);
 	~Shrub();
-
-	Plant* clone();
+	Plant *clone();
 };
 
 #endif
