@@ -11,7 +11,7 @@ Shrub::Shrub():Plant() {}
  * 
  * @param info 
  */
-Shrub::Shrub(PlantInfo info):Plant(info){}
+Shrub::Shrub(const PlantInfo& info):Plant(info){}
 
 /**
  * @brief Construct a new Shrub:: Shrub object

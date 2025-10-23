@@ -20,7 +20,7 @@ public:
 	Plant();
 	~Plant();	
 	Plant(const Plant& other);
-	Plant(PlantInfo info);
+	Plant(const PlantInfo& info);
 
 	void setName(string name);
 	void setType(string type);

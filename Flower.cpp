@@ -11,7 +11,7 @@ Flower::Flower():Plant() {}
  * 
  * @param info 
  */
-Flower::Flower(PlantInfo info):Plant(info){}
+Flower::Flower(const PlantInfo& info):Plant(info){}
 
 /**
  * @brief Construct a new Flower:: Flower object

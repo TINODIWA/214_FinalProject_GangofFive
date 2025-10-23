@@ -7,7 +7,7 @@ class Tree : public Plant
 {
 
 public:
-	Tree(PlantInfo info);
+	Tree(const PlantInfo&  info);
 	Tree();
 	Tree(const Plant &other);
 

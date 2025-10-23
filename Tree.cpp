@@ -11,14 +11,14 @@ Tree::Tree():Plant() {}
  * 
  * @param other 
  */
-Tree::Tree(const Plant &other):Plant(info){}
+Tree::Tree(const Plant &other):Plant(other){}
 
 /**
  * @brief Construct a new Tree:: Tree object
  * 
  * @param info 
  */
-Tree::Tree(PlantInfo info) {}
+Tree::Tree(const PlantInfo&  info):Plant(info){}
 
 /**
  * @brief Destroy the Tree:: Tree object

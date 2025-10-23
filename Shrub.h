@@ -8,7 +8,7 @@ class Shrub : public Plant
 
 public:
 	Shrub();
-	Shrub(PlantInfo info);
+	Shrub(const PlantInfo&  info);
 	Shrub(const Plant &other);
 	~Shrub();
 	Plant *clone();

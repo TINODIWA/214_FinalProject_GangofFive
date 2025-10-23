@@ -51,7 +51,7 @@ void Plant::setType(string type) {
  * 
  * @param info 
  */
-Plant::Plant(PlantInfo info) {
+Plant::Plant(const PlantInfo& info) {
 	this->info = PlantInfo(info);
 }
 

@@ -15,18 +15,9 @@ void Order::package() {
 	throw "Not yet implemented";
 }
 
-Memento* Order::createMemento() {
-	// TODO - implement Order::createMemento
-	throw "Not yet implemented";
-}
 
 void Order::purchase() {
 	// TODO - implement Order::purchase
-	throw "Not yet implemented";
-}
-
-void Order::setMemento(Memento* m) {
-	// TODO - implement Order::setMemento
 	throw "Not yet implemented";
 }
 
@@ -45,10 +36,6 @@ Order::Order() {
 	throw "Not yet implemented";
 }
 
-void Order::setMemento(Memento* m) {
-	// TODO - implement Order::setMemento
-	throw "Not yet implemented";
-}
 
 void Order::addPlant(Plant* p) {
 	// TODO - implement Order::addPlant
