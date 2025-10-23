@@ -26,6 +26,15 @@ Tree::Tree(const PlantInfo&  info):Plant(info){}
  */
 Tree::~Tree() {}
 
+
+
+/**
+ * @brief stubbed 
+ * 
+ * @param p 
+ */
+void Tree::addPlant(const PlantInfo& p){}
+
 Plant *Tree::clone()
 {
 	// TODO - implement Tree::clone

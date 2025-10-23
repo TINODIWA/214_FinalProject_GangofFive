@@ -10,7 +10,7 @@ public:
 	Tree(const PlantInfo&  info);
 	Tree();
 	Tree(const Plant &other);
-
+	void addPlant(const PlantInfo& p);
 	~Tree();
 
 	Plant *clone();

@@ -21,6 +21,7 @@ public:
 	~Plant();	
 	Plant(const Plant& other);
 	Plant(const PlantInfo& info);
+	virtual void addPlant(Plant *p);
 
 	void setName(string name);
 	void setType(string type);

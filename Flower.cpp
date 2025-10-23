@@ -26,6 +26,13 @@ Flower::Flower(const Plant& other): Plant(other) {}
  */
 Flower::~Flower()  {}
 
+/**
+ * @brief stubbed 
+ * 
+ * @param p 
+ */
+void Flower::addPlant(const PlantInfo& p){}
+
 Plant* Flower::clone() {
 	// TODO - implement Flower::clone
 	throw "Not yet implemented";

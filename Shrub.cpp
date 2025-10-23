@@ -26,6 +26,12 @@ Shrub::Shrub(const Plant& other): Plant(other) {}
  */
 Shrub::~Shrub() {}
 
+/**
+ * @brief stubbed 
+ * 
+ * @param p 
+ */
+void Shrub::addPlant(const PlantInfo& p){}
 
 Plant* Shrub::clone() {
 	// TODO - implement Shrub::clone
