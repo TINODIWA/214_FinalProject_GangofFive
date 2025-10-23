@@ -14,13 +14,12 @@ class Director
 
 private:
 	CropBuilder *cropBuilder;
-	Builder *cropBuilder;
 	std::vector<PlantInfo> plants; 
 
 public:
 	Director();
 	~Director();
-	Director(Builder *p, std::string crops);
+	Director(Builder *p);
 	void setBuilder(Builder *p);
 	Plant *construct();
 	void userInput();

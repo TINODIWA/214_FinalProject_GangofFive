@@ -22,9 +22,10 @@ private:
 
 public:
 	CropBuilder();
-	CropBuilder(map<string, PlantCreator *> factories, std::map<std::string, int> crops);
+	CropBuilder(const Builder* other);
+	CropBuilder(map<string, PlantCreator *> factories);
 	void addCrop(string name);
-	void addPlant(PlantInfo p);
+	void addPlant(const PlantInfo& p);
 	void setFactories(map<string, PlantCreator *> factories);
 	void addFactory(std::string type,PlantCreator *factory);
 	void reset();

@@ -6,6 +6,11 @@
  */
 Director::Director() : cropBuilder(nullptr) {}
 
+
+/**
+ * @brief Destroy the Director:: Director object
+ * 
+ */
 Director::~Director()
 {
 	if (cropBuilder)
@@ -20,7 +25,7 @@ Director::~Director()
  *
  * @param p plant builder
  */
-Director::Director(Builder *p, std::string crops) : cropBuilder(new CropBuilder()) {}
+Director::Director(Builder *p) : cropBuilder(new CropBuilder(p)) {}
 
 /**
  * @brief sets the plant builder to a new one

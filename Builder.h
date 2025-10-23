@@ -17,7 +17,7 @@ public:
 	Builder();
 
 	virtual void addCrop(string name) = 0;
-	virtual void addPlant(PlantInfo p) = 0;
+	virtual void addPlant(const PlantInfo& p) = 0;
 	Plant *getCrop();
 	virtual void reset() = 0;
 };

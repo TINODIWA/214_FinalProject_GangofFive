@@ -10,7 +10,7 @@ class TreeCreator : PlantCreator
 {
 
 public:
-	Plant *produce(PlantInfo* info);
+	Plant *produce(const PlantInfo&  info);
 };
 
 #endif

@@ -10,11 +10,11 @@ private:
 	Plant* plant;
 
 protected:
-	virtual Plant* produce(PlantInfo* info) = 0;
+	virtual Plant* produce(const PlantInfo& info) = 0;
 
 public:
 
-	Plant* create(PlantInfo* plantInfo);
+	Plant* create(const PlantInfo& plantInfo);
 };
 
 #endif
