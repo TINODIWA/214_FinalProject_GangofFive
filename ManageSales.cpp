@@ -1,6 +1,10 @@
 #include "ManageSales.h"
 
-void ManageSales::execute() {
-	// TODO - implement ManageSales::execute
-	throw "Not yet implemented";
+
+ManageSales::ManageSales(Staff *s, StaffCo_ordination *m) : Command(s, m) {}
+
+
+void ManageSales::execute()
+{
+	
 }

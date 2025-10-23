@@ -1,6 +1,17 @@
 #include "Command.h"
 
-void Command::execute() {
-	// TODO - implement Command::execute
-	throw "Not yet implemented";
+
+Command::Command(Staff* s, StaffCo_ordination* m) : appointed(s), mediator(m) {}
+
+
+Command::~Command(){
+	if(appointed){
+		delete appointed;
+		appointed = NULL;
+	}
+
+	if(mediator){
+		delete mediator;
+		mediator = NULL;
+	}
 }

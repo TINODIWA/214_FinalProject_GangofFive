@@ -1,6 +1,10 @@
 #include "CheckPlant.h"
 
-void CheckPlant::execute() {
-	// TODO - implement CheckPlant::execute
-	throw "Not yet implemented";
+
+CheckPlant::CheckPlant(Staff *s, StaffCo_ordination *m) : Command(s, m) {}
+
+
+void CheckPlant::execute()
+{
+	
 }

@@ -1,6 +1,10 @@
 #include "CheckInventory.h"
 
-void CheckInventory::execute() {
-	// TODO - implement CheckInventory::execute
-	throw "Not yet implemented";
+
+CheckInventory::CheckInventory(Staff *s, StaffCo_ordination *m) : Command(s, m) {}
+
+
+void CheckInventory::execute()
+{
+	
 }
