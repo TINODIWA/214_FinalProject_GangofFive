@@ -1,6 +1,6 @@
 #include "ShrubCreator.h"
 
-Plant* ShrubCreator::produce() {
+Plant* ShrubCreator::produce(const PlantInfo&  info) {
 	// TODO - implement ShrubCreator::produce
 	throw "Not yet implemented";
 }

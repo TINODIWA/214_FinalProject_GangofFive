@@ -1,11 +1,16 @@
 #ifndef FLOWERCREATOR_H
 #define FLOWERCREATOR_H
 
-class FlowerCreator : PlantCreator {
+#include "PlantCreator.h"
+#include "Flower.h"	
 
+class PlantInfo;
+
+class FlowerCreator : PlantCreator
+{
 
 public:
-	Plant* produce();
+	Plant *produce(const PlantInfo& info);
 };
 
 #endif

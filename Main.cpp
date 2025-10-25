@@ -1,1 +1,9 @@
-//The main we'll add to for final demos and combined execution... 
+#include "Director.h"
+#include "Builder.h"
+#include "CropBuilder.h"
+
+
+int main(){
+
+    return 0;
+}

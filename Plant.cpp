@@ -1,79 +1,151 @@
 #include "Plant.h"
 
+
+/**
+ * @brief Construct a new Plant:: Plant object
+ * 
+ */
 Plant::Plant() {
-	// TODO - implement Plant::Plant
-	throw "Not yet implemented";
+	info = PlantInfo();
 }
 
+
+/**
+ * @brief Destroy the Plant:: Plant object
+ * 
+ */
 Plant::~Plant() {
 }
 
+/**
+ * @brief Construct a new Plant:: Plant object
+ * 
+ * @param other 
+ */
+
 Plant::Plant(const Plant& other) {
-	// TODO - implement Plant::Plant
-	throw "Not yet implemented";
+	this->info = PlantInfo(other.info);
 }
 
+
+/**
+ * @brief sets the plant name
+ * 
+ * @param name 
+ */
 void Plant::setName(string name) {
-	this->name = name;
+	info.setName(name);
 }
 
+/**
+ * @brief sets the plant type - Concrete Plant
+ * 
+ * @param type 
+ */
 void Plant::setType(string type) {
-	// TODO - implement Plant::setType
-	throw "Not yet implemented";
+	info.setType(type);
 }
 
-Plant::Plant(string name, string type, int water, int sun, int fertiliser, int attention) {
-	// TODO - implement Plant::Plant
-	throw "Not yet implemented";
+/**
+ * @brief Construct a new Plant:: Plant object
+ * 
+ * @param info 
+ */
+Plant::Plant(const PlantInfo& info) {
+	this->info = PlantInfo(info);
 }
 
+/**
+ * @brief sets the water that the plant needs
+ * 
+ * @param water 
+ */
 void Plant::setWater(int water) {
-	// TODO - implement Plant::setWater
-	throw "Not yet implemented";
+	info.setWater(water);
 }
 
+/**
+ * @brief sets the sun that the plant needs
+ * 
+ * @param sun 
+ */
 void Plant::setSun(int sun) {
-	// TODO - implement Plant::setSun
-	throw "Not yet implemented";
+	info.setSun(sun);
 }
 
+/**
+ * @brief sets the fertiliser plant needs 
+ * 
+ * @param fertiliser 
+ */
 void Plant::setFertiliser(int fertiliser) {
-	// TODO - implement Plant::setFertiliser
-	throw "Not yet implemented";
+	info.setFertiliser(fertiliser);
 }
 
+
+/**
+ * @brief sets the attention that the plant needs
+ * 
+ * @param attention 
+ */
 void Plant::setAttention(int attention) {
-	// TODO - implement Plant::setAttention
-	throw "Not yet implemented";
+	info.setAttention(attention);
 }
 
+/**
+ * @brief returns the name of the plant
+ * 
+ * @return string 
+ */
 string Plant::getName() const {
-	return this->name;
+	return info.getName();
 }
 
+/**
+ * @brief returns the plant type
+ * 
+ * @return string 
+ */
 string Plant::getType() const {
-	// TODO - implement Plant::getType
-	throw "Not yet implemented";
+	return info.getType();
 }
 
+/**
+ * @brief returns the amount of water that the plant needs 
+ * 
+ * @return int 
+ */
 int Plant::getWater() const {
-	// TODO - implement Plant::getWater
-	throw "Not yet implemented";
+	return info.getWater();
 }
+
+/**
+ * @brief return the amount of sun that the  plant needs 
+ * 
+ * @return int 
+ */
 
 int Plant::getSun() const {
-	// TODO - implement Plant::getSun
-	throw "Not yet implemented";
+	return info.getSun();
 }
 
+
+/**
+ * @brief returns the amount of fertiliser that the plant needs 
+ * 
+ * @return int 
+ */
 int Plant::getFertiliser() const {
-	// TODO - implement Plant::getFertiliser
-	throw "Not yet implemented";
+	return info.getFertiliser();
 }
 
+/**
+ * @brief returns the amount of attention that the plant needs 
+ * 
+ * @return int 
+ */
 int Plant::getAttention() const {
-	// TODO - implement Plant::getAttention
-	throw "Not yet implemented";
+	return info.getAttention();
 }
 
 void Plant::attach(Staff* s) {

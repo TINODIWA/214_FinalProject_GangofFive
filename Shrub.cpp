@@ -1,19 +1,37 @@
 #include "Shrub.h"
 
-Shrub::Shrub() {
-	// TODO - implement Shrub::Shrub
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Shrub:: Shrub object
+ * 
+ */
+Shrub::Shrub():Plant() {}
 
-Shrub::Shrub(const Plant& other) {
-	// TODO - implement Shrub::Shrub
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Shrub:: Shrub object
+ * 
+ * @param info 
+ */
+Shrub::Shrub(const PlantInfo& info):Plant(info){}
 
-Shrub::~Shrub() {
-	// TODO - implement Shrub::~Shrub
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Shrub:: Shrub object
+ * 
+ * @param other 
+ */
+Shrub::Shrub(const Plant& other): Plant(other) {}
+
+/**
+ * @brief Destroy the Shrub:: Shrub object
+ * 
+ */
+Shrub::~Shrub() {}
+
+/**
+ * @brief stubbed 
+ * 
+ * @param p 
+ */
+void Shrub::addPlant(const PlantInfo& p){}
 
 Plant* Shrub::clone() {
 	// TODO - implement Shrub::clone

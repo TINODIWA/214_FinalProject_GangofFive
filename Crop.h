@@ -1,18 +1,19 @@
 #ifndef CROP_H
 #define CROP_H
 
-class Crop : Plant {
+#include <iostream>
+#include <vector>
+#include "Plant.h"
 
+class Crop : public Plant
+{
 public:
-	vector<Plant*> plants;
-
+	std::vector<Plant *> plants;
+	
 	Crop();
-
-	void addCrop(Crop* c);
-
-	void addPlant(Plant* p);
-
-	Plant* clone();
+	Crop(std::string name);
+	void addPlant(Plant *p);
+	Plant *clone();
 };
 
 #endif

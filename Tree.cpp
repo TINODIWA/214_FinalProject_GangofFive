@@ -1,21 +1,42 @@
 #include "Tree.h"
 
-Tree::Tree() {
-	// TODO - implement Tree::Tree
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Tree:: Tree object
+ * 
+ */
+Tree::Tree():Plant() {}
 
-Tree::Tree(const Plant& other) {
-	// TODO - implement Tree::Tree
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Tree:: Tree object
+ * 
+ * @param other 
+ */
+Tree::Tree(const Plant &other):Plant(other){}
 
-Tree::~Tree() {
-	// TODO - implement Tree::~Tree
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Tree:: Tree object
+ * 
+ * @param info 
+ */
+Tree::Tree(const PlantInfo&  info):Plant(info){}
 
-Plant* Tree::clone() {
+/**
+ * @brief Destroy the Tree:: Tree object
+ * 
+ */
+Tree::~Tree() {}
+
+
+
+/**
+ * @brief stubbed 
+ * 
+ * @param p 
+ */
+void Tree::addPlant(const PlantInfo& p){}
+
+Plant *Tree::clone()
+{
 	// TODO - implement Tree::clone
 	throw "Not yet implemented";
 }

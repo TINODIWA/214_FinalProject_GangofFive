@@ -1,19 +1,28 @@
 #ifndef DIRECTOR_H
 #define DIRECTOR_H
 
-class Director {
+#include <iostream>
+#include <sstream>
+#include <map>
+#include "Builder.h"
+#include "CropBuilder.h"
+#include "Crop.h"
+#include "PlantInfo.h"
+
+class Director
+{
 
 private:
-	PlantBuilder* plantBuilder;
+	CropBuilder *cropBuilder;
+	std::vector<PlantInfo> plants; 
 
 public:
 	Director();
-
-	Director(PlantBuilder* p);
-
-	void setBuilder(PlantBuilder* p);
-
-	void construct();
+	~Director();
+	Director(Builder *p);
+	void setBuilder(Builder *p);
+	Plant *construct();
+	void userInput();
 };
 
 #endif
