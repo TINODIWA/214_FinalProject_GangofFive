@@ -24,7 +24,7 @@ public:
      * @brief Create a copy of this Tree.
      * @return Pointer to a new Tree.
      */
-    virtual Plant* clone() override;
+    Plant* clone();
 };
 
 #endif

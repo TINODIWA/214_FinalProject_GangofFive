@@ -24,7 +24,7 @@ public:
      * @brief Create a copy of this Shrub.
      * @return Pointer to a new Shrub.
      */
-    virtual Plant* clone() override;
+    Plant* clone();
 };
 
 

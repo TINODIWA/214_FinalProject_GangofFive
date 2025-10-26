@@ -24,7 +24,7 @@ public:
      * @brief Create a copy of this Flower.
      * @return Pointer to a new Flower.
      */
-    virtual Plant* clone() override;
+    Plant* clone();
 };
 
 #endif
