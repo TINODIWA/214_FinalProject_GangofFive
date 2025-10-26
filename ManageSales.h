@@ -1,11 +1,12 @@
 #ifndef MANAGESALES_H
 #define MANAGESALES_H
 
-class ManageSales : Command {
+#include "Command.h"
 
-
-public:
-	void execute();
+class ManageSales : public Command {
+	public:
+		ManageSales(Staff* s, StaffCo_ordination* m);
+		virtual void execute();
 };
 
 #endif

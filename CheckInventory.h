@@ -1,11 +1,12 @@
 #ifndef CHECKINVENTORY_H
 #define CHECKINVENTORY_H
 
-class CheckInventory : Command {
+#include "Command.h"
 
-
-public:
-	void execute();
+class CheckInventory : public Command {
+	public:
+		CheckInventory(Staff* s, StaffCo_ordination* m);
+		virtual void execute();
 };
 
 #endif

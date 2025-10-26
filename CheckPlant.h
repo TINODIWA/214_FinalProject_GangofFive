@@ -1,11 +1,12 @@
 #ifndef CHECKPLANT_H
 #define CHECKPLANT_H
 
-class CheckPlant : Command {
+#include "Command.h"
 
-
-public:
-	void execute();
+class CheckPlant : public Command {
+	public:
+		CheckPlant(Staff* s, StaffCo_ordination* m);
+		virtual void execute();
 };
 
 #endif

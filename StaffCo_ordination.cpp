@@ -1,16 +1,21 @@
 #include "StaffCo_ordination.h"
 
-void StaffCo_ordination::sendMessage(string m, Staff* from, string type, string m, Staff* from, string type) {
-	// TODO - implement StaffCo_ordination::sendMessage
-	throw "Not yet implemented";
-}
+//Assume all commands come from the manager for now
 
-StaffCo_ordination::StaffCo_ordination() {
-	// TODO - implement StaffCo_ordination::StaffCo_ordination
-	throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new StaffCo_ordination object
+ */
+StaffCo_ordination::StaffCo_ordination() : Nursery() {}
 
-void StaffCo_ordination::sendMessage(string m, Staff* from, string type, string m, Staff* from, string type) {
-	// TODO - implement StaffCo_ordination::sendMessage
-	throw "Not yet implemented";
+/**
+ * @brief Send message from one staff to another based on command type
+ * @param message Message to be sent
+ * @param to Staff sending the message
+ * @param type Type of command being sent
+ */
+void StaffCo_ordination::sendMessage(string message, Staff* to, string type) {
+	if(to == NULL || (to->getType() != "Gardener" && to->getType() != "Sales" && to->getType() != "Admin")) return;
+	cout <<  "Manager is asking " << to->getType() << " to: " << message << endl;
+
+	to->receiveMessage(type);
 }
