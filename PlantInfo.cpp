@@ -5,22 +5,40 @@
  */
 
 #include "PlantInfo.h"
+#include "Staff.h"
 
 /**
  * @brief Constructor for PlantInfo
  */
-PlantInfo::PlantInfo() {}
+PlantInfo::PlantInfo():staff(nullptr),strategy(nullptr),state(nullptr) {
+    
+    for(int i = 0; i < 2; i++){
+         water.push_back(0);
+         sun.push_back(0);
+         fertiliser.push_back(0);
+    }
+   
+
+}
 
 /**
  * @brief Destructor for PlantInfo
  */
 PlantInfo::~PlantInfo()
 {
-    if (staff)
+    if (staff){
         delete staff;
+        staff = nullptr;
+    }
 
-    if (strategy)
+    if (strategy){
         delete strategy;
+        strategy = nullptr;
+}
+    if(state){
+        delete state;
+        state = nullptr;
+    }
 }
 
 /**
@@ -106,6 +124,10 @@ void PlantInfo::setFertiliser(int fertiliser, int idx)
 
 void PlantInfo::setAttention(int attention)
 {
+}
+
+void PlantInfo::setAmount(int amount){
+    this->amount = amount;
 }
 
 /**

@@ -12,6 +12,8 @@ public:
 	void addPlant(const PlantInfo& p);
 	virtual ~Flower();
 	Plant* clone();
+
+	void print();
 };
 
 #endif

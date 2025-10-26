@@ -1,10 +1,16 @@
 #ifndef ORDER_H
 #define ORDER_H
 
+#include <vector>
+#include "Plant.h"
+#include "Customer.h"
+
+using namespace std;
+
 class Order {
 
 private:
-	vector<Plants*> plants;
+	vector<Plant*> plants;
 	Customer* customer;
 
 public:

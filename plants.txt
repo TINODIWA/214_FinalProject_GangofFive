@@ -1,0 +1,15 @@
+Tree#Oak#10#18#15#14
+Tree#Maple#8#16#13#12
+Tree#Baobab#5#20#14#16
+Tree#Pine#12#15#12#10
+Tree#Acacia#9#17#16#13
+Shrub#Lavender#15#12#18#9
+Shrub#Hibiscus#10#14#19#10
+Shrub#Rosemary#18#11#17#8
+Shrub#Azalea#7#13#16#11
+Shrub#Hydrangea#6#15#15#12
+Flower#Rose#20#10#20#9
+Flower#Tulip#25#9#18#8
+Flower#Sunflower#30#8#20#7
+Flower#Daisy#28#9#19#8
+Flower#Lily#22#10#18#9

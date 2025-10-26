@@ -1,3 +1,14 @@
+/**
+ * @file PlantInfo.h
+ * @author Swelihle Makhathini
+ * @brief 
+ * @version 0.1
+ * @date 2025-10-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef PLANTINFO_H
 #define PLANTINFO_H
 
@@ -7,7 +18,7 @@
 
 #include "PlantCare.h"
 #include "PlantState.h"
-#include "Staff.h"
+class Staff;
 
 class PlantInfo
 {
@@ -37,6 +48,7 @@ public:
     void setAttention(int attention);
     void setPlantCare(PlantCare* strategy);
 	void setStaff(Staff* staff);
+    void setAmount(int amount);
 
     std::string getName() const;
     std::string getType() const;

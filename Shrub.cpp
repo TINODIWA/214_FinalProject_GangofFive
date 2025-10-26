@@ -40,3 +40,12 @@ void Shrub::addPlant(const PlantInfo& p){}
 Plant* Shrub::clone() {
 	return new Shrub(*this);
 }
+
+
+/**
+ * @brief prints the plant 
+ * 
+ */
+void Shrub::print(){
+	cout<<"Plant Name: "<<info.getName()<<"\n";
+}

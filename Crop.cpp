@@ -39,7 +39,7 @@ Crop::Crop(const Crop &other): Plant(other) {
 /**
  * @brief Construct a new Crop:: Crop object with a name
  */
-Crop::Crop(std::string name) : Plant() {
+Crop::Crop(std::string name) {
 	setName(name);
 }
 
@@ -53,4 +53,18 @@ void Crop::addPlant(Plant* p) {
  */
 Plant* Crop::clone() {
 	return new Crop(*this);
+}
+
+
+void Crop::print(){
+	cout<<this->getName()<<":\n";
+
+	vector<Plant*>::iterator it = plants.begin();
+
+	while(it != plants.end()){
+		(*it)->print();
+		++it;
+	}
+
+	cout<<"===================================\n";
 }

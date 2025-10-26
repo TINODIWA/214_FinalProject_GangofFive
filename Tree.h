@@ -13,6 +13,7 @@ public:
 	void addPlant(const PlantInfo& p);
 	virtual ~Tree();
 	Plant *clone();
+	void print();
 };
 
 #endif

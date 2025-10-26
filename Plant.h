@@ -6,8 +6,9 @@
 #include <map>
 
 #include "PlantInfo.h"
+
 class PlantCare;
-class PlantStaff;
+class Staff;
 
 using namespace std;
 
@@ -43,6 +44,8 @@ public:
 	void attach(Staff* s);
 	void detach(Staff* s);
 	void notify();
+
+	virtual void print() = 0;
 };
 
 #endif

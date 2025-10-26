@@ -1,0 +1,5 @@
+<type>:<water>#<sun>#<fertiliser>
+
+Tree:10#10#7
+Flower:5#5#5
+Shrub:5#3#5

@@ -1,4 +1,6 @@
 #include "Nursery.h"
+#include "Staff.h"
+#include "Customer.h"
 
 Nursery::Nursery() {
 	// TODO - implement Nursery::Nursery

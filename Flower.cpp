@@ -37,3 +37,11 @@ Plant* Flower::clone() {
 	// TODO - implement Flower::clone
 	throw "Not yet implemented";
 }
+
+/**
+ * @brief prints the plant 
+ * 
+ */
+void Flower::print(){
+	cout<<"Plant Name: "<<info.getName()<<"\n";
+}

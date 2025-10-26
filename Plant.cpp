@@ -1,166 +1,195 @@
 #include "Plant.h"
 
-
 /**
  * @brief Construct a new Plant:: Plant object
- * 
+ *
  */
-Plant::Plant() {
+Plant::Plant()
+{
 	info = PlantInfo();
 }
 
-
 /**
  * @brief Destroy the Plant:: Plant object
- * 
+ *
  */
-Plant::~Plant() {
+Plant::~Plant()
+{
 }
 
 /**
  * @brief Construct a new Plant:: Plant object
- * 
- * @param other 
+ *
+ * @param other
  */
 
-Plant::Plant(const Plant& other) {
+Plant::Plant(const Plant &other)
+{
 	this->info = PlantInfo(other.info);
 }
 
-
 /**
  * @brief sets the plant name
- * 
- * @param name 
+ *
+ * @param name
  */
-void Plant::setName(string name) {
+void Plant::setName(string name)
+{
 	info.setName(name);
 }
 
 /**
  * @brief sets the plant type - Concrete Plant
- * 
- * @param type 
+ *
+ * @param type
  */
-void Plant::setType(string type) {
+void Plant::setType(string type)
+{
 	info.setType(type);
 }
 
 /**
  * @brief Construct a new Plant:: Plant object
- * 
- * @param info 
+ *
+ * @param info
  */
-Plant::Plant(const PlantInfo& info):info(info) {
-	// this->info = PlantInfo(info);
+Plant::Plant(const PlantInfo &info)
+{
+	this->info = PlantInfo(info);
 }
 
 /**
  * @brief sets the water that the plant needs
- * 
- * @param water 
+ *
+ * @param water
  */
-void Plant::setWater(int water) {
-	info.setWater(water,1);
+void Plant::setWater(int water)
+{
+	info.setWater(water, 1);
 }
 
 /**
  * @brief sets the sun that the plant needs
- * 
- * @param sun 
+ *
+ * @param sun
  */
-void Plant::setSun(int sun) {
-	info.setSun(sun,1);
+void Plant::setSun(int sun)
+{
+	info.setSun(sun, 1);
 }
 
 /**
- * @brief sets the fertiliser plant needs 
- * 
- * @param fertiliser 
+ * @brief sets the fertiliser plant needs
+ *
+ * @param fertiliser
  */
-void Plant::setFertiliser(int fertiliser) {
-	info.setFertiliser(fertiliser,1);
+void Plant::setFertiliser(int fertiliser)
+{
+	info.setFertiliser(fertiliser, 1);
 }
-
 
 /**
  * @brief sets the attention that the plant needs
- * 
- * @param attention 
+ *
+ * @param attention
  */
-void Plant::setAttention(int attention) {
+void Plant::setAttention(int attention)
+{
 	info.setAttention(attention);
 }
 
 /**
  * @brief returns the name of the plant
- * 
- * @return string 
+ *
+ * @return string
  */
-string Plant::getName() const {
+string Plant::getName() const
+{
 	return info.getName();
 }
 
 /**
  * @brief returns the plant type
- * 
- * @return string 
+ *
+ * @return string
  */
-string Plant::getType() const {
+string Plant::getType() const
+{
 	return info.getType();
 }
 
 /**
- * @brief returns the amount of water that the plant needs 
- * 
- * @return int 
+ * @brief returns the amount of water that the plant needs
+ *
+ * @return int
  */
-vector<int> Plant::getWater() const {
+vector<int> Plant::getWater() const
+{
 	return info.getWater();
 }
 
 /**
- * @brief return the amount of sun that the  plant needs 
- * 
- * @return int 
+ * @brief return the amount of sun that the  plant needs
+ *
+ * @return int
  */
 
-vector<int> Plant::getSun() const {
+vector<int> Plant::getSun() const
+{
 	return info.getSun();
 }
 
-
 /**
- * @brief returns the amount of fertiliser that the plant needs 
- * 
- * @return int 
+ * @brief returns the amount of fertiliser that the plant needs
+ *
+ * @return int
  */
-vector<int> Plant::getFertiliser() const {
+vector<int> Plant::getFertiliser() const
+{
 	return info.getFertiliser();
 }
 
 /**
- * @brief returns the amount of attention that the plant needs 
- * 
- * @return int 
+ * @brief returns the amount of attention that the plant needs
+ *
+ * @return int
  */
-int Plant::getAttention() const {
+int Plant::getAttention() const
+{
 	return info.getAttention();
 }
 
-void Plant::attach(Staff* s) {
+void Plant::attach(Staff *s)
+{
 	// TODO - implement Plant::attach
-	//throw "Not yet implemented";
+	// throw "Not yet implemented";
 }
 
-void Plant::detach(Staff* s) {
+void Plant::detach(Staff *s)
+{
 	// TODO - implement Plant::detach
-	//throw "Not yet implemented";
+	// throw "Not yet implemented";
 }
 
-void Plant::notify() {
+void Plant::notify()
+{
 	// TODO - implement Plant::notify
-	//throw "Not yet implemented";
+	// throw "Not yet implemented";
 }
 
-void Plant::addPlant(Plant *p){}
+/**
+ * @brief stubbed - for adding plans to a crop
+ * 
+ * @param p 
+ */
+void Plant::addPlant(Plant *p) {}
+
+void Plant::setPlantCare(PlantCare *strategy)
+{
+	info.setPlantCare(strategy);
+}
+void Plant::setStaff(Staff *staff)
+{
+	info.setStaff(staff);
+}
+

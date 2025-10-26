@@ -5,6 +5,8 @@
 #include <vector>
 #include "Plant.h"
 
+using namespace std;
+
 class Crop : public Plant
 {
 public:
@@ -16,6 +18,7 @@ public:
 	Crop(std::string name);
 	void addPlant(Plant *p);
 	Plant *clone();
+	void print();
 };
 
 #endif
