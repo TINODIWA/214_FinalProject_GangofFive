@@ -1,10 +1,14 @@
 #ifndef NURSERY_H
 #define NURSERY_H
-
+class Customer;
+class Plant;
+class Staff;
+#include <vector>
+using namespace std;
 class Nursery {
 
 public:
-	vector<vector<Plants*>> plants;
+	vector<vector<Plant*>> plants;
 	vector<Customer*> customers;
 	vector<Staff*> staff;
 

@@ -5,7 +5,7 @@ Dying::Dying() {
 	throw "Not yet implemented";
 }
 
-Dying::Dying(const PlantState& other, const PlantState& other) {
+Dying::Dying(const PlantState& other) {
 	// TODO - implement Dying::Dying
 	throw "Not yet implemented";
 }
