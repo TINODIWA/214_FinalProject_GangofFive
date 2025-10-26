@@ -4,15 +4,13 @@
 #include "Plant.h"
 
 class Flower : public Plant {
-
-
+	
 public:
 	Flower();
-
+	Flower(const PlantInfo&  info);
 	Flower(const Plant& other);
-
-	~Flower();
-
+	void addPlant(const PlantInfo& p);
+	virtual ~Flower();
 	Plant* clone();
 };
 

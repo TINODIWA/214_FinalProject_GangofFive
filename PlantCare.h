@@ -1,6 +1,10 @@
 #ifndef PLANTCARE_H
 #define PLANTCARE_H
 
+#include "WaterStrategy.h"
+#include "SunStrategy.h"
+#include "FertiliseStrategy.h"
+
 class PlantCare {
 
 private:
@@ -9,6 +13,8 @@ private:
 	FertiliseStrategy* fertilise;
 
 public:
+	PlantCare(const PlantCare& other);
+
 	int waterAlgorithm();
 
 	int sunAlgorithm();

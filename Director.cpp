@@ -1,36 +1,71 @@
 #include "Director.h"
 
-void Director::operation() {
-	// TODO - implement Director::operation
-	throw "Not yet implemented";
+/**
+ * @brief Construct a new Director:: Director object
+ *
+ */
+Director::Director() : cropBuilder(nullptr) {}
+
+
+/**
+ * @brief Destroy the Director:: Director object
+ * 
+ */
+Director::~Director()
+{
+	if (cropBuilder)
+	{
+		delete cropBuilder;
+		cropBuilder = nullptr;
+	}
 }
 
-void Director::setBuilder(PlantBuilder* p, PlantBuilder* p) {
-	// TODO - implement Director::setBuilder
-	throw "Not yet implemented";
+/**
+ * @brief Construct a new Director:: Director object
+ *
+ * @param p plant builder
+ */
+Director::Director(Builder *p) : cropBuilder(new CropBuilder(p)) {}
+
+/**
+ * @brief sets the plant builder to a new one
+ *
+ * @param p
+ */
+void Director::setBuilder(Builder *p)
+{
+	if (cropBuilder)
+	{
+		delete cropBuilder;
+		cropBuilder = nullptr;
+	}
+
+	cropBuilder = new CropBuilder();
 }
 
-void Director::construct() {
-	// TODO - implement Director::construct
-	throw "Not yet implemented";
+/**
+ * @brief build the garden of crops
+ *
+ */
+Plant *Director::construct()
+{
+	cropBuilder->reset();
+
+	for (auto plant : plants)
+	{
+		cropBuilder->addCrop(plant.getType());
+		cropBuilder->addPlant(plant);
+	}
 }
 
-Director::Director(PlantBuilder* p, PlantBuilder* p) {
-	// TODO - implement Director::Director
-	throw "Not yet implemented";
-}
+/**
+ * @brief gets user input for the garden
+ *
+ */
 
-Director::Director() {
-	// TODO - implement Director::Director
-	throw "Not yet implemented";
-}
-
-void Director::setBuilder(PlantBuilder* p, PlantBuilder* p) {
-	// TODO - implement Director::setBuilder
-	throw "Not yet implemented";
-}
-
-Director::Director(PlantBuilder* p) {
-	// TODO - implement Director::Director
-	throw "Not yet implemented";
+void Director::userInput()
+{
+	/***
+	 * THIS WILL BE A FOR LOOP THAT WILL POPULATE THE VECTOR OF STRUCTS WITH THE DIFFERENT PLANTS THE USER WANTS
+	 */
 }

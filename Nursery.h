@@ -1,9 +1,9 @@
 #ifndef NURSERY_H
 #define NURSERY_H
 
-#include "Plant.h"
-#include "Customer.h"
-#include "Staff.h"
+class Customer;
+class Plant;
+class Staff;
 
 #include <vector>
 
@@ -23,9 +23,6 @@ class Nursery {
 		vector<vector<Plant*>> plants;
 		vector<Customer*> customers;
 		vector<Staff*> staff;
-
-		// needs to be added
-		// Inventory* inventory;
 };
 
 #endif

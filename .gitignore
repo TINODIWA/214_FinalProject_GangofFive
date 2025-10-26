@@ -42,6 +42,7 @@
 
 #TestingMain
 TestingMain.cpp
+main
 
 #Covergae files
 *.gcno 

@@ -1,21 +1,25 @@
 #ifndef BUILDER_H
 #define BUILDER_H
 
-class Builder {
+#include <iostream>
 
+#include "Crop.h"
+#include "Tree.h"
+#include "Flower.h"
+#include "Shrub.h"
+
+class PlantInfo;
+
+class Builder
+{
 
 public:
 	Builder();
 
-	virtual void addCrop(Crop* c) = 0;
-
-	virtual void addTree(Tree* t) = 0;
-
-	virtual void addFlower(Flower f) = 0;
-
-	virtual void addShrub(Shrub s) = 0;
-
-	void reset();
+	virtual void addCrop(string name) = 0;
+	virtual void addPlant(const PlantInfo& p) = 0;
+	Plant *getCrop();
+	virtual void reset() = 0;
 };
 
 #endif

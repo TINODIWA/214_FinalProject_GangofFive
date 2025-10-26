@@ -1,6 +1,6 @@
 #ifndef DEAD_H
 #define DEAD_H
-
+#include "PlantState.h"
 class Dead : PlantState {
 
 

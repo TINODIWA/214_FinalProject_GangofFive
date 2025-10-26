@@ -1,11 +1,18 @@
 #ifndef SHRUBCREATOR_H
 #define SHRUBCREATOR_H
 
-class ShrubCreator : PlantCreator {
+#include "PlantCreator.h"
+#include "Shrub.h"
 
+class PlantInfo;
+
+class ShrubCreator : public  PlantCreator
+{
 
 public:
-	Plant* produce();
+	ShrubCreator();
+	~ShrubCreator();
+	Plant *produce(const PlantInfo &info);
 };
 
 #endif
