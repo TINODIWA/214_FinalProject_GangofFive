@@ -26,8 +26,6 @@ Tree::Tree(const PlantInfo&  info):Plant(info){}
  */
 Tree::~Tree() {}
 
-
-
 /**
  * @brief stubbed 
  * 
@@ -35,8 +33,10 @@ Tree::~Tree() {}
  */
 void Tree::addPlant(const PlantInfo& p){}
 
-Plant *Tree::clone()
-{
-	// TODO - implement Tree::clone
-	throw "Not yet implemented";
+/**
+ * @brief Create a copy of this Tree.
+ * @return Pointer to a new Tree.
+ */
+Plant *Tree::clone() {
+	return new Tree(*this);
 }
