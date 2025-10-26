@@ -3,17 +3,28 @@
 
 #include "Plant.h"
 
+/**
+ * @class Tree
+ * @brief ConcretePrototype of Plant subclass representing a tree.
+ *
+ * ConcretePrototype, subclass of Plant that implements cloning.
+ */
 class Tree : public Plant {
-
-
 public:
-	Tree();
+    /** @brief Default constructor. */
+    Tree();
 
-	Tree(const Plant& other);
+    /** @brief Construct from an existing Plant. */
+    Tree(const Plant& other);
 
-	~Tree();
+    /** @brief Virtual destructor. */
+    virtual ~Tree();
 
-	Plant* clone();
+    /**
+     * @brief Create a copy of this Tree.
+     * @return Pointer to a new Tree.
+     */
+    virtual Plant* clone() override;
 };
 
 #endif

@@ -3,15 +3,29 @@
 
 #include "Plant.h"
 
+/**
+ * @class Shrub
+ * @brief ConcretePrototype Plant subclass representing a shrub.
+ *
+ * ConcretePrototype, subclass of Plant that implements cloning.
+ */
 class Shrub : public Plant {
-	public:
-		Shrub();
+public:
+    /** @brief Default constructor. */
+    Shrub();
 
-		Shrub(const Plant& other);
+    /** @brief Construct from an existing Plant. */
+    Shrub(const Plant& other);
 
-		~Shrub();
+    /** @brief Virtual destructor. */
+    virtual ~Shrub();
 
-		Plant* clone();
+    /**
+     * @brief Create a copy of this Shrub.
+     * @return Pointer to a new Shrub.
+     */
+    virtual Plant* clone() override;
 };
+
 
 #endif
