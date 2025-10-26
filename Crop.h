@@ -11,6 +11,8 @@ public:
 	std::vector<Plant *> plants;
 	
 	Crop();
+	~Crop();
+	Crop(const Crop& other);
 	Crop(std::string name);
 	void addPlant(Plant *p);
 	Plant *clone();
