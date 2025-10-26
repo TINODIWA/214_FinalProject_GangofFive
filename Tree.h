@@ -11,8 +11,7 @@ public:
 	Tree();
 	Tree(const Plant &other);
 	void addPlant(const PlantInfo& p);
-	~Tree();
-
+	virtual ~Tree();
 	Plant *clone();
 };
 

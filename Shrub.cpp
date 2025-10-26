@@ -33,7 +33,10 @@ Shrub::~Shrub() {}
  */
 void Shrub::addPlant(const PlantInfo& p){}
 
+/**
+ * @brief Create a copy of this Shrub.
+ * @return Pointer to a new Shrub.
+ */
 Plant* Shrub::clone() {
-	// TODO - implement Shrub::clone
-	throw "Not yet implemented";
+	return new Shrub(*this);
 }
