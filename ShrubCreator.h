@@ -6,10 +6,13 @@
 
 class PlantInfo;
 
-class ShrubCreator : PlantCreator {
+class ShrubCreator : public  PlantCreator
+{
 
 public:
-	Plant* produce(const PlantInfo&  info);
+	ShrubCreator();
+	~ShrubCreator();
+	Plant *produce(const PlantInfo &info);
 };
 
 #endif

@@ -5,7 +5,7 @@ Dead::Dead() {
 	throw "Not yet implemented";
 }
 
-Dead::Dead(const PlantState& other, const PlantState& other) {
+Dead::Dead(const PlantState& other) {
 	// TODO - implement Dead::Dead
 	throw "Not yet implemented";
 }

@@ -6,9 +6,6 @@
 
 class PlantCreator {
 
-private:
-	Plant* plant;
-
 protected:
 	virtual Plant* produce(const PlantInfo& info) = 0;
 

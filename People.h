@@ -1,6 +1,9 @@
 #ifndef PEOPLE_H
 #define PEOPLE_H
+#include "Nursery.h"
+#include <string>
 
+using namespace std;
 class People {
 
 private:
@@ -10,6 +13,7 @@ public:
 	People(Nursery* n);
 
 	People();
+	People(const People& other);
 
 	void send(string m, Nursery* s, string type);
 

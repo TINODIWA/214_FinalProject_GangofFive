@@ -35,6 +35,10 @@ Tree::~Tree() {}
  */
 void Tree::addPlant(const PlantInfo& p){}
 
+/**
+ * @brief Returns a clone of current plant 
+ * @return Plant pointer
+ */
 Plant *Tree::clone()
 {
 	// TODO - implement Tree::clone

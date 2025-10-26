@@ -31,18 +31,18 @@ public:
 
     void setName(std::string name);
     void setType(std::string type);
-    void setWater(int water);
-    void setSun(int sun);
-    void setFertiliser(int fertiliser);
+    void setWater(int water, int idx);
+    void setSun(int sun, int idx);
+    void setFertiliser(int fertiliser, int idx);
     void setAttention(int attention);
     void setPlantCare(PlantCare* strategy);
 	void setStaff(Staff* staff);
 
     std::string getName() const;
     std::string getType() const;
-    int getWater() const;
-    int getSun() const;
-    int getFertiliser() const;
+    std::vector<int> getWater() const;
+    std::vector<int> getSun() const;
+    std::vector<int> getFertiliser() const;
     int getAttention() const;
     int getAmount() const;
 

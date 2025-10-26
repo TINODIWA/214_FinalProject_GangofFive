@@ -51,8 +51,8 @@ void Plant::setType(string type) {
  * 
  * @param info 
  */
-Plant::Plant(const PlantInfo& info) {
-	this->info = PlantInfo(info);
+Plant::Plant(const PlantInfo& info):info(info) {
+	// this->info = PlantInfo(info);
 }
 
 /**
@@ -61,7 +61,7 @@ Plant::Plant(const PlantInfo& info) {
  * @param water 
  */
 void Plant::setWater(int water) {
-	info.setWater(water);
+	info.setWater(water,1);
 }
 
 /**
@@ -70,7 +70,7 @@ void Plant::setWater(int water) {
  * @param sun 
  */
 void Plant::setSun(int sun) {
-	info.setSun(sun);
+	info.setSun(sun,1);
 }
 
 /**
@@ -79,7 +79,7 @@ void Plant::setSun(int sun) {
  * @param fertiliser 
  */
 void Plant::setFertiliser(int fertiliser) {
-	info.setFertiliser(fertiliser);
+	info.setFertiliser(fertiliser,1);
 }
 
 
@@ -115,7 +115,7 @@ string Plant::getType() const {
  * 
  * @return int 
  */
-int Plant::getWater() const {
+vector<int> Plant::getWater() const {
 	return info.getWater();
 }
 
@@ -125,7 +125,7 @@ int Plant::getWater() const {
  * @return int 
  */
 
-int Plant::getSun() const {
+vector<int> Plant::getSun() const {
 	return info.getSun();
 }
 
@@ -135,7 +135,7 @@ int Plant::getSun() const {
  * 
  * @return int 
  */
-int Plant::getFertiliser() const {
+vector<int> Plant::getFertiliser() const {
 	return info.getFertiliser();
 }
 
@@ -150,15 +150,17 @@ int Plant::getAttention() const {
 
 void Plant::attach(Staff* s) {
 	// TODO - implement Plant::attach
-	throw "Not yet implemented";
+	//throw "Not yet implemented";
 }
 
 void Plant::detach(Staff* s) {
 	// TODO - implement Plant::detach
-	throw "Not yet implemented";
+	//throw "Not yet implemented";
 }
 
 void Plant::notify() {
 	// TODO - implement Plant::notify
-	throw "Not yet implemented";
+	//throw "Not yet implemented";
 }
+
+void Plant::addPlant(Plant *p){}

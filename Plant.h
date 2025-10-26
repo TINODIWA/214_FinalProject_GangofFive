@@ -18,7 +18,7 @@ protected:
 
 public:
 	Plant();
-	~Plant();	
+	virtual ~Plant();	
 	Plant(const Plant& other);
 	Plant(const PlantInfo& info);
 	virtual void addPlant(Plant *p);
@@ -34,9 +34,9 @@ public:
 
 	string getName() const;
 	string getType() const;
-	int getWater() const;
-	int getSun() const;
-	int getFertiliser() const;
+	vector<int> getWater() const;
+	vector<int> getSun() const;
+	vector<int> getFertiliser() const;
 	int getAttention() const;
 
 	virtual Plant* clone() = 0;
