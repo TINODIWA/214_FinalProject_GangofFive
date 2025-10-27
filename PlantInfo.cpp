@@ -153,6 +153,15 @@ void PlantInfo::setStaff(Staff *staff)
 }
 
 /**
+ * @brief set the price of the plant
+ *
+ * @param price
+ */
+void PlantInfo::setPrice(int price)
+{
+    this->price = price;
+}
+/**
  * @brief Name getter
  * @return name
  */
@@ -209,4 +218,9 @@ int PlantInfo::getAttention() const
 int PlantInfo::getAmount() const
 {
     return amount;
+}
+
+int PlantInfo::getPrice() const
+{
+    return price;
 }

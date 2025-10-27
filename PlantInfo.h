@@ -33,6 +33,7 @@ private:
     Staff *staff;
     int amount; // number of plants in the garden ????? should this be here
     int days;
+    int price;
 
     
 public:
@@ -49,6 +50,7 @@ public:
     void setPlantCare(PlantCare* strategy);
 	void setStaff(Staff* staff);
     void setAmount(int amount);
+    void setPrice(int price);
 
     std::string getName() const;
     std::string getType() const;
@@ -57,6 +59,7 @@ public:
     std::vector<int> getFertiliser() const;
     int getAttention() const;
     int getAmount() const;
+    int getPrice()const;
 
 };
 #endif
