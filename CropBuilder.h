@@ -17,7 +17,6 @@ class CropBuilder : public Builder
 {
 
 private:
-	Plant* p;
 	Plant *root;
 	Plant *currCrop;
 	map<string, PlantCreator *> factories;

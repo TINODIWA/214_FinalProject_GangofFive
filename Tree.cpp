@@ -31,7 +31,7 @@ Tree::~Tree() {}
  * 
  * @param p 
  */
-void Tree::addPlant(const PlantInfo& p){}
+void Tree::addPlant(Plant *p){}
 
 /**
  * @brief Create a copy of this Tree.

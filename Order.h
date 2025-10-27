@@ -15,12 +15,12 @@ private:
 
 public:
 	Order();
+	~Order();
+	Order(const Order& other);
 
 private:
 	void prepare();
-
 	void payment();
-
 	void package();
 
 public:

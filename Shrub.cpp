@@ -31,7 +31,7 @@ Shrub::~Shrub() {}
  * 
  * @param p 
  */
-void Shrub::addPlant(const PlantInfo& p){}
+void Shrub::addPlant(Plant *p){}
 
 /**
  * @brief Create a copy of this Shrub.

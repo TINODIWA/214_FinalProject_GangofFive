@@ -31,11 +31,10 @@ Flower::~Flower()  {}
  * 
  * @param p 
  */
-void Flower::addPlant(const PlantInfo& p){}
+void Flower::addPlant(Plant *p){}
 
 Plant* Flower::clone() {
-	// TODO - implement Flower::clone
-	throw "Not yet implemented";
+	return new Flower(*this);
 }
 
 /**

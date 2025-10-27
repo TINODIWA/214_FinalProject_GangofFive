@@ -4,30 +4,33 @@
  * @brief Construct a new Crop Builder:: Crop Builder object
  *
  */
-CropBuilder::CropBuilder() : Builder(), p(nullptr), root(nullptr),currCrop(nullptr)
-{}
+CropBuilder::CropBuilder() : Builder(), root(nullptr), currCrop(nullptr)
+{
+	factories["Tree"] = new TreeCreator();
+	factories["Flower"] = new FlowerCreator();
+	factories["Shrub"] = new ShrubCreator();
+}
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
-CropBuilder::~CropBuilder(){
-	if(p){
-		delete p;
-		p = nullptr;
-	}
-
-	if(root){
+CropBuilder::~CropBuilder()
+{
+	if (root)
+	{
 		delete root;
 		root = nullptr;
 		currCrop = nullptr;
 	}
 
-	map<string, PlantCreator*>::iterator it = factories.begin();
+	map<string, PlantCreator *>::iterator it = factories.begin();
 
-	while(it != factories.end()){
-		if((*it).second){
-			delete (*it).second;
+	while (it != factories.end())
+	{
+		if ((*it).second != nullptr)
+		{
+			delete (*it).second;//
 			(*it).second = nullptr;
 		}
 
@@ -41,22 +44,21 @@ CropBuilder::~CropBuilder(){
  */
 CropBuilder::CropBuilder(const CropBuilder *other)
 {
-	 if (!other) {
-		 this->root = nullptr;
-		 this->p = nullptr;
-		 return;
-	 }
+	if (!other)
+	{
+		this->root = nullptr;
+		return;
+	}
 
-	 this->root = other->root ? other->root->clone() : nullptr;
-	 this->p = other->p ? other->p->clone() : nullptr;
+	this->root = other->root ? other->root->clone() : nullptr;
 
-	 map<string, PlantCreator*>::const_iterator it = other->factories.begin();
+	map<string, PlantCreator *>::const_iterator it = other->factories.begin();
 
-	while(it != other->factories.end()){
+	while (it != other->factories.end())
+	{
 		factories[(*it).first] = (*it).second;
 		++it;
 	}
-	 
 }
 /**
  * @brief ads a crop to the garden
@@ -77,19 +79,22 @@ void CropBuilder::addCrop(string name)
  */
 void CropBuilder::addPlant(const PlantInfo &p)
 {
-	cout<<"CropBuilder addPlant()\n";
+	cout << "CropBuilder addPlant()\n";
+	cout << "Factory produced plant " << p.getType() << "-" << p.getName() << "\n";
 	try
 	{
 		Plant *plant = factories.at(p.getType())->create(p);
+
 		for (int i = 0; i < p.getAmount() - 1; i++)
 		{
-			cout<<"Adding a plant...\n";
+			cout << "Adding a plant...\n";
 			currCrop->addPlant(plant->clone());
 		}
 		currCrop->addPlant(plant);
 	}
 	catch (std::out_of_range err)
 	{
+		cout << "Sorry We don't stock that type of plant at the moment\n";
 		return;
 	}
 }

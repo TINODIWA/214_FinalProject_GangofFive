@@ -10,15 +10,15 @@
 /**
  * @brief Constructor for PlantInfo
  */
-PlantInfo::PlantInfo():staff(nullptr),strategy(nullptr),state(nullptr) {
-    
-    for(int i = 0; i < 2; i++){
-         water.push_back(0);
-         sun.push_back(0);
-         fertiliser.push_back(0);
-    }
-   
+PlantInfo::PlantInfo() : staff(nullptr), strategy(nullptr), state(nullptr)
+{
 
+    for (int i = 0; i < 2; i++)
+    {
+        water.push_back(0);
+        sun.push_back(0);
+        fertiliser.push_back(0);
+    }
 }
 
 /**
@@ -26,16 +26,19 @@ PlantInfo::PlantInfo():staff(nullptr),strategy(nullptr),state(nullptr) {
  */
 PlantInfo::~PlantInfo()
 {
-    if (staff){
+    if (staff)
+    {
         delete staff;
         staff = nullptr;
     }
 
-    if (strategy){
+    if (strategy)
+    {
         delete strategy;
         strategy = nullptr;
-}
-    if(state){
+    }
+    if (state)
+    {
         delete state;
         state = nullptr;
     }
@@ -52,9 +55,9 @@ PlantInfo::PlantInfo(const PlantInfo &plantInfo)
     this->water = plantInfo.water;
     this->sun = plantInfo.sun;
     this->fertiliser = plantInfo.fertiliser;
-    this->strategy = new PlantCare(*plantInfo.strategy);
+    this->strategy = (plantInfo.strategy) ? new PlantCare(*plantInfo.strategy) : nullptr;
     this->state = plantInfo.state; // pointing at same reference for now...need to change
-    this->staff = new Staff(*plantInfo.staff);
+    this->staff = (plantInfo.staff) ? new Staff(*plantInfo.staff) : nullptr;
     this->amount = plantInfo.amount;
     this->days = plantInfo.days;
 }
@@ -126,7 +129,8 @@ void PlantInfo::setAttention(int attention)
 {
 }
 
-void PlantInfo::setAmount(int amount){
+void PlantInfo::setAmount(int amount)
+{
     this->amount = amount;
 }
 

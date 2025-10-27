@@ -6,16 +6,6 @@
  */
 Director::Director() : cropBuilder(nullptr)
 {
-
-	fstream types("plantTypes.txt");
-	if (types.is_open())
-	{
-		string type;
-		while (getline(types, type, '#'))
-			plantTypes.push_back(type);
-
-		types.close();
-	}
 }
 
 /**
@@ -66,6 +56,7 @@ Plant *Director::construct()
 
 	cout << "Done parsing file\n";
 
+	cout<<"\n\nPRINTING PLANTS VECTOR\n";
 	map<string, vector<PlantInfo>>::iterator parsed_it = plants.begin();
 	while (parsed_it != plants.end())
 	{
@@ -81,10 +72,9 @@ Plant *Director::construct()
 	}
 
 	cout << "\n***********************************\n";
+
 	map<string, vector<PlantInfo>>::iterator it = plants.begin();
-
 	bool crop = true;
-
 	while (it != plants.end())
 	{
 		cout << "\n**************\nAdding crop: " << ((*it).first) << "\n";
@@ -93,7 +83,7 @@ Plant *Director::construct()
 		vector<PlantInfo>::iterator p_it = (*it).second.begin();
 		while (p_it != (*it).second.end())
 		{
-			cout << "\n\nAdding plant: " << (*p_it).getName() << "\n";
+			cout << "\tAdding plant: " << (*p_it).getName() << "\n";
 			cropBuilder->addPlant(*p_it);
 			++p_it;
 		}
@@ -101,6 +91,10 @@ Plant *Director::construct()
 		++it;
 	}
 
+	cropBuilder->getCrop()->print();
+
+	cout<<"=======================================================================\n";
+	cout<<"=======================================================================\n";
 	return cropBuilder->getCrop();
 }
 
@@ -111,7 +105,6 @@ Plant *Director::construct()
 
 void Director::parse()
 {
-	cout << "Directror::parse()\n";
 	fstream infos("plants.txt");
 	if (infos.is_open())
 	{
@@ -119,7 +112,6 @@ void Director::parse()
 		string line;
 		while (getline(infos, line))
 		{
-			cout << line << "\n";
 			stringstream ss(line);
 			string token;
 			int i = 0;
@@ -128,7 +120,6 @@ void Director::parse()
 
 			while (getline(ss, token, '#'))
 			{
-				cout << "Token: " << i << " " << token << endl;
 				switch (i)
 				{
 				case 0: // type
@@ -155,7 +146,6 @@ void Director::parse()
 
 				i++;
 			}
-			cout << "Pushing plant: " << p.getType() << "-" << p.getName() << "\n";
 			plants[p.getType()].push_back(p);
 		}
 		infos.close();

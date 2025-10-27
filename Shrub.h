@@ -10,7 +10,7 @@ public:
 	Shrub();
 	Shrub(const PlantInfo &info);
 	Shrub(const Plant &other);
-	void addPlant(const PlantInfo &p);
+	void addPlant(Plant *p);
 	virtual ~Shrub();
 	Plant *clone();
 

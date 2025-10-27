@@ -14,7 +14,8 @@ private:
 
 public:
 	Customer();
-
+	~Customer();
+	Customer(const Customer* other);
 	void makeReq(Request* req);
 };
 

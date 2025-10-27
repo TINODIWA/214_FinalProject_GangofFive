@@ -13,7 +13,7 @@ public:
 	People(Nursery* n);
 
 	People();
-	People(const People& other);
+	People(const People* other);
 
 	void send(string m, Nursery* s, string type);
 

@@ -44,6 +44,7 @@ Crop::Crop(std::string name) {
 }
 
 void Crop::addPlant(Plant* p) {
+	cout<<"\tAdding Plant "<<p->getName()<<" to crop "<<this->getName()<<endl;
 	plants.push_back(p);
 }
 
@@ -61,7 +62,9 @@ void Crop::print(){
 
 	vector<Plant*>::iterator it = plants.begin();
 
+	cout<<"plants: "<<plants.size()<<endl;
 	while(it != plants.end()){
+		cout<<"PRINTING PLANTS IN CROP\n";
 		(*it)->print();
 		++it;
 	}

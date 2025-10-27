@@ -10,7 +10,7 @@ protected:
 	virtual Plant* produce(const PlantInfo& info) = 0;
 
 public:
-
+	virtual ~PlantCreator();
 	Plant* create(const PlantInfo& plantInfo);
 };
 

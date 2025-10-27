@@ -18,17 +18,13 @@ public:
 	vector<Staff*> staff;
 
 	Nursery();
-
+	~Nursery();
+	Nursery(const Nursery& other);
 	void addPlant(Plant* p);
-
 	void removePlant(Plant* p);
-
 	void start(bool sim);
-
 	void addStaff(Staff* s);
-
 	void removeStaff(Staff* s);
-
 	void notify();
 };
 

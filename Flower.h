@@ -9,8 +9,8 @@ public:
 	Flower();
 	Flower(const PlantInfo&  info);
 	Flower(const Plant& other);
-	void addPlant(const PlantInfo& p);
-	virtual ~Flower();
+	void addPlant(Plant *p);
+	~Flower();
 	Plant* clone();
 
 	void print();
