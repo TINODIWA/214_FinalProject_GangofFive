@@ -51,12 +51,13 @@ CropBuilder::CropBuilder(const CropBuilder *other)
 	}
 
 	this->root = other->root ? other->root->clone() : nullptr;
+	this ->currCrop = this->root;
 
 	map<string, PlantCreator *>::const_iterator it = other->factories.begin();
 
 	while (it != other->factories.end())
 	{
-		factories[(*it).first] = (*it).second;
+		factories[(*it).first] = (*it).second->clone();
 		++it;
 	}
 }
@@ -79,15 +80,13 @@ void CropBuilder::addCrop(string name)
  */
 void CropBuilder::addPlant(const PlantInfo &p)
 {
-	cout << "CropBuilder addPlant()\n";
-	cout << "Factory produced plant " << p.getType() << "-" << p.getName() << "\n";
+
 	try
 	{
 		Plant *plant = factories.at(p.getType())->create(p);
 
 		for (int i = 0; i < p.getAmount() - 1; i++)
 		{
-			cout << "Adding a plant...\n";
 			currCrop->addPlant(plant->clone());
 		}
 		currCrop->addPlant(plant);

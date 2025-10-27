@@ -10,9 +10,11 @@ class TreeCreator : public PlantCreator
 {
 
 public:
-TreeCreator();
+	TreeCreator();
 	~TreeCreator();
-	Plant *produce(const PlantInfo&  info);
+	TreeCreator(const PlantCreator *other);
+	Plant *produce(const PlantInfo &info);
+	PlantCreator* clone();
 };
 
 #endif

@@ -17,6 +17,12 @@ ShrubCreator::ShrubCreator() : PlantCreator() {}
 ShrubCreator::~ShrubCreator() {}
 
 /**
+ * @brief Construct a new Shrub Creator object
+ * 
+ * @param other 
+ */
+ShrubCreator::ShrubCreator(const PlantCreator *other):PlantCreator(other){}
+/**
  * @brief Crates and returns an instance of Shrub object
  * @param plantInfo Reference to PlantInfo for plant creation
  * @return instance of Shrub 
@@ -25,4 +31,14 @@ Plant *ShrubCreator::produce(const PlantInfo &info)
 {
 	// TODO - implement ShrubCreator::produce
 	return new Shrub(info);
+}
+
+
+/**
+ * @brief clones the factory
+ * 
+ * @return PlantCreator* 
+ */
+PlantCreator* ShrubCreator::clone(){
+	return new ShrubCreator(this);
 }

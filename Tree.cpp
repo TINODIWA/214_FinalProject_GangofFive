@@ -47,5 +47,5 @@ Plant *Tree::clone() {
  * 
  */
 void Tree::print(){
-	cout<<"Plant Name: "<<info.getName()<<"\n";
+cout <<left << setw(10) << info.getName() << "|";
 }

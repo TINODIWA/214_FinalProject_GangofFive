@@ -26,7 +26,7 @@ Director::~Director()
  *
  * @param p plant builder
  */
-Director::Director(CropBuilder *p) : cropBuilder(new CropBuilder(p)) {}
+Director::Director(CropBuilder *p) : cropBuilder(p) {}
 
 /**
  * @brief sets the plant builder to a new one
@@ -50,40 +50,18 @@ void Director::setBuilder(CropBuilder *p)
  */
 Plant *Director::construct()
 {
-	cout << "Director::construct\n";
 	cropBuilder->reset();
 	parse();
-
-	cout << "Done parsing file\n";
-
-	cout<<"\n\nPRINTING PLANTS VECTOR\n";
-	map<string, vector<PlantInfo>>::iterator parsed_it = plants.begin();
-	while (parsed_it != plants.end())
-	{
-		cout << (*parsed_it).first << ":\n";
-
-		vector<PlantInfo>::iterator parsed_2 = (*parsed_it).second.begin();
-		while (parsed_2 != (*parsed_it).second.end())
-		{
-			cout << (*parsed_2).getName() << "\n";
-			++parsed_2;
-		}
-		++parsed_it;
-	}
-
-	cout << "\n***********************************\n";
 
 	map<string, vector<PlantInfo>>::iterator it = plants.begin();
 	bool crop = true;
 	while (it != plants.end())
 	{
-		cout << "\n**************\nAdding crop: " << ((*it).first) << "\n";
 		cropBuilder->addCrop((*it).first); //
 
 		vector<PlantInfo>::iterator p_it = (*it).second.begin();
 		while (p_it != (*it).second.end())
 		{
-			cout << "\tAdding plant: " << (*p_it).getName() << "\n";
 			cropBuilder->addPlant(*p_it);
 			++p_it;
 		}
@@ -91,10 +69,6 @@ Plant *Director::construct()
 		++it;
 	}
 
-	cropBuilder->getCrop()->print();
-
-	cout<<"=======================================================================\n";
-	cout<<"=======================================================================\n";
 	return cropBuilder->getCrop();
 }
 
