@@ -1,3 +1,14 @@
+/**
+ * @file Shrub.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Shrub.h"
 
 /**
@@ -37,16 +48,14 @@ void Shrub::addPlant(Plant *p) {}
  * @brief Create a copy of this Shrub.
  * @return Pointer to a new Shrub.
  */
-Plant *Shrub::clone()
-{
-	return new Shrub(*this);
+Plant *Shrub::clone() {
+    return new Shrub(*this);
 }
 
 /**
  * @brief prints the plant
  *
  */
-void Shrub::print()
-{
-	cout << left << setw(10) << info.getName() << "|";
+void Shrub::print() {
+    cout << left << setw(10) << info.getName() << "|";
 }

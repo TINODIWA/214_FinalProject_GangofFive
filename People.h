@@ -1,23 +1,22 @@
 #ifndef PEOPLE_H
 #define PEOPLE_H
-#include "Nursery.h"
 #include <string>
+#include "Nursery.h"
 
 using namespace std;
 class People {
+   private:
+    Nursery* nursery;
 
-private:
-	Nursery* nursery;
+   public:
+    People(Nursery* n);
 
-public:
-	People(Nursery* n);
+    People();
+    People(const People* other);
 
-	People();
-	People(const People* other);
+    void send(string m, Nursery* s, string type);
 
-	void send(string m, Nursery* s, string type);
-
-	void receive(string m, People* from, Nursery* n);
+    void receive(string m, People* from, Nursery* n);
 };
 
 #endif

@@ -1,12 +1,12 @@
 /**
  * @file Cash.h
  * @author Swelihle Makhathini
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2025-10-26
- * 
+ *
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
 #ifndef CASH_H
@@ -17,9 +17,8 @@
 
 using namespace std;
 
-class Cash : public Payment
-{
-public:
+class Cash : public Payment {
+   public:
     Cash();
     ~Cash();
     void prepare();

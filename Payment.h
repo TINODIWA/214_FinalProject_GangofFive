@@ -15,18 +15,16 @@
 #include <iostream>
 using namespace std;
 
-class Payment
-{
-private:
+class Payment {
+   private:
     virtual void prepare() = 0;
     virtual void payment() = 0;
     virtual void package() = 0;
 
-public:
+   public:
     Payment();
     virtual ~Payment();
     void purchase();
 };
-
 
 #endif

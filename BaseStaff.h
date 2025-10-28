@@ -1,17 +1,17 @@
 #ifndef BASESTAFF_H
 #define BASESTAFF_H
 
+#include <string>
+
 class BaseStaff : Staff {
+   public:
+    BaseStaff();
 
+    string jobDesc();
 
-public:
-	BaseStaff();
+    void handleCustomer(Request* req);
 
-	string jobDesc();
-
-	void handleCustomer(Request* req);
-
-	string getType();
+    string getType();
 };
 
 #endif

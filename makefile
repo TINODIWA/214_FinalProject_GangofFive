@@ -52,3 +52,7 @@ coverage-main: clean $(MAIN)
 	lcov --capture --directory . --output-file coverage.info
 	genhtml coverage.info --output-directory out
 	@echo "Open coverage report: out/index.html"
+
+lint:
+	clang-format -i *.cpp *.h
+	cpplint --quiet *.cpp

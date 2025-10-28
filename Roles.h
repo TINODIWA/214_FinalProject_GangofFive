@@ -1,16 +1,16 @@
 #ifndef ROLES_H
 #define ROLES_H
+#include <string>
 
 class Roles : Staff {
+   public:
+    vector<Staff*> staff;
 
-public:
-	vector<Staff*> staff;
+    Roles();
 
-	Roles();
+    string jobDesc();
 
-	string jobDesc();
-
-	string getType();
+    string getType();
 };
 
 #endif

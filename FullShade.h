@@ -2,10 +2,8 @@
 #define FULLSHADE_H
 
 class FullShade : SunStrategy {
-
-
-public:
-	int sunAlgorithm();
+   public:
+    int sunAlgorithm();
 };
 
 #endif

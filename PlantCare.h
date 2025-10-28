@@ -1,27 +1,26 @@
 #ifndef PLANTCARE_H
 #define PLANTCARE_H
 
-#include "WaterStrategy.h"
-#include "SunStrategy.h"
 #include "FertiliseStrategy.h"
+#include "SunStrategy.h"
+#include "WaterStrategy.h"
 
 class PlantCare {
+   private:
+    WaterStrategy* water;
+    SunStrategy* sun;
+    FertiliseStrategy* fertilise;
 
-private:
-	WaterStrategy* water;
-	SunStrategy* sun;
-	FertiliseStrategy* fertilise;
+   public:
+    PlantCare(const PlantCare& other);
 
-public:
-	PlantCare(const PlantCare& other);
+    int waterAlgorithm();
 
-	int waterAlgorithm();
+    int sunAlgorithm();
 
-	int sunAlgorithm();
+    int fertiliseAlgorithm();
 
-	int fertiliseAlgorithm();
-
-	PlantCare();
+    PlantCare();
 };
 
 #endif

@@ -1,7 +1,12 @@
 /**
  * @file PlantInfo.cpp
- * @authors Unathi Tshakalisa,
- * @brief File contains implementation of PlantInfo class. Used to hold details related to plants
+ * @author Unathi Tshakalisa
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
  */
 
 #include "PlantInfo.h"
@@ -10,11 +15,8 @@
 /**
  * @brief Constructor for PlantInfo
  */
-PlantInfo::PlantInfo() : staff(nullptr), strategy(nullptr), state(nullptr)
-{
-
-    for (int i = 0; i < 2; i++)
-    {
+PlantInfo::PlantInfo() : staff(nullptr), strategy(nullptr), state(nullptr) {
+    for (int i = 0; i < 2; i++) {
         water.push_back(0);
         sun.push_back(0);
         fertiliser.push_back(0);
@@ -24,21 +26,17 @@ PlantInfo::PlantInfo() : staff(nullptr), strategy(nullptr), state(nullptr)
 /**
  * @brief Destructor for PlantInfo
  */
-PlantInfo::~PlantInfo()
-{
-    if (staff)
-    {
+PlantInfo::~PlantInfo() {
+    if (staff) {
         delete staff;
         staff = nullptr;
     }
 
-    if (strategy)
-    {
+    if (strategy) {
         delete strategy;
         strategy = nullptr;
     }
-    if (state)
-    {
+    if (state) {
         delete state;
         state = nullptr;
     }
@@ -48,15 +46,14 @@ PlantInfo::~PlantInfo()
  * @brief Copy Constructor for PlantInfo
  * @param plantInfo  Constant reference to object being copied
  */
-PlantInfo::PlantInfo(const PlantInfo &plantInfo)
-{
+PlantInfo::PlantInfo(const PlantInfo &plantInfo) {
     this->name = plantInfo.name;
     this->type = plantInfo.type;
     this->water = plantInfo.water;
     this->sun = plantInfo.sun;
     this->fertiliser = plantInfo.fertiliser;
     this->strategy = (plantInfo.strategy) ? new PlantCare(*plantInfo.strategy) : nullptr;
-    this->state = plantInfo.state; // pointing at same reference for now...need to change
+    this->state = plantInfo.state;  // pointing at same reference for now...need to change
     this->staff = (plantInfo.staff) ? new Staff(*plantInfo.staff) : nullptr;
     this->amount = plantInfo.amount;
     this->days = plantInfo.days;
@@ -66,8 +63,7 @@ PlantInfo::PlantInfo(const PlantInfo &plantInfo)
  * @brief Sets the name attribute
  * @param name
  */
-void PlantInfo::setName(std::string name)
-{
+void PlantInfo::setName(std::string name) {
     this->name = name;
 }
 
@@ -75,8 +71,7 @@ void PlantInfo::setName(std::string name)
  * @brief Sets the type attribute
  * @param type
  */
-void PlantInfo::setType(std::string type)
-{
+void PlantInfo::setType(std::string type) {
     this->type = type;
 }
 
@@ -85,10 +80,8 @@ void PlantInfo::setType(std::string type)
  * @param water Value to set
  * @param idx Index in vector being set
  */
-void PlantInfo::setWater(int water, int idx)
-{
-    if (idx < 0 || idx > 1)
-    {
+void PlantInfo::setWater(int water, int idx) {
+    if (idx < 0 || idx > 1) {
         cout << "Invalid Index!" << endl;
         return;
     }
@@ -100,10 +93,8 @@ void PlantInfo::setWater(int water, int idx)
  * @param sun Value to set
  * @param idx Index in vector being set
  */
-void PlantInfo::setSun(int sun, int idx)
-{
-    if (idx < 0 || idx > 1)
-    {
+void PlantInfo::setSun(int sun, int idx) {
+    if (idx < 0 || idx > 1) {
         cout << "Invalid Index!" << endl;
         return;
     }
@@ -115,22 +106,17 @@ void PlantInfo::setSun(int sun, int idx)
  * @param fertiliser Value to set
  * @param idx Index in vector being set
  */
-void PlantInfo::setFertiliser(int fertiliser, int idx)
-{
-    if (idx < 0 || idx > 1)
-    {
+void PlantInfo::setFertiliser(int fertiliser, int idx) {
+    if (idx < 0 || idx > 1) {
         cout << "Invalid Index!" << endl;
         return;
     }
     this->fertiliser[idx] = fertiliser;
 }
 
-void PlantInfo::setAttention(int attention)
-{
-}
+void PlantInfo::setAttention(int attention) {}
 
-void PlantInfo::setAmount(int amount)
-{
+void PlantInfo::setAmount(int amount) {
     this->amount = amount;
 }
 
@@ -138,18 +124,16 @@ void PlantInfo::setAmount(int amount)
  * @brief Sets the strategy attribute
  * @param strategy Reference to strategy to set
  */
-void PlantInfo::setPlantCare(PlantCare *strategy)
-{
-    this->strategy = strategy; // deep copy?
+void PlantInfo::setPlantCare(PlantCare *strategy) {
+    this->strategy = strategy;  // deep copy?
 }
 
 /**
  * @brief Sets the staff attribute
  * @param strategy Reference to staff to appoint
  */
-void PlantInfo::setStaff(Staff *staff)
-{
-    this->staff = staff; // deep copy?
+void PlantInfo::setStaff(Staff *staff) {
+    this->staff = staff;  // deep copy?
 }
 
 /**
@@ -157,16 +141,14 @@ void PlantInfo::setStaff(Staff *staff)
  *
  * @param price
  */
-void PlantInfo::setPrice(int price)
-{
+void PlantInfo::setPrice(int price) {
     this->price = price;
 }
 /**
  * @brief Name getter
  * @return name
  */
-std::string PlantInfo::getName() const
-{
+std::string PlantInfo::getName() const {
     return name;
 }
 
@@ -174,8 +156,7 @@ std::string PlantInfo::getName() const
  * @brief Type getter
  * @return type
  */
-std::string PlantInfo::getType() const
-{
+std::string PlantInfo::getType() const {
     return type;
 }
 
@@ -183,8 +164,7 @@ std::string PlantInfo::getType() const
  * @brief Water getter
  * @return water vector
  */
-std::vector<int> PlantInfo::getWater() const
-{
+std::vector<int> PlantInfo::getWater() const {
     return water;
 }
 
@@ -192,8 +172,7 @@ std::vector<int> PlantInfo::getWater() const
  * @brief Sun getter
  * @return sun vector
  */
-std::vector<int> PlantInfo::getSun() const
-{
+std::vector<int> PlantInfo::getSun() const {
     return sun;
 }
 
@@ -201,13 +180,11 @@ std::vector<int> PlantInfo::getSun() const
  * @brief Fertiliser getter
  * @return fertiliser vector
  */
-std::vector<int> PlantInfo::getFertiliser() const
-{
+std::vector<int> PlantInfo::getFertiliser() const {
     return fertiliser;
 }
 
-int PlantInfo::getAttention() const
-{
+int PlantInfo::getAttention() const {
     return 0;
 }
 
@@ -215,12 +192,10 @@ int PlantInfo::getAttention() const
  * @brief Amount getter
  * @return amount
  */
-int PlantInfo::getAmount() const
-{
+int PlantInfo::getAmount() const {
     return amount;
 }
 
-int PlantInfo::getPrice() const
-{
+int PlantInfo::getPrice() const {
     return price;
 }

@@ -5,16 +5,15 @@
 #include "Plant.h"
 
 class Flower : public Plant {
-	
-public:
-	Flower();
-	Flower(const PlantInfo&  info);
-	Flower(const Plant& other);
-	void addPlant(Plant *p);
-	~Flower();
-	Plant* clone();
+   public:
+    Flower();
+    Flower(const PlantInfo& info);
+    Flower(const Plant& other);
+    void addPlant(Plant* p);
+    ~Flower();
+    Plant* clone();
 
-	void print();
+    void print();
 };
 
 #endif

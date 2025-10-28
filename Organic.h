@@ -2,10 +2,8 @@
 #define ORGANIC_H
 
 class Organic : FertiliseStrategy {
-
-
-public:
-	int fertiliseAlgorithm();
+   public:
+    int fertiliseAlgorithm();
 };
 
 #endif

@@ -2,10 +2,8 @@
 #define LIQUID_H
 
 class Liquid : FertiliseStrategy {
-
-
-public:
-	int fertiliseAlgorithm();
+   public:
+    int fertiliseAlgorithm();
 };
 
 #endif

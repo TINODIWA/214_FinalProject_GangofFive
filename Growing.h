@@ -2,14 +2,12 @@
 #define GROWING_H
 
 class Growing : PlantState {
+   public:
+    Growing();
 
+    Growing(const PlantState& other);
 
-public:
-	Growing();
-
-	Growing(const PlantState& other);
-
-	void handleChange();
+    void handleChange();
 };
 
 #endif

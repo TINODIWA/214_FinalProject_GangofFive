@@ -2,10 +2,8 @@
 #define SLOWRELEASE_H
 
 class SlowRelease : FertiliseStrategy {
-
-
-public:
-	int fertiliseAlgorithm();
+   public:
+    int fertiliseAlgorithm();
 };
 
 #endif

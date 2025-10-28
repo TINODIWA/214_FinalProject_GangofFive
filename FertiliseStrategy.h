@@ -2,10 +2,8 @@
 #define FERTILISESTRATEGY_H
 
 class FertiliseStrategy {
-
-
-public:
-	int fertiliseAlgorithm();
+   public:
+    int fertiliseAlgorithm();
 };
 
 #endif

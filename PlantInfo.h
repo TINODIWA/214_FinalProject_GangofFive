@@ -1,42 +1,31 @@
-/**
- * @file PlantInfo.h
- * @author Swelihle Makhathini
- * @brief 
- * @version 0.1
- * @date 2025-10-26
- * 
- * @copyright Copyright (c) 2025
- * 
- */
 
 #ifndef PLANTINFO_H
 #define PLANTINFO_H
 
 #include <iostream>
 #include <map>
+#include <string>
 #include <vector>
 
 #include "PlantCare.h"
 #include "PlantState.h"
 class Staff;
 
-class PlantInfo
-{
-private:
+class PlantInfo {
+   private:
     std::string name;
     std::string type;
     std::vector<int> water;
     std::vector<int> sun;
     std::vector<int> fertiliser;
-    PlantCare *strategy;
-    PlantState *state;
-    Staff *staff;
-    int amount; // number of plants in the garden ????? should this be here
+    PlantCare* strategy;
+    PlantState* state;
+    Staff* staff;
+    int amount;  // number of plants in the garden ????? should this be here
     int days;
     int price;
 
-    
-public:
+   public:
     PlantInfo();
     ~PlantInfo();
     PlantInfo(const PlantInfo& p);
@@ -48,7 +37,7 @@ public:
     void setFertiliser(int fertiliser, int idx);
     void setAttention(int attention);
     void setPlantCare(PlantCare* strategy);
-	void setStaff(Staff* staff);
+    void setStaff(Staff* staff);
     void setAmount(int amount);
     void setPrice(int price);
 
@@ -59,7 +48,6 @@ public:
     std::vector<int> getFertiliser() const;
     int getAttention() const;
     int getAmount() const;
-    int getPrice()const;
-
+    int getPrice() const;
 };
 #endif

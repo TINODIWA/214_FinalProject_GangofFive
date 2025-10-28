@@ -7,16 +7,15 @@
 class Order;
 
 class Customer : public People {
+   private:
+    Order* order;
+    Request req;
 
-private:
-	Order* order;
-	Request req;
-
-public:
-	Customer();
-	~Customer();
-	Customer(const Customer* other);
-	void makeReq(Request* req);
+   public:
+    Customer();
+    ~Customer();
+    Customer(const Customer* other);
+    void makeReq(Request* req);
 };
 
 #endif

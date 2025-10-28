@@ -2,10 +2,8 @@
 #define SURFACEWATERING_H
 
 class SurfaceWatering : WaterStrategy {
-
-
-public:
-	int waterAlgorithm();
+   public:
+    int waterAlgorithm();
 };
 
 #endif

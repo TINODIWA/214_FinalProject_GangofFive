@@ -1,17 +1,18 @@
 #ifndef ADMIN_H
 #define ADMIN_H
 
+#include <iostream>
+#include <string>
+
 class Admin : Roles {
+   public:
+    Admin();
 
+    string handleCustomer(Request* req);
 
-public:
-	Admin();
+    void updateInventory();
 
-	string handleCustomer(Request* req);
-
-	void updateInventory();
-
-	string getType();
+    string getType();
 };
 
 #endif

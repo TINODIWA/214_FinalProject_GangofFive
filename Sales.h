@@ -1,17 +1,16 @@
 #ifndef SALES_H
 #define SALES_H
+#include <string>
 
 class Sales : Roles {
+   public:
+    string handleCustomer(Request* req);
 
+    void handleSales();
 
-public:
-	string handleCustomer(Request* req);
+    Sales();
 
-	void handleSales();
-
-	Sales();
-
-	string getType();
+    string getType();
 };
 
 #endif

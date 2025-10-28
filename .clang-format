@@ -1,0 +1,10 @@
+BasedOnStyle: Google
+IndentWidth: 4
+UseTab: Never
+ColumnLimit: 120
+AlwaysBreakAfterReturnType: None
+AllowShortFunctionsOnASingleLine: Inline
+BreakBeforeBraces: Attach
+AlignTrailingComments: true
+ReflowComments: true
+IncludeBlocks: Preserve

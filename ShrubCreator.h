@@ -6,15 +6,13 @@
 
 class PlantInfo;
 
-class ShrubCreator : public PlantCreator
-{
-
-public:
-	ShrubCreator();
-	~ShrubCreator();
-	ShrubCreator(const PlantCreator *other);
-	Plant *produce(const PlantInfo &info);
-	PlantCreator* clone();
+class ShrubCreator : public PlantCreator {
+   public:
+    ShrubCreator();
+    ~ShrubCreator();
+    ShrubCreator(const PlantCreator *other);
+    Plant *produce(const PlantInfo &info);
+    PlantCreator *clone();
 };
 
 #endif

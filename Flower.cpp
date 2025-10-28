@@ -1,3 +1,14 @@
+/**
+ * @file Flower.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Flower.h"
 
 /**
@@ -33,16 +44,14 @@ Flower::~Flower() {}
  */
 void Flower::addPlant(Plant *p) {}
 
-Plant *Flower::clone()
-{
-	return new Flower(*this);
+Plant *Flower::clone() {
+    return new Flower(*this);
 }
 
 /**
  * @brief prints the plant
  *
  */
-void Flower::print()
-{
-	cout <<left << setw(10) << info.getName() << "|";
+void Flower::print() {
+    cout << left << setw(10) << info.getName() << "|";
 }
