@@ -5,11 +5,21 @@
  */
 
 #include "PlantInfo.h"
+#include "Staff.h"
 
 /**
  * @brief Constructor for PlantInfo
  */
-PlantInfo::PlantInfo() {}
+PlantInfo::PlantInfo() : staff(nullptr), strategy(nullptr), state(nullptr)
+{
+
+    for (int i = 0; i < 2; i++)
+    {
+        water.push_back(0);
+        sun.push_back(0);
+        fertiliser.push_back(0);
+    }
+}
 
 /**
  * @brief Destructor for PlantInfo
@@ -17,10 +27,21 @@ PlantInfo::PlantInfo() {}
 PlantInfo::~PlantInfo()
 {
     if (staff)
+    {
         delete staff;
+        staff = nullptr;
+    }
 
     if (strategy)
+    {
         delete strategy;
+        strategy = nullptr;
+    }
+    if (state)
+    {
+        delete state;
+        state = nullptr;
+    }
 }
 
 /**
@@ -34,9 +55,9 @@ PlantInfo::PlantInfo(const PlantInfo &plantInfo)
     this->water = plantInfo.water;
     this->sun = plantInfo.sun;
     this->fertiliser = plantInfo.fertiliser;
-    this->strategy = new PlantCare(*plantInfo.strategy);
+    this->strategy = (plantInfo.strategy) ? new PlantCare(*plantInfo.strategy) : nullptr;
     this->state = plantInfo.state; // pointing at same reference for now...need to change
-    this->staff = new Staff(*plantInfo.staff);
+    this->staff = (plantInfo.staff) ? new Staff(*plantInfo.staff) : nullptr;
     this->amount = plantInfo.amount;
     this->days = plantInfo.days;
 }
@@ -108,6 +129,11 @@ void PlantInfo::setAttention(int attention)
 {
 }
 
+void PlantInfo::setAmount(int amount)
+{
+    this->amount = amount;
+}
+
 /**
  * @brief Sets the strategy attribute
  * @param strategy Reference to strategy to set
@@ -126,6 +152,15 @@ void PlantInfo::setStaff(Staff *staff)
     this->staff = staff; // deep copy?
 }
 
+/**
+ * @brief set the price of the plant
+ *
+ * @param price
+ */
+void PlantInfo::setPrice(int price)
+{
+    this->price = price;
+}
 /**
  * @brief Name getter
  * @return name
@@ -183,4 +218,9 @@ int PlantInfo::getAttention() const
 int PlantInfo::getAmount() const
 {
     return amount;
+}
+
+int PlantInfo::getPrice() const
+{
+    return price;
 }

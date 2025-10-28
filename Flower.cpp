@@ -2,38 +2,47 @@
 
 /**
  * @brief Construct a new Flower:: Flower object
- * 
+ *
  */
-Flower::Flower():Plant() {}
+Flower::Flower() : Plant() {}
 
 /**
  * @brief Construct a new Flower:: Flower object
- * 
- * @param info 
+ *
+ * @param info
  */
-Flower::Flower(const PlantInfo& info):Plant(info){}
+Flower::Flower(const PlantInfo &info) : Plant(info) {}
 
 /**
  * @brief Construct a new Flower:: Flower object
- * 
- * @param other 
+ *
+ * @param other
  */
-Flower::Flower(const Plant& other): Plant(other) {}
+Flower::Flower(const Plant &other) : Plant(other) {}
 
 /**
  * @brief Destroy the Flower:: Flower object
- * 
+ *
  */
-Flower::~Flower()  {}
+Flower::~Flower() {}
 
 /**
- * @brief stubbed 
- * 
- * @param p 
+ * @brief stubbed
+ *
+ * @param p
  */
-void Flower::addPlant(const PlantInfo& p){}
+void Flower::addPlant(Plant *p) {}
 
-Plant* Flower::clone() {
-	// TODO - implement Flower::clone
-	throw "Not yet implemented";
+Plant *Flower::clone()
+{
+	return new Flower(*this);
+}
+
+/**
+ * @brief prints the plant
+ *
+ */
+void Flower::print()
+{
+	cout <<left << setw(10) << info.getName() << "|";
 }

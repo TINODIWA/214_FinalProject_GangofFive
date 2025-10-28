@@ -16,6 +16,7 @@ FlowerCreator::FlowerCreator() : PlantCreator() {}
  */
 FlowerCreator::~FlowerCreator() {}
 
+FlowerCreator::FlowerCreator(const PlantCreator* other):PlantCreator(other){}
 /**
  * @brief Crates and returns an instance of Flower object
  * @param plantInfo Reference to PlantInfo for plant creation
@@ -24,4 +25,13 @@ FlowerCreator::~FlowerCreator() {}
 Plant *FlowerCreator::produce(const PlantInfo &info)
 {
 	return new Flower(info);
+}
+
+/**
+ * @brief clones the factory
+ * 
+ * @return FlowerCreator::PlantCreator* 
+ */
+PlantCreator* FlowerCreator::clone(){
+	return new FlowerCreator(this);
 }
