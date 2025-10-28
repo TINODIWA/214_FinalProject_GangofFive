@@ -6,16 +6,15 @@
 
 class Shrub : public Plant
 {
+	public:
+		Shrub();
+		Shrub(const PlantInfo &info);
+		Shrub(const Plant &other);
+		virtual ~Shrub();
+		void addPlant(Plant *p);
+		Plant *clone();
 
-public:
-	Shrub();
-	Shrub(const PlantInfo &info);
-	Shrub(const Plant &other);
-	void addPlant(Plant *p);
-	virtual ~Shrub();
-	Plant *clone();
-
-	void print();
+		void print();
 };
 
 #endif

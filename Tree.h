@@ -6,15 +6,15 @@
 
 class Tree : public Plant
 {
-
-public:
-	Tree(const PlantInfo&  info);
-	Tree();
-	Tree(const Plant &other);
-	void addPlant(Plant *p);
-	virtual ~Tree();
-	Plant *clone();
-	void print();
+	public:
+		Tree();
+		Tree(const PlantInfo &info);
+		Tree(const Plant &other);
+		virtual ~Tree();
+		void addPlant(Plant *p);
+		Plant *clone();
+		
+		void print();
 };
 
 #endif

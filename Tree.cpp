@@ -11,14 +11,14 @@ Tree::Tree():Plant() {}
  * 
  * @param other 
  */
-Tree::Tree(const Plant &other):Plant(other){}
+Tree::Tree(const Plant &other) : Plant(other) {}
 
 /**
  * @brief Construct a new Tree:: Tree object
  * 
  * @param info 
  */
-Tree::Tree(const PlantInfo&  info):Plant(info){}
+Tree::Tree(const PlantInfo &info) : Plant(info) {}
 
 /**
  * @brief Destroy the Tree:: Tree object
@@ -46,6 +46,7 @@ Plant *Tree::clone() {
  * @brief prints the plant 
  * 
  */
-void Tree::print(){
-cout <<left << setw(10) << info.getName() << "|";
+void Tree::print() 
+{
+	cout << left << setw(10) << info.getName() << "|";
 }

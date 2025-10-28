@@ -13,16 +13,13 @@ Plant::Plant()
  * @brief Destroy the Plant:: Plant object
  *
  */
-Plant::~Plant()
-{
-}
+Plant::~Plant() {}
 
 /**
  * @brief Construct a new Plant:: Plant object
  *
  * @param other
  */
-
 Plant::Plant(const Plant &other)
 {
 	this->info = PlantInfo(other.info);
@@ -96,6 +93,18 @@ void Plant::setFertiliser(int fertiliser)
 void Plant::setAttention(int attention)
 {
 	info.setAttention(attention);
+}
+
+
+void Plant::setPlantCare(PlantCare *strategy)
+{
+	info.setPlantCare(strategy);
+}
+
+
+void Plant::setStaff(Staff *staff)
+{
+	info.setStaff(staff);
 }
 
 /**
@@ -183,13 +192,3 @@ void Plant::notify()
  * @param p 
  */
 void Plant::addPlant(Plant *p) {}
-
-void Plant::setPlantCare(PlantCare *strategy)
-{
-	info.setPlantCare(strategy);
-}
-void Plant::setStaff(Staff *staff)
-{
-	info.setStaff(staff);
-}
-
