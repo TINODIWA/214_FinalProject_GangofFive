@@ -14,9 +14,8 @@ private:
 public:
 	void handlePlant(Plant* p);
 	void handleCustomer(Request* req);
-
 	Staff();
-	Staff(const Staff& other);
+	Staff(const Staff* other);
 
 	string JobDesc();
 	string getType();

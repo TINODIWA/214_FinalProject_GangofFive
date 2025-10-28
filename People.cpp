@@ -12,7 +12,11 @@ People::People()
 	// throw "Not yet implemented";
 }
 
-People::People(const People &other) {}
+People::People(const People *other)
+{
+	// if (other)
+	// 	this->nursery = new Nursery(*other->nursery);
+}
 
 void People::send(string m, Nursery *s, string type)
 {

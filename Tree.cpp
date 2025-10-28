@@ -31,7 +31,7 @@ Tree::~Tree() {}
  * 
  * @param p 
  */
-void Tree::addPlant(const PlantInfo& p){}
+void Tree::addPlant(Plant *p){}
 
 /**
  * @brief Create a copy of this Tree.
@@ -39,4 +39,13 @@ void Tree::addPlant(const PlantInfo& p){}
  */
 Plant *Tree::clone() {
 	return new Tree(*this);
+}
+
+
+/**
+ * @brief prints the plant 
+ * 
+ */
+void Tree::print(){
+cout <<left << setw(10) << info.getName() << "|";
 }
