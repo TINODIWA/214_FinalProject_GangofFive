@@ -18,9 +18,9 @@
 #include <vector>
 using namespace std;
 
-class Customer;
-class Plant;
-class Staff;
+#include "Customer.h"
+#include "Plant.h"
+#include "Staff.h"
 
 class Payment
 {
@@ -33,8 +33,8 @@ private:
 public:
     Payment();
     virtual ~Payment();
-    string purchase(Customer *customer, vector<Plant *> plants,Staff* staff);
-    string receipt(Customer *customer, vector<Plant *> plants,Staff* staff);
+    string purchase(Customer *customer, map<Plant*,int> plants,Staff* staff);
+    string receipt(Customer *customer, map<Plant*,int> plants,Staff* staff);
 };
 
 #endif

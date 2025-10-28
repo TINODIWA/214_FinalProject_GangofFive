@@ -29,3 +29,12 @@ void Customer::makeReq(Request *req)
 	// TODO - implement Customer::makeReq
 	throw "Not yet implemented";
 }
+
+
+/**
+ * @brief places an order for the customer
+ * 
+ */
+void Customer::placeOrder(){
+	
+}

@@ -12,40 +12,33 @@
 
 using namespace std;
 
-
-struct OrderPlant{
-	Plant* plant;
-	string advice;
-
-	bool operator==(const Plant* p){
-		return p == plant;
-	}
-};
-
-class Order {
+class Order
+{
 
 private:
-	map<OrderPlant,int> plants;
-	Customer* customer;
-	Staff* staff;
+	map<Plant *, int> plants;
+	Customer *customer;
+	Staff *staff;
 	string receipt;
-	Payment* paymentMethod;
+	Payment *paymentMethod;
+	int purchaseDate;
 
 public:
 	Order();
+	Order(Customer *customer, Staff *staff);
 	~Order();
-	Order(const Order& other);
+	Order(const Order &other);
+	void addPlant(Plant *p);
+	void removePlant(Plant *p);
+	void purchase();
+	void setStaff(Staff* s);
+	void setCustomer(Customer* c);
 
 private:
 	void prepare();
 	void payment();
-	Order* package();
+	Order *package();
 
-public:
-
-	void addPlant(Plant* p);
-	void removePlant(Plant* p);
-	void purchase();
 };
 
 #endif

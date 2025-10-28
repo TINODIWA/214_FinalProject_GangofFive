@@ -1,7 +1,4 @@
 #include "Payment.h"
-#include "Staff.h"
-#include "Plant.h"
-#include "Customer.h"
 
 /**
  * @brief Construct a new Payment:: Payment object
@@ -20,14 +17,14 @@ Payment::~Payment() {}
  *
  * @return string
  */
-string Payment::purchase(Customer *customer, vector<Plant *> plants, Staff *staff)
+string Payment::purchase(Customer *customer, map<Plant*,int> plants, Staff *staff)
 {
     prepare();
     payment();
     return receipt(customer, plants, staff);
 }
 
-string Payment::receipt(Customer *customer, vector<Plant *> plants, Staff *staff)
+string Payment::receipt(Customer *customer, map<Plant*,int> plants, Staff *staff)
 {
     stringstream receipt;
 
@@ -39,9 +36,11 @@ string Payment::receipt(Customer *customer, vector<Plant *> plants, Staff *staff
     receipt<<"Payment Method: "<<getType()<<"\n";
     receipt<<"Order:\n";
 
-    vector<Plant*>::iterator it = plants.begin();
+    map<Plant*,int>::iterator it = plants.begin();
     while(it != plants.end()){
-        receipt << (*it)->getName();
-        receipt <<right<<setw(10)<<"R"<<(*it)->getPrice()<<"\n";
+        receipt << (*it).first->getName();
+        receipt <<right<<setw(10)<<"R"<<(*it).first->getPrice()<<"\n";
     }
+
+    return receipt.str();
 }

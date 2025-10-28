@@ -1,5 +1,6 @@
 #ifndef PEOPLE_H
 #define PEOPLE_H
+
 #include "Nursery.h"
 #include <string>
 
@@ -15,7 +16,6 @@ protected:
 
 public:
 	People(Nursery *n);
-
 	People();
 	People(const People* other);
 

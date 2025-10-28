@@ -17,6 +17,7 @@ public:
 	~Customer();
 	Customer(const Customer* other);
 	void makeReq(Request* req);
+	void placeOrder();
 };
 
 #endif

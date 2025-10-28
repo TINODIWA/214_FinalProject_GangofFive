@@ -5,9 +5,12 @@ MAIN = main
 TEST = test
 
 OBJS = PlantInfo.o Plant.o Shrub.o Tree.o Crop.o\
- Flower.o PlantCare.o PlantCreator.o\
-ShrubCreator.o FlowerCreator.o TreeCreator.o People.o Staff.o\
-Builder.o CropBuilder.o Director.o
+Flower.o PlantCare.o PlantCreator.o\
+ShrubCreator.o FlowerCreator.o TreeCreator.o People.o Staff.o Customer.o \
+Builder.o CropBuilder.o Director.o\
+Nursery.o Request.o\
+Payment.o EFT.o Card.o Cash.o Order.o\
+
 		
 
 MAIN_OBJS = $(OBJS) Main.o

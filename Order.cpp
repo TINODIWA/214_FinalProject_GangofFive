@@ -1,15 +1,16 @@
 #include "Order.h"
 
-
 /**
  * @brief Construct a new Order:: Order object
- * 
+ *
  */
 Order::Order() : customer(nullptr), paymentMethod(nullptr) {}
 
+
+Order::Order(Customer *customer, Staff *staff): customer(customer),staff(staff){}
 /**
  * @brief purchase and order
- * 
+ *
  */
 void Order::purchase()
 {
@@ -51,38 +52,60 @@ void Order::purchase()
 		}
 	}
 
-	paymentMethod->purchase();
+	paymentMethod->purchase(customer, plants, staff);
 }
 
 /**
  * @brief add a plant to the order
- * 
- * @param p 
+ *
+ * @param p
  */
 void Order::addPlant(Plant *p)
 {
-	if(!p) return;
-	
-	OrderPlant newPlant;
+	if (!p)
+		return;
 
-	newPlant.advice = "";
-	newPlant.plant = p;
-	try{
-		++plants.at(newPlant);
+	try
+	{
+		++plants.at(p);
 	}
-	catch(std::out_of_range err){
-		plants[newPlant] = 1;
+	catch (std::out_of_range err)
+	{
+		plants[p] = 1;
 	}
 }
 
 /**
  * @brief remove a plant from the order
- * 
- * @param p 
+ *
+ * @param p
  */
 void Order::removePlant(Plant *p)
 {
-	OrderPlant rem;
-	rem.plant = p;
-	plants.erase(rem);
+	--plants[p];
+
+	if (plants[p] < 1)
+		plants.erase(p);
+}
+
+/**
+ * @brief sets the staff member variable
+ * 
+ * @param s 
+ */
+void Order::setStaff(Staff *s){
+	if(!s) return;
+
+	staff = s;
+}
+
+/**
+ * @brief sets the customer variable
+ * 
+ * @param c 
+ */
+void Order::setCustomer(Customer *c){
+	if(!c) return;
+
+	customer = c;
 }

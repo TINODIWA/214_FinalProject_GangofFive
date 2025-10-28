@@ -48,6 +48,8 @@ public:
 	void notify();
 
 	virtual void print() = 0;
+	
+	string advice();
 };
 
 #endif

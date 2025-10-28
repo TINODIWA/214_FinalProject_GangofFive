@@ -184,12 +184,40 @@ void Plant::notify()
  */
 void Plant::addPlant(Plant *p) {}
 
+
+/**
+ * @brief advice on how to care for the plant
+ * 
+ * @return string 
+ */
+string Plant::advice(){
+	return "";
+}
+
+
+/**
+ * @brief sets the plantcare 
+ * 
+ * @param strategy 
+ */
 void Plant::setPlantCare(PlantCare *strategy)
 {
 	info.setPlantCare(strategy);
 }
+
+/**
+ * @brief sets the staff taking care of that plant
+ * 
+ * @param staff 
+ */
 void Plant::setStaff(Staff *staff)
 {
 	info.setStaff(staff);
 }
+
+
+int Plant::getPrice()const {
+	return info.getPrice();
+}
+
 
