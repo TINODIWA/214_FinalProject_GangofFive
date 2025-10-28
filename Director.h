@@ -37,8 +37,8 @@ public:
 	~Director();
 	Director(CropBuilder *p);
 	void setBuilder(CropBuilder *p);
-	Plant *construct();
-	void parse();
+	Plant *construct(string filename);
+	void parse(string filename);
 };
 
 #endif

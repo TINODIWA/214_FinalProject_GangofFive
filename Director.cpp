@@ -48,10 +48,10 @@ void Director::setBuilder(CropBuilder *p)
  * @brief build the garden of crops
  *
  */
-Plant *Director::construct()
+Plant *Director::construct(string filename)
 {
 	cropBuilder->reset();
-	parse();
+	parse(filename);
 
 	map<string, vector<PlantInfo>>::iterator it = plants.begin();
 	bool crop = true;
@@ -77,9 +77,9 @@ Plant *Director::construct()
  *
  */
 
-void Director::parse()
+void Director::parse(string filename)
 {
-	fstream infos("plants.txt");
+	fstream infos(filename);
 	if (infos.is_open())
 	{
 
