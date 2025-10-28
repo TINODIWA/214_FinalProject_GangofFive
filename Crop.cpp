@@ -48,6 +48,11 @@ Crop::Crop(std::string name)
 	setName(name);
 }
 
+/**
+ * @brief adds a plant to the crop
+ *
+ * @param p
+ */
 void Crop::addPlant(Plant *p)
 {
 	plants.push_back(p);
@@ -62,6 +67,9 @@ Plant *Crop::clone()
 	return new Crop(*this);
 }
 
+/**
+ * @brief prints the crop and its plants
+ */
 void Crop::print()
 {
 	cout << this->getName() << ":\n";

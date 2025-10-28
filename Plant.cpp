@@ -95,13 +95,21 @@ void Plant::setAttention(int attention)
 	info.setAttention(attention);
 }
 
-
+/**
+ * @brief sets the plant care strategy
+ *
+ * @param strategy
+ */
 void Plant::setPlantCare(PlantCare *strategy)
 {
 	info.setPlantCare(strategy);
 }
 
-
+/**
+ * @brief sets the staff assigned to the plant
+ *
+ * @param staff
+ */
 void Plant::setStaff(Staff *staff)
 {
 	info.setStaff(staff);
@@ -167,6 +175,7 @@ int Plant::getAttention() const
 {
 	return info.getAttention();
 }
+
 
 void Plant::attach(Staff *s)
 {
