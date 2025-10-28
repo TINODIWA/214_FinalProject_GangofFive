@@ -1,11 +1,41 @@
 #include "Card.h"
 
-Card::Card() {
-	// TODO - implement Card::Card
-	throw "Not yet implemented";
+/**
+ * @brief Construct a new Card:: Card object
+ *
+ */
+Card::Card() : Payment() {}
+
+/**
+ * @brief Destroy the Card:: Card object
+ *
+ */
+Card::~Card() {}
+
+/**
+ * @brief preparing a Card order
+ *
+ */
+void Card::prepare()
+{
+    cout << "Awaiting Authorisation\n";
 }
 
-void Card::payment() {
-	// TODO - implement Card::payment
-	throw "Not yet implemented";
+/**
+ * @brief processing a Card payment
+ *
+ */
+void Card::payment()
+{
+    cout << "Processing Payment\n";
 }
+
+/**
+ * @brief returns the type of payment
+ * 
+ * @return string 
+ */
+string Card::getType(){
+    return "Card Payment";
+}
+

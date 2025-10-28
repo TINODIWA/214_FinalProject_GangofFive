@@ -31,6 +31,7 @@ public:
 	void setAttention(int attention);
 	void setPlantCare(PlantCare* strategy);
 	void setStaff(Staff* staff);
+	void setPrice(int price);
 
 	string getName() const;
 	string getType() const;
@@ -38,6 +39,7 @@ public:
 	vector<int> getSun() const;
 	vector<int> getFertiliser() const;
 	int getAttention() const;
+	int getPrice()const;
 
 	virtual Plant* clone() = 0;
 	void attach(Staff* s);

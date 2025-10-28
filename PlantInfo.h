@@ -1,3 +1,14 @@
+/**
+ * @file PlantInfo.h
+ * @author Swelihle Makhathini
+ * @brief 
+ * @version 0.1
+ * @date 2025-10-26
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef PLANTINFO_H
 #define PLANTINFO_H
 
@@ -7,7 +18,7 @@
 
 #include "PlantCare.h"
 #include "PlantState.h"
-#include "Staff.h"
+class Staff;
 
 class PlantInfo
 {
@@ -22,6 +33,7 @@ private:
     Staff *staff;
     int amount; // number of plants in the garden ????? should this be here
     int days;
+    int price;
 
     
 public:
@@ -37,6 +49,8 @@ public:
     void setAttention(int attention);
     void setPlantCare(PlantCare* strategy);
 	void setStaff(Staff* staff);
+    void setAmount(int amount);
+    void setPrice(int price);
 
     std::string getName() const;
     std::string getType() const;
@@ -45,6 +59,7 @@ public:
     std::vector<int> getFertiliser() const;
     int getAttention() const;
     int getAmount() const;
+    int getPrice()const;
 
 };
 #endif
