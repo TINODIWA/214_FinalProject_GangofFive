@@ -1,7 +1,8 @@
 #ifndef BASESTAFF_H
 #define BASESTAFF_H
+#include "Staff.h"
 
-class BaseStaff : Staff {
+class BaseStaff : public Staff {
 
 
 public:

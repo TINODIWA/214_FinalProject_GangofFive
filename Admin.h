@@ -1,7 +1,8 @@
 #ifndef ADMIN_H
 #define ADMIN_H
+#include "Roles.h"
 
-class Admin : Roles {
+class Admin : public Roles {
 
 
 public:

@@ -1,7 +1,8 @@
 #ifndef ROLES_H
 #define ROLES_H
+#include "Staff.h"
 
-class Roles : Staff {
+class Roles : public Staff {
 
 public:
 	vector<Staff*> staff;

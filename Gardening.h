@@ -1,7 +1,8 @@
 #ifndef GARDENING_H
 #define GARDENING_H
+#include "Roles.h"
 
-class Gardening : Roles {
+class Gardening : public Roles {
 
 public:
 	vector<Plant*> plants;

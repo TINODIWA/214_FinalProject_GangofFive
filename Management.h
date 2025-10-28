@@ -1,7 +1,9 @@
 #ifndef MANAGEMENT_H
 #define MANAGEMENT_H
+#include "Roles.h"
+#include "Command.h"
 
-class Management : Roles {
+class Management : public Roles {
 
 public:
 	Command* cmd;

@@ -1,7 +1,8 @@
 #ifndef SALES_H
 #define SALES_H
+#include "Roles.h"
 
-class Sales : Roles {
+class Sales : public Roles {
 
 
 public:
