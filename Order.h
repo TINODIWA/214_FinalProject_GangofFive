@@ -13,26 +13,26 @@
 using namespace std;
 
 class Order {
-   private:
-    vector<Plant*> plants;
-    Customer* customer;
+ private:
+  vector<Plant*> plants;
+  Customer* customer;
 
-   public:
-    Order();
-    ~Order();
-    Order(const Order& other);
+ public:
+  Order();
+  ~Order();
+  Order(const Order& other);
 
-   private:
-    void prepare();
-    void payment();
-    void package();
+ private:
+  void prepare();
+  void payment();
+  void package();
 
-   public:
-    void addPlant(Plant* p);
+ public:
+  void addPlant(Plant* p);
 
-    void removePlant(Plant* p);
+  void removePlant(Plant* p);
 
-    void purchase();
+  void purchase();
 };
 
 #endif  // ORDER_H_

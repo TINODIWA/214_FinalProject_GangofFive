@@ -14,9 +14,9 @@
 using namespace std;
 
 class StaffCo_ordination : public Nursery {
-   public:
-    StaffCo_ordination();
-    void sendMessage(string message, Staff* to, string type);
+ public:
+  StaffCo_ordination();
+  void sendMessage(string message, Staff* to, string type);
 };
 
 #endif  // STAFFCO_ORDINATION_H_

@@ -12,6 +12,6 @@
 #include "FullSun.h"
 
 int FullSun::sunAlgorithm() {
-    // TODO(user) - implement FullSun::sunAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement FullSun::sunAlgorithm
+  throw "Not yet implemented";
 }

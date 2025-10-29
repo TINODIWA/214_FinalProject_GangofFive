@@ -21,22 +21,22 @@
 class PlantInfo;
 
 class CropBuilder : public Builder {
-   private:
-    Plant *root;
-    Plant *currCrop;
-    map<string, PlantCreator *> factories;
+ private:
+  Plant *root;
+  Plant *currCrop;
+  map<string, PlantCreator *> factories;
 
-   public:
-    CropBuilder();
-    ~CropBuilder();
-    CropBuilder(const CropBuilder *other);
-    CropBuilder(map<string, PlantCreator *> factories);
-    void addCrop(string name);
-    void addPlant(const PlantInfo &p);
-    void setFactories(map<string, PlantCreator *> factories);
-    void addFactory(std::string type, PlantCreator *factory);
-    void reset();
-    Plant *getCrop();
+ public:
+  CropBuilder();
+  ~CropBuilder();
+  CropBuilder(const CropBuilder *other);
+  CropBuilder(map<string, PlantCreator *> factories);
+  void addCrop(string name);
+  void addPlant(const PlantInfo &p);
+  void setFactories(map<string, PlantCreator *> factories);
+  void addFactory(std::string type, PlantCreator *factory);
+  void reset();
+  Plant *getCrop();
 };
 
 #endif  // CROPBUILDER_H_

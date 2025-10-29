@@ -32,7 +32,7 @@ ShrubCreator::ShrubCreator(const PlantCreator *other) : PlantCreator(other) {}
  * @return instance of Shrub
  */
 Plant *ShrubCreator::produce(const PlantInfo &info) {
-    return new Shrub(info);
+  return new Shrub(info);
 }
 
 /**
@@ -41,5 +41,5 @@ Plant *ShrubCreator::produce(const PlantInfo &info) {
  * @return PlantCreator*
  */
 PlantCreator *ShrubCreator::clone() {
-    return new ShrubCreator(this);
+  return new ShrubCreator(this);
 }

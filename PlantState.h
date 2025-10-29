@@ -9,12 +9,12 @@
 #include "PlantState.h"
 
 class PlantState {
-   public:
-    PlantState();
+ public:
+  PlantState();
 
-    PlantState(const PlantState& other);
+  PlantState(const PlantState& other);
 
-    virtual void handleChange() = 0;
+  virtual void handleChange() = 0;
 };
 
 #endif  // PLANTSTATE_H_

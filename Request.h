@@ -9,14 +9,14 @@
 #include <string>
 
 class Request {
-   private:
-    int id;
-    string description;
+ private:
+  int id;
+  string description;
 
-   public:
-    Request();
+ public:
+  Request();
 
-    string getRequest();
+  string getRequest();
 };
 
 #endif  // REQUEST_H_

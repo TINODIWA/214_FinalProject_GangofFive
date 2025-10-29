@@ -10,14 +10,14 @@
 #include <string>
 
 class Admin : Roles {
-   public:
-    Admin();
+ public:
+  Admin();
 
-    string handleCustomer(Request* req);
+  string handleCustomer(Request* req);
 
-    void updateInventory();
+  void updateInventory();
 
-    string getType();
+  string getType();
 };
 
 #endif  // ADMIN_H_

@@ -45,7 +45,7 @@ Flower::~Flower() {}
 void Flower::addPlant(Plant *p) {}
 
 Plant *Flower::clone() {
-    return new Flower(*this);
+  return new Flower(*this);
 }
 
 /**
@@ -53,5 +53,5 @@ Plant *Flower::clone() {
  *
  */
 void Flower::print() {
-    cout << left << setw(10) << info.getName() << "|";
+  cout << left << setw(10) << info.getName() << "|";
 }

@@ -15,16 +15,16 @@
 using namespace std;
 
 class Crop : public Plant {
-   public:
-    std::vector<Plant *> plants;
+ public:
+  std::vector<Plant *> plants;
 
-    Crop();
-    ~Crop();
-    Crop(const Crop &other);
-    Crop(std::string name);
-    void addPlant(Plant *p);
-    Plant *clone();
-    void print();
+  Crop();
+  ~Crop();
+  Crop(const Crop &other);
+  Crop(std::string name);
+  void addPlant(Plant *p);
+  Plant *clone();
+  void print();
 };
 
 #endif  // CROP_H_

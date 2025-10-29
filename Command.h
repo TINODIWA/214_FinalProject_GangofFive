@@ -13,14 +13,14 @@ class StaffCo_ordination;
 class Staff;
 
 class Command {
-   protected:
-    Staff* appointed;
-    StaffCo_ordination* mediator;
+ protected:
+  Staff* appointed;
+  StaffCo_ordination* mediator;
 
-   public:
-    Command(Staff* s, StaffCo_ordination* m);
-    virtual ~Command();
-    virtual void execute() = 0;
+ public:
+  Command(Staff* s, StaffCo_ordination* m);
+  virtual ~Command();
+  virtual void execute() = 0;
 };
 
 #endif  // COMMAND_H_

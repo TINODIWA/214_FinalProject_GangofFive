@@ -12,6 +12,6 @@
 #include "WaterStrategy.h"
 
 int WaterStrategy::waterAlgorithm() {
-    // TODO(user) - implement WaterStrategy::waterAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement WaterStrategy::waterAlgorithm
+  throw "Not yet implemented";
 }

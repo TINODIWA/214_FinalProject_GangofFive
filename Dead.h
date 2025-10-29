@@ -7,12 +7,12 @@
 #define DEAD_H_
 #include "PlantState.h"
 class Dead : PlantState {
-   public:
-    Dead();
+ public:
+  Dead();
 
-    Dead(const PlantState& other);
+  Dead(const PlantState& other);
 
-    void handleChange();
+  void handleChange();
 };
 
 #endif  // DEAD_H_

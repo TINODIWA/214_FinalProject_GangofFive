@@ -12,5 +12,5 @@
 #include "DeepWatering.h"
 
 int DeepWatering::waterAlgorithm() {
-    throw "Not yet implemented";
+  throw "Not yet implemented";
 }

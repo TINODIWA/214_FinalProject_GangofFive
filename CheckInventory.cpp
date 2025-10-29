@@ -23,5 +23,5 @@ CheckInventory::CheckInventory(Staff *s, StaffCo_ordination *m) : Command(s, m) 
  * @return void
  */
 void CheckInventory::execute() {
-    mediator->sendMessage("Checking inventory status", appointed, "CheckInventory");
+  mediator->sendMessage("Checking inventory status", appointed, "CheckInventory");
 }

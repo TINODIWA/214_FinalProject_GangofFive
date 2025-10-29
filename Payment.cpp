@@ -30,8 +30,8 @@ Payment::~Payment() {}
  *
  */
 void Payment::purchase() {
-    prepare();
-    payment();
-    package();
-    cout << "Purchase complete.\n";
+  prepare();
+  payment();
+  package();
+  cout << "Purchase complete.\n";
 }

@@ -22,18 +22,18 @@
 //  }
 
 Customer::Customer() {
-    // TODO(unathi,nathan,ryan) - implement Customer::Customer
-    throw "Not yet implemented";
+  // TODO(unathi,nathan,ryan) - implement Customer::Customer
+  throw "Not yet implemented";
 }
 
 Customer::~Customer() {}
 
 Customer::Customer(const Customer *other) {
-    // if (other)
-    // this->order = new Order(*other->order);
+  // if (other)
+  // this->order = new Order(*other->order);
 }
 
 void Customer::makeReq(Request *req) {
-    // TODO(unathi,nathan,ryan) - implement Customer::makeReq
-    throw "Not yet implemented";
+  // TODO(unathi,nathan,ryan) - implement Customer::makeReq
+  throw "Not yet implemented";
 }

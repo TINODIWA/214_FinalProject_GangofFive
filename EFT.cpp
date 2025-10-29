@@ -28,8 +28,8 @@ EFT::~EFT() {}
  *
  */
 void EFT::prepare() {
-    cout << "Connecting to your Bank...\n";
-    cout << "Connected Successfully!\n";
+  cout << "Connecting to your Bank...\n";
+  cout << "Connected Successfully!\n";
 }
 
 /**
@@ -37,8 +37,8 @@ void EFT::prepare() {
  *
  */
 void EFT::payment() {
-    cout << "Transfer in Process...\n";
-    cout << "Transfer Complete!\n";
+  cout << "Transfer in Process...\n";
+  cout << "Transfer Complete!\n";
 }
 
 /**

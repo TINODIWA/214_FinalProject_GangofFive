@@ -22,13 +22,13 @@ Command::Command(Staff* s, StaffCo_ordination* m) : appointed(s), mediator(m) {}
  * @brief Destroy the Command object
  */
 Command::~Command() {
-    if (appointed) {
-        delete appointed;
-        appointed = NULL;
-    }
+  if (appointed) {
+    delete appointed;
+    appointed = NULL;
+  }
 
-    if (mediator) {
-        delete mediator;
-        mediator = NULL;
-    }
+  if (mediator) {
+    delete mediator;
+    mediator = NULL;
+  }
 }

@@ -28,7 +28,7 @@ FlowerCreator::FlowerCreator(const PlantCreator* other) : PlantCreator(other) {}
  * @return instance of Flower
  */
 Plant* FlowerCreator::produce(const PlantInfo& info) {
-    return new Flower(info);
+  return new Flower(info);
 }
 
 /**
@@ -37,5 +37,5 @@ Plant* FlowerCreator::produce(const PlantInfo& info) {
  * @return FlowerCreator::PlantCreator*
  */
 PlantCreator* FlowerCreator::clone() {
-    return new FlowerCreator(this);
+  return new FlowerCreator(this);
 }

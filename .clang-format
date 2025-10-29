@@ -1,6 +1,8 @@
 BasedOnStyle: Google
-IndentWidth: 4
+IndentWidth: 2
 UseTab: Never
+AccessModifierOffset: -1
+TabWidth: 2
 ColumnLimit: 120
 AlwaysBreakAfterReturnType: None
 AllowShortFunctionsOnASingleLine: Inline
@@ -8,3 +10,4 @@ BreakBeforeBraces: Attach
 AlignTrailingComments: true
 ReflowComments: true
 IncludeBlocks: Preserve
+

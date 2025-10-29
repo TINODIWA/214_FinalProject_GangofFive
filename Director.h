@@ -21,18 +21,18 @@
 using namespace std;
 
 class Director {
-   private:
-    CropBuilder *cropBuilder;
-    map<string, vector<PlantInfo>> plants;
-    vector<string> plantTypes;
+ private:
+  CropBuilder *cropBuilder;
+  map<string, vector<PlantInfo>> plants;
+  vector<string> plantTypes;
 
-   public:
-    Director();
-    ~Director();
-    Director(CropBuilder *p);
-    void setBuilder(CropBuilder *p);
-    Plant *construct(string filename);
-    void parse(string filename);
+ public:
+  Director();
+  ~Director();
+  Director(CropBuilder *p);
+  void setBuilder(CropBuilder *p);
+  Plant *construct(string filename);
+  void parse(string filename);
 };
 
 #endif  // DIRECTOR_H_

@@ -8,14 +8,14 @@
 #include <string>
 
 class Sales : Roles {
-   public:
-    string handleCustomer(Request* req);
+ public:
+  string handleCustomer(Request* req);
 
-    void handleSales();
+  void handleSales();
 
-    Sales();
+  Sales();
 
-    string getType();
+  string getType();
 };
 
 #endif  // SALES_H_

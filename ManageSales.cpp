@@ -22,5 +22,5 @@ ManageSales::ManageSales(Staff *s, StaffCo_ordination *m) : Command(s, m) {}
  * @return void
  */
 void ManageSales::execute() {
-    mediator->sendMessage("Managing sales", appointed, "ManageSales");
+  mediator->sendMessage("Managing sales", appointed, "ManageSales");
 }

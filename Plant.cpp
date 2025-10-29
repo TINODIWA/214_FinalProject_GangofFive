@@ -16,7 +16,7 @@
  *
  */
 Plant::Plant() {
-    info = PlantInfo();
+  info = PlantInfo();
 }
 
 /**
@@ -32,7 +32,7 @@ Plant::~Plant() {}
  */
 
 Plant::Plant(const Plant &other) {
-    this->info = PlantInfo(other.info);
+  this->info = PlantInfo(other.info);
 }
 
 /**
@@ -41,7 +41,7 @@ Plant::Plant(const Plant &other) {
  * @param name
  */
 void Plant::setName(string name) {
-    info.setName(name);
+  info.setName(name);
 }
 
 /**
@@ -50,7 +50,7 @@ void Plant::setName(string name) {
  * @param type
  */
 void Plant::setType(string type) {
-    info.setType(type);
+  info.setType(type);
 }
 
 /**
@@ -59,7 +59,7 @@ void Plant::setType(string type) {
  * @param info
  */
 Plant::Plant(const PlantInfo &info) {
-    this->info = PlantInfo(info);
+  this->info = PlantInfo(info);
 }
 
 /**
@@ -68,7 +68,7 @@ Plant::Plant(const PlantInfo &info) {
  * @param water
  */
 void Plant::setWater(int water) {
-    info.setWater(water, 1);
+  info.setWater(water, 1);
 }
 
 /**
@@ -77,7 +77,7 @@ void Plant::setWater(int water) {
  * @param sun
  */
 void Plant::setSun(int sun) {
-    info.setSun(sun, 1);
+  info.setSun(sun, 1);
 }
 
 /**
@@ -86,7 +86,7 @@ void Plant::setSun(int sun) {
  * @param fertiliser
  */
 void Plant::setFertiliser(int fertiliser) {
-    info.setFertiliser(fertiliser, 1);
+  info.setFertiliser(fertiliser, 1);
 }
 
 /**
@@ -95,7 +95,7 @@ void Plant::setFertiliser(int fertiliser) {
  * @param attention
  */
 void Plant::setAttention(int attention) {
-    info.setAttention(attention);
+  info.setAttention(attention);
 }
 
 /**
@@ -104,7 +104,7 @@ void Plant::setAttention(int attention) {
  * @return string
  */
 string Plant::getName() const {
-    return info.getName();
+  return info.getName();
 }
 
 /**
@@ -113,7 +113,7 @@ string Plant::getName() const {
  * @return string
  */
 string Plant::getType() const {
-    return info.getType();
+  return info.getType();
 }
 
 /**
@@ -122,7 +122,7 @@ string Plant::getType() const {
  * @return int
  */
 vector<int> Plant::getWater() const {
-    return info.getWater();
+  return info.getWater();
 }
 
 /**
@@ -132,7 +132,7 @@ vector<int> Plant::getWater() const {
  */
 
 vector<int> Plant::getSun() const {
-    return info.getSun();
+  return info.getSun();
 }
 
 /**
@@ -141,7 +141,7 @@ vector<int> Plant::getSun() const {
  * @return int
  */
 vector<int> Plant::getFertiliser() const {
-    return info.getFertiliser();
+  return info.getFertiliser();
 }
 
 /**
@@ -150,22 +150,22 @@ vector<int> Plant::getFertiliser() const {
  * @return int
  */
 int Plant::getAttention() const {
-    return info.getAttention();
+  return info.getAttention();
 }
 
 void Plant::attach(Staff *s) {
-    // TODO(user) - implement Plant::attach
-    // throw "Not yet implemented";
+  // TODO(user) - implement Plant::attach
+  // throw "Not yet implemented";
 }
 
 void Plant::detach(Staff *s) {
-    // TODO(user) - implement Plant::detach
-    // throw "Not yet implemented";
+  // TODO(user) - implement Plant::detach
+  // throw "Not yet implemented";
 }
 
 void Plant::notify() {
-    // TODO(user) - implement Plant::notify
-    // throw "Not yet implemented";
+  // TODO(user) - implement Plant::notify
+  // throw "Not yet implemented";
 }
 
 /**
@@ -176,8 +176,8 @@ void Plant::notify() {
 void Plant::addPlant(Plant *p) {}
 
 void Plant::setPlantCare(PlantCare *strategy) {
-    info.setPlantCare(strategy);
+  info.setPlantCare(strategy);
 }
 void Plant::setStaff(Staff *staff) {
-    info.setStaff(staff);
+  info.setStaff(staff);
 }

@@ -7,12 +7,12 @@
 #define MATURE_H_
 
 class Mature : PlantState {
-   public:
-    Mature();
+ public:
+  Mature();
 
-    Mature(const PlantState& other);
+  Mature(const PlantState& other);
 
-    void handleChange();
+  void handleChange();
 };
 
 #endif  // MATURE_H_

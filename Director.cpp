@@ -22,10 +22,10 @@ Director::Director() : cropBuilder(nullptr) {}
  *
  */
 Director::~Director() {
-    if (cropBuilder) {
-        delete cropBuilder;
-        cropBuilder = nullptr;
-    }
+  if (cropBuilder) {
+    delete cropBuilder;
+    cropBuilder = nullptr;
+  }
 }
 
 /**
@@ -41,12 +41,12 @@ Director::Director(CropBuilder *p) : cropBuilder(p) {}
  * @param p
  */
 void Director::setBuilder(CropBuilder *p) {
-    if (cropBuilder) {
-        delete cropBuilder;
-        cropBuilder = nullptr;
-    }
+  if (cropBuilder) {
+    delete cropBuilder;
+    cropBuilder = nullptr;
+  }
 
-    cropBuilder = new CropBuilder(p);
+  cropBuilder = new CropBuilder(p);
 }
 
 /**
@@ -54,24 +54,24 @@ void Director::setBuilder(CropBuilder *p) {
  *
  */
 Plant *Director::construct(string filename) {
-    cropBuilder->reset();
-    parse(filename);
+  cropBuilder->reset();
+  parse(filename);
 
-    map<string, vector<PlantInfo>>::iterator it = plants.begin();
-    bool crop = true;
-    while (it != plants.end()) {
-        cropBuilder->addCrop((*it).first);  //
+  map<string, vector<PlantInfo>>::iterator it = plants.begin();
+  bool crop = true;
+  while (it != plants.end()) {
+    cropBuilder->addCrop((*it).first);  //
 
-        vector<PlantInfo>::iterator p_it = (*it).second.begin();
-        while (p_it != (*it).second.end()) {
-            cropBuilder->addPlant(*p_it);
-            ++p_it;
-        }
-
-        ++it;
+    vector<PlantInfo>::iterator p_it = (*it).second.begin();
+    while (p_it != (*it).second.end()) {
+      cropBuilder->addPlant(*p_it);
+      ++p_it;
     }
 
-    return cropBuilder->getCrop();
+    ++it;
+  }
+
+  return cropBuilder->getCrop();
 }
 
 /**
@@ -80,44 +80,44 @@ Plant *Director::construct(string filename) {
  */
 
 void Director::parse(string filename) {
-    fstream infos(filename);
-    if (infos.is_open()) {
-        string line;
-        while (getline(infos, line)) {
-            stringstream ss(line);
-            string token;
-            int i = 0;
+  fstream infos(filename);
+  if (infos.is_open()) {
+    string line;
+    while (getline(infos, line)) {
+      stringstream ss(line);
+      string token;
+      int i = 0;
 
-            PlantInfo p = PlantInfo();
+      PlantInfo p = PlantInfo();
 
-            while (getline(ss, token, '#')) {
-                switch (i) {
-                    case 0:  // type
-                        p.setType(token);
-                        break;
-                    case 1:  // name
-                        p.setName(token);
-                        break;
-                    case 2:  // amount
-                        p.setAmount(stoi(token));
-                        break;
-                    case 3:  // water
-                        p.setWater(stoi(token), 1);
-                        break;
-                    case 4:  // sun
-                        p.setSun(stoi(token), 1);
-                        break;
-                    case 5:  // fertiliser
-                        p.setFertiliser(stoi(token), 1);
-                        break;
-                        // case 6: //days
-                        // break;
-                }
-
-                i++;
-            }
-            plants[p.getType()].push_back(p);
+      while (getline(ss, token, '#')) {
+        switch (i) {
+          case 0:  // type
+            p.setType(token);
+            break;
+          case 1:  // name
+            p.setName(token);
+            break;
+          case 2:  // amount
+            p.setAmount(stoi(token));
+            break;
+          case 3:  // water
+            p.setWater(stoi(token), 1);
+            break;
+          case 4:  // sun
+            p.setSun(stoi(token), 1);
+            break;
+          case 5:  // fertiliser
+            p.setFertiliser(stoi(token), 1);
+            break;
+            // case 6: //days
+            // break;
         }
-        infos.close();
+
+        i++;
+      }
+      plants[p.getType()].push_back(p);
     }
+    infos.close();
+  }
 }

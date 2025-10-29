@@ -7,8 +7,8 @@
 #define SURFACEWATERING_H_
 
 class SurfaceWatering : WaterStrategy {
-   public:
-    int waterAlgorithm();
+ public:
+  int waterAlgorithm();
 };
 
 #endif  // SURFACEWATERING_H_

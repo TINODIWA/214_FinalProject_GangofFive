@@ -12,21 +12,21 @@
 #include "BaseStaff.h"
 
 BaseStaff::BaseStaff() {
-    // TODO(dom) - implement BaseStaff::BaseStaff
-    throw "Not yet implemented";
+  // TODO(dom) - implement BaseStaff::BaseStaff
+  throw "Not yet implemented";
 }
 
 string BaseStaff::jobDesc() {
-    // TODO(dom) - implement BaseStaff::jobDesc
-    throw "Not yet implemented";
+  // TODO(dom) - implement BaseStaff::jobDesc
+  throw "Not yet implemented";
 }
 
 void BaseStaff::handleCustomer(Request* req, Request* req) {
-    // TODO(dom) - implement BaseStaff::handleCustomer
-    throw "Not yet implemented";
+  // TODO(dom) - implement BaseStaff::handleCustomer
+  throw "Not yet implemented";
 }
 
 string BaseStaff::getType() {
-    // TODO(dom) - implement BaseStaff::getType
-    throw "Not yet implemented";
+  // TODO(dom) - implement BaseStaff::getType
+  throw "Not yet implemented";
 }

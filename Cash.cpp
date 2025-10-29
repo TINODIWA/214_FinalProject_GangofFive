@@ -28,7 +28,7 @@ Cash::~Cash() {}
  *
  */
 void Cash::prepare() {
-    cout << "Counting Cash\n";
+  cout << "Counting Cash\n";
 }
 
 /**
@@ -36,7 +36,7 @@ void Cash::prepare() {
  *
  */
 void Cash::payment() {
-    cout << "Confirming purchase\n";
+  cout << "Confirming purchase\n";
 }
 
 /**

@@ -7,12 +7,12 @@
 #define PLANTED_H_
 
 class Planted : PlantState {
-   public:
-    Planted();
+ public:
+  Planted();
 
-    Planted(const PlantState& other);
+  Planted(const PlantState& other);
 
-    void handleChange();
+  void handleChange();
 };
 
 #endif  // PLANTED_H_

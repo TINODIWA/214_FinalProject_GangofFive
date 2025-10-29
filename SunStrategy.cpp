@@ -12,6 +12,6 @@
 #include "SunStrategy.h"
 
 int SunStrategy::sunAlgorithm() {
-    // TODO(user) - implement SunStrategy::sunAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement SunStrategy::sunAlgorithm
+  throw "Not yet implemented";
 }

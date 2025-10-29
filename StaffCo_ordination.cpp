@@ -25,8 +25,8 @@ StaffCo_ordination::StaffCo_ordination() : Nursery() {}
  * @param type Type of command being sent
  */
 void StaffCo_ordination::sendMessage(string message, Staff* to, string type) {
-    if (to == NULL || (to->getType() != "Gardener" && to->getType() != "Sales" && to->getType() != "Admin")) return;
-    cout << "Manager is asking " << to->getType() << " to: " << message << endl;
+  if (to == NULL || (to->getType() != "Gardener" && to->getType() != "Sales" && to->getType() != "Admin")) return;
+  cout << "Manager is asking " << to->getType() << " to: " << message << endl;
 
-    to->receiveMessage(type);
+  to->receiveMessage(type);
 }

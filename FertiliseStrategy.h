@@ -7,8 +7,8 @@
 #define FERTILISESTRATEGY_H_
 
 class FertiliseStrategy {
-   public:
-    int fertiliseAlgorithm();
+ public:
+  int fertiliseAlgorithm();
 };
 
 #endif  // FERTILISESTRATEGY_H_

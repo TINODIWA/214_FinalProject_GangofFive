@@ -12,6 +12,6 @@
 #include "FullShade.h"
 
 int FullShade::sunAlgorithm() {
-    // TODO(user) - implement FullShade::sunAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement FullShade::sunAlgorithm
+  throw "Not yet implemented";
 }

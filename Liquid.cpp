@@ -12,6 +12,6 @@
 #include "Liquid.h"
 
 int Liquid::fertiliseAlgorithm() {
-    // TODO(user) - implement Liquid::fertiliseAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement Liquid::fertiliseAlgorithm
+  throw "Not yet implemented";
 }

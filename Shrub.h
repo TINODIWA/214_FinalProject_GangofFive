@@ -10,15 +10,15 @@
 #include "Plant.h"
 
 class Shrub : public Plant {
-   public:
-    Shrub();
-    Shrub(const PlantInfo &info);
-    Shrub(const Plant &other);
-    void addPlant(Plant *p);
-    virtual ~Shrub();
-    Plant *clone();
+ public:
+  Shrub();
+  Shrub(const PlantInfo &info);
+  Shrub(const Plant &other);
+  void addPlant(Plant *p);
+  virtual ~Shrub();
+  Plant *clone();
 
-    void print();
+  void print();
 };
 
 #endif  // SHRUB_H_

@@ -12,12 +12,12 @@
 using namespace std;
 
 class Cash : public Payment {
-   public:
-    Cash();
-    ~Cash();
-    void prepare();
-    void payment();
-    void package();
+ public:
+  Cash();
+  ~Cash();
+  void prepare();
+  void payment();
+  void package();
 };
 
 #endif  // CARD_H_

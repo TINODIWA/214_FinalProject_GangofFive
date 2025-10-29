@@ -12,6 +12,6 @@
 #include "FertiliseStrategy.h"
 
 int FertiliseStrategy::fertiliseAlgorithm() {
-    // TODO(user) - implement FertiliseStrategy::fertiliseAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement FertiliseStrategy::fertiliseAlgorithm
+  throw "Not yet implemented";
 }

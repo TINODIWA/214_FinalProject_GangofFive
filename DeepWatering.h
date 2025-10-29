@@ -7,8 +7,8 @@
 #define DEEPWATERING_H_
 
 class DeepWatering : WaterStrategy {
-   public:
-    int waterAlgorithm();
+ public:
+  int waterAlgorithm();
 };
 
 #endif  // DEEPWATERING_H_

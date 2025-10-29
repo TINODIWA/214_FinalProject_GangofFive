@@ -12,6 +12,6 @@
 #include "UVLight.h"
 
 int UVLight::sunAlgorithm() {
-    // TODO(user) - implement UVLight::sunAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement UVLight::sunAlgorithm
+  throw "Not yet implemented";
 }

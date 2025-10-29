@@ -12,6 +12,6 @@
 #include "SurfaceWatering.h"
 
 int SurfaceWatering::waterAlgorithm() {
-    // TODO(user) - implement SurfaceWatering::waterAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement SurfaceWatering::waterAlgorithm
+  throw "Not yet implemented";
 }

@@ -11,21 +11,21 @@
 #include "WaterStrategy.h"
 
 class PlantCare {
-   private:
-    WaterStrategy* water;
-    SunStrategy* sun;
-    FertiliseStrategy* fertilise;
+ private:
+  WaterStrategy* water;
+  SunStrategy* sun;
+  FertiliseStrategy* fertilise;
 
-   public:
-    PlantCare(const PlantCare& other);
+ public:
+  PlantCare(const PlantCare& other);
 
-    int waterAlgorithm();
+  int waterAlgorithm();
 
-    int sunAlgorithm();
+  int sunAlgorithm();
 
-    int fertiliseAlgorithm();
+  int fertiliseAlgorithm();
 
-    PlantCare();
+  PlantCare();
 };
 
 #endif  // PLANTCARE_H_

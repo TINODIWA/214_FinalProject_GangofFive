@@ -7,8 +7,8 @@
 #define DRIPWATERING_H_
 
 class DripWatering : WaterStrategy {
-   public:
-    int waterAlgorithm();
+ public:
+  int waterAlgorithm();
 };
 
 #endif  // DRIPWATERING_H_

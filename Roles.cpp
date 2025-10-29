@@ -12,16 +12,16 @@
 #include "Roles.h"
 
 Roles::Roles() {
-    // TODO(user) - implement Roles::Roles
-    throw "Not yet implemented";
+  // TODO(user) - implement Roles::Roles
+  throw "Not yet implemented";
 }
 
 string Roles::jobDesc() {
-    // TODO(user) - implement Roles::jobDesc
-    throw "Not yet implemented";
+  // TODO(user) - implement Roles::jobDesc
+  throw "Not yet implemented";
 }
 
 string Roles::getType() {
-    // TODO(user) - implement Roles::getType
-    throw "Not yet implemented";
+  // TODO(user) - implement Roles::getType
+  throw "Not yet implemented";
 }

@@ -7,8 +7,8 @@
 #define ORGANIC_H_
 
 class Organic : FertiliseStrategy {
-   public:
-    int fertiliseAlgorithm();
+ public:
+  int fertiliseAlgorithm();
 };
 
 #endif  // ORGANIC_H_

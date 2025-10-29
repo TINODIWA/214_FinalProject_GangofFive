@@ -9,14 +9,14 @@
 #include <string>
 
 class BaseStaff : Staff {
-   public:
-    BaseStaff();
+ public:
+  BaseStaff();
 
-    string jobDesc();
+  string jobDesc();
 
-    void handleCustomer(Request* req);
+  void handleCustomer(Request* req);
 
-    string getType();
+  string getType();
 };
 
 #endif  // BASESTAFF_H_

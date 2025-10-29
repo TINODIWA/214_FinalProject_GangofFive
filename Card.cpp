@@ -28,7 +28,7 @@ Card::~Card() {}
  *
  */
 void Card::prepare() {
-    cout << "Awaiting Authorisation\n";
+  cout << "Awaiting Authorisation\n";
 }
 
 /**
@@ -36,7 +36,7 @@ void Card::prepare() {
  *
  */
 void Card::payment() {
-    cout << "Processing Payment\n";
+  cout << "Processing Payment\n";
 }
 
 /**

@@ -7,12 +7,12 @@
 #define DYING_H_
 #include "PlantState.h"
 class Dying : PlantState {
-   public:
-    Dying();
+ public:
+  Dying();
 
-    Dying(const PlantState& other);
+  Dying(const PlantState& other);
 
-    void handleChange();
+  void handleChange();
 };
 
 #endif  // DYING_H_

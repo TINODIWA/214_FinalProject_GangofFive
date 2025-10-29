@@ -12,11 +12,11 @@
 using namespace std;
 
 class EFT : public Payment {
-   public:
-    EFT();
-    ~EFT();
-    void prepare();
-    void payment();
-    void package();
+ public:
+  EFT();
+  ~EFT();
+  void prepare();
+  void payment();
+  void package();
 };
 #endif  // EFT_H_

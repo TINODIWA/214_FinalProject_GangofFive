@@ -12,16 +12,16 @@
 #include "Dead.h"
 
 Dead::Dead() {
-    // TODO(unathi) - implement Dead::Dead
-    throw "Not yet implemented";
+  // TODO(unathi) - implement Dead::Dead
+  throw "Not yet implemented";
 }
 
 Dead::Dead(const PlantState& other) {
-    // TODO(unathi) - implement Dead::Dead
-    throw "Not yet implemented";
+  // TODO(unathi) - implement Dead::Dead
+  throw "Not yet implemented";
 }
 
 void Dead::handleChange() {
-    // TODO(unathi) - implement Dead::handleChange
-    throw "Not yet implemented";
+  // TODO(unathi) - implement Dead::handleChange
+  throw "Not yet implemented";
 }

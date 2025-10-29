@@ -8,9 +8,9 @@
 #include "Command.h"
 
 class CheckInventory : public Command {
-   public:
-    CheckInventory(Staff* s, StaffCo_ordination* m);
-    virtual void execute();
+ public:
+  CheckInventory(Staff* s, StaffCo_ordination* m);
+  virtual void execute();
 };
 
 #endif  // CHECKINVENTORY_H_

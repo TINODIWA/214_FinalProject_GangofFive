@@ -12,12 +12,12 @@
 class PlantInfo;
 
 class ShrubCreator : public PlantCreator {
-   public:
-    ShrubCreator();
-    ~ShrubCreator();
-    ShrubCreator(const PlantCreator *other);
-    Plant *produce(const PlantInfo &info);
-    PlantCreator *clone();
+ public:
+  ShrubCreator();
+  ~ShrubCreator();
+  ShrubCreator(const PlantCreator *other);
+  Plant *produce(const PlantInfo &info);
+  PlantCreator *clone();
 };
 
 #endif  // SHRUBCREATOR_H_

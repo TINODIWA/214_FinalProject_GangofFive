@@ -23,5 +23,5 @@ CheckPlant::CheckPlant(Staff *s, StaffCo_ordination *m) : Command(s, m) {}
  * @return void
  */
 void CheckPlant::execute() {
-    mediator->sendMessage("Checking plant status", appointed, "CheckPlant");
+  mediator->sendMessage("Checking plant status", appointed, "CheckPlant");
 }

@@ -49,7 +49,7 @@ void Tree::addPlant(Plant *p) {}
  * @return Pointer to a new Tree.
  */
 Plant *Tree::clone() {
-    return new Tree(*this);
+  return new Tree(*this);
 }
 
 /**
@@ -57,5 +57,5 @@ Plant *Tree::clone() {
  *
  */
 void Tree::print() {
-    cout << left << setw(10) << info.getName() << "|";
+  cout << left << setw(10) << info.getName() << "|";
 }

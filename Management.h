@@ -8,16 +8,16 @@
 #include <string>
 
 class Management : Roles {
-   public:
-    Command* cmd;
+ public:
+  Command* cmd;
 
-    string getType();
+  string getType();
 
-    Management();
+  Management();
 
-    void handleCustomer(Request* req);
+  void handleCustomer(Request* req);
 
-    void assignTasks();
+  void assignTasks();
 };
 
 #endif  // MANAGEMENT_H_

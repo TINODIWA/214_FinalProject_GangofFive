@@ -12,11 +12,11 @@
 #include "CustomerCare.h"
 
 void CustomerCare::notify() {
-    // TODO(unathi,nathan,ryan) - implement CustomerCare::notify
-    throw "Not yet implemented";
+  // TODO(unathi,nathan,ryan) - implement CustomerCare::notify
+  throw "Not yet implemented";
 }
 
 CustomerCare::CustomerCare() {
-    // TODO(unathi,nathan,ryan) - implement CustomerCare::CustomerCare
-    throw "Not yet implemented";
+  // TODO(unathi,nathan,ryan) - implement CustomerCare::CustomerCare
+  throw "Not yet implemented";
 }

@@ -7,8 +7,8 @@
 #define SUNSTRATEGY_H_
 
 class SunStrategy {
-   public:
-    int sunAlgorithm();
+ public:
+  int sunAlgorithm();
 };
 
 #endif  // SUNSTRATEGY_H_

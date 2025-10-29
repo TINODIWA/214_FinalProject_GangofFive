@@ -29,5 +29,5 @@ PlantCreator::~PlantCreator() {}
  * @param plantInfo Reference to PlantInfo for plant creation
  */
 Plant* PlantCreator::create(const PlantInfo& plantInfo) {
-    return produce(plantInfo);
+  return produce(plantInfo);
 }

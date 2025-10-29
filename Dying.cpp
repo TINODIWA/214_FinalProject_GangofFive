@@ -12,16 +12,16 @@
 #include "Dying.h"
 
 Dying::Dying() {
-    // TODO(user) - implement Dying::Dying
-    throw "Not yet implemented";
+  // TODO(user) - implement Dying::Dying
+  throw "Not yet implemented";
 }
 
 Dying::Dying(const PlantState& other) {
-    // TODO(user) - implement Dying::Dying
-    throw "Not yet implemented";
+  // TODO(user) - implement Dying::Dying
+  throw "Not yet implemented";
 }
 
 void Dying::handleChange() {
-    // TODO(user) - implement Dying::handleChange
-    throw "Not yet implemented";
+  // TODO(user) - implement Dying::handleChange
+  throw "Not yet implemented";
 }

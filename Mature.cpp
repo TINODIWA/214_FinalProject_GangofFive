@@ -11,16 +11,16 @@
 #include "Mature.h"
 
 Mature::Mature() {
-    // TODO(user) - implement Mature::Mature
-    throw "Not yet implemented";
+  // TODO(user) - implement Mature::Mature
+  throw "Not yet implemented";
 }
 
 Mature::Mature(const PlantState& other, const PlantState& other) {
-    // TODO(user) - implement Mature::Mature
-    throw "Not yet implemented";
+  // TODO(user) - implement Mature::Mature
+  throw "Not yet implemented";
 }
 
 void Mature::handleChange() {
-    // TODO(user) - implement Mature::handleChange
-    throw "Not yet implemented";
+  // TODO(user) - implement Mature::handleChange
+  throw "Not yet implemented";
 }

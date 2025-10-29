@@ -49,7 +49,7 @@ void Shrub::addPlant(Plant *p) {}
  * @return Pointer to a new Shrub.
  */
 Plant *Shrub::clone() {
-    return new Shrub(*this);
+  return new Shrub(*this);
 }
 
 /**
@@ -57,5 +57,5 @@ Plant *Shrub::clone() {
  *
  */
 void Shrub::print() {
-    cout << left << setw(10) << info.getName() << "|";
+  cout << left << setw(10) << info.getName() << "|";
 }

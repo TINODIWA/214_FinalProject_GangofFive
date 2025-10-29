@@ -12,6 +12,6 @@
 #include "Organic.h"
 
 int Organic::fertiliseAlgorithm() {
-    // TODO(user) - implement Organic::fertiliseAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement Organic::fertiliseAlgorithm
+  throw "Not yet implemented";
 }

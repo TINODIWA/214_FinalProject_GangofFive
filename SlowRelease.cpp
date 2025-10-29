@@ -11,6 +11,6 @@
 #include "SlowRelease.h"
 
 int SlowRelease::fertiliseAlgorithm() {
-    // TODO(user) - implement SlowRelease::fertiliseAlgorithm
-    throw "Not yet implemented";
+  // TODO(user) - implement SlowRelease::fertiliseAlgorithm
+  throw "Not yet implemented";
 }

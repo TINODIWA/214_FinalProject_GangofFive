@@ -33,7 +33,7 @@ TreeCreator::TreeCreator(const PlantCreator *other) : PlantCreator(other) {}
  * @return instance of Tree
  */
 Plant *TreeCreator::produce(const PlantInfo &info) {
-    return new Tree(info);
+  return new Tree(info);
 }
 
 /**
@@ -42,5 +42,5 @@ Plant *TreeCreator::produce(const PlantInfo &info) {
  * @return PlantCreator*
  */
 PlantCreator *TreeCreator::clone() {
-    return new TreeCreator(this);
+  return new TreeCreator(this);
 }

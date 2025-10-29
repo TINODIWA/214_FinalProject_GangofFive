@@ -12,11 +12,11 @@
 #include "Request.h"
 
 string Request::getRequest() {
-    // TODO(user) - implement Request::getRequest
-    throw "Not yet implemented";
+  // TODO(user) - implement Request::getRequest
+  throw "Not yet implemented";
 }
 
 Request::Request() {
-    // TODO(user) - implement Request::Request
-    throw "Not yet implemented";
+  // TODO(user) - implement Request::Request
+  throw "Not yet implemented";
 }

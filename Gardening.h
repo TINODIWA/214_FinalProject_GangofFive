@@ -9,20 +9,20 @@
 #include <string>
 
 class Gardening : Roles {
-   public:
-    vector<Plant*> plants;
+ public:
+  vector<Plant*> plants;
 
-    Gardening();
+  Gardening();
 
-    void update();
+  void update();
 
-    string handleCustomer(Request* req);
+  string handleCustomer(Request* req);
 
-    void handlePlant(Plant* p);
+  void handlePlant(Plant* p);
 
-    string getType();
+  string getType();
 
-    void checkPlants();
+  void checkPlants();
 };
 
 #endif  // GARDENING_H_

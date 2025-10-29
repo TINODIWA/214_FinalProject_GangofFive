@@ -7,10 +7,10 @@
 #define CUSTOMERCARE_H_
 
 class CustomerCare : Nursery {
-   public:
-    void notify();
+ public:
+  void notify();
 
-    CustomerCare();
+  CustomerCare();
 };
 
 #endif  // CUSTOMERCARE_H_

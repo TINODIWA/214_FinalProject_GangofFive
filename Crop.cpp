@@ -24,10 +24,10 @@ Crop::Crop() : Plant() {}
  * to prevent memory leaks
  */
 Crop::~Crop() {
-    for (Plant *p : plants) {
-        delete p;
-    }
-    plants.clear();
+  for (Plant *p : plants) {
+    delete p;
+  }
+  plants.clear();
 }
 
 /**
@@ -39,22 +39,22 @@ Crop::~Crop() {
  * Each Plant is cloned to create a completely independent copy.
  */
 Crop::Crop(const Crop &other) : Plant(other) {
-    for (Plant *p : other.plants) {
-        if (p != NULL) {
-            plants.push_back(p->clone());
-        }
+  for (Plant *p : other.plants) {
+    if (p != NULL) {
+      plants.push_back(p->clone());
     }
+  }
 }
 
 /**
  * @brief Construct a new Crop:: Crop object with a name
  */
 Crop::Crop(std::string name) {
-    setName(name);
+  setName(name);
 }
 
 void Crop::addPlant(Plant *p) {
-    plants.push_back(p);
+  plants.push_back(p);
 }
 
 /**
@@ -62,31 +62,31 @@ void Crop::addPlant(Plant *p) {
  * @return Pointer to a new Crop.
  */
 Plant *Crop::clone() {
-    return new Crop(*this);
+  return new Crop(*this);
 }
 
 void Crop::print() {
-    cout << this->getName() << ":\n";
+  cout << this->getName() << ":\n";
 
-    vector<Plant *>::iterator it = plants.begin();
+  vector<Plant *>::iterator it = plants.begin();
 
-    int width = 66;
-    for (int i = 0; i < width; i++) cout << "-";
+  int width = 66;
+  for (int i = 0; i < width; i++) cout << "-";
 
-    cout << endl;
-    int i = 1;
-    while (it != plants.end()) {
-        (*it)->print();
-        ++it;
+  cout << endl;
+  int i = 1;
+  while (it != plants.end()) {
+    (*it)->print();
+    ++it;
 
-        if (i % 6 == 0) {
-            cout << endl;
-            for (int i = 0; i < width; i++) cout << "-";
-            cout << endl << "|";
-        }
-
-        ++i;
+    if (i % 6 == 0) {
+      cout << endl;
+      for (int i = 0; i < width; i++) cout << "-";
+      cout << endl << "|";
     }
 
-    cout << "\n===================================\n";
+    ++i;
+  }
+
+  cout << "\n===================================\n";
 }
