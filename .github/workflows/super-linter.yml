@@ -11,6 +11,10 @@ on:
     branches: [ "Development" ]
   pull_request:
     branches: [ "Development" ]
+
+permissions:
+  contents: read
+  statuses: write
 jobs:
   run-lint:
     runs-on: ubuntu-latest
