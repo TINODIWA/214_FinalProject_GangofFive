@@ -1,3 +1,14 @@
+/**
+ * @file Flower.cpp
+ * @author Nathan Chisadza
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Flower.h"
 
 /**
@@ -11,14 +22,14 @@ Flower::Flower() : Plant() {}
  *
  * @param info
  */
-Flower::Flower(const PlantInfo &info) : Plant(info) {}
+Flower::Flower(const PlantInfo& info) : Plant(info) {}
 
 /**
  * @brief Construct a new Flower:: Flower object
  *
  * @param other
  */
-Flower::Flower(const Plant &other) : Plant(other) {}
+Flower::Flower(const Plant& other) : Plant(other) {}
 
 /**
  * @brief Destroy the Flower:: Flower object
@@ -31,18 +42,16 @@ Flower::~Flower() {}
  *
  * @param p
  */
-void Flower::addPlant(Plant *p) {}
+void Flower::addPlant(Plant* p) {}
 
-Plant *Flower::clone()
-{
-	return new Flower(*this);
+Plant* Flower::clone() {
+  return new Flower(*this);
 }
 
 /**
  * @brief prints the plant
  *
  */
-void Flower::print()
-{
-	cout <<left << setw(10) << info.getName() << "|";
+void Flower::print() {
+  cout << left << setw(10) << info.getName() << "|";
 }
