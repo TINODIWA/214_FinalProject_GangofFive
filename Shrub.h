@@ -6,17 +6,17 @@
 #ifndef SHRUB_H_
 #define SHRUB_H_
 
-#include <iomanip>
 #include "Plant.h"
+#include <iomanip>
 
 class Shrub : public Plant {
  public:
   Shrub();
-  Shrub(const PlantInfo &info);
-  Shrub(const Plant &other);
-  void addPlant(Plant *p);
+  Shrub(const PlantInfo& info);
+  Shrub(const Plant& other);
+  void addPlant(Plant* p);
   virtual ~Shrub();
-  Plant *clone();
+  Plant* clone();
 
   void print();
 };

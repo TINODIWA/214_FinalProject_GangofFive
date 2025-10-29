@@ -15,7 +15,7 @@
  * @param s Staff being appointed to fulfill the command
  * @param m Staff coordination pointer for the command to go to correct ConcreteMediator
  */
-ManageSales::ManageSales(Staff *s, StaffCo_ordination *m) : Command(s, m) {}
+ManageSales::ManageSales(Staff* s, StaffCo_ordination* m) : Command(s, m) {}
 
 /**
  * @brief Execute the Manage Sales command

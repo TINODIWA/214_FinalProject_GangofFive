@@ -31,7 +31,7 @@ Plant::~Plant() {}
  * @param other
  */
 
-Plant::Plant(const Plant &other) {
+Plant::Plant(const Plant& other) {
   this->info = PlantInfo(other.info);
 }
 
@@ -58,7 +58,7 @@ void Plant::setType(string type) {
  *
  * @param info
  */
-Plant::Plant(const PlantInfo &info) {
+Plant::Plant(const PlantInfo& info) {
   this->info = PlantInfo(info);
 }
 
@@ -153,12 +153,12 @@ int Plant::getAttention() const {
   return info.getAttention();
 }
 
-void Plant::attach(Staff *s) {
+void Plant::attach(Staff* s) {
   // TODO(user) - implement Plant::attach
   // throw "Not yet implemented";
 }
 
-void Plant::detach(Staff *s) {
+void Plant::detach(Staff* s) {
   // TODO(user) - implement Plant::detach
   // throw "Not yet implemented";
 }
@@ -173,11 +173,11 @@ void Plant::notify() {
  *
  * @param p
  */
-void Plant::addPlant(Plant *p) {}
+void Plant::addPlant(Plant* p) {}
 
-void Plant::setPlantCare(PlantCare *strategy) {
+void Plant::setPlantCare(PlantCare* strategy) {
   info.setPlantCare(strategy);
 }
-void Plant::setStaff(Staff *staff) {
+void Plant::setStaff(Staff* staff) {
   info.setStaff(staff);
 }

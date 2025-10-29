@@ -22,14 +22,14 @@ Tree::Tree() : Plant() {}
  *
  * @param other
  */
-Tree::Tree(const Plant &other) : Plant(other) {}
+Tree::Tree(const Plant& other) : Plant(other) {}
 
 /**
  * @brief Construct a new Tree:: Tree object
  *
  * @param info
  */
-Tree::Tree(const PlantInfo &info) : Plant(info) {}
+Tree::Tree(const PlantInfo& info) : Plant(info) {}
 
 /**
  * @brief Destroy the Tree:: Tree object
@@ -42,13 +42,13 @@ Tree::~Tree() {}
  *
  * @param p
  */
-void Tree::addPlant(Plant *p) {}
+void Tree::addPlant(Plant* p) {}
 
 /**
  * @brief Create a copy of this Tree.
  * @return Pointer to a new Tree.
  */
-Plant *Tree::clone() {
+Plant* Tree::clone() {
   return new Tree(*this);
 }
 

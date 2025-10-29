@@ -28,12 +28,12 @@ Customer::Customer() {
 
 Customer::~Customer() {}
 
-Customer::Customer(const Customer *other) {
+Customer::Customer(const Customer* other) {
   // if (other)
   // this->order = new Order(*other->order);
 }
 
-void Customer::makeReq(Request *req) {
+void Customer::makeReq(Request* req) {
   // TODO(unathi,nathan,ryan) - implement Customer::makeReq
   throw "Not yet implemented";
 }

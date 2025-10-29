@@ -5,8 +5,8 @@
 #ifndef FLOWER_H_
 #define FLOWER_H_
 
-#include <iomanip>
 #include "Plant.h"
+#include <iomanip>
 
 class Flower : public Plant {
  public:

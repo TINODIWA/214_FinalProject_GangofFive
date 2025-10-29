@@ -6,8 +6,8 @@
 #ifndef CARD_H_
 #define CARD_H_
 
-#include <iostream>
 #include "Payment.h"
+#include <iostream>
 
 using namespace std;
 

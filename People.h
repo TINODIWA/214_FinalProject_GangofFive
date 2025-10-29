@@ -5,8 +5,8 @@
 
 #ifndef PEOPLE_H_
 #define PEOPLE_H_
-#include <string>
 #include "Nursery.h"
+#include <string>
 
 using namespace std;
 class People {

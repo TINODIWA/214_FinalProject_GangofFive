@@ -22,14 +22,14 @@ Flower::Flower() : Plant() {}
  *
  * @param info
  */
-Flower::Flower(const PlantInfo &info) : Plant(info) {}
+Flower::Flower(const PlantInfo& info) : Plant(info) {}
 
 /**
  * @brief Construct a new Flower:: Flower object
  *
  * @param other
  */
-Flower::Flower(const Plant &other) : Plant(other) {}
+Flower::Flower(const Plant& other) : Plant(other) {}
 
 /**
  * @brief Destroy the Flower:: Flower object
@@ -42,9 +42,9 @@ Flower::~Flower() {}
  *
  * @param p
  */
-void Flower::addPlant(Plant *p) {}
+void Flower::addPlant(Plant* p) {}
 
-Plant *Flower::clone() {
+Plant* Flower::clone() {
   return new Flower(*this);
 }
 

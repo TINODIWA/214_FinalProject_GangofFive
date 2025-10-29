@@ -46,7 +46,7 @@ PlantInfo::~PlantInfo() {
  * @brief Copy Constructor for PlantInfo
  * @param plantInfo  Constant reference to object being copied
  */
-PlantInfo::PlantInfo(const PlantInfo &plantInfo) {
+PlantInfo::PlantInfo(const PlantInfo& plantInfo) {
   this->name = plantInfo.name;
   this->type = plantInfo.type;
   this->water = plantInfo.water;
@@ -124,7 +124,7 @@ void PlantInfo::setAmount(int amount) {
  * @brief Sets the strategy attribute
  * @param strategy Reference to strategy to set
  */
-void PlantInfo::setPlantCare(PlantCare *strategy) {
+void PlantInfo::setPlantCare(PlantCare* strategy) {
   this->strategy = strategy;  // deep copy?
 }
 
@@ -132,7 +132,7 @@ void PlantInfo::setPlantCare(PlantCare *strategy) {
  * @brief Sets the staff attribute
  * @param strategy Reference to staff to appoint
  */
-void PlantInfo::setStaff(Staff *staff) {
+void PlantInfo::setStaff(Staff* staff) {
   this->staff = staff;  // deep copy?
 }
 

@@ -25,13 +25,13 @@ ShrubCreator::~ShrubCreator() {}
  *
  * @param other
  */
-ShrubCreator::ShrubCreator(const PlantCreator *other) : PlantCreator(other) {}
+ShrubCreator::ShrubCreator(const PlantCreator* other) : PlantCreator(other) {}
 /**
  * @brief Crates and returns an instance of Shrub object
  * @param plantInfo Reference to PlantInfo for plant creation
  * @return instance of Shrub
  */
-Plant *ShrubCreator::produce(const PlantInfo &info) {
+Plant* ShrubCreator::produce(const PlantInfo& info) {
   return new Shrub(info);
 }
 
@@ -40,6 +40,6 @@ Plant *ShrubCreator::produce(const PlantInfo &info) {
  *
  * @return PlantCreator*
  */
-PlantCreator *ShrubCreator::clone() {
+PlantCreator* ShrubCreator::clone() {
   return new ShrubCreator(this);
 }

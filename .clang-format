@@ -1,13 +1,17 @@
 BasedOnStyle: Google
 IndentWidth: 2
+TabWidth: 2
 UseTab: Never
 AccessModifierOffset: -1
-TabWidth: 2
-ColumnLimit: 120
-AlwaysBreakAfterReturnType: None
-AllowShortFunctionsOnASingleLine: Inline
+ContinuationIndentWidth: 4
+DerivePointerAlignment: false
+PointerAlignment: Left
+AlignAfterOpenBracket: Align
+AlignOperands: true
 BreakBeforeBraces: Attach
-AlignTrailingComments: true
+AllowShortFunctionsOnASingleLine: Inline
+ColumnLimit: 120
 ReflowComments: true
+SortIncludes: false
 IncludeBlocks: Preserve
 

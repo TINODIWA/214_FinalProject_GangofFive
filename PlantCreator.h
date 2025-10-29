@@ -6,8 +6,8 @@
 #ifndef PLANTCREATOR_H_
 #define PLANTCREATOR_H_
 
-#include <iostream>
 #include "Plant.h"
+#include <iostream>
 
 class PlantCreator {
  protected:

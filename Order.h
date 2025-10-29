@@ -6,9 +6,9 @@
 #ifndef ORDER_H_
 #define ORDER_H_
 
-#include <vector>
 #include "Customer.h"
 #include "Plant.h"
+#include <vector>
 
 using namespace std;
 

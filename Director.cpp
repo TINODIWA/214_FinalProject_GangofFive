@@ -33,14 +33,14 @@ Director::~Director() {
  *
  * @param p plant builder
  */
-Director::Director(CropBuilder *p) : cropBuilder(p) {}
+Director::Director(CropBuilder* p) : cropBuilder(p) {}
 
 /**
  * @brief sets the plant builder to a new one
  *
  * @param p
  */
-void Director::setBuilder(CropBuilder *p) {
+void Director::setBuilder(CropBuilder* p) {
   if (cropBuilder) {
     delete cropBuilder;
     cropBuilder = nullptr;
@@ -53,7 +53,7 @@ void Director::setBuilder(CropBuilder *p) {
  * @brief build the garden of crops
  *
  */
-Plant *Director::construct(string filename) {
+Plant* Director::construct(string filename) {
   cropBuilder->reset();
   parse(filename);
 

@@ -11,12 +11,12 @@
 
 #include "Staff.h"
 
-void Staff::handlePlant(Plant *p) {
+void Staff::handlePlant(Plant* p) {
   // TODO(user) - implement Staff::handlePlant
   // throw "Not yet implemented";
 }
 
-void Staff::handleCustomer(Request *req) {
+void Staff::handleCustomer(Request* req) {
   // TODO(user) - implement Staff::handleCustomer
   // throw "Not yet implemented";
 }
@@ -26,7 +26,7 @@ Staff::Staff() : People() {
   // throw "Not yet implemented";
 }
 
-Staff::Staff(const Staff *other) : People(*other) {
+Staff::Staff(const Staff* other) : People(*other) {
   if (other) {
     this->name = other->name;
     this->level = other->level;

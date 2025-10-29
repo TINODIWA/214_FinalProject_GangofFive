@@ -22,14 +22,14 @@ Shrub::Shrub() : Plant() {}
  *
  * @param info
  */
-Shrub::Shrub(const PlantInfo &info) : Plant(info) {}
+Shrub::Shrub(const PlantInfo& info) : Plant(info) {}
 
 /**
  * @brief Construct a new Shrub:: Shrub object
  *
  * @param other
  */
-Shrub::Shrub(const Plant &other) : Plant(other) {}
+Shrub::Shrub(const Plant& other) : Plant(other) {}
 
 /**
  * @brief Destroy the Shrub:: Shrub object
@@ -42,13 +42,13 @@ Shrub::~Shrub() {}
  *
  * @param p
  */
-void Shrub::addPlant(Plant *p) {}
+void Shrub::addPlant(Plant* p) {}
 
 /**
  * @brief Create a copy of this Shrub.
  * @return Pointer to a new Shrub.
  */
-Plant *Shrub::clone() {
+Plant* Shrub::clone() {
   return new Shrub(*this);
 }
 

@@ -6,17 +6,17 @@
 #ifndef TREE_H_
 #define TREE_H_
 
-#include <iomanip>
 #include "Plant.h"
+#include <iomanip>
 
 class Tree : public Plant {
  public:
-  Tree(const PlantInfo &info);
+  Tree(const PlantInfo& info);
   Tree();
-  Tree(const Plant &other);
-  void addPlant(Plant *p);
+  Tree(const Plant& other);
+  void addPlant(Plant* p);
   virtual ~Tree();
-  Plant *clone();
+  Plant* clone();
   void print();
 };
 

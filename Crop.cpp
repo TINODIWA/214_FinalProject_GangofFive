@@ -24,7 +24,7 @@ Crop::Crop() : Plant() {}
  * to prevent memory leaks
  */
 Crop::~Crop() {
-  for (Plant *p : plants) {
+  for (Plant* p : plants) {
     delete p;
   }
   plants.clear();
@@ -38,8 +38,8 @@ Crop::~Crop() {
  * Creates a new Crop with its own copy of each Plant in the vector.
  * Each Plant is cloned to create a completely independent copy.
  */
-Crop::Crop(const Crop &other) : Plant(other) {
-  for (Plant *p : other.plants) {
+Crop::Crop(const Crop& other) : Plant(other) {
+  for (Plant* p : other.plants) {
     if (p != NULL) {
       plants.push_back(p->clone());
     }
@@ -53,7 +53,7 @@ Crop::Crop(std::string name) {
   setName(name);
 }
 
-void Crop::addPlant(Plant *p) {
+void Crop::addPlant(Plant* p) {
   plants.push_back(p);
 }
 
@@ -61,14 +61,14 @@ void Crop::addPlant(Plant *p) {
  * @brief Create a copy of this Crop.
  * @return Pointer to a new Crop.
  */
-Plant *Crop::clone() {
+Plant* Crop::clone() {
   return new Crop(*this);
 }
 
 void Crop::print() {
   cout << this->getName() << ":\n";
 
-  vector<Plant *>::iterator it = plants.begin();
+  vector<Plant*>::iterator it = plants.begin();
 
   int width = 66;
   for (int i = 0; i < width; i++) cout << "-";

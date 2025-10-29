@@ -15,9 +15,9 @@ class ShrubCreator : public PlantCreator {
  public:
   ShrubCreator();
   ~ShrubCreator();
-  ShrubCreator(const PlantCreator *other);
-  Plant *produce(const PlantInfo &info);
-  PlantCreator *clone();
+  ShrubCreator(const PlantCreator* other);
+  Plant* produce(const PlantInfo& info);
+  PlantCreator* clone();
 };
 
 #endif  // SHRUBCREATOR_H_

@@ -22,16 +22,16 @@ using namespace std;
 
 class Director {
  private:
-  CropBuilder *cropBuilder;
+  CropBuilder* cropBuilder;
   map<string, vector<PlantInfo>> plants;
   vector<string> plantTypes;
 
  public:
   Director();
   ~Director();
-  Director(CropBuilder *p);
-  void setBuilder(CropBuilder *p);
-  Plant *construct(string filename);
+  Director(CropBuilder* p);
+  void setBuilder(CropBuilder* p);
+  Plant* construct(string filename);
   void parse(string filename);
 };
 

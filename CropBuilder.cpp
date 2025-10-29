@@ -32,7 +32,7 @@ CropBuilder::~CropBuilder() {
     currCrop = nullptr;
   }
 
-  map<string, PlantCreator *>::iterator it = factories.begin();
+  map<string, PlantCreator*>::iterator it = factories.begin();
 
   while (it != factories.end()) {
     if ((*it).second != nullptr) {
@@ -48,7 +48,7 @@ CropBuilder::~CropBuilder() {
  *
  * @param other
  */
-CropBuilder::CropBuilder(const CropBuilder *other) {
+CropBuilder::CropBuilder(const CropBuilder* other) {
   if (!other) {
     this->root = nullptr;
     return;
@@ -57,7 +57,7 @@ CropBuilder::CropBuilder(const CropBuilder *other) {
   this->root = other->root ? other->root->clone() : nullptr;
   this->currCrop = this->root;
 
-  map<string, PlantCreator *>::const_iterator it = other->factories.begin();
+  map<string, PlantCreator*>::const_iterator it = other->factories.begin();
 
   while (it != other->factories.end()) {
     factories[(*it).first] = (*it).second->clone();
@@ -70,7 +70,7 @@ CropBuilder::CropBuilder(const CropBuilder *other) {
  * @param name
  */
 void CropBuilder::addCrop(string name) {
-  Crop *crop = new Crop(name);
+  Crop* crop = new Crop(name);
   root->addPlant(crop);
   currCrop = crop;
 }
@@ -80,9 +80,9 @@ void CropBuilder::addCrop(string name) {
  *
  * @param p
  */
-void CropBuilder::addPlant(const PlantInfo &p) {
+void CropBuilder::addPlant(const PlantInfo& p) {
   try {
-    Plant *plant = factories.at(p.getType())->create(p);
+    Plant* plant = factories.at(p.getType())->create(p);
 
     for (int i = 0; i < p.getAmount() - 1; i++) {
       currCrop->addPlant(plant->clone());
@@ -99,7 +99,7 @@ void CropBuilder::addPlant(const PlantInfo &p) {
  *
  * @param factories
  */
-void CropBuilder::setFactories(map<string, PlantCreator *> factories) {
+void CropBuilder::setFactories(map<string, PlantCreator*> factories) {
   for (auto f : this->factories) {
     factories[f.first] = f.second;
   }
@@ -111,7 +111,7 @@ void CropBuilder::setFactories(map<string, PlantCreator *> factories) {
  * @param type
  * @param factory
  */
-void CropBuilder::addFactory(std::string type, PlantCreator *factory) {
+void CropBuilder::addFactory(std::string type, PlantCreator* factory) {
   if (factory) factories[type] = factory;
 }
 
@@ -129,6 +129,6 @@ void CropBuilder::reset() {
  *
  * @return Plant*
  */
-Plant *CropBuilder::getCrop() {
+Plant* CropBuilder::getCrop() {
   return this->root;
 }

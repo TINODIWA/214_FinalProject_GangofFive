@@ -6,8 +6,8 @@
 #ifndef CASH_H_
 #define CASH_H_
 
-#include <iostream>
 #include "Payment.h"
+#include <iostream>
 
 using namespace std;
 

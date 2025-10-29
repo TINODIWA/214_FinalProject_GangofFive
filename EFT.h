@@ -6,8 +6,8 @@
 #ifndef EFT_H_
 #define EFT_H_
 
-#include <iostream>
 #include "Payment.h"
+#include <iostream>
 
 using namespace std;
 
