@@ -1,11 +1,14 @@
-#ifndef SLOWRELEASE_H
-#define SLOWRELEASE_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef SLOWRELEASE_H_
+#define SLOWRELEASE_H_
 
 class SlowRelease : FertiliseStrategy {
-
-
-public:
-	int fertiliseAlgorithm();
+ public:
+  int fertiliseAlgorithm();
 };
 
-#endif
+#endif  // SLOWRELEASE_H_

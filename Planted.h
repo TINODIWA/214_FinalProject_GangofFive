@@ -1,15 +1,18 @@
-#ifndef PLANTED_H
-#define PLANTED_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef PLANTED_H_
+#define PLANTED_H_
 
 class Planted : PlantState {
+ public:
+  Planted();
 
+  Planted(const PlantState& other);
 
-public:
-	Planted();
-
-	Planted(const PlantState& other);
-
-	void handleChange();
+  void handleChange();
 };
 
-#endif
+#endif  // PLANTED_H_

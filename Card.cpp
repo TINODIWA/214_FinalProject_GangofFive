@@ -1,3 +1,14 @@
+/**
+ * @file Card.cpp
+ * @author Swelihle Makhathini
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Card.h"
 
 /**
@@ -16,22 +27,20 @@ Card::~Card() {}
  * @brief preparing a Card order
  *
  */
-void Card::prepare()
-{
-    cout << "Awaiting Authorisation\n";
+void Card::prepare() {
+  cout << "Awaiting Authorisation\n";
 }
 
 /**
  * @brief processing a Card payment
  *
  */
-void Card::payment()
-{
-    cout << "Processing Payment\n";
+void Card::payment() {
+  cout << "Processing Payment\n";
 }
 
 /**
- * @brief returns the type of payment
+ * @brief return payment type
  * 
  * @return string 
  */

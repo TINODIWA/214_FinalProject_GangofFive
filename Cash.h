@@ -1,31 +1,23 @@
 /**
- * @file Cash.h
- * @author Swelihle Makhathini
- * @brief 
- * @version 0.1
- * @date 2025-10-26
- * 
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
-#ifndef CASH_H
-#define CASH_H
+#ifndef CASH_H_
+#define CASH_H_
 
-#include <iostream>
 #include "Payment.h"
+#include <iostream>
 
 using namespace std;
 
-class Cash : public Payment
-{
-public:
-    Cash();
-    ~Cash();
-    void prepare();
-    void payment();
-    string getType();
-
+class Cash : public Payment {
+ public:
+  Cash();
+  ~Cash();
+  void prepare();
+  void payment();
+  void package();
 };
 
-#endif
+#endif  // CASH_H_

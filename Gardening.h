@@ -1,22 +1,29 @@
-#ifndef GARDENING_H
-#define GARDENING_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-class Gardening : Roles {
+#ifndef GARDENING_H_
+#define GARDENING_H_
 
-public:
-	vector<Plant*> plants;
+#include <vector>
+#include <string>
 
-	Gardening();
+class Gardening : public Roles {
+ public:
+  vector<Plant*> plants;
 
-	void update();
+  Gardening();
 
-	string handleCustomer(Request* req);
+  void update();
 
-	void handlePlant(Plant* p);
+  string handleCustomer(Request* req);
 
-	string getType();
+  void handlePlant(Plant* p);
 
-	void checkPlants();
+  string getType();
+
+  void checkPlants();
 };
 
-#endif
+#endif  // GARDENING_H_

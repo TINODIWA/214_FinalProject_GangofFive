@@ -1,20 +1,26 @@
-#ifndef REQUEST_H
-#define REQUEST_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef REQUEST_H_
+#define REQUEST_H_
+
+#include <string>
 
 #include <iostream>
 
 using namespace std;
 
 class Request {
+ private:
+  int id;
+  string description;
 
-private:
-	int id;
-	string description;
+ public:
+  Request();
 
-public:
-	Request();
-
-	string getRequest();
+  string getRequest();
 };
 
-#endif
+#endif  // REQUEST_H_

@@ -1,11 +1,14 @@
-#ifndef DRIPWATERING_H
-#define DRIPWATERING_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef DRIPWATERING_H_
+#define DRIPWATERING_H_
 
 class DripWatering : WaterStrategy {
-
-
-public:
-	int waterAlgorithm();
+ public:
+  int waterAlgorithm();
 };
 
-#endif
+#endif  // DRIPWATERING_H_

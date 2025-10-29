@@ -1,11 +1,14 @@
-#ifndef DEEPWATERING_H
-#define DEEPWATERING_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef DEEPWATERING_H_
+#define DEEPWATERING_H_
 
 class DeepWatering : WaterStrategy {
-
-
-public:
-	int waterAlgorithm();
+ public:
+  int waterAlgorithm();
 };
 
-#endif
+#endif  // DEEPWATERING_H_

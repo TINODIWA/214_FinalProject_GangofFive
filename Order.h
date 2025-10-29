@@ -1,5 +1,10 @@
-#ifndef ORDER_H
-#define ORDER_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef ORDER_H_
+#define ORDER_H_
 
 #include <map>
 #include "Plant.h"
@@ -41,4 +46,4 @@ private:
 
 };
 
-#endif
+#endif  // ORDER_H_

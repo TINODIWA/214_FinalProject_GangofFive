@@ -1,21 +1,15 @@
 /**
- * @file Payment.h
- * @author Swelihle Makhathini
- * @brief
- * @version 0.1
- * @date 2025-10-26
- *
  * @copyright Copyright (c) 2025
  *
  */
 
-#ifndef PAYMENT_H
-#define PAYMENT_H
+#ifndef PAYMENT_H_
+#define PAYMENT_H_
 
 #include <iostream>
 #include <sstream>
 #include <iomanip>
-#include <vector>
+#include <map>
 using namespace std;
 
 #include "Customer.h"
