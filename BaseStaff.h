@@ -1,11 +1,16 @@
 #ifndef BASESTAFF_H
 #define BASESTAFF_H
 
-class BaseStaff : Staff {
+#include "Staff.h"
 
+#include <string>
+
+class BaseStaff : public Staff {
 
 public:
 	BaseStaff();
+
+	~BaseStaff();
 
 	string jobDesc();
 

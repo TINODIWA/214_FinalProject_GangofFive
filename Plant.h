@@ -8,6 +8,7 @@
 #include "PlantInfo.h"
 class PlantCare;
 class PlantStaff;
+class Staff;
 
 using namespace std;
 
@@ -15,6 +16,7 @@ class Plant {
 
 protected:
 	PlantInfo info;
+	vector<Staff*> observers;
 
 public:
 	Plant();

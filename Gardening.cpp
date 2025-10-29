@@ -15,14 +15,20 @@ void Gardening::checkPlants() {
 	throw "Not yet implemented";
 }
 
-string Gardening::handleCustomer(Request* req, Request* req) {
+string Gardening::handleCustomer(Request* req) {
 	// TODO - implement Gardening::handleCustomer
 	throw "Not yet implemented";
 }
 
-void Gardening::handlePlant(Plant* p, Plant* p) {
-	// TODO - implement Gardening::handlePlant
-	throw "Not yet implemented";
+void Gardening::handlePlant(Plant* p) {
+	if (p != nullptr) {
+		string plantName = p->getName();
+		string plantType = p->getType();
+		vector<int> water = p->getWater();
+		vector<int> sun = p->getSun();
+		vector<int> fertiliser = p->getFertiliser();
+		int attention = p->getAttention();
+	}
 }
 
 Gardening::Gardening() {

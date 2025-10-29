@@ -12,16 +12,19 @@ private:
 	Staff* successor;
 
 public:
-	void handlePlant(Plant* p);
+	virtual void handlePlant(Plant* p);
 
 	void handleCustomer(Request* req);
 
 	Staff();
+
+	~Staff();
+
 	Staff(const Staff& other);
 
-	string JobDesc();
+	virtual string jobDesc() = 0;
 
-	string getType();
+	virtual string getType() = 0;
 };
 
 #endif

@@ -149,18 +149,26 @@ int Plant::getAttention() const {
 }
 
 void Plant::attach(Staff* s) {
-	// TODO - implement Plant::attach
-	//throw "Not yet implemented";
+	if (s != nullptr) {
+		observers.push_back(s);
+	}
 }
 
 void Plant::detach(Staff* s) {
-	// TODO - implement Plant::detach
-	//throw "Not yet implemented";
+	for (auto it = observers.begin(); it != observers.end(); ++it) {
+		if (*it == s) {
+			observers.erase(it);
+			break;
+		}
+	}
 }
 
 void Plant::notify() {
-	// TODO - implement Plant::notify
-	//throw "Not yet implemented";
+	for (Staff* observer : observers) {
+		if (observer != nullptr) {
+			observer->handlePlant(this); 
+		}
+	}
 }
 
 void Plant::addPlant(Plant *p){}

@@ -5,8 +5,9 @@ Nursery::Nursery() {
 	//throw "Not yet implemented";
 }
 
-void Nursery::addPlant(Plant* p) {
-	// TODO - implement Nursery::addPlant
+void Nursery::addPlant(Plant *p)
+{
+    // TODO - implement Nursery::addPlant
 	//throw "Not yet implemented";
 }
 
