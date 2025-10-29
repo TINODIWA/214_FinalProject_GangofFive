@@ -6,8 +6,8 @@
 #define WATERSTRATEGY_H_
 
 class WaterStrategy {
-    public:
-        virtual int waterAlgorithm() = 0;
+   public:
+    virtual int waterAlgorithm() = 0;
 };
 
-#endif // WATERSTRATEGY_H_
+#endif  // WATERSTRATEGY_H_

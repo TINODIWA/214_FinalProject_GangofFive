@@ -6,8 +6,8 @@
 #define UVLIGHT_H_
 
 class UVLight : SunStrategy {
-    public:
-        int sunAlgorithm();
+   public:
+    int sunAlgorithm();
 };
 
-#endif // UVLIGHT_H_
+#endif  // UVLIGHT_H_
