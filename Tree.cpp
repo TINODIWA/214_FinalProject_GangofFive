@@ -1,6 +1,6 @@
 /**
  * @file Tree.cpp
- * @author your name (you@domain.com)
+ * @author Nathan Chisadza
  * @brief
  * @version 0.1
  * @date 2025-10-29
