@@ -1,8 +1,18 @@
+/**
+ * @file Growing.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
 #include "Growing.h"
 
 Growing::Growing() {
-	// TODO - implement Growing::Growing
-	throw "Not yet implemented";
+  // TODO(user) - implement Growing::Growing
+  throw "Not yet implemented";
 }
 
 Growing::Growing(const PlantState& other) {
@@ -11,6 +21,6 @@ Growing::Growing(const PlantState& other) {
 }
 
 void Growing::handleChange() {
-	// TODO - implement Growing::handleChange
-	throw "Not yet implemented";
+  // TODO(user) - implement Growing::handleChange
+  throw "Not yet implemented";
 }

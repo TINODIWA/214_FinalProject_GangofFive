@@ -1,9 +1,13 @@
-#ifndef GROWING_H
-#define GROWING_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef GROWING_H_
+#define GROWING_H_
 #include "PlantState.h"
 
 class Growing : public PlantState {
-
 
 public:
 	Growing();
@@ -14,4 +18,4 @@ public:
 	string getState();
 };
 
-#endif
+#endif  // GROWING_H_

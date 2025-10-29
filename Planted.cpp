@@ -1,8 +1,19 @@
+/**
+ * @file Planted.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Planted.h"
 
 Planted::Planted() {
-	// TODO - implement Planted::Planted
-	throw "Not yet implemented";
+  // TODO(user) - implement Planted::Planted
+  throw "Not yet implemented";
 }
 
 Planted::Planted(const PlantState& other):PlantState(other) {
@@ -11,6 +22,6 @@ Planted::Planted(const PlantState& other):PlantState(other) {
 }
 
 void Planted::handleChange() {
-	// TODO - implement Planted::handleChange
-	throw "Not yet implemented";
+  // TODO(user) - implement Planted::handleChange
+  throw "Not yet implemented";
 }

@@ -1,19 +1,14 @@
 /**
- * @file PlantInfo.h
- * @author Swelihle Makhathini
- * @brief 
- * @version 0.1
- * @date 2025-10-26
- * 
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
-#ifndef PLANTINFO_H
-#define PLANTINFO_H
+#ifndef PLANTINFO_H_
+#define PLANTINFO_H_
 
 #include <iostream>
 #include <map>
+#include <string>
 #include <vector>
 
 #include "PlantCare.h"
@@ -38,11 +33,10 @@ private:
     std::vector<int> days;
     int price;
 
-    
-public:
-    PlantInfo();
-    ~PlantInfo();
-    PlantInfo(const PlantInfo& p);
+ public:
+  PlantInfo();
+  ~PlantInfo();
+  PlantInfo(const PlantInfo& p);
 
     void setName(std::string name);
     void setType(std::string type);
@@ -67,5 +61,13 @@ public:
     int getPrice()const;
     
 
+  std::string getName() const;
+  std::string getType() const;
+  std::vector<int> getWater() const;
+  std::vector<int> getSun() const;
+  std::vector<int> getFertiliser() const;
+  int getAttention() const;
+  int getAmount() const;
+  int getPrice() const;
 };
-#endif
+#endif  // PLANTINFO_H_

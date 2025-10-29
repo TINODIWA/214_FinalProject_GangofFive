@@ -1,18 +1,23 @@
-#ifndef MANAGEMENT_H
-#define MANAGEMENT_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef MANAGEMENT_H_
+#define MANAGEMENT_H_
+#include <string>
 
 class Management : Roles {
+ public:
+  Command* cmd;
 
-public:
-	Command* cmd;
+  string getType();
 
-	string getType();
+  Management();
 
-	Management();
+  void handleCustomer(Request* req);
 
-	void handleCustomer(Request* req);
-
-	void assignTasks();
+  void assignTasks();
 };
 
-#endif
+#endif  // MANAGEMENT_H_

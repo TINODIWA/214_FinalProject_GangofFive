@@ -1,21 +1,24 @@
-#ifndef SHRUB_H
-#define SHRUB_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-#include <iomanip>
+#ifndef SHRUB_H_
+#define SHRUB_H_
+
 #include "Plant.h"
+#include <iomanip>
 
-class Shrub : public Plant
-{
+class Shrub : public Plant {
+ public:
+  Shrub();
+  Shrub(const PlantInfo& info);
+  Shrub(const Plant& other);
+  void addPlant(Plant* p);
+  virtual ~Shrub();
+  Plant* clone();
 
-public:
-	Shrub();
-	Shrub(const PlantInfo &info);
-	Shrub(const Plant &other);
-	void addPlant(Plant *p);
-	virtual ~Shrub();
-	Plant *clone();
-
-	void print();
+  void print();
 };
 
-#endif
+#endif  // SHRUB_H_

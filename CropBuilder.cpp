@@ -1,76 +1,78 @@
+/**
+ * @file CropBuilder.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "CropBuilder.h"
 
 /**
  * @brief Construct a new Crop Builder:: Crop Builder object
  *
  */
-CropBuilder::CropBuilder() : Builder(), root(nullptr), currCrop(nullptr)
-{
-	factories["Tree"] = new TreeCreator();
-	factories["Flower"] = new FlowerCreator();
-	factories["Shrub"] = new ShrubCreator();
+CropBuilder::CropBuilder() : Builder(), root(nullptr), currCrop(nullptr) {
+  factories["Tree"] = new TreeCreator();
+  factories["Flower"] = new FlowerCreator();
+  factories["Shrub"] = new ShrubCreator();
 }
 
 /**
  * @brief
  *
  */
-CropBuilder::~CropBuilder()
-{
-	if (root)
-	{
-		delete root;
-		root = nullptr;
-		currCrop = nullptr;
-	}
+CropBuilder::~CropBuilder() {
+  if (root) {
+    delete root;
+    root = nullptr;
+    currCrop = nullptr;
+  }
 
-	map<string, PlantCreator *>::iterator it = factories.begin();
+  map<string, PlantCreator*>::iterator it = factories.begin();
 
-	while (it != factories.end())
-	{
-		if ((*it).second != nullptr)
-		{
-			delete (*it).second;//
-			(*it).second = nullptr;
-		}
+  while (it != factories.end()) {
+    if ((*it).second != nullptr) {
+      delete (*it).second;  //
+      (*it).second = nullptr;
+    }
 
-		++it;
-	}
+    ++it;
+  }
 }
 /**
  * @brief Construct a new Crop Builder:: Crop Builder object
  *
  * @param other
  */
-CropBuilder::CropBuilder(const CropBuilder *other)
-{
-	if (!other)
-	{
-		this->root = nullptr;
-		return;
-	}
+CropBuilder::CropBuilder(const CropBuilder* other) {
+  if (!other) {
+    this->root = nullptr;
+    return;
+  }
 
-	this->root = other->root ? other->root->clone() : nullptr;
-	this ->currCrop = this->root;
+  this->root = other->root ? other->root->clone() : nullptr;
+  this->currCrop = this->root;
 
-	map<string, PlantCreator *>::const_iterator it = other->factories.begin();
+  map<string, PlantCreator*>::const_iterator it = other->factories.begin();
 
-	while (it != other->factories.end())
-	{
-		factories[(*it).first] = (*it).second->clone();
-		++it;
-	}
+  while (it != other->factories.end()) {
+    factories[(*it).first] = (*it).second->clone();
+    ++it;
+  }
 }
 /**
  * @brief ads a crop to the garden
  *
  * @param name
  */
-void CropBuilder::addCrop(string name)
-{
-	Crop *crop = new Crop(name);
-	root->addPlant(crop);
-	currCrop = crop;
+void CropBuilder::addCrop(string name) {
+  Crop* crop = new Crop(name);
+  root->addPlant(crop);
+  currCrop = crop;
 }
 
 /**
@@ -78,24 +80,18 @@ void CropBuilder::addCrop(string name)
  *
  * @param p
  */
-void CropBuilder::addPlant(const PlantInfo &p)
-{
+void CropBuilder::addPlant(const PlantInfo& p) {
+  try {
+    Plant* plant = factories.at(p.getType())->create(p);
 
-	try
-	{
-		Plant *plant = factories.at(p.getType())->create(p);
-
-		for (int i = 0; i < p.getAmount() - 1; i++)
-		{
-			currCrop->addPlant(plant->clone());
-		}
-		currCrop->addPlant(plant);
-	}
-	catch (std::out_of_range err)
-	{
-		cout << "Sorry We don't stock that type of plant at the moment\n";
-		return;
-	}
+    for (int i = 0; i < p.getAmount() - 1; i++) {
+      currCrop->addPlant(plant->clone());
+    }
+    currCrop->addPlant(plant);
+  } catch (std::out_of_range err) {
+    cout << "Sorry We don't stock that type of plant at the moment\n";
+    return;
+  }
 }
 
 /**
@@ -103,12 +99,10 @@ void CropBuilder::addPlant(const PlantInfo &p)
  *
  * @param factories
  */
-void CropBuilder::setFactories(map<string, PlantCreator *> factories)
-{
-	for (auto f : this->factories)
-	{
-		factories[f.first] = f.second;
-	}
+void CropBuilder::setFactories(map<string, PlantCreator*> factories) {
+  for (auto f : this->factories) {
+    factories[f.first] = f.second;
+  }
 }
 
 /**
@@ -117,20 +111,17 @@ void CropBuilder::setFactories(map<string, PlantCreator *> factories)
  * @param type
  * @param factory
  */
-void CropBuilder::addFactory(std::string type, PlantCreator *factory)
-{
-	if (factory)
-		factories[type] = factory;
+void CropBuilder::addFactory(std::string type, PlantCreator* factory) {
+  if (factory) factories[type] = factory;
 }
 
 /**
  * @brief initialises a new garden
  *
  */
-void CropBuilder::reset()
-{
-	root = new Crop("Garden");
-	currCrop = root;
+void CropBuilder::reset() {
+  root = new Crop("Garden");
+  currCrop = root;
 }
 
 /**
@@ -138,7 +129,6 @@ void CropBuilder::reset()
  *
  * @return Plant*
  */
-Plant *CropBuilder::getCrop()
-{
-	return this->root;
+Plant* CropBuilder::getCrop() {
+  return this->root;
 }

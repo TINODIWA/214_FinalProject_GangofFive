@@ -1,26 +1,29 @@
 /**
- * @file PlantInfo.cpp
- * @authors Unathi Tshakalisa, Swelihle Makhthini
- * @brief File contains implementation of Plant class.
+ * @file Plant.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
  */
+
 #include "Plant.h"
 
 /**
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant()
-{
-	info = PlantInfo();
+Plant::Plant() {
+  info = PlantInfo();
 }
 
 /**
  * @brief Destroy the Plant:: Plant object
  *
  */
-Plant::~Plant()
-{
-}
+Plant::~Plant() {}
 
 /**
  * @brief Construct a new Plant:: Plant object
@@ -28,9 +31,8 @@ Plant::~Plant()
  * @param other
  */
 
-Plant::Plant(const Plant &other)
-{
-	this->info = PlantInfo(other.info);
+Plant::Plant(const Plant& other) {
+  this->info = PlantInfo(other.info);
 }
 
 /**
@@ -38,9 +40,8 @@ Plant::Plant(const Plant &other)
  *
  * @param name
  */
-void Plant::setName(string name)
-{
-	info.setName(name);
+void Plant::setName(string name) {
+  info.setName(name);
 }
 
 /**
@@ -48,9 +49,8 @@ void Plant::setName(string name)
  *
  * @param type
  */
-void Plant::setType(string type)
-{
-	info.setType(type);
+void Plant::setType(string type) {
+  info.setType(type);
 }
 
 /**
@@ -58,9 +58,8 @@ void Plant::setType(string type)
  *
  * @param info
  */
-Plant::Plant(const PlantInfo &info)
-{
-	this->info = PlantInfo(info);
+Plant::Plant(const PlantInfo& info) {
+  this->info = PlantInfo(info);
 }
 
 /**
@@ -116,9 +115,8 @@ void Plant::setFertiliser(int fertiliser, int idx)
  *
  * @param attention
  */
-void Plant::setAttention(int attention)
-{
-	info.setAttention(attention);
+void Plant::setAttention(int attention) {
+  info.setAttention(attention);
 }
 
 /**
@@ -126,9 +124,8 @@ void Plant::setAttention(int attention)
  *
  * @return string
  */
-string Plant::getName() const
-{
-	return info.getName();
+string Plant::getName() const {
+  return info.getName();
 }
 
 /**
@@ -136,9 +133,8 @@ string Plant::getName() const
  *
  * @return string
  */
-string Plant::getType() const
-{
-	return info.getType();
+string Plant::getType() const {
+  return info.getType();
 }
 
 /**
@@ -146,9 +142,8 @@ string Plant::getType() const
  *
  * @return int
  */
-vector<int> Plant::getWater() const
-{
-	return info.getWater();
+vector<int> Plant::getWater() const {
+  return info.getWater();
 }
 
 /**
@@ -157,9 +152,8 @@ vector<int> Plant::getWater() const
  * @return int
  */
 
-vector<int> Plant::getSun() const
-{
-	return info.getSun();
+vector<int> Plant::getSun() const {
+  return info.getSun();
 }
 
 /**
@@ -167,9 +161,8 @@ vector<int> Plant::getSun() const
  *
  * @return int
  */
-vector<int> Plant::getFertiliser() const
-{
-	return info.getFertiliser();
+vector<int> Plant::getFertiliser() const {
+  return info.getFertiliser();
 }
 
 /**
@@ -177,27 +170,23 @@ vector<int> Plant::getFertiliser() const
  *
  * @return int
  */
-int Plant::getAttention() const
-{
-	return info.getAttention();
+int Plant::getAttention() const {
+  return info.getAttention();
 }
 
-void Plant::attach(Staff *s)
-{
-	// TODO - implement Plant::attach
-	// throw "Not yet implemented";
+void Plant::attach(Staff* s) {
+  // TODO(user) - implement Plant::attach
+  // throw "Not yet implemented";
 }
 
-void Plant::detach(Staff *s)
-{
-	// TODO - implement Plant::detach
-	// throw "Not yet implemented";
+void Plant::detach(Staff* s) {
+  // TODO(user) - implement Plant::detach
+  // throw "Not yet implemented";
 }
 
-void Plant::notify()
-{
-	// TODO - implement Plant::notify
-	// throw "Not yet implemented";
+void Plant::notify() {
+  // TODO(user) - implement Plant::notify
+  // throw "Not yet implemented";
 }
 
 /**
@@ -205,11 +194,10 @@ void Plant::notify()
  *
  * @param p
  */
-void Plant::addPlant(Plant *p) {}
+void Plant::addPlant(Plant* p) {}
 
-void Plant::setPlantCare(PlantCare *strategy)
-{
-	info.setPlantCare(strategy);
+void Plant::setPlantCare(PlantCare* strategy) {
+  info.setPlantCare(strategy);
 }
 
 void Plant::setStaff(Staff *staff)

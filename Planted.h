@@ -1,16 +1,19 @@
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #ifndef PLANTED_H
 #define PLANTED_H
 #include "PlantState.h"
 class Planted : public PlantState {
+ public:
+  Planted();
 
+  Planted(const PlantState& other);
 
-public:
-	Planted();
-
-	Planted(const PlantState& other);
-
-	void handleChange();
-	string getState();
+  void handleChange();
+  string getState();
 };
 
-#endif
+#endif  // PLANTED_H_

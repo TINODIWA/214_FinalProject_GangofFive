@@ -1,11 +1,13 @@
-#ifndef WATERSTRATEGY_H
-#define WATERSTRATEGY_H
+/**
+ * @copyright Copyright (c) 2025
+ */
+
+#ifndef WATERSTRATEGY_H_
+#define WATERSTRATEGY_H_
 
 class WaterStrategy {
-
-
-public:
-	virtual int waterAlgorithm() = 0;
+ public:
+  virtual int waterAlgorithm() = 0;
 };
 
-#endif
+#endif  // WATERSTRATEGY_H_
