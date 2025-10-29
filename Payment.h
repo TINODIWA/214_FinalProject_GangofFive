@@ -23,12 +23,13 @@ private:
     virtual void payment() = 0;
     virtual string getType() = 0;
     
+    string receipt(Customer *customer, map<Plant*,int> plants,Staff* staff);
 
 public:
     Payment();
     virtual ~Payment();
     string purchase(Customer *customer, map<Plant*,int> plants,Staff* staff);
-    string receipt(Customer *customer, map<Plant*,int> plants,Staff* staff);
+    
 };
 
 #endif

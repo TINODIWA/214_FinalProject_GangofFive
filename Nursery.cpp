@@ -14,7 +14,6 @@
 
 Nursery::Nursery() {
   // TODO(user) - implement Nursery::Nursery
-  // throw "Not yet implemented";
 }
 
 Nursery::~Nursery() {}

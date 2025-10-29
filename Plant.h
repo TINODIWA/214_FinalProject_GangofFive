@@ -36,33 +36,24 @@ class Plant {
   void setAttention(int attention);
   void setPlantCare(PlantCare* strategy);
   void setStaff(Staff* staff);
+  void setPrice(int price);
 
-	void setName(string name);
-	void setType(string type);
-	void setWater(int water);
-	void setSun(int sun);
-	void setFertiliser(int fertiliser);
-	void setAttention(int attention);
-	void setPlantCare(PlantCare* strategy);
-	void setStaff(Staff* staff);
-	void setPrice(int price);
+  string getName() const;
+  string getType() const;
+  vector<int> getWater() const;
+  vector<int> getSun() const;
+  vector<int> getFertiliser() const;
+  int getAttention() const;
+  int getPrice() const;
 
-	string getName() const;
-	string getType() const;
-	vector<int> getWater() const;
-	vector<int> getSun() const;
-	vector<int> getFertiliser() const;
-	int getAttention() const;
-	int getPrice()const;
+  virtual Plant* clone() = 0;
+  void attach(Staff* s);
+  void detach(Staff* s);
+  void notify();
 
-	virtual Plant* clone() = 0;
-	void attach(Staff* s);
-	void detach(Staff* s);
-	void notify();
+  virtual void print() = 0;
 
-	virtual void print() = 0;
-	
-	string advice();
+  string advice();
 };
 
 #endif  // PLANT_H_

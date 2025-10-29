@@ -10,9 +10,8 @@
  */
 #include "People.h"
 
-People::People(Nursery* n) {
+People::People(Nursery* n,string name):nursery(n),name(name) {
   // TODO(user) - implement People::People
-  // throw "Not yet implemented";
 }
 
 People::People() {
@@ -35,6 +34,6 @@ void People::receive(string m, People* from, Nursery* n) {
   // throw "Not yet implemented";
 }
 
-string People::getName() {
+string People::getName()const {
 	return name;
 }

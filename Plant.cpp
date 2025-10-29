@@ -98,6 +98,9 @@ void Plant::setAttention(int attention) {
   info.setAttention(attention);
 }
 
+void Plant::setPrice(int price) {
+  info.setPrice(price);
+}
 /**
  * @brief returns the name of the plant
  *
@@ -175,40 +178,33 @@ void Plant::notify() {
  */
 void Plant::addPlant(Plant* p) {}
 
-
 /**
  * @brief advice on how to care for the plant
- * 
- * @return string 
+ *
+ * @return string
  */
-string Plant::advice(){
-	return "";
+string Plant::advice() {
+  return "";
 }
 
-
 /**
- * @brief sets the plantcare 
- * 
- * @param strategy 
+ * @brief sets the plantcare
+ *
+ * @param strategy
  */
-void Plant::setPlantCare(PlantCare *strategy)
-{
-	info.setPlantCare(strategy);
+void Plant::setPlantCare(PlantCare* strategy) {
+  info.setPlantCare(strategy);
 }
 
 /**
  * @brief sets the staff taking care of that plant
- * 
- * @param staff 
+ *
+ * @param staff
  */
-void Plant::setStaff(Staff *staff)
-{
-	info.setStaff(staff);
+void Plant::setStaff(Staff* staff) {
+  info.setStaff(staff);
 }
 
-
-int Plant::getPrice()const {
-	return info.getPrice();
+int Plant::getPrice() const {
+  return info.getPrice();
 }
-
-
