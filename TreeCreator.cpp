@@ -44,3 +44,4 @@ Plant *TreeCreator::produce(const PlantInfo &info) {
 PlantCreator *TreeCreator::clone() {
     return new TreeCreator(this);
 }
+
