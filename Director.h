@@ -29,7 +29,7 @@ class Director {
  public:
   Director();
   ~Director();
-  Director(CropBuilder* p);
+  explicit Director(CropBuilder* p);
   void setBuilder(CropBuilder* p);
   Plant* construct(string filename);
   void parse(string filename);

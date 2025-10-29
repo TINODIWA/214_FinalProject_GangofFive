@@ -6,9 +6,10 @@
 #ifndef GARDENING_H_
 #define GARDENING_H_
 
+#include <vector>
 #include <string>
 
-class Gardening : Roles {
+class Gardening : public Roles {
  public:
   vector<Plant*> plants;
 

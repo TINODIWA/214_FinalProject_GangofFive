@@ -14,10 +14,10 @@ class People {
   Nursery* nursery;
 
  public:
-  People(Nursery* n);
+  explicit People(Nursery* n);
 
   People();
-  People(const People* other);
+  explicit People(const People* other);
 
   void send(string m, Nursery* s, string type);
 

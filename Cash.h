@@ -20,4 +20,4 @@ class Cash : public Payment {
   void package();
 };
 
-#endif  // CARD_H_
+#endif  // CASH_H_

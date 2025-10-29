@@ -53,7 +53,9 @@ coverage-main: clean $(MAIN)
 	genhtml coverage.info --output-directory out
 	@echo "Open coverage report: out/index.html"
 
-LINT_FLAGS = --quiet --filter=-whitespace/line_length
+LINT_FLAGS = --quiet --filter=-whitespace/line_length,-build/namespaces --linelength=120
+
 lint:
 	clang-format -i *.cpp *.h
 	cpplint $(LINT_FLAGS) *.cpp
+	cpplint $(LINT_FLAGS) *.h

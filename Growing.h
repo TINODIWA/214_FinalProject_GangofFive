@@ -10,7 +10,7 @@ class Growing : PlantState {
  public:
   Growing();
 
-  Growing(const PlantState& other);
+  explicit Growing(const PlantState& other);
 
   void handleChange();
 };

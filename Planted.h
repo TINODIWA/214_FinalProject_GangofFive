@@ -10,7 +10,7 @@ class Planted : PlantState {
  public:
   Planted();
 
-  Planted(const PlantState& other);
+  explicit Planted(const PlantState& other);
 
   void handleChange();
 };

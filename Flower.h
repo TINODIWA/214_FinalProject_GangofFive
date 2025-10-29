@@ -11,8 +11,8 @@
 class Flower : public Plant {
  public:
   Flower();
-  Flower(const PlantInfo& info);
-  Flower(const Plant& other);
+  explicit Flower(const PlantInfo& info);
+  explicit Flower(const Plant& other);
   void addPlant(Plant* p);
   ~Flower();
   Plant* clone();

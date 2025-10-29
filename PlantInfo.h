@@ -54,4 +54,4 @@ class PlantInfo {
   int getAmount() const;
   int getPrice() const;
 };
-#endif  // PLANTINFO_H
+#endif  // PLANTINFO_H_

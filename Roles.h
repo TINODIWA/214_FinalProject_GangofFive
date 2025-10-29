@@ -6,6 +6,7 @@
 #ifndef ROLES_H_
 #define ROLES_H_
 #include <string>
+#include <vector>
 
 class Roles : Staff {
  public:
