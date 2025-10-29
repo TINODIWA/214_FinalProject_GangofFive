@@ -35,7 +35,7 @@ Nursery::Nursery(const Nursery &other) {
     }
 
     // while(otherCustomer != other.customers.end())
-    // 	customers.push_back(new Customer(*otherCustomer))
+    // customers.push_back(new Customer(*otherCustomer))
 }
 
 void Nursery::addPlant(Plant *p) {

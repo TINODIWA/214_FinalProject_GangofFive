@@ -13,13 +13,13 @@
 
 // void Customer::operation() {
 //// TODO(unathi,nathan,ryan) - implement Customer::operation
-// 	throw "Not yet implemented";
-// }
+// throw "Not yet implemented";
+//  }
 
 // void Customer::makeReq(Request* req, Request* req) {
 //// TODO(unathi,nathan,ryan) - implement Customer::makeReq
-// 	throw "Not yet implemented";
-// }
+// throw "Not yet implemented";
+//  }
 
 Customer::Customer() {
     // TODO(unathi,nathan,ryan) - implement Customer::Customer

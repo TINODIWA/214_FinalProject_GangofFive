@@ -22,7 +22,7 @@ People::People() {
 
 People::People(const People *other) {
     // if (other)
-    // 	this->nursery = new Nursery(*other->nursery);
+    // this->nursery = new Nursery(*other->nursery);
 }
 
 void People::send(string m, Nursery *s, string type) {
