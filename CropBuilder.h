@@ -29,8 +29,8 @@ class CropBuilder : public Builder {
  public:
   CropBuilder();
   ~CropBuilder();
-  explicit CropBuilder(const CropBuilder* other);
-  explicit CropBuilder(map<string, PlantCreator*> factories);
+  CropBuilder(const CropBuilder* other);
+  CropBuilder(map<string, PlantCreator*> factories);
   void addCrop(string name);
   void addPlant(const PlantInfo& p);
   void setFactories(map<string, PlantCreator*> factories);

@@ -14,7 +14,7 @@ class FlowerCreator : public PlantCreator {
  public:
   FlowerCreator();
   ~FlowerCreator();
-  explicit FlowerCreator(const PlantCreator* other);
+  FlowerCreator(const PlantCreator* other);
   Plant* produce(const PlantInfo& info);
   PlantCreator* clone();
 };

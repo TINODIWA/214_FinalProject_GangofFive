@@ -10,7 +10,7 @@ class Mature : PlantState {
  public:
   Mature();
 
-  explicit Mature(const PlantState& other);
+  Mature(const PlantState& other);
 
   void handleChange();
 };

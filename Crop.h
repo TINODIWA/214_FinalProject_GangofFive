@@ -21,7 +21,7 @@ class Crop : public Plant {
   Crop();
   ~Crop();
   Crop(const Crop& other);
-  explicit Crop(std::string name);
+  Crop(std::string name);
   void addPlant(Plant* p);
   Plant* clone();
   void print();

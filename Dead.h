@@ -10,7 +10,7 @@ class Dead : PlantState {
  public:
   Dead();
 
-  explicit Dead(const PlantState& other);
+  Dead(const PlantState& other);
 
   void handleChange();
 };

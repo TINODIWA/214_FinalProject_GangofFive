@@ -15,7 +15,7 @@ class PlantCreator {
 
  public:
   PlantCreator();
-  explicit PlantCreator(const PlantCreator* other);
+  PlantCreator(const PlantCreator* other);
   virtual ~PlantCreator();
   Plant* create(const PlantInfo& plantInfo);
   virtual PlantCreator* clone() = 0;

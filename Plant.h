@@ -25,7 +25,7 @@ class Plant {
   Plant();
   virtual ~Plant();
   Plant(const Plant& other);
-  explicit Plant(const PlantInfo& info);
+  Plant(const PlantInfo& info);
   virtual void addPlant(Plant* p) = 0;
 
   void setName(string name);

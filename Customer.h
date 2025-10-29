@@ -19,7 +19,7 @@ class Customer : public People {
  public:
   Customer();
   ~Customer();
-  explicit Customer(const Customer* other);
+  Customer(const Customer* other);
   void makeReq(Request* req);
 };
 

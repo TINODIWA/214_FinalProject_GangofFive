@@ -14,7 +14,7 @@ class TreeCreator : public PlantCreator {
  public:
   TreeCreator();
   ~TreeCreator();
-  explicit TreeCreator(const PlantCreator* other);
+  TreeCreator(const PlantCreator* other);
   Plant* produce(const PlantInfo& info);
   PlantCreator* clone();
 };

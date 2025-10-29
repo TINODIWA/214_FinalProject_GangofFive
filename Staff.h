@@ -23,7 +23,7 @@ class Staff : public People {
   void handlePlant(Plant* p);
   void handleCustomer(Request* req);
   Staff();
-  explicit Staff(const Staff* other);
+  Staff(const Staff* other);
 
   string JobDesc();
   string getType();

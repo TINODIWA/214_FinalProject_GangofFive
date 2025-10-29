@@ -10,7 +10,7 @@ class Dying : PlantState {
  public:
   Dying();
 
-  explicit Dying(const PlantState& other);
+  Dying(const PlantState& other);
 
   void handleChange();
 };

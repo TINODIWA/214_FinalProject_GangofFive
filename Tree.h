@@ -11,9 +11,9 @@
 
 class Tree : public Plant {
  public:
-  explicit Tree(const PlantInfo& info);
+  Tree(const PlantInfo& info);
   Tree();
-  explicit Tree(const Plant& other);
+  Tree(const Plant& other);
   void addPlant(Plant* p);
   virtual ~Tree();
   Plant* clone();
