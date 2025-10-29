@@ -31,4 +31,4 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "Development"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CLANG_TIDY_ARGS: "-check=-cppcoreguidelines-explicit-ctor,-modernize-use-explicit"
+          CLANG_TIDY_CHECKS: "-checks=-*,clang-analyzer-*,cppcoreguidelines-*,"
