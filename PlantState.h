@@ -1,5 +1,10 @@
-#ifndef PLANTSTATE_H
-#define PLANTSTATE_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef PLANTSTATE_H_
+#define PLANTSTATE_H_
 
 #include "PlantState.h"
 
@@ -12,4 +17,4 @@ class PlantState {
     virtual void handleChange() = 0;
 };
 
-#endif
+#endif  // PLANTSTATE_H_

@@ -1,5 +1,9 @@
-#ifndef FLOWERCREATOR_H
-#define FLOWERCREATOR_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+#ifndef FLOWERCREATOR_H_
+#define FLOWERCREATOR_H_
 
 #include "Flower.h"
 #include "PlantCreator.h"
@@ -15,4 +19,4 @@ class FlowerCreator : public PlantCreator {
     PlantCreator* clone();
 };
 
-#endif
+#endif  // FLOWERCREATOR_H_

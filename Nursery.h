@@ -1,5 +1,10 @@
-#ifndef NURSERY_H
-#define NURSERY_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef NURSERY_H_
+#define NURSERY_H_
 
 #include <iostream>
 #include <vector>
@@ -27,4 +32,4 @@ class Nursery {
     void notify();
 };
 
-#endif
+#endif  // NURSERY_H_

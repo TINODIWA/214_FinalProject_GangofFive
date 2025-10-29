@@ -1,5 +1,10 @@
-#ifndef SHRUB_H
-#define SHRUB_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef SHRUB_H_
+#define SHRUB_H_
 
 #include <iomanip>
 #include "Plant.h"
@@ -16,4 +21,4 @@ class Shrub : public Plant {
     void print();
 };
 
-#endif
+#endif  // SHRUB_H_

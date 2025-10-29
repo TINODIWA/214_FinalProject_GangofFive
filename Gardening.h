@@ -1,5 +1,10 @@
-#ifndef GARDENING_H
-#define GARDENING_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef GARDENING_H_
+#define GARDENING_H_
 
 #include <string>
 
@@ -20,4 +25,4 @@ class Gardening : Roles {
     void checkPlants();
 };
 
-#endif
+#endif  // GARDENING_H_

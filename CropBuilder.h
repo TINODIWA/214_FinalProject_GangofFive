@@ -1,5 +1,10 @@
-#ifndef CROPBUILDER_H
-#define CROPBUILDER_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef CROPBUILDER_H_
+#define CROPBUILDER_H_
 
 #include <string>
 #include <vector>
@@ -34,4 +39,4 @@ class CropBuilder : public Builder {
     Plant *getCrop();
 };
 
-#endif
+#endif  // CROPBUILDER_H_

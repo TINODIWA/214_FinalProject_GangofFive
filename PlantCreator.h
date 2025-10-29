@@ -1,5 +1,10 @@
-#ifndef PLANTCREATOR_H
-#define PLANTCREATOR_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef PLANTCREATOR_H_
+#define PLANTCREATOR_H_
 
 #include <iostream>
 #include "Plant.h"
@@ -16,4 +21,4 @@ class PlantCreator {
     virtual PlantCreator* clone() = 0;
 };
 
-#endif
+#endif  // PLANTCREATOR_H_

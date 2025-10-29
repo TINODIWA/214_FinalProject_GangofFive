@@ -1,5 +1,10 @@
-#ifndef MATURE_H
-#define MATURE_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef MATURE_H_
+#define MATURE_H_
 
 class Mature : PlantState {
    public:
@@ -10,4 +15,4 @@ class Mature : PlantState {
     void handleChange();
 };
 
-#endif
+#endif  // MATURE_H_

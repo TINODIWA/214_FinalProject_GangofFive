@@ -1,5 +1,10 @@
-#ifndef GROWING_H
-#define GROWING_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef GROWING_H_
+#define GROWING_H_
 
 class Growing : PlantState {
    public:
@@ -10,4 +15,4 @@ class Growing : PlantState {
     void handleChange();
 };
 
-#endif
+#endif  // GROWING_H_

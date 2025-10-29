@@ -1,5 +1,10 @@
-#ifndef ORDER_H
-#define ORDER_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef ORDER_H_
+#define ORDER_H_
 
 #include <vector>
 #include "Customer.h"
@@ -30,4 +35,4 @@ class Order {
     void purchase();
 };
 
-#endif
+#endif  // ORDER_H_

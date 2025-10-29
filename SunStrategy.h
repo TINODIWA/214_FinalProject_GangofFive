@@ -1,9 +1,14 @@
-#ifndef SUNSTRATEGY_H
-#define SUNSTRATEGY_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef SUNSTRATEGY_H_
+#define SUNSTRATEGY_H_
 
 class SunStrategy {
    public:
     int sunAlgorithm();
 };
 
-#endif
+#endif  // SUNSTRATEGY_H_

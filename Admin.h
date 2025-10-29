@@ -1,5 +1,10 @@
-#ifndef ADMIN_H
-#define ADMIN_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef ADMIN_H_
+#define ADMIN_H_
 
 #include <iostream>
 #include <string>
@@ -15,4 +20,4 @@ class Admin : Roles {
     string getType();
 };
 
-#endif
+#endif  // ADMIN_H_

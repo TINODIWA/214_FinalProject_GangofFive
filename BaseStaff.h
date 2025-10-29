@@ -1,5 +1,10 @@
-#ifndef BASESTAFF_H
-#define BASESTAFF_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef BASESTAFF_H_
+#define BASESTAFF_H_
 
 #include <string>
 
@@ -14,4 +19,4 @@ class BaseStaff : Staff {
     string getType();
 };
 
-#endif
+#endif  // BASESTAFF_H_

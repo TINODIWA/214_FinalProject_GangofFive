@@ -1,5 +1,10 @@
-#ifndef CHECKPLANT_H
-#define CHECKPLANT_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef CHECKPLANT_H_
+#define CHECKPLANT_H_
 
 #include "Command.h"
 
@@ -9,4 +14,4 @@ class CheckPlant : public Command {
     virtual void execute();
 };
 
-#endif
+#endif  // CHECKPLANT_H_

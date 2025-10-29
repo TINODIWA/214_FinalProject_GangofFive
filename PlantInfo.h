@@ -1,6 +1,10 @@
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-#ifndef PLANTINFO_H
-#define PLANTINFO_H
+#ifndef PLANTINFO_H_
+#define PLANTINFO_H_
 
 #include <iostream>
 #include <map>
@@ -50,4 +54,4 @@ class PlantInfo {
     int getAmount() const;
     int getPrice() const;
 };
-#endif
+#endif  // PLANTINFO_H

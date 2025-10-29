@@ -1,5 +1,10 @@
-#ifndef SHRUBCREATOR_H
-#define SHRUBCREATOR_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef SHRUBCREATOR_H_
+#define SHRUBCREATOR_H_
 
 #include "PlantCreator.h"
 #include "Shrub.h"
@@ -15,4 +20,4 @@ class ShrubCreator : public PlantCreator {
     PlantCreator *clone();
 };
 
-#endif
+#endif  // SHRUBCREATOR_H_

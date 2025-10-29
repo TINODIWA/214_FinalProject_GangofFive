@@ -1,16 +1,10 @@
 /**
- * @file Director.h
- * @author Swelihle Makhathini
- * @brief
- * @version 0.1
- * @date 2025-10-26
- *
  * @copyright Copyright (c) 2025
  *
  */
 
-#ifndef DIRECTOR_H
-#define DIRECTOR_H
+#ifndef DIRECTOR_H_
+#define DIRECTOR_H_
 
 #include <fstream>
 #include <iostream>
@@ -41,4 +35,4 @@ class Director {
     void parse(string filename);
 };
 
-#endif
+#endif  // DIRECTOR_H_

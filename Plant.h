@@ -1,5 +1,10 @@
-#ifndef PLANT_H
-#define PLANT_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef PLANT_H_
+#define PLANT_H_
 
 #include <map>
 #include <string>
@@ -47,4 +52,4 @@ class Plant {
     virtual void print() = 0;
 };
 
-#endif
+#endif  // PLANT_H_

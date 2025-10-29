@@ -1,5 +1,9 @@
-#ifndef FLOWER_H
-#define FLOWER_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+#ifndef FLOWER_H_
+#define FLOWER_H_
 
 #include <iomanip>
 #include "Plant.h"
@@ -16,4 +20,4 @@ class Flower : public Plant {
     void print();
 };
 
-#endif
+#endif  // FLOWER_H_

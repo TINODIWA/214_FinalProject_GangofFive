@@ -1,5 +1,10 @@
-#ifndef ROLES_H
-#define ROLES_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef ROLES_H_
+#define ROLES_H_
 #include <string>
 
 class Roles : Staff {
@@ -13,4 +18,4 @@ class Roles : Staff {
     string getType();
 };
 
-#endif
+#endif  // ROLES_H_

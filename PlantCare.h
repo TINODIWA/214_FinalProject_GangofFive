@@ -1,5 +1,10 @@
-#ifndef PLANTCARE_H
-#define PLANTCARE_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef PLANTCARE_H_
+#define PLANTCARE_H_
 
 #include "FertiliseStrategy.h"
 #include "SunStrategy.h"
@@ -23,4 +28,4 @@ class PlantCare {
     PlantCare();
 };
 
-#endif
+#endif  // PLANTCARE_H_

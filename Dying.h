@@ -1,5 +1,10 @@
-#ifndef DYING_H
-#define DYING_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef DYING_H_
+#define DYING_H_
 #include "PlantState.h"
 class Dying : PlantState {
    public:
@@ -10,4 +15,4 @@ class Dying : PlantState {
     void handleChange();
 };
 
-#endif
+#endif  // DYING_H_

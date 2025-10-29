@@ -1,5 +1,10 @@
-#ifndef STAFFCO_ORDINATION_H
-#define STAFFCO_ORDINATION_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef STAFFCO_ORDINATION_H_
+#define STAFFCO_ORDINATION_H_
 
 #include "Nursery.h"
 #include "Staff.h"
@@ -14,4 +19,4 @@ class StaffCo_ordination : public Nursery {
     void sendMessage(string message, Staff* to, string type);
 };
 
-#endif
+#endif  // STAFFCO_ORDINATION_H_

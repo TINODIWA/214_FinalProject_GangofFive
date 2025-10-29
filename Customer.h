@@ -1,5 +1,10 @@
-#ifndef CUSTOMER_H
-#define CUSTOMER_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef CUSTOMER_H_
+#define CUSTOMER_H_
 
 #include "People.h"
 #include "Request.h"
@@ -18,4 +23,4 @@ class Customer : public People {
     void makeReq(Request* req);
 };
 
-#endif
+#endif  // CUSTOMER_H_

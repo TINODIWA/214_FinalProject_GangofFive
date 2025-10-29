@@ -1,5 +1,10 @@
-#ifndef STAFF_H
-#define STAFF_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef STAFF_H_
+#define STAFF_H_
 
 #include <string>
 #include <vector>
@@ -24,4 +29,4 @@ class Staff : public People {
     string getType();
 };
 
-#endif
+#endif  // STAFF_H_

@@ -1,5 +1,10 @@
-#ifndef CUSTOMERCARE_H
-#define CUSTOMERCARE_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef CUSTOMERCARE_H_
+#define CUSTOMERCARE_H_
 
 class CustomerCare : Nursery {
    public:
@@ -8,4 +13,4 @@ class CustomerCare : Nursery {
     CustomerCare();
 };
 
-#endif
+#endif  // CUSTOMERCARE_H_

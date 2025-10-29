@@ -1,5 +1,10 @@
-#ifndef MANAGEMENT_H
-#define MANAGEMENT_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef MANAGEMENT_H_
+#define MANAGEMENT_H_
 #include <string>
 
 class Management : Roles {
@@ -15,4 +20,4 @@ class Management : Roles {
     void assignTasks();
 };
 
-#endif
+#endif  // MANAGEMENT_H_

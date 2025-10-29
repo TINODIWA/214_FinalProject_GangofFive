@@ -1,5 +1,10 @@
-#ifndef PEOPLE_H
-#define PEOPLE_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef PEOPLE_H_
+#define PEOPLE_H_
 #include <string>
 #include "Nursery.h"
 
@@ -19,4 +24,4 @@ class People {
     void receive(string m, People* from, Nursery* n);
 };
 
-#endif
+#endif  // PEOPLE_H_

@@ -1,5 +1,10 @@
-#ifndef TREE_H
-#define TREE_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef TREE_H_
+#define TREE_H_
 
 #include <iomanip>
 #include "Plant.h"
@@ -15,4 +20,4 @@ class Tree : public Plant {
     void print();
 };
 
-#endif
+#endif  // TREE_H_

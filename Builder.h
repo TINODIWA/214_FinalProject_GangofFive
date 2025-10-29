@@ -1,5 +1,10 @@
-#ifndef BUILDER_H
-#define BUILDER_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef BUILDER_H_
+#define BUILDER_H_
 
 #include <iostream>
 
@@ -19,4 +24,4 @@ class Builder {
     virtual void reset() = 0;
 };
 
-#endif
+#endif  // BUILDER_H_

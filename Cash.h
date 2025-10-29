@@ -1,16 +1,10 @@
 /**
- * @file Cash.h
- * @author Swelihle Makhathini
- * @brief
- * @version 0.1
- * @date 2025-10-26
- *
  * @copyright Copyright (c) 2025
  *
  */
 
-#ifndef CASH_H
-#define CASH_H
+#ifndef CASH_H_
+#define CASH_H_
 
 #include <iostream>
 #include "Payment.h"
@@ -26,4 +20,4 @@ class Cash : public Payment {
     void package();
 };
 
-#endif
+#endif  // CARD_H_
