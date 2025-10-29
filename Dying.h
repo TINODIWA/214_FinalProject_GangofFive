@@ -9,6 +9,7 @@ public:
 
 	Dying(const PlantState& other);
 
+	
 	void handleChange();
 };
 

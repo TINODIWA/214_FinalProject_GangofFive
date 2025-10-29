@@ -10,7 +10,6 @@ Director::Director() : cropBuilder(nullptr)
 
 /**
  * @brief Destroy the Director:: Director object
- *
  */
 Director::~Director()
 {

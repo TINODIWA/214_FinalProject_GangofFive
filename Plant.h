@@ -26,24 +26,30 @@ public:
 
 	void setName(string name);
 	void setType(string type);
-	void setWater(int water);
-	void setSun(int sun);
-	void setFertiliser(int fertiliser);
+	void setWater(int water,int  idx);
+	void setSun(int sun,int idx);
+	void setFertiliser(int fertiliser, int idx);
 	void setAttention(int attention);
 	void setPlantCare(PlantCare* strategy);
 	void setStaff(Staff* staff);
+	void setDays(int days);
 
 	string getName() const;
 	string getType() const;
 	vector<int> getWater() const;
 	vector<int> getSun() const;
 	vector<int> getFertiliser() const;
+	vector<int> getDays() const;
 	int getAttention() const;
+
 
 	virtual Plant* clone() = 0;
 	void attach(Staff* s);
 	void detach(Staff* s);
 	void notify();
+
+	void updateDay();
+	void getState();
 
 	virtual void print() = 0;
 };

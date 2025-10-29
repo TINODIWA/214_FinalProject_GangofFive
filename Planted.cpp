@@ -5,7 +5,7 @@ Planted::Planted() {
 	throw "Not yet implemented";
 }
 
-Planted::Planted(const PlantState& other, const PlantState& other) {
+Planted::Planted(const PlantState& other):PlantState(other) {
 	// TODO - implement Planted::Planted
 	throw "Not yet implemented";
 }

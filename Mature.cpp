@@ -5,7 +5,7 @@ Mature::Mature() {
 	throw "Not yet implemented";
 }
 
-Mature::Mature(const PlantState& other, const PlantState& other) {
+Mature::Mature(const PlantState& other) {
 	// TODO - implement Mature::Mature
 	throw "Not yet implemented";
 }

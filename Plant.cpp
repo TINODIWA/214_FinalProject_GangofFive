@@ -1,3 +1,8 @@
+/**
+ * @file PlantInfo.cpp
+ * @authors Unathi Tshakalisa, Swelihle Makhthini
+ * @brief File contains implementation of Plant class.
+ */
 #include "Plant.h"
 
 /**
@@ -63,9 +68,15 @@ Plant::Plant(const PlantInfo &info)
  *
  * @param water
  */
-void Plant::setWater(int water)
+void Plant::setWater(int water, int idx)
 {
-	info.setWater(water, 1);
+	if (idx < 0 || idx > 1)
+	{
+		cout << "Invalid Index!" << endl;
+		return;
+	}
+
+	info.setWater(water, idx);
 }
 
 /**
@@ -73,9 +84,15 @@ void Plant::setWater(int water)
  *
  * @param sun
  */
-void Plant::setSun(int sun)
+void Plant::setSun(int sun, int idx)
 {
-	info.setSun(sun, 1);
+	if (idx < 0 || idx > 1)
+	{
+		cout << "Invalid Index!" << endl;
+		return;
+	}
+
+	info.setSun(sun, idx);
 }
 
 /**
@@ -83,9 +100,15 @@ void Plant::setSun(int sun)
  *
  * @param fertiliser
  */
-void Plant::setFertiliser(int fertiliser)
+void Plant::setFertiliser(int fertiliser, int idx)
 {
-	info.setFertiliser(fertiliser, 1);
+	if (idx < 0 || idx > 1)
+	{
+		cout << "Invalid Index!" << endl;
+		return;
+	}
+
+	info.setFertiliser(fertiliser, idx);
 }
 
 /**
@@ -179,8 +202,8 @@ void Plant::notify()
 
 /**
  * @brief stubbed - for adding plans to a crop
- * 
- * @param p 
+ *
+ * @param p
  */
 void Plant::addPlant(Plant *p) {}
 
@@ -188,8 +211,29 @@ void Plant::setPlantCare(PlantCare *strategy)
 {
 	info.setPlantCare(strategy);
 }
+
 void Plant::setStaff(Staff *staff)
 {
 	info.setStaff(staff);
 }
 
+/**
+ * @brief Updates the current day counter and resets daily requirment levels
+ */
+void Plant::updateDay()
+{
+	int day = info.getDays()[0];
+	day++;
+	info.setDays(day,0);
+	info.setFertiliser(0,0);
+	info.setSun(0,0);
+	info.setWater(0,0);
+
+}
+
+/**
+ * @brief The request function in the Conetxt for state
+ */
+void Plant::getState(){
+
+}

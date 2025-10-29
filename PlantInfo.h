@@ -18,6 +18,9 @@
 
 #include "PlantCare.h"
 #include "PlantState.h"
+
+using namespace std;
+
 class Staff;
 
 class PlantInfo
@@ -32,7 +35,7 @@ private:
     PlantState *state;
     Staff *staff;
     int amount; // number of plants in the garden ????? should this be here
-    int days;
+    std::vector<int> days;
     int price;
 
     
@@ -51,15 +54,18 @@ public:
 	void setStaff(Staff* staff);
     void setAmount(int amount);
     void setPrice(int price);
+    void setDays(int days, int idx);
 
     std::string getName() const;
     std::string getType() const;
     std::vector<int> getWater() const;
     std::vector<int> getSun() const;
     std::vector<int> getFertiliser() const;
+    std::vector<int> getDays() const;
     int getAttention() const;
     int getAmount() const;
     int getPrice()const;
+    
 
 };
 #endif

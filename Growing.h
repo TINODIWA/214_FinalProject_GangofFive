@@ -1,7 +1,8 @@
 #ifndef GROWING_H
 #define GROWING_H
+#include "PlantState.h"
 
-class Growing : PlantState {
+class Growing : public PlantState {
 
 
 public:
@@ -10,6 +11,7 @@ public:
 	Growing(const PlantState& other);
 
 	void handleChange();
+	string getState();
 };
 
 #endif

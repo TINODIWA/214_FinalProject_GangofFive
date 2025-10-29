@@ -7,3 +7,7 @@ PlantState::PlantState() {
 PlantState::PlantState(const PlantState& other) {
 
 }
+
+PlantState::~PlantState() {
+
+}

@@ -5,7 +5,7 @@ Growing::Growing() {
 	throw "Not yet implemented";
 }
 
-Growing::Growing(const PlantState& other, const PlantState& other) {
+Growing::Growing(const PlantState& other) {
 	// TODO - implement Growing::Growing
 	throw "Not yet implemented";
 }

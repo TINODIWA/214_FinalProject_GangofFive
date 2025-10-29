@@ -1,7 +1,8 @@
 #ifndef MATURE_H
 #define MATURE_H
+#include "PlantState.h"
 
-class Mature : PlantState {
+class Mature : public PlantState {
 
 
 public:
@@ -10,6 +11,7 @@ public:
 	Mature(const PlantState& other);
 
 	void handleChange();
+	string getState();
 };
 
 #endif

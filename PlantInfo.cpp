@@ -1,6 +1,6 @@
 /**
  * @file PlantInfo.cpp
- * @authors Unathi Tshakalisa,
+ * @authors Unathi Tshakalisa, Swelihle Makhthini
  * @brief File contains implementation of PlantInfo class. Used to hold details related to plants
  */
 
@@ -161,6 +161,21 @@ void PlantInfo::setPrice(int price)
 {
     this->price = price;
 }
+
+/**
+ * @brief Set the required days index of the days vector
+ * @param days The required amount of days to reach maturity
+ */
+void PlantInfo::setDays(int days, int idx)
+{
+    if (idx < 0 || idx > 1)
+    {
+        cout << "Invalid Index!" << endl;
+        return;
+    }
+    this->days[idx] = days;
+}
+
 /**
  * @brief Name getter
  * @return name
@@ -204,6 +219,14 @@ std::vector<int> PlantInfo::getSun() const
 std::vector<int> PlantInfo::getFertiliser() const
 {
     return fertiliser;
+}
+/**
+ * @brief Returns days vector
+ * @return days
+ */
+std::vector<int> PlantInfo::getDays() const
+{
+    return days;
 }
 
 int PlantInfo::getAttention() const

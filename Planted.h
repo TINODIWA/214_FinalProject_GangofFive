@@ -1,7 +1,7 @@
 #ifndef PLANTED_H
 #define PLANTED_H
-
-class Planted : PlantState {
+#include "PlantState.h"
+class Planted : public PlantState {
 
 
 public:
@@ -10,6 +10,7 @@ public:
 	Planted(const PlantState& other);
 
 	void handleChange();
+	string getState();
 };
 
 #endif
