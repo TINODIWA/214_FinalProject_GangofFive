@@ -48,9 +48,9 @@ CropBuilder::CropBuilder(const CropBuilder* other) {
  *
  * @param name
  */
-void CropBuilder::addCrop(string name) {
-  Crop* crop = new Crop(name);
-  root->addPlant(crop);
+void CropBuilder::addCrop() {
+  Crop* crop = new Crop();
+  root->add(crop);
   currCrop = crop;
 }
 
@@ -59,8 +59,8 @@ void CropBuilder::addCrop(string name) {
  *
  * @param p
  */
-void CropBuilder::addPlant(const Plant* p) {
- 
+void CropBuilder::addPlant(Garden* p) {
+  currCrop->add(p);
 }
 
 /**
@@ -68,7 +68,7 @@ void CropBuilder::addPlant(const Plant* p) {
  *
  */
 void CropBuilder::reset() {
-  root = new Crop("Garden");
+  root = new Crop();
   currCrop = root;
 }
 
@@ -77,7 +77,7 @@ void CropBuilder::reset() {
  *
  * @return Plant*
  */
-Plant* CropBuilder::getCrop() {
+Garden* CropBuilder::getCrop() {
   return this->root;
 }
 
@@ -86,6 +86,6 @@ Plant* CropBuilder::getCrop() {
  * 
  */
 
- Builder* CropBuilder::clone(){
+ CropBuilder* CropBuilder::clone(){
   return new CropBuilder(*this);
  }

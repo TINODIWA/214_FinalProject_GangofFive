@@ -10,6 +10,7 @@
 
 #include "Builder.h"
 #include "Crop.h"
+#include "Garden.h"
 #include "PlantCare.h"
 #include "Staff.h"
 
@@ -17,18 +18,18 @@ class PlantInfo;
 
 class CropBuilder : public Builder {
  private:
-  Plant* root;
-  Plant* currCrop;
+  Garden* root;
+  Garden* currCrop;
 
  public:
   CropBuilder();
   ~CropBuilder();
   CropBuilder(const CropBuilder* other);
-  void addCrop(string name);
-  void addPlant(const Plant* p);
-  Builder* clone();
+  void addCrop();
+  void addPlant(Garden* p);
+  Garden* getCrop();
+  CropBuilder* clone();
   void reset();
-  Plant* getCrop();
 };
 
 #endif  // CROPBUILDER_H_

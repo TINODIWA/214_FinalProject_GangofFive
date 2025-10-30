@@ -4,10 +4,8 @@ CFLAGS = -g -fprofile-arcs -ftest-coverage
 MAIN = main
 TEST = test
 
-OBJS = PlantInfo.o Plant.o Shrub.o Tree.o Crop.o\
- Flower.o PlantCare.o PlantCreator.o\
-ShrubCreator.o FlowerCreator.o TreeCreator.o People.o Staff.o\
-Builder.o CropBuilder.o Director.o
+
+OBJS = Garden.o Plant.o Crop.o PlantCare.o 
 		
 
 MAIN_OBJS = $(OBJS) Main.o

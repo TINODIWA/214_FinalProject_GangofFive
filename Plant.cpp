@@ -18,35 +18,6 @@
 Plant::Plant() {}
 
 /**
- * @brief Construct a new Plant object
- *
- * @param name
- * @param type
- * @param water
- * @param sun
- * @param fertiliser
- * @param strategy
- * @param state
- * @param staff
- * @param days
- * @param price
- */
-Plant::Plant(string name, string type, vector<int> water, vector<int> sun, vector<int> fertiliser,
-             PlantCare* waterStrategy, PlantCare* sunStrategy, PlantCare* fertiliserStrategy, vector<int> days,
-             int price, int attention)
-    : name(name),
-      type(type),
-      price(price),
-      water(water),
-      sun(sun),
-      fertiliser(fertiliser),
-      days(days),
-      attention(attention) {
-  this->state = new Planted();
-  // PLEASE ADD INITIALISATION WHEN PLANTCARE SUBCLASSES ARE MADE
-}
-
-/**
  * @brief Destroy the Plant:: Plant object
  *
  */
@@ -58,20 +29,22 @@ Plant::~Plant() {}
  * @param other
  */
 
-Plant::Plant(const Plant& other)
-    : name(other.name),
-      type(other.type),
-      water(other.water),
-      sun(other.sun),
-      fertiliser(other.fertiliser),
-      days(other.days),
-      price(other.price),
-      attention(attention) {
-  state = (other.state) ? other.state->clone() : nullptr;
+Plant::Plant(const Plant* other) {
+  if (!other) return;
 
-  if (other.staff.size() > 0) {
-    vector<Staff*>::const_iterator it = other.staff.begin();
-    while (it != other.staff.end()) {
+  name = other->name;
+  type = other->type;
+  water = other->water;
+  sun = other->sun;
+  fertiliser = other->fertiliser;
+  days = other->days;
+  price = other->price;
+  attention = other->attention;
+  state = (other->state) ? other->state->clone() : nullptr;
+
+  if (other->staff.size() > 0) {
+    vector<Staff*>::const_iterator it = other->staff.begin();
+    while (it != other->staff.end()) {
       staff.push_back(*it);  // shallow copy coz staff have multiple plants
     }
   }
@@ -159,6 +132,25 @@ void Plant::setSunCare(PlantCare* sun) {
 void Plant::setFertiliserCare(PlantCare* fertiliser) {
   // fertiliser.clone()
 }
+
+/**
+ * @brief sets the days for the life cycle
+ *
+ * @param days
+ */
+void Plant::setDays(vector<int> days) {
+  this->days = days;
+}
+
+/**
+ * @brief sets the price of the plant
+ *
+ * @param price
+ */
+void Plant::setPrice(int price) {
+  this->price = price;
+}
+
 /**
  * @brief returns the name of the plant
  *
@@ -214,6 +206,51 @@ int Plant::getAttention() const {
   return attention;
 }
 
+/**
+ * @brief returns the water care strategy
+ *
+ * @return PlantCare*
+ */
+PlantCare* Plant::getWaterCare() const {
+  return waterStrategy;
+}
+
+/**
+ * @brief returns the sun care strategy
+ *
+ * @return PlantCare*
+ */
+PlantCare* Plant::getSunCare() const {
+  return sunStrategy;
+}
+
+/**
+ * @brief return the fertiliser care strategy
+ *
+ * @return PlantCare*
+ */
+PlantCare* Plant::getFertiliserCare() const {
+  return fertiliserStrategy;
+}
+
+/**
+ * @brief returns the days of lifecycle progression of the plant
+ *
+ * @return vector<int>
+ */
+vector<int> Plant::getDays() const {
+  return days;
+}
+
+/**
+ * @brief returns the price of the plant
+ *
+ * @return int
+ */
+int Plant::getPrice() const {
+  return price;
+}
+
 void Plant::attach(Staff* s) {
   // TODO(user) - implement Plant::attach
   // throw "Not yet implemented";
@@ -230,25 +267,18 @@ void Plant::notify() {
 }
 
 /**
- * @brief stubbed - for adding plans to a crop
- *
- * @param p
- */
-void Plant::add(Garden* p) {}
-
-/**
  * @brief clones the plant
  *
  * @return Garden*
  */
 Garden* Plant::clone() {
-  return new Plant(*this);
+  return new Plant(this);
 }
 
 /**
- * @brief
+ * @brief prints the plant
  *
  */
-void Plant::print(){
-    cout << left << setw(10) << this->name << "|";
+void Plant::print() {
+  cout << left << setw(10) << this->name << "|";
 }

@@ -41,8 +41,6 @@ class Plant : public Garden {
   Plant();
   virtual ~Plant();
   Plant(const Plant* other);
-  Plant(string name, string type, vector<int> water, vector<int> sun, vector<int> fertiliser, PlantCare* waterStrategy,
-        PlantCare* sunStrategy, PlantCare* fertiliserStrategy, vector<int> days, int price, int attention);
   void setName(string name);
   void setType(string type);
   void setWater(int water);
@@ -52,21 +50,24 @@ class Plant : public Garden {
   void setWaterCare(PlantCare* water);
   void setSunCare(PlantCare* sun);
   void setFertiliserCare(PlantCare* fertiliser);
-  void setStaff(Staff* staff);
+  void setDays(vector<int> days);
+  void setPrice(int price);
 
   string getName() const;
   string getType() const;
-
+  int getAttention() const;
+  PlantCare* getWaterCare() const;
+  PlantCare* getSunCare() const;
+  PlantCare* getFertiliserCare() const;
+  vector<int> getDays() const;
+  int getPrice() const;
   // vector[0] = current   vector[1] = required
   vector<int> getWater() const;
   vector<int> getSun() const;
   vector<int> getFertiliser() const;
 
-  int getAttention() const;
-
   Garden* clone();
   void print();
-  void add(Garden* p);
 
   // Observer functions
   void attach(Staff* s);
