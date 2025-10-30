@@ -17,6 +17,8 @@ class Plant {
 protected:
 	PlantInfo info;
 	vector<Staff*> observers;
+	PlantCare* care;
+    bool checked;
 
 public:
 	Plant();
@@ -40,6 +42,10 @@ public:
 	vector<int> getSun() const;
 	vector<int> getFertiliser() const;
 	int getAttention() const;
+
+	PlantCare* getPlantCare() const;
+    void setChecked(bool v);
+    bool isChecked() const;
 
 	virtual Plant* clone() = 0;
 	void attach(Staff* s);

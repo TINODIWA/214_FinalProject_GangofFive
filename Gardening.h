@@ -7,19 +7,21 @@
 class Gardening : public Roles {
 
 public:
-	vector<Plant*> plants;
+    vector<Plant*> plants;
 
-	Gardening();
+	~Gardening();
+	
+    Gardening();
 
-	void update();
+    void update(Plant* p);
 
-	string handleCustomer(Request* req);
+    string handleCustomer(Request* req);
 
-	void handlePlant(Plant* p);
+    void handlePlant(Plant* p);
 
-	string getType();
+    string getType();
 
-	void checkPlants();
+    void checkPlants();
 };
 
 #endif

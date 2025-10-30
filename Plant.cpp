@@ -7,6 +7,8 @@
  */
 Plant::Plant() {
 	info = PlantInfo();
+	care = NULL;
+	checked = false;
 }
 
 
@@ -25,6 +27,8 @@ Plant::~Plant() {
 
 Plant::Plant(const Plant& other) {
 	this->info = PlantInfo(other.info);
+	this->care = other.care;
+	this->checked = other.checked;
 }
 
 
@@ -53,6 +57,8 @@ void Plant::setType(string type) {
  */
 Plant::Plant(const PlantInfo& info):info(info) {
 	// this->info = PlantInfo(info);
+	care = NULL;
+	checked = false;
 }
 
 /**
@@ -148,27 +154,71 @@ int Plant::getAttention() const {
 	return info.getAttention();
 }
 
+/**
+ * @brief Attach a Staff observer to this Plant
+ * @param s Pointer to the Staff observer to attach
+ */
 void Plant::attach(Staff* s) {
-	if (s != nullptr) {
-		observers.push_back(s);
-	}
+    if (s != NULL) {
+        observers.push_back(s);
+    }
 }
 
+/**
+ * @brief Detach a Staff observer from this Plant
+ * @param s Pointer to the Staff observer to remove
+ */
 void Plant::detach(Staff* s) {
-	for (auto it = observers.begin(); it != observers.end(); ++it) {
-		if (*it == s) {
-			observers.erase(it);
-			break;
-		}
-	}
+    for (auto it = observers.begin(); it != observers.end(); ++it) {
+        if (*it == s) {
+            observers.erase(it);
+            break;
+        }
+    }
 }
 
+/**
+ * @brief Notify all attached observers of a state change
+ * Calls update() on each attached Staff observer
+ */
 void Plant::notify() {
-	for (Staff* observer : observers) {
-		if (observer != nullptr) {
-			observer->handlePlant(this); 
-		}
-	}
+    for (Staff* observer : observers) {
+        if (observer != NULL) {
+            observer->update(this);
+        }
+    }
 }
 
 void Plant::addPlant(Plant *p){}
+
+/**
+ * @brief Set the PlantCare strategy for this Plant
+ * @param strategy Pointer to the PlantCare strategy to use
+ */
+void Plant::setPlantCare(PlantCare* strategy) {
+    this->care = strategy;
+}
+
+/**
+ * @brief Get the current PlantCare strategy
+ * @return Pointer to the current PlantCare strategy
+ */
+PlantCare* Plant::getPlantCare() const {
+    return care;
+}
+
+/**
+ * @brief Set the checked status of the Plant
+ * @param v Boolean value indicating if plant has been checked
+ */
+void Plant::setChecked(bool v) {
+    this->checked = v;
+}
+
+/**
+ * @brief Get the checked status of the Plant
+ * @return Boolean indicating if plant has been checked
+ */
+bool Plant::isChecked() const {
+    return checked;
+}

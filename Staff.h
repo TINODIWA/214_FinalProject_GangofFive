@@ -25,6 +25,8 @@ public:
 	virtual string jobDesc() = 0;
 
 	virtual string getType() = 0;
+
+	virtual void update(Plant* p) = 0;
 };
 
 #endif
