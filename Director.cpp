@@ -38,7 +38,7 @@ Director::~Director() {
  *
  * @param p plant builder
  */
-Director::Director(CropBuilder* c,PlantBuilder* p) : cropBuilder(c), plantBuilder(p) {}
+Director::Director(CropBuilder* c, PlantBuilder* p) : cropBuilder(c), plantBuilder(p) {}
 
 /**
  * @brief sets the crop builder to a new one
@@ -101,8 +101,8 @@ Garden* Director::construct(string filename) {
 
     plantBuilder->setDays(days)->setPrice(stoi(pieces[9]));
     Garden* p = plantBuilder->build();
-  
-    for(int i = 0; i < amount; i++){
+
+    for (int i = 0; i < amount; i++) {
       cropBuilder->addPlant(p->clone());
     }
   }
@@ -112,10 +112,10 @@ Garden* Director::construct(string filename) {
 
 /**
  * @brief splits the line of a textfile to instantiate a plant
- * 
- * @param str 
- * @param delim 
- * @return vector<string> 
+ *
+ * @param str
+ * @param delim
+ * @return vector<string>
  */
 vector<string> Director::split(const string str, char delim) {
   vector<string> pieces;
@@ -127,5 +127,3 @@ vector<string> Director::split(const string str, char delim) {
 
   return pieces;
 }
-
-

@@ -15,7 +15,7 @@
  * @brief Construct a new Plant Builder:: Plant Builder object
  *
  */
-PlantBuilder::PlantBuilder() : Builder(),p(nullptr) {}
+PlantBuilder::PlantBuilder() :p(nullptr) {}
 
 /**
  * @brief Destroy the Plant Builder:: Plant Builder object
@@ -43,7 +43,7 @@ PlantBuilder::PlantBuilder(const PlantBuilder* other) {
  * @param name
  * @return Builder*
  */
-Builder* PlantBuilder::setName(string name) {
+PlantBuilder* PlantBuilder::setName(string name) {
   p->setName(name);
   return this;
 }
@@ -54,7 +54,7 @@ Builder* PlantBuilder::setName(string name) {
  * @param type
  * @return Builder*
  */
-Builder* PlantBuilder::setType(string type) {
+PlantBuilder* PlantBuilder::setType(string type) {
   p->setType(type);
   return this;
 }
@@ -65,7 +65,7 @@ Builder* PlantBuilder::setType(string type) {
  * @param water
  * @return Builder*
  */
-Builder* PlantBuilder::setWater(int water) {
+PlantBuilder* PlantBuilder::setWater(int water) {
   p->setWater(water);
   return this;
 }
@@ -76,7 +76,7 @@ Builder* PlantBuilder::setWater(int water) {
  * @param sun
  * @return Builder*
  */
-Builder* PlantBuilder::setSun(int sun) {
+PlantBuilder* PlantBuilder::setSun(int sun) {
   p->setSun(sun);
   return this;
 }
@@ -87,7 +87,7 @@ Builder* PlantBuilder::setSun(int sun) {
  * @param fertiliser
  * @return Builder*
  */
-Builder* PlantBuilder::setFertiliser(int fertiliser) {
+PlantBuilder* PlantBuilder::setFertiliser(int fertiliser) {
   p->setFertiliser(fertiliser);
   return this;
 }
@@ -98,7 +98,7 @@ Builder* PlantBuilder::setFertiliser(int fertiliser) {
  * @param attention
  * @return Builder*
  */
-Builder* PlantBuilder::setAttention(int attention) {
+PlantBuilder* PlantBuilder::setAttention(int attention) {
   p->setAttention(attention);
   return this;
 }
@@ -109,7 +109,7 @@ Builder* PlantBuilder::setAttention(int attention) {
  * @param water
  * @return Builder*
  */
-Builder* PlantBuilder::setWaterCare(PlantCare* water) {
+PlantBuilder* PlantBuilder::setWaterCare(PlantCare* water) {
   return this;
 }
 
@@ -119,7 +119,7 @@ Builder* PlantBuilder::setWaterCare(PlantCare* water) {
  * @param sun
  * @return Builder*
  */
-Builder* PlantBuilder::setSunCare(PlantCare* sun) {
+PlantBuilder* PlantBuilder::setSunCare(PlantCare* sun) {
   return this;
 }
 
@@ -129,7 +129,7 @@ Builder* PlantBuilder::setSunCare(PlantCare* sun) {
  * @param fertiliser
  * @return Builder*
  */
-Builder* PlantBuilder::setFertiliserCare(PlantCare* fertiliser) {
+PlantBuilder* PlantBuilder::setFertiliserCare(PlantCare* fertiliser) {
   return this;
 }
 
@@ -139,7 +139,7 @@ Builder* PlantBuilder::setFertiliserCare(PlantCare* fertiliser) {
  * @param days 
  * @return Builder* 
  */
-Builder* PlantBuilder::setDays(vector<int> days) {
+PlantBuilder* PlantBuilder::setDays(vector<int> days) {
     p->setDays(days);
     return this;
 }
@@ -150,7 +150,7 @@ Builder* PlantBuilder::setDays(vector<int> days) {
  * @param price 
  * @return Builder* 
  */
-Builder* PlantBuilder::setPrice(int price) {
+PlantBuilder* PlantBuilder::setPrice(int price) {
     p->setPrice(price);
     return this;
 }
@@ -180,5 +180,5 @@ PlantBuilder* PlantBuilder::clone() {
  *
  */
 void PlantBuilder::reset() {
-  p = nullptr;
+  p = new Plant();
 }

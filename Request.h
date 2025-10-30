@@ -6,7 +6,10 @@
 #ifndef REQUEST_H_
 #define REQUEST_H_
 
+#include <iostream>
 #include <string>
+
+using namespace std;
 
 class Request {
  private:
