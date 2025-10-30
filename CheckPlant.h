@@ -1,11 +1,17 @@
-#ifndef CHECKPLANT_H
-#define CHECKPLANT_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-class CheckPlant : Command {
+#ifndef CHECKPLANT_H_
+#define CHECKPLANT_H_
 
+#include "Command.h"
 
-public:
-	void execute();
+class CheckPlant : public Command {
+ public:
+  CheckPlant(Staff* s, StaffCo_ordination* m);
+  virtual void execute();
 };
 
-#endif
+#endif  // CHECKPLANT_H_

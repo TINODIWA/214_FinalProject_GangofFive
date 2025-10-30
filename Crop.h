@@ -1,8 +1,15 @@
-#ifndef CROP_H
-#define CROP_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef CROP_H_
+#define CROP_H_
 
 #include <iostream>
+#include <string>
 #include <vector>
+
 #include "Plant.h"
 
 using namespace std;
@@ -20,4 +27,4 @@ class Crop : public Plant {
   void print();
 };
 
-#endif
+#endif  // CROP_H_

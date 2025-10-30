@@ -1,13 +1,23 @@
-#ifndef CASH_H
-#define CASH_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-class Cash : Order {
+#ifndef CASH_H_
+#define CASH_H_
 
+#include "Payment.h"
+#include <iostream>
 
-public:
-	Cash();
+using namespace std;
 
-	void payment();
+class Cash : public Payment {
+ public:
+  Cash();
+  ~Cash();
+  void prepare();
+  void payment();
+  void package();
 };
 
-#endif
+#endif  // CASH_H_

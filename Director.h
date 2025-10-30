@@ -6,27 +6,33 @@
 #ifndef DIRECTOR_H_
 #define DIRECTOR_H_
 
+#include <fstream>
 #include <iostream>
-#include <sstream>
 #include <map>
+#include <sstream>
+#include <string>
+#include <vector>
+
 #include "Builder.h"
-#include "CropBuilder.h"
 #include "Crop.h"
+#include "CropBuilder.h"
 #include "PlantInfo.h"
 
-class Director
-{
+using namespace std;
 
-private:
-	Builder *cropBuilder;
+class Director {
+ private:
+  CropBuilder* cropBuilder;
+  map<string, vector<PlantInfo>> plants;
+  vector<string> plantTypes;
 
-public:
-	Director();
-	~Director();
-	Director(Builder *p);
-	void setBuilder(Builder *p);
-	Plant *construct();
-	void userInput();
+ public:
+  Director();
+  ~Director();
+  Director(CropBuilder* p);
+  void setBuilder(CropBuilder* p);
+  Plant* construct(string filename);
+  void parse(string filename);
 };
 
-#endif // DIRECTOR_H_
+#endif  // DIRECTOR_H_

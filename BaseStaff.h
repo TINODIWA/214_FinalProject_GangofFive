@@ -1,17 +1,22 @@
-#ifndef BASESTAFF_H
-#define BASESTAFF_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef BASESTAFF_H_
+#define BASESTAFF_H_
+
+#include <string>
 
 class BaseStaff : Staff {
+ public:
+  BaseStaff();
 
+  string jobDesc();
 
-public:
-	BaseStaff();
+  void handleCustomer(Request* req);
 
-	string jobDesc();
-
-	void handleCustomer(Request* req);
-
-	string getType();
+  string getType();
 };
 
-#endif
+#endif  // BASESTAFF_H_

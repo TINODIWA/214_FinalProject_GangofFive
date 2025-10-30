@@ -1,11 +1,46 @@
+/**
+ * @file Card.cpp
+ * @author Swelihle Makhathini
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Card.h"
 
-Card::Card() {
-	// TODO - implement Card::Card
-	throw "Not yet implemented";
+/**
+ * @brief Construct a new Card:: Card object
+ *
+ */
+Card::Card() : Payment() {}
+
+/**
+ * @brief Destroy the Card:: Card object
+ *
+ */
+Card::~Card() {}
+
+/**
+ * @brief preparing a Card order
+ *
+ */
+void Card::prepare() {
+  cout << "Awaiting Authorisation\n";
 }
 
+/**
+ * @brief processing a Card payment
+ *
+ */
 void Card::payment() {
-	// TODO - implement Card::payment
-	throw "Not yet implemented";
+  cout << "Processing Payment\n";
 }
+
+/**
+ * @brief packaging a Card order
+ *
+ */
+void Card::package() {}

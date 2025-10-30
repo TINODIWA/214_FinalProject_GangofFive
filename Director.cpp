@@ -1,3 +1,14 @@
+/**
+ * @file Director.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Director.h"
 
 /**
@@ -6,18 +17,15 @@
  */
 Director::Director() : cropBuilder(nullptr) {}
 
-
 /**
  * @brief Destroy the Director:: Director object
- * 
+ *
  */
-Director::~Director()
-{
-	if (cropBuilder)
-	{
-		delete cropBuilder;
-		cropBuilder = nullptr;
-	}
+Director::~Director() {
+  if (cropBuilder) {
+    delete cropBuilder;
+    cropBuilder = nullptr;
+  }
 }
 
 /**
@@ -25,37 +33,45 @@ Director::~Director()
  *
  * @param p plant builder
  */
-Director::Director(Builder *p) : cropBuilder(new CropBuilder(p)) {}
+Director::Director(CropBuilder* p) : cropBuilder(p) {}
 
 /**
  * @brief sets the plant builder to a new one
  *
  * @param p
  */
-void Director::setBuilder(Builder *p)
-{
-	if (cropBuilder)
-	{
-		delete cropBuilder;
-		cropBuilder = nullptr;
-	}
+void Director::setBuilder(CropBuilder* p) {
+  if (cropBuilder) {
+    delete cropBuilder;
+    cropBuilder = nullptr;
+  }
 
-	cropBuilder = new CropBuilder();
+  cropBuilder = new CropBuilder(p);
 }
 
 /**
  * @brief build the garden of crops
  *
  */
-Plant *Director::construct()
-{
-	cropBuilder->reset();
+Plant* Director::construct(string filename) {
+  cropBuilder->reset();
+  parse(filename);
 
-	for (auto plant : plants)
-	{
-		cropBuilder->addCrop(plant.getType());
-		cropBuilder->addPlant(plant);
-	}
+  map<string, vector<PlantInfo>>::iterator it = plants.begin();
+  bool crop = true;
+  while (it != plants.end()) {
+    cropBuilder->addCrop((*it).first);  //
+
+    vector<PlantInfo>::iterator p_it = (*it).second.begin();
+    while (p_it != (*it).second.end()) {
+      cropBuilder->addPlant(*p_it);
+      ++p_it;
+    }
+
+    ++it;
+  }
+
+  return cropBuilder->getCrop();
 }
 
 /**
@@ -63,9 +79,45 @@ Plant *Director::construct()
  *
  */
 
-void Director::userInput()
-{
-	/***
-	 * THIS WILL BE A FOR LOOP THAT WILL POPULATE THE VECTOR OF STRUCTS WITH THE DIFFERENT PLANTS THE USER WANTS
-	 */
+void Director::parse(string filename) {
+  fstream infos(filename);
+  if (infos.is_open()) {
+    string line;
+    while (getline(infos, line)) {
+      stringstream ss(line);
+      string token;
+      int i = 0;
+
+      PlantInfo p = PlantInfo();
+
+      while (getline(ss, token, '#')) {
+        switch (i) {
+          case 0:  // type
+            p.setType(token);
+            break;
+          case 1:  // name
+            p.setName(token);
+            break;
+          case 2:  // amount
+            p.setAmount(stoi(token));
+            break;
+          case 3:  // water
+            p.setWater(stoi(token), 1);
+            break;
+          case 4:  // sun
+            p.setSun(stoi(token), 1);
+            break;
+          case 5:  // fertiliser
+            p.setFertiliser(stoi(token), 1);
+            break;
+            // case 6: //days
+            // break;
+        }
+
+        i++;
+      }
+      plants[p.getType()].push_back(p);
+    }
+    infos.close();
+  }
 }
