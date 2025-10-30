@@ -15,8 +15,58 @@
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant() {
-  info = PlantInfo();
+Plant::Plant() {}
+
+/**
+ * @brief Construct a new Plant object
+ *
+ * @param name
+ * @param type
+ * @param water
+ * @param sun
+ * @param fertiliser
+ * @param strategy
+ * @param state
+ * @param staff
+ * @param days
+ * @param price
+ */
+Plant::Plant(string name, string type, vector<int> water, vector<int> sun, vector<int> fertiliser,
+             PlantCare* waterStrategy, PlantCare* sunStrategy, PlantCare* fertiliserStrategy, vector<int> days,
+             int price)
+    : name(name), type(type), price(price) {
+  vector<int>::iterator it = water.begin();
+
+  while (it != water.end()) {
+    this->water.push_back(*it);
+    ++it;
+  }
+
+  it = sun.begin();
+
+  while (it != sun.end()) {
+    this->sun.push_back(*it);
+    ++it;
+  }
+
+  it = fertiliser.begin();
+
+  while (it != fertiliser.end()) {
+    this->fertiliser.push_back(*it);
+    ++it;
+  }
+
+  it = days.begin();
+
+  while (it != days.end()) {
+    this->days.push_back(*it);
+    ++it;
+  }
+
+  this->state = new Planted();
+
+  // PLEASE ADD INITIALISATION WHEN PLANTCARE SUBCLASSES ARE MADE
+  
 }
 
 /**

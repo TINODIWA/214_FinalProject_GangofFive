@@ -1,5 +1,5 @@
 /**
- * @file Main.cpp
+ * @file TestingMain.cpp
  * @author your name (you@domain.com)
  * @brief
  * @version 0.1
@@ -10,8 +10,25 @@
  */
 
 #include "Builder.h"
+#include "Card.h"
+#include "Cash.h"
 #include "CropBuilder.h"
+#include "Customer.h"
 #include "Director.h"
+#include "EFT.h"
+#include "Nursery.h"
+#include "Order.h"
+#include "Payment.h"
+#include "People.h"
+#include "Plant.h"
+#include "Request.h"
+#include "Staff.h"
+
+#include <map>
+#include <iostream>
+#include <vector>
+
+using namespace std;
 
 int main() {
   cout << "TESTING GARDEN BUILDER\n";

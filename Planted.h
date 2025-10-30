@@ -6,12 +6,12 @@
 #ifndef PLANTED_H_
 #define PLANTED_H_
 
-class Planted : PlantState {
+#include "PlantState.h"
+
+class Planted : public PlantState {
  public:
   Planted();
-
   Planted(const PlantState& other);
-
   void handleChange();
 };
 

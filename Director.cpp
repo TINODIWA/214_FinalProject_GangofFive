@@ -40,13 +40,13 @@ Director::Director(CropBuilder* p) : cropBuilder(p) {}
  *
  * @param p
  */
-void Director::setBuilder(CropBuilder* p) {
+void Director::setBuilder(Builder* p) {
   if (cropBuilder) {
     delete cropBuilder;
     cropBuilder = nullptr;
   }
 
-  cropBuilder = new CropBuilder(p);
+  cropBuilder = p->clone();
 }
 
 /**
@@ -55,7 +55,16 @@ void Director::setBuilder(CropBuilder* p) {
  */
 Plant* Director::construct(string filename) {
   cropBuilder->reset();
-  parse(filename);
+  
+  // Parse the file
+
+  fstream plants(filename);
+  if(!plants.is_open()){
+	return nullptr;
+  }
+
+  string line;
+  
 
   map<string, vector<PlantInfo>>::iterator it = plants.begin();
   bool crop = true;
