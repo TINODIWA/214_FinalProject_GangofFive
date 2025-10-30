@@ -1,5 +1,10 @@
-#ifndef DIRECTOR_H
-#define DIRECTOR_H
+/**
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
+#ifndef DIRECTOR_H_
+#define DIRECTOR_H_
 
 #include <iostream>
 #include <sstream>
@@ -13,8 +18,7 @@ class Director
 {
 
 private:
-	CropBuilder *cropBuilder;
-	std::vector<PlantInfo> plants; 
+	Builder *cropBuilder;
 
 public:
 	Director();
@@ -25,4 +29,4 @@ public:
 	void userInput();
 };
 
-#endif
+#endif // DIRECTOR_H_
