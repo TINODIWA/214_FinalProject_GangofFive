@@ -11,6 +11,7 @@ class Garden {
   Garden();
   virtual ~Garden();
   virtual Garden* clone() = 0;
+  virtual void add(Garden* p) = 0;
   virtual void print() = 0;
 };
 

@@ -282,3 +282,10 @@ Garden* Plant::clone() {
 void Plant::print() {
   cout << left << setw(10) << this->name << "|";
 }
+
+/**
+ * @brief stubbed - for the crop
+ * 
+ * @param p 
+ */
+void Plant::add(Garden* p){}

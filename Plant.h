@@ -68,6 +68,7 @@ class Plant : public Garden {
 
   Garden* clone();
   void print();
+  void add(Garden* p);
 
   // Observer functions
   void attach(Staff* s);
