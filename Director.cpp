@@ -89,20 +89,23 @@ Garden* Director::construct(string filename) {
 
     plantBuilder->reset();
     vector<string> pieces = split(line, '#');
-    int amount = stoi(pieces[3]);
+
+    int amount = stoi(pieces[2]);
 
     plantBuilder->setName(pieces[0])
         ->setType(pieces[1])
-        ->setWater(stoi(pieces[4]))
-        ->setSun(stoi(pieces[5]))
-        ->setFertiliser(stoi(pieces[6]));
+        ->setWater(stoi(pieces[3]))
+        ->setSun(stoi(pieces[4]))
+        ->setFertiliser(stoi(pieces[5]));
 
-    vector<int> days = {stoi(pieces[7]), stoi(pieces[8])};
+    vector<int> days = {stoi(pieces[6]), stoi(pieces[7])};
 
-    plantBuilder->setDays(days)->setPrice(stoi(pieces[9]));
+    plantBuilder->setDays(days)->setPrice(stoi(pieces[8]));
     Garden* p = plantBuilder->build();
 
-    for (int i = 0; i < amount; i++) {
+    cropBuilder->addPlant(p);
+
+    for (int i = 0; i < amount - 1; i++) {
       cropBuilder->addPlant(p->clone());
     }
   }
@@ -123,7 +126,9 @@ vector<string> Director::split(const string str, char delim) {
 
   string piece;
 
-  while (getline(ss, piece, delim)) pieces.push_back(piece);
+  while (getline(ss, piece, delim)) {
+    pieces.push_back(piece);
+  }
 
   return pieces;
 }

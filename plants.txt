@@ -1,8 +1,8 @@
 Oak#Tree#3#18#15#14#2#3#150
 Maple#Tree#4#16#13#12#2#2#120
-Baobab#Tree#5#20#14#16#4#200
+Baobab#Tree#5#20#14#16#4#3#200
 Pine#Tree#2#15#12#10#2#3#100
-Acacia#Tree#92#17#16#13#4#180
+Acacia#Tree#2#17#16#13#4#4#180
 Lavender#Shrub#3#12#18#9#1#3#90
 Hibiscus#Shrub#1#14#19#10#1#3#85
 Rosemary#Shrub#3#11#17#8#1#2#80
@@ -13,5 +13,3 @@ Tulip#Flower#5#9#18#8#1#3#65
 Sunflower#Flower#3#8#20#7#2#3#60
 Daisy#Flower#2#9#19#8#1#3#55
 Lily#Flower#4#10#18#9#1#2#75
-
-

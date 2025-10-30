@@ -60,6 +60,7 @@ Garden* Crop::clone() {
 
 void Crop::print() {
   vector<Garden*>::iterator it = plants.begin();
+  //cout<<"ERROR\n";
 
   int width = 66;
   for (int i = 0; i < width; i++) cout << "-";

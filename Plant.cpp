@@ -15,7 +15,13 @@
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant() {}
+Plant::Plant(): state(nullptr), waterStrategy(nullptr),sunStrategy(nullptr),fertiliserStrategy(nullptr){
+  for(int i = 0; i< 2; i++){
+    water.push_back(0);
+    sun.push_back(0);
+    fertiliser.push_back(0);
+  }
+}
 
 /**
  * @brief Destroy the Plant:: Plant object

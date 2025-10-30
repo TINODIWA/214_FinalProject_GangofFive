@@ -22,10 +22,10 @@ PlantBuilder::PlantBuilder() :p(nullptr) {}
  *
  */
 PlantBuilder::~PlantBuilder() {
-  if (p) {
-    delete p;
-    p = nullptr;
-  }
+  // if (p) {
+  //   delete p;
+  //   p = nullptr;
+  // }
 }
 
 /**
