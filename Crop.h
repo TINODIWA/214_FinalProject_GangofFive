@@ -13,7 +13,7 @@ class Crop : public Plant
 		Crop();
 		~Crop();
 		Crop(const Crop& other);
-		Crop(std::string name);
+		Crop(string name);
 		void addPlant(Plant *p);
 		Plant *clone();
 		void print();

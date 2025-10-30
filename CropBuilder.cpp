@@ -140,5 +140,9 @@ void CropBuilder::reset()
  */
 Plant *CropBuilder::getCrop()
 {
-	return this->root;
+	// return this->root;
+	Plant* temp = this->root;
+	this->root = nullptr;  // Transfer ownership
+	this->currCrop = nullptr;
+	return temp;
 }

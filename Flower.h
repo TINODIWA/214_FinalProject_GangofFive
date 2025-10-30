@@ -12,7 +12,7 @@ class Flower : public Plant
 		Flower(const Plant &other);
 		virtual ~Flower();
 		void addPlant(Plant *p);
-		Plant *clone();
+		Plant* clone();
 
 		void print();
 };
