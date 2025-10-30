@@ -64,7 +64,13 @@ Plant* Director::construct(string filename) {
   }
 
   string line;
-  
+  while(getline(plants,line)){
+    stringstream ss(line);
+    string token;
+
+    int i = 0;
+    
+  }
 
   map<string, vector<PlantInfo>>::iterator it = plants.begin();
   bool crop = true;

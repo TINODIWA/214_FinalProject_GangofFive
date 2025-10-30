@@ -10,20 +10,19 @@
 #include <string>
 #include <vector>
 
-#include "Plant.h"
+#include "Garden.h"
 
 using namespace std;
 
-class Crop : public Plant {
+class Crop : public Garden {
  public:
-  std::vector<Plant*> plants; 
+  std::vector<Garden*> plants; 
 
   Crop();
   ~Crop();
   Crop(const Crop& other);
-  Crop(std::string name);
-  void addPlant(Plant* p);
-  Plant* clone();
+  void add(Garden* p);
+  Garden* clone();
   void print();
 };
 

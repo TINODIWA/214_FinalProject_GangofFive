@@ -9,7 +9,10 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <iostream>
+#include <iomanip>
 
+#include "Garden.h"
 #include "PlantCare.h"
 #include "PlantState.h"
 #include "Planted.h"
@@ -18,7 +21,7 @@ class Staff;
 
 using namespace std;
 
-class Plant {
+class Plant : public Garden {
  private:
   string name;
   string type;
@@ -61,9 +64,9 @@ class Plant {
 
   int getAttention() const;
 
-  virtual Plant* clone() = 0;
-  virtual void print() = 0;
-  virtual void addPlant(Plant* p) = 0;
+  Garden* clone();
+  void print();
+  void add(Garden* p);
 
   // Observer functions
   void attach(Staff* s);

@@ -139,25 +139,25 @@ void Plant::setAttention(int attention) {
  * @param water
  */
 void Plant::setWaterCare(PlantCare* water) {
-  //water.clone();
+  // water.clone();
 }
 
 /**
  * @brief sets the sun strategy of the plant
- * 
+ *
  * @param sun
  */
 void Plant::setSunCare(PlantCare* sun) {
-  //sun.clone()
+  // sun.clone()
 }
 
 /**
  * @brief sets the fertiliser strategy of the plant
- * 
- * @param fertiliser 
+ *
+ * @param fertiliser
  */
 void Plant::setFertiliserCare(PlantCare* fertiliser) {
-  //fertiliser.clone()
+  // fertiliser.clone()
 }
 /**
  * @brief returns the name of the plant
@@ -234,4 +234,21 @@ void Plant::notify() {
  *
  * @param p
  */
-void Plant::addPlant(Plant* p) {}
+void Plant::add(Garden* p) {}
+
+/**
+ * @brief clones the plant
+ *
+ * @return Garden*
+ */
+Garden* Plant::clone() {
+  return new Plant(*this);
+}
+
+/**
+ * @brief
+ *
+ */
+void Plant::print(){
+    cout << left << setw(10) << this->name << "|";
+}
