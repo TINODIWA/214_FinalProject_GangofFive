@@ -32,30 +32,33 @@ class Plant {
   vector<Staff*> staff;
   vector<int> days;  // <growing,mature>
   int price;
+  int attention;
 
  public:
   Plant();
   virtual ~Plant();
   Plant(const Plant* other);
-  Plant(string name, string type, vector<int> water, vector<int> sun, vector<int> fertiliser, 
-        PlantCare* waterStrategy,PlantCare* sunStrategy, PlantCare* fertiliserStrategy, vector<int> days, int price);
+  Plant(string name, string type, vector<int> water, vector<int> sun, vector<int> fertiliser, PlantCare* waterStrategy,
+        PlantCare* sunStrategy, PlantCare* fertiliserStrategy, vector<int> days, int price, int attention);
   void setName(string name);
   void setType(string type);
   void setWater(int water);
   void setSun(int sun);
   void setFertiliser(int fertiliser);
   void setAttention(int attention);
-  void setPlantCare(PlantCare* strategy);
+  void setWaterCare(PlantCare* water);
+  void setSunCare(PlantCare* sun);
+  void setFertiliserCare(PlantCare* fertiliser);
   void setStaff(Staff* staff);
 
   string getName() const;
   string getType() const;
-  
-  //vector[0] = current   vector[1] = required
+
+  // vector[0] = current   vector[1] = required
   vector<int> getWater() const;
   vector<int> getSun() const;
   vector<int> getFertiliser() const;
-  
+
   int getAttention() const;
 
   virtual Plant* clone() = 0;

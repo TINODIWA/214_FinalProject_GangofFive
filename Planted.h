@@ -11,7 +11,9 @@
 class Planted : public PlantState {
  public:
   Planted();
+  ~Planted();
   Planted(const PlantState& other);
+  PlantState* clone();
   void handleChange();
 };
 

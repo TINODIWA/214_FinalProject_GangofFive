@@ -11,10 +11,10 @@
 class PlantState {
  public:
   PlantState();
-
+  virtual ~PlantState();
   PlantState(const PlantState& other);
-
   virtual void handleChange() = 0;
+  virtual PlantState* clone() = 0;
 };
 
 #endif  // PLANTSTATE_H_

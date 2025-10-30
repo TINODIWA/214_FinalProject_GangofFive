@@ -33,40 +33,17 @@ Plant::Plant() {}
  */
 Plant::Plant(string name, string type, vector<int> water, vector<int> sun, vector<int> fertiliser,
              PlantCare* waterStrategy, PlantCare* sunStrategy, PlantCare* fertiliserStrategy, vector<int> days,
-             int price)
-    : name(name), type(type), price(price) {
-  vector<int>::iterator it = water.begin();
-
-  while (it != water.end()) {
-    this->water.push_back(*it);
-    ++it;
-  }
-
-  it = sun.begin();
-
-  while (it != sun.end()) {
-    this->sun.push_back(*it);
-    ++it;
-  }
-
-  it = fertiliser.begin();
-
-  while (it != fertiliser.end()) {
-    this->fertiliser.push_back(*it);
-    ++it;
-  }
-
-  it = days.begin();
-
-  while (it != days.end()) {
-    this->days.push_back(*it);
-    ++it;
-  }
-
+             int price, int attention)
+    : name(name),
+      type(type),
+      price(price),
+      water(water),
+      sun(sun),
+      fertiliser(fertiliser),
+      days(days),
+      attention(attention) {
   this->state = new Planted();
-
   // PLEASE ADD INITIALISATION WHEN PLANTCARE SUBCLASSES ARE MADE
-  
 }
 
 /**
@@ -81,8 +58,25 @@ Plant::~Plant() {}
  * @param other
  */
 
-Plant::Plant(const Plant& other) {
-  this->info = PlantInfo(other.info);
+Plant::Plant(const Plant& other)
+    : name(other.name),
+      type(other.type),
+      water(other.water),
+      sun(other.sun),
+      fertiliser(other.fertiliser),
+      days(other.days),
+      price(other.price),
+      attention(attention) {
+  state = (other.state) ? other.state->clone() : nullptr;
+
+  if (other.staff.size() > 0) {
+    vector<Staff*>::const_iterator it = other.staff.begin();
+    while (it != other.staff.end()) {
+      staff.push_back(*it);  // shallow copy coz staff have multiple plants
+    }
+  }
+
+  // STRATEGY COPYING WILL BE ADDED WHEN THE CLASSES ARE ADDED
 }
 
 /**
@@ -91,7 +85,7 @@ Plant::Plant(const Plant& other) {
  * @param name
  */
 void Plant::setName(string name) {
-  info.setName(name);
+  this->name = name;
 }
 
 /**
@@ -100,16 +94,7 @@ void Plant::setName(string name) {
  * @param type
  */
 void Plant::setType(string type) {
-  info.setType(type);
-}
-
-/**
- * @brief Construct a new Plant:: Plant object
- *
- * @param info
- */
-Plant::Plant(const PlantInfo& info) {
-  this->info = PlantInfo(info);
+  this->type = type;
 }
 
 /**
@@ -118,7 +103,7 @@ Plant::Plant(const PlantInfo& info) {
  * @param water
  */
 void Plant::setWater(int water) {
-  info.setWater(water, 1);
+  this->water[1] = water;  // seting
 }
 
 /**
@@ -127,7 +112,7 @@ void Plant::setWater(int water) {
  * @param sun
  */
 void Plant::setSun(int sun) {
-  info.setSun(sun, 1);
+  this->sun[1] = sun;
 }
 
 /**
@@ -136,7 +121,7 @@ void Plant::setSun(int sun) {
  * @param fertiliser
  */
 void Plant::setFertiliser(int fertiliser) {
-  info.setFertiliser(fertiliser, 1);
+  this->fertiliser[1] = fertiliser;
 }
 
 /**
@@ -145,16 +130,42 @@ void Plant::setFertiliser(int fertiliser) {
  * @param attention
  */
 void Plant::setAttention(int attention) {
-  info.setAttention(attention);
+  this->attention = attention;
 }
 
+/**
+ * @brief sets the water strategy of the plant
+ *
+ * @param water
+ */
+void Plant::setWaterCare(PlantCare* water) {
+  //water.clone();
+}
+
+/**
+ * @brief sets the sun strategy of the plant
+ * 
+ * @param sun
+ */
+void Plant::setSunCare(PlantCare* sun) {
+  //sun.clone()
+}
+
+/**
+ * @brief sets the fertiliser strategy of the plant
+ * 
+ * @param fertiliser 
+ */
+void Plant::setFertiliserCare(PlantCare* fertiliser) {
+  //fertiliser.clone()
+}
 /**
  * @brief returns the name of the plant
  *
  * @return string
  */
 string Plant::getName() const {
-  return info.getName();
+  return name;
 }
 
 /**
@@ -163,7 +174,7 @@ string Plant::getName() const {
  * @return string
  */
 string Plant::getType() const {
-  return info.getType();
+  return type;
 }
 
 /**
@@ -172,7 +183,7 @@ string Plant::getType() const {
  * @return int
  */
 vector<int> Plant::getWater() const {
-  return info.getWater();
+  return water;
 }
 
 /**
@@ -182,7 +193,7 @@ vector<int> Plant::getWater() const {
  */
 
 vector<int> Plant::getSun() const {
-  return info.getSun();
+  return sun;
 }
 
 /**
@@ -191,7 +202,7 @@ vector<int> Plant::getSun() const {
  * @return int
  */
 vector<int> Plant::getFertiliser() const {
-  return info.getFertiliser();
+  return fertiliser;
 }
 
 /**
@@ -200,7 +211,7 @@ vector<int> Plant::getFertiliser() const {
  * @return int
  */
 int Plant::getAttention() const {
-  return info.getAttention();
+  return attention;
 }
 
 void Plant::attach(Staff* s) {
@@ -224,10 +235,3 @@ void Plant::notify() {
  * @param p
  */
 void Plant::addPlant(Plant* p) {}
-
-void Plant::setPlantCare(PlantCare* strategy) {
-  info.setPlantCare(strategy);
-}
-void Plant::setStaff(Staff* staff) {
-  info.setStaff(staff);
-}

@@ -6,12 +6,13 @@
 #ifndef GROWING_H_
 #define GROWING_H_
 
-class Growing : PlantState {
+#include "PlantState.h"
+class Growing : public PlantState {
  public:
   Growing();
-
+  ~Growing();
   Growing(const PlantState& other);
-
+  PlantState* clone();
   void handleChange();
 };
 
