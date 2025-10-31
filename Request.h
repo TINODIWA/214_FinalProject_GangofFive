@@ -18,7 +18,6 @@ class Request {
 
  public:
   Request();
-
   string getRequest();
 };
 

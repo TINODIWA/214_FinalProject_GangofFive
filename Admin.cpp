@@ -11,11 +11,6 @@
 
 #include "Admin.h"
 
-void Admin::operation() {
-  // TODO(dom) - implement Admin::operation
-  throw "Not yet implemented";
-}
-
 void Admin::updateInventory() {
   // TODO(dom) - implement Admin::updateInventory
   throw "Not yet implemented";
@@ -26,7 +21,7 @@ string Admin::getType() {
   throw "Not yet implemented";
 }
 
-string Admin::handleCustomer(Request* req, Request* req) {
+string Admin::handleCustomer(Request* req) {
   // TODO(dom) - implement Admin::handleCustomer
   throw "Not yet implemented";
 }
@@ -35,6 +30,8 @@ Admin::Admin() {
   // TODO(dom) - implement Admin::Admin
   throw "Not yet implemented";
 }
+
+Admin::~Admin() {}
 
 string Admin::handleCustomer(Request* req) {
   // TODO(dom) - implement Admin::handleCustomer

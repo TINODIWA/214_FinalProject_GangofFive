@@ -5,17 +5,18 @@
 
 #ifndef SALES_H_
 #define SALES_H_
+
+#include "Roles.h"
+#include <iostream>
 #include <string>
 
-class Sales : Roles {
- public:
-  string handleCustomer(Request* req);
-
-  void handleSales();
-
-  Sales();
-
-  string getType();
+class Sales : public Roles {
+  public:
+    Sales();
+    virtual ~Sales();
+    string handleCustomer(Request* req);
+    int handleSales();
+    string getType();
 };
 
 #endif  // SALES_H_

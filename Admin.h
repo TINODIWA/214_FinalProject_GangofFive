@@ -9,14 +9,14 @@
 #include <iostream>
 #include <string>
 
-class Admin : Roles {
+#include "Roles.h"
+
+class Admin : public Roles {
  public:
   Admin();
-
+  virtual ~Admin();
   string handleCustomer(Request* req);
-
   void updateInventory();
-
   string getType();
 };
 

@@ -26,12 +26,12 @@ void Gardening::checkPlants() {
   throw "Not yet implemented";
 }
 
-string Gardening::handleCustomer(Request* req, Request* req) {
+string Gardening::handleCustomer(Request* req) {
   // TODO(user) - implement Gardening::handleCustomer
   throw "Not yet implemented";
 }
 
-void Gardening::handlePlant(Plant* p, Plant* p) {
+void Gardening::handlePlant(Plant* p) {
   // TODO(user) - implement Gardening::handlePlant
   throw "Not yet implemented";
 }
@@ -40,6 +40,8 @@ Gardening::Gardening() {
   // TODO(user) - implement Gardening::Gardening
   throw "Not yet implemented";
 }
+
+Gardening::~Gardening() {}
 
 string Gardening::handleCustomer(Request* req) {
   // TODO(user) - implement Gardening::handleCustomer

@@ -6,17 +6,17 @@
 #ifndef BASESTAFF_H_
 #define BASESTAFF_H_
 
+#include "Staff.h"
+#include <iostream>
 #include <string>
 
-class BaseStaff : Staff {
+class BaseStaff : public Staff {
  public:
   BaseStaff();
-
-  string jobDesc();
-
-  void handleCustomer(Request* req);
-
-  string getType();
+  virtual ~BaseStaff();
+  virtual string jobDesc();
+  virtual void handleCustomer(Request* req);
+  virtual string getType();
 };
 
 #endif  // BASESTAFF_H_

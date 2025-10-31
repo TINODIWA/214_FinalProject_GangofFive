@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 
+#include "Garden.h"
 #include "Plant.h"
 class Customer;
 class Staff;
@@ -16,20 +17,23 @@ class Staff;
 using namespace std;
 
 class Nursery {
- public:
-  vector<vector<Plant*>> plants;
-  vector<Customer*> customers;
-  vector<Staff*> staff;
+  private:
+    vector<vector<Plant*>> plants;
+    vector<Customer*> customers;
+    vector<Staff*> staff;
+    int staffCount;
+    Garden* garden;
 
-  Nursery();
-  ~Nursery();
-  Nursery(const Nursery& other);
-  void addPlant(Plant* p);
-  void removePlant(Plant* p);
-  void start(bool sim);
-  void addStaff(Staff* s);
-  void removeStaff(Staff* s);
-  void notify();
+  public:
+    Nursery();
+    ~Nursery();
+    Nursery(const Nursery& other);
+    void addPlant(Plant* p);
+    void removePlant(Plant* p);
+    void start(bool sim);
+    void addStaff(Staff* s);
+    void removeStaff(Staff* s);
+    void notify();
 };
 
 #endif  // NURSERY_H_

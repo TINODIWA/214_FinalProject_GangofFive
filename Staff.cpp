@@ -40,7 +40,9 @@ Staff::Staff(const Staff* other) : People(*other) {
   }
 }
 
-string Staff::JobDesc() {
+Staff::~Staff() {}
+
+string Staff::jobDesc() {
   // TODO(user) - implement Staff::JobDesc
   // throw "Not yet implemented";
 }
@@ -49,3 +51,5 @@ string Staff::getType() {
   // TODO(user) - implement Staff::getType
   // throw "Not yet implemented";
 }
+
+void Staff::setNext(Staff* successor) {}

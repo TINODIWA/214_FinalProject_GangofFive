@@ -11,16 +11,15 @@
 using namespace std;
 class People {
  private:
-  Nursery* nursery;
+  vector<Nursery*> communication;
 
  public:
   People(Nursery* n);
-
   People();
   People(const People* other);
 
-  void send(string m, Nursery* s, string type);
-
+  void send(string m, People* to, Nursery* n, string type);
+  void send(string m, Nursery* n);
   void receive(string m, People* from, Nursery* n);
 };
 

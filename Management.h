@@ -6,18 +6,20 @@
 #ifndef MANAGEMENT_H_
 #define MANAGEMENT_H_
 #include <string>
+#include <iostream>
 
-class Management : Roles {
- public:
-  Command* cmd;
+#include "Roles.h"
+#include "Command.h"
 
-  string getType();
-
-  Management();
-
-  void handleCustomer(Request* req);
-
-  void assignTasks();
+class Management : public Roles {
+  private:
+    virtual string getType();
+    Management();
+    virtual ~Management();
+    void handleCustomer(Request* req);
+    void assignTasks();
+  public:
+    Command* cmd;
 };
 
 #endif  // MANAGEMENT_H_

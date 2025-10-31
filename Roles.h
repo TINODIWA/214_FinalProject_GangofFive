@@ -8,15 +8,19 @@
 #include <string>
 #include <vector>
 
-class Roles : Staff {
- public:
-  vector<Staff*> staff;
+#include "Staff.h"
+#include "Roles.h"
+using namespace std;
 
-  Roles();
+class Roles : public Staff {
+  public:
+    Roles();
+    virtual ~Roles();
+    virtual string jobDesc() = 0;
+    virtual string getType() = 0;
 
-  string jobDesc();
-
-  string getType();
+  private:
+    vector<Staff*> staff;
 };
 
 #endif  // ROLES_H_

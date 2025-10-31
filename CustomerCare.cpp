@@ -16,6 +16,10 @@ void CustomerCare::notify() {
   throw "Not yet implemented";
 }
 
+void CustomerCare::setColleague(Nursery* n, People* p) {
+  
+}
+
 CustomerCare::CustomerCare() {
   // TODO(unathi,nathan,ryan) - implement CustomerCare::CustomerCare
   throw "Not yet implemented";

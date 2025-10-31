@@ -1,6 +1,6 @@
 /**
  * @file BaseStaff.cpp
- * @author your name (you@domain.com)
+ * @author Nathan Chisadza, Unathi Tshakalisa, Dominiqu Nigatu
  * @brief
  * @version 0.1
  * @date 2025-10-29
@@ -11,17 +11,16 @@
 
 #include "BaseStaff.h"
 
-BaseStaff::BaseStaff() {
-  // TODO(dom) - implement BaseStaff::BaseStaff
-  throw "Not yet implemented";
-}
+BaseStaff::BaseStaff() : Staff() {}
+
+BaseStaff::~BaseStaff() {}
 
 string BaseStaff::jobDesc() {
   // TODO(dom) - implement BaseStaff::jobDesc
   throw "Not yet implemented";
 }
 
-void BaseStaff::handleCustomer(Request* req, Request* req) {
+void BaseStaff::handleCustomer(Request* req) {} {
   // TODO(dom) - implement BaseStaff::handleCustomer
   throw "Not yet implemented";
 }

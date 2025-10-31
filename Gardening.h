@@ -9,21 +9,21 @@
 #include <vector>
 #include <string>
 
+#include "Roles.h"
+#include "Plant.h"
+
 class Gardening : public Roles {
  public:
-  vector<Plant*> plants;
-
   Gardening();
-
+  virtual ~Gardening();
   void update();
-
   string handleCustomer(Request* req);
-
   void handlePlant(Plant* p);
-
   string getType();
-
   void checkPlants();
+
+  private:
+    vector<Plant*> plants;
 };
 
 #endif  // GARDENING_H_

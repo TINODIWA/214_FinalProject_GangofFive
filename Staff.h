@@ -24,9 +24,10 @@ class Staff : public People {
   void handleCustomer(Request* req);
   Staff();
   Staff(const Staff* other);
-
-  string JobDesc();
+  virtual ~Staff();
+  string jobDesc();
   string getType();
+  void setNext(Staff* successor);
 };
 
 #endif  // STAFF_H_

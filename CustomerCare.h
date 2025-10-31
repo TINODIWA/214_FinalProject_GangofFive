@@ -6,11 +6,20 @@
 #ifndef CUSTOMERCARE_H_
 #define CUSTOMERCARE_H_
 
-class CustomerCare : Nursery {
- public:
-  void notify();
+#include <iostream>
+#include <string>
 
-  CustomerCare();
+#include "People.h"
+#include "Nursery.h"
+
+class CustomerCare : public Nursery {
+  public:
+    CustomerCare();
+    void notify();
+    void setColleague(Nursery* n, People* p);
+    
+  private:
+    People* chatList;
 };
 
 #endif  // CUSTOMERCARE_H_

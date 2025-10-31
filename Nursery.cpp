@@ -1,6 +1,6 @@
 /**
  * @file Nursery.cpp
- * @author your name (you@domain.com)
+ * @author Unathi Tshakalisa, Nathan Chisadza
  * @brief
  * @version 0.1
  * @date 2025-10-29
@@ -12,31 +12,43 @@
 #include "Customer.h"
 #include "Staff.h"
 
-Nursery::Nursery() {
-  // TODO(user) - implement Nursery::Nursery
-  // throw "Not yet implemented";
+
+Nursery::Nursery() : staffCount(0), garden(new Garden()) {}
 }
 
 Nursery::~Nursery() {}
-
 Nursery::Nursery(const Nursery& other) {
-  vector<vector<Plant*>>::const_iterator otherPlants = (other.plants).begin();
-  vector<Customer*>::const_iterator otherCustomer = (other.customers).begin();
-  vector<Staff*>::const_iterator otherStaff = (other.staff).begin();
+  // helper lambda to extract raw Plant* whether clone() returns Plant* or std::unique_ptr<Plant>
+  auto get_raw = [](auto p) -> Plant* {
+    using T = decltype(p);
+    if constexpr (std::is_pointer_v<T>) {
+      return p;
+    } else {
+      return p.release();
+    }
+  };
 
-  while (otherPlants != other.plants.end()) {
-    vector<Plant*>::const_iterator it = (*otherPlants).begin();
+  // copy plant rows and clone each Plant
+  for (const auto& row : other.plants) {
     vector<Plant*> temp;
-
-    while (it != (*otherPlants).end()) {
-      temp.push_back((*it)->clone());
+    for (const Plant* plantPtr : row) {
+      auto cloneResult = plantPtr->clone(); // may be Plant* or std::unique_ptr<Plant>
+      temp.push_back(get_raw(std::move(cloneResult)));
     }
     plants.push_back(temp);
   }
 
-  // while(otherCustomer != other.customers.end())
-  // customers.push_back(new Customer(*otherCustomer))
+  // copy customers
+  for (const auto& c : other.customers) {
+    customers.push_back(new Customer(*c));
+  }
+
+  // copy staff
+  for (const auto& s : other.staff) {
+    staff.push_back(new Staff(*s));
+  }
 }
+// removed stray closing brace
 
 void Nursery::addPlant(Plant* p) {
   // TODO(user) - implement Nursery::addPlant
@@ -54,13 +66,11 @@ void Nursery::start(bool sim) {
 }
 
 void Nursery::addStaff(Staff* s) {
-  // TODO(user) - implement Nursery::addStaff
-  // throw "Not yet implemented";
+  staff.push_back(s);
 }
 
 void Nursery::removeStaff(Staff* s) {
-  // TODO(user) - implement Nursery::removeStaff
-  // throw "Not yet implemented";
+
 }
 
 void Nursery::notify() {
