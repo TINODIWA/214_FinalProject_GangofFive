@@ -16,9 +16,9 @@ Planted::Planted() {
   throw "Not yet implemented";
 }
 
-Planted::Planted(const PlantState& other, const PlantState& other) {
-  // TODO(user) - implement Planted::Planted
-  throw "Not yet implemented";
+Planted::Planted(const PlantState& other):PlantState(other) {
+	// TODO - implement Planted::Planted
+	throw "Not yet implemented";
 }
 
 void Planted::handleChange() {
