@@ -30,3 +30,12 @@ Iterator::~Iterator(){}
  */
 Iterator::Iterator(const Iterator& other){}
 
+/**
+ * @brief return the current element
+ * 
+ * @return Garden* 
+ */
+Garden* Iterator::operator*(){
+    return current();
+}
+
