@@ -65,7 +65,6 @@ class Plant : public Garden {
   vector<int> getWater() const;
   vector<int> getSun() const;
   vector<int> getFertiliser() const;
-  int getAttention() const;
 
   Garden* clone();
   void print();
@@ -75,9 +74,6 @@ class Plant : public Garden {
   void attach(Staff* s);
   void detach(Staff* s);
   void notify();
-
-  virtual void print() = 0;
-
   string advice();
 };
 

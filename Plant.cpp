@@ -15,8 +15,8 @@
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant(): state(nullptr), waterStrategy(nullptr),sunStrategy(nullptr),fertiliserStrategy(nullptr){
-  for(int i = 0; i< 2; i++){
+Plant::Plant() : state(nullptr), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr) {
+  for (int i = 0; i < 2; i++) {
     water.push_back(0);
     sun.push_back(0);
     fertiliser.push_back(0);
@@ -36,7 +36,6 @@ Plant::~Plant() {}
  */
 
 Plant::Plant(const Plant& other) {
-
   name = other.name;
   type = other.type;
   water = other.water;
@@ -156,9 +155,6 @@ void Plant::setPrice(int price) {
   this->price = price;
 }
 
-void Plant::setPrice(int price) {
-  info.setPrice(price);
-}
 /**
  * @brief returns the name of the plant
  *
@@ -293,11 +289,11 @@ void Plant::print() {
 
 /**
  * @brief stubbed - for the crop
- * 
- * @param p 
+ *
+ * @param p
  */
-void Plant::add(Garden* p){}
- 
+void Plant::add(Garden* p) {}
+
 /**
  * @brief advice on how to care for the plant
  *
