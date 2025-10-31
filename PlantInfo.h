@@ -11,23 +11,11 @@
 #include <string>
 #include <vector>
 
-#include "PlantCare.h"
-#include "PlantState.h"
 class Staff;
 
 class PlantInfo {
  private:
-  std::string name;
-  std::string type;
-  std::vector<int> water;
-  std::vector<int> sun;
-  std::vector<int> fertiliser;
-  PlantCare* strategy;
-  PlantState* state;
-  Staff* staff;
-  int amount;  // number of plants in the garden ????? should this be here
-  int days;
-  int price;
+ 
 
  public:
   PlantInfo();

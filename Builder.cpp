@@ -16,5 +16,4 @@
  *
  */
 Builder::Builder() {}
-
 Builder::~Builder() {}
