@@ -1,44 +1,38 @@
 /**
- * @file Director.h
- * @author Swelihle Makhathini
- * @brief 
- * @version 0.1
- * @date 2025-10-26
- * 
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
-#ifndef DIRECTOR_H
-#define DIRECTOR_H
+#ifndef DIRECTOR_H_
+#define DIRECTOR_H_
 
-#include <iostream>
-#include <sstream>
 #include <fstream>
+#include <iostream>
 #include <map>
-#include <algorithm>
-#include "Builder.h"
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include "Garden.h"
 #include "CropBuilder.h"
-#include "Crop.h"
-#include "PlantInfo.h"
+#include "PlantBuilder.h"
 
 using namespace std;
 
-class Director
-{
+class Director {
+ private:
+  CropBuilder* cropBuilder;
+  PlantBuilder* plantBuilder;
 
-private:
-	CropBuilder *cropBuilder;
-	map<string,vector<PlantInfo>> plants;
-	vector<string> plantTypes;
-
-public:
-	Director();
-	~Director();
-	Director(CropBuilder *p);
-	void setBuilder(CropBuilder *p);
-	Plant *construct();
-	void parse();
+ public:
+  Director();
+  ~Director();
+  Director(CropBuilder* c, PlantBuilder* p);
+  void setBuilder(CropBuilder* c);
+  void setBuilder(PlantBuilder* p);
+  Garden* construct(string filename);
+  void parse(string filename);
+  vector<string> split(const string str, char delim);
 };
 
-#endif
+#endif  // DIRECTOR_H_

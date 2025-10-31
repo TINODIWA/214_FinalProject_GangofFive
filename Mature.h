@@ -1,15 +1,22 @@
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #ifndef MATURE_H
 #define MATURE_H
+#include "PlantState.h"
 
-class Mature : PlantState {
+#include "PlantState.h"
 
-
-public:
-	Mature();
-
-	Mature(const PlantState& other);
-
-	void handleChange();
+class Mature : public PlantState {
+ public:
+  Mature();
+  ~Mature();
+  Mature(const PlantState& other);
+  PlantState* clone();
+  void handleChange();
+  string getState();
 };
 
-#endif
+#endif  // MATURE_H_

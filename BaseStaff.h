@@ -4,9 +4,11 @@
 
 class BaseStaff : public Staff {
 
+#include <string>
 
-public:
-	BaseStaff();
+class BaseStaff : Staff {
+ public:
+  BaseStaff();
 
 	std::string jobDesc() override;
 	void handleCustomer(Request* req) override;
@@ -14,4 +16,4 @@ public:
 	std::string getType() override;
 };
 
-#endif
+#endif  // BASESTAFF_H_

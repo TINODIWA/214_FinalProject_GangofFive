@@ -1,21 +1,32 @@
+/**
+ * @file Plant.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Plant.h"
 
 /**
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant()
-{
-	info = PlantInfo();
+Plant::Plant() : state(nullptr), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
+  for (int i = 0; i < 2; i++) {
+    water.push_back(0);
+    fertiliser.push_back(0);
+  }
 }
 
 /**
  * @brief Destroy the Plant:: Plant object
  *
  */
-Plant::~Plant()
-{
-}
+Plant::~Plant() {}
 
 /**
  * @brief Construct a new Plant:: Plant object
@@ -23,9 +34,26 @@ Plant::~Plant()
  * @param other
  */
 
-Plant::Plant(const Plant &other)
-{
-	this->info = PlantInfo(other.info);
+Plant::Plant(const Plant& other) {
+
+  name = other.name;
+  type = other.type;
+  water = other.water;
+  sun = other.sun;
+  fertiliser = other.fertiliser;
+  days = other.days;
+  price = other.price;
+  attention = other.attention;
+  state = (other.state) ? other.state->clone() : nullptr;
+
+  if (other.staff.size() > 0) {
+    vector<Staff*>::const_iterator it = other.staff.begin();
+    while (it != other.staff.end()) {
+      staff.push_back(*it);  // shallow copy coz staff have multiple plants
+    }
+  }
+
+  // STRATEGY COPYING WILL BE ADDED WHEN THE CLASSES ARE ADDED
 }
 
 /**
@@ -33,9 +61,8 @@ Plant::Plant(const Plant &other)
  *
  * @param name
  */
-void Plant::setName(string name)
-{
-	info.setName(name);
+void Plant::setName(string name) {
+  this->name = name;
 }
 
 /**
@@ -43,19 +70,8 @@ void Plant::setName(string name)
  *
  * @param type
  */
-void Plant::setType(string type)
-{
-	info.setType(type);
-}
-
-/**
- * @brief Construct a new Plant:: Plant object
- *
- * @param info
- */
-Plant::Plant(const PlantInfo &info)
-{
-	this->info = PlantInfo(info);
+void Plant::setType(string type) {
+  this->type = type;
 }
 
 /**
@@ -63,9 +79,8 @@ Plant::Plant(const PlantInfo &info)
  *
  * @param water
  */
-void Plant::setWater(int water)
-{
-	info.setWater(water, 1);
+void Plant::setWater(int water) {
+  this->water[1] = water;
 }
 
 /**
@@ -73,9 +88,8 @@ void Plant::setWater(int water)
  *
  * @param sun
  */
-void Plant::setSun(int sun)
-{
-	info.setSun(sun, 1);
+void Plant::setSun(int sun) {
+  this->sun = sun;
 }
 
 /**
@@ -83,9 +97,8 @@ void Plant::setSun(int sun)
  *
  * @param fertiliser
  */
-void Plant::setFertiliser(int fertiliser)
-{
-	info.setFertiliser(fertiliser, 1);
+void Plant::setFertiliser(int fertiliser) {
+  this->fertiliser[1] = fertiliser;
 }
 
 /**
@@ -93,9 +106,80 @@ void Plant::setFertiliser(int fertiliser)
  *
  * @param attention
  */
-void Plant::setAttention(int attention)
-{
-	info.setAttention(attention);
+void Plant::setAttention(int attention) {
+  this->attention = attention;
+}
+
+/**
+ * @brief sets the water strategy of the plant
+ *
+ * @param water
+ */
+void Plant::setWaterCare(char level) {
+  this->waterStrategy = setCareStrategy(level);
+}
+
+/**
+ * @brief sets the sun strategy of the plant
+ *
+ * @param sun
+ */
+void Plant::setSunCare(char level) {
+  this->sunStrategy = setCareStrategy(level);
+}
+
+/**
+ * @brief sets the fertiliser strategy of the plant
+ *
+ * @param fertiliser
+ */
+void Plant::setFertiliserCare(char level) {
+  this->fertiliserStrategy = setCareStrategy(level);
+}
+
+/**
+ * @brief Returns instannce of required PlantCare level
+ *
+ * @param level
+ */
+PlantCare* Plant::setCareStrategy(char level) {
+  switch (level) {
+    case 'H':
+      return new High();
+      break;
+
+    case 'M':
+      return new Med();
+      break;
+
+    case 'L':
+      //cout << "LOW set...great!!." << endl;
+      return new Low();
+      break;
+
+    default:
+      cout << "No care strategy set...try again." << endl;
+      return NULL;
+      break;
+  }
+}
+
+/**
+ * @brief sets the days for the life cycle
+ *
+ * @param days
+ */
+void Plant::setDays(vector<int> days) {
+  this->days = days;
+}
+
+/**
+ * @brief sets the price of the plant
+ *
+ * @param price
+ */
+void Plant::setPrice(int price) {
+  this->price = price;
 }
 
 /**
@@ -103,9 +187,8 @@ void Plant::setAttention(int attention)
  *
  * @return string
  */
-string Plant::getName() const
-{
-	return info.getName();
+string Plant::getName() const {
+  return name;
 }
 
 /**
@@ -113,9 +196,8 @@ string Plant::getName() const
  *
  * @return string
  */
-string Plant::getType() const
-{
-	return info.getType();
+string Plant::getType() const {
+  return type;
 }
 
 /**
@@ -123,9 +205,8 @@ string Plant::getType() const
  *
  * @return int
  */
-vector<int> Plant::getWater() const
-{
-	return info.getWater();
+vector<int> Plant::getWater() const {
+  return water;
 }
 
 /**
@@ -134,9 +215,8 @@ vector<int> Plant::getWater() const
  * @return int
  */
 
-vector<int> Plant::getSun() const
-{
-	return info.getSun();
+int Plant::getSun() const {
+  return sun;
 }
 
 /**
@@ -144,9 +224,8 @@ vector<int> Plant::getSun() const
  *
  * @return int
  */
-vector<int> Plant::getFertiliser() const
-{
-	return info.getFertiliser();
+vector<int> Plant::getFertiliser() const {
+  return fertiliser;
 }
 
 /**
@@ -154,42 +233,125 @@ vector<int> Plant::getFertiliser() const
  *
  * @return int
  */
-int Plant::getAttention() const
-{
-	return info.getAttention();
-}
-
-void Plant::attach(Staff *s)
-{
-	// TODO - implement Plant::attach
-	// throw "Not yet implemented";
-}
-
-void Plant::detach(Staff *s)
-{
-	// TODO - implement Plant::detach
-	// throw "Not yet implemented";
-}
-
-void Plant::notify()
-{
-	// TODO - implement Plant::notify
-	// throw "Not yet implemented";
+int Plant::getAttention() const {
+  return attention;
 }
 
 /**
- * @brief stubbed - for adding plans to a crop
+ * @brief returns the water care strategy
+ *
+ * @return PlantCare*
+ */
+PlantCare* Plant::getWaterCare() const {
+  return waterStrategy;
+}
+
+/**
+ * @brief returns the sun care strategy
+ *
+ * @return PlantCare*
+ */
+PlantCare* Plant::getSunCare() const {
+  return sunStrategy;
+}
+
+/**
+ * @brief return the fertiliser care strategy
+ *
+ * @return PlantCare*
+ */
+PlantCare* Plant::getFertiliserCare() const {
+  return fertiliserStrategy;
+}
+
+/**
+ * @brief returns the days of lifecycle progression of the plant
+ *
+ * @return vector<int>
+ */
+vector<int> Plant::getDays() const {
+  return days;
+}
+
+/**
+ * @brief returns the price of the plant
+ *
+ * @return int
+ */
+int Plant::getPrice() const {
+  return price;
+}
+
+void Plant::attach(Staff* s) {
+  // TODO(user) - implement Plant::attach
+  // throw "Not yet implemented";
+}
+
+void Plant::detach(Staff* s) {
+  // TODO(user) - implement Plant::detach
+  // throw "Not yet implemented";
+}
+
+void Plant::notify() {
+  // TODO(user) - implement Plant::notify
+  // throw "Not yet implemented";
+}
+
+/**
+ * @brief updates daily water level
+ */
+void Plant::updateWaterLevel(int newLevel) {
+  this->water[0] = newLevel;
+}
+
+/**
+ * @brief Decreases the current plantlevels based on Sun Strategy
+ * @param decrease attribute determined by Sun Strategy
+ */
+void Plant::transpire(int decreasedLevel) {
+  this->water[0] = decreasedLevel;
+}
+
+/**
+ * @brief Decreases the current  water level based on Sun Strategy
+ * @param newLevel attribute determined by Sun Strategy
+ */
+void Plant::updateFertiliserLevel(int newLevel) {
+  this->fertiliser[0] = newLevel;
+}
+
+/**
+ * @brief Updates current day in the life cycle and resets daily water Level
+ */
+void Plant::updateDay() {
+  this->days[0]++;
+  updateFertiliserLevel(0);
+  updateWaterLevel(0);
+}
+
+/**
+ * @brief Returns plants current state
+ */
+string Plant::getState() {
+  return state->getState();
+}
+
+Garden* Plant::clone() {
+  return new Plant(*this);
+}
+
+/**
+ * @brief prints the plant
+ *
+ */
+void Plant::print() {
+  cout << left << setw(10) << this->name << "|";
+}
+
+/**
+ * @brief stubbed - for the crop
  * 
  * @param p 
  */
-void Plant::addPlant(Plant *p) {}
-
-void Plant::setPlantCare(PlantCare *strategy)
-{
-	info.setPlantCare(strategy);
-}
-void Plant::setStaff(Staff *staff)
-{
-	info.setStaff(staff);
-}
+void Plant::add(Garden* p){}
 

@@ -12,4 +12,4 @@ public:
 	virtual std::string getType() override = 0;
 };
 
-#endif
+#endif  // ROLES_H_

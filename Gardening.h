@@ -17,4 +17,4 @@ public:
 	void checkPlants();
 };
 
-#endif
+#endif  // GARDENING_H_

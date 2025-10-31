@@ -1,5 +1,14 @@
-#ifndef STAFF_H
-#define STAFF_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef STAFF_H_
+#define STAFF_H_
+
+#include <string>
+#include <vector>
+
 #include "People.h"
 #include "Request.h"
 
@@ -26,4 +35,4 @@ public:
 	virtual void handleCustomer(Request *req) = 0;
 };
 
-#endif
+#endif  // STAFF_H_

@@ -1,30 +1,22 @@
 /**
- * @file EFT.h
- * @author Swelihle Makhathini
- * @brief 
- * @version 0.1
- * @date 2025-10-26
- * 
  * @copyright Copyright (c) 2025
- * 
+ *
  */
 
-#ifndef EFT_H
-#define EFT_H
+#ifndef EFT_H_
+#define EFT_H_
 
-#include <iostream>
 #include "Payment.h"
+#include <iostream>
 
 using namespace std;
 
-class EFT : public Payment
-{
-
-public:
-    EFT();
-    ~EFT();
-    void prepare();
-    void payment();
-    void package();
+class EFT : public Payment {
+ public:
+  EFT();
+  ~EFT();
+  void prepare();
+  void payment();
+  void package();
 };
-#endif
+#endif  // EFT_H_
