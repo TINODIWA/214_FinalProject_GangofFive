@@ -1,21 +1,29 @@
-#ifndef BUILDER_H
-#define BUILDER_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef BUILDER_H_
+#define BUILDER_H_
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+class Garden;
+class PlantCare;
+class Staff;
+class Plant;
+
+using namespace std;
 
 class Builder {
+ public:
+  Builder();
+  virtual ~Builder();
 
-
-public:
-	Builder();
-
-	virtual void addCrop(Crop* c) = 0;
-
-	virtual void addTree(Tree* t) = 0;
-
-	virtual void addFlower(Flower f) = 0;
-
-	virtual void addShrub(Shrub s) = 0;
-
-	void reset();
+  virtual Builder* clone() = 0;
+  virtual void reset() = 0;
 };
 
-#endif
+#endif  // BUILDER_H_

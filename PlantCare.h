@@ -1,21 +1,25 @@
-#ifndef PLANTCARE_H
-#define PLANTCARE_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
+
+#ifndef PLANTCARE_H_
+#define PLANTCARE_H_
+
 
 class PlantCare {
+ private:
 
-private:
-	WaterStrategy* water;
-	SunStrategy* sun;
-	FertiliseStrategy* fertilise;
+ public:
+  PlantCare(const PlantCare& other);
 
-public:
-	int waterAlgorithm();
+  int waterAlgorithm();
 
-	int sunAlgorithm();
+  int sunAlgorithm();
 
-	int fertiliseAlgorithm();
+  int fertiliseAlgorithm();
 
-	PlantCare();
+  PlantCare();
 };
 
-#endif
+#endif  // PLANTCARE_H_

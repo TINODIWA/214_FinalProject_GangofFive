@@ -1,13 +1,22 @@
-#ifndef EFT_H
-#define EFT_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-class EFT : Order {
+#ifndef EFT_H_
+#define EFT_H_
 
+#include "Payment.h"
+#include <iostream>
 
-public:
-	void payment();
+using namespace std;
 
-	EFT();
+class EFT : public Payment {
+ public:
+  EFT();
+  ~EFT();
+  void prepare();
+  void payment();
+  void package();
 };
-
-#endif
+#endif  // EFT_H_

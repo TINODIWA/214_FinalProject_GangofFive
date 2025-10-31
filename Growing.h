@@ -1,15 +1,20 @@
-#ifndef GROWING_H
-#define GROWING_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-class Growing : PlantState {
+#ifndef GROWING_H_
+#define GROWING_H_
+#include "PlantState.h"
 
-
-public:
-	Growing();
-
-	Growing(const PlantState& other);
-
-	void handleChange();
+#include "PlantState.h"
+class Growing : public PlantState {
+ public:
+  Growing();
+  ~Growing();
+  Growing(const PlantState& other);
+  PlantState* clone();
+  void handleChange();
 };
 
-#endif
+#endif  // GROWING_H_

@@ -1,13 +1,23 @@
-#ifndef CARD_H
-#define CARD_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-class Card : Order {
+#ifndef CARD_H_
+#define CARD_H_
 
+#include "Payment.h"
+#include <iostream>
 
-public:
-	Card();
+using namespace std;
 
-	void payment();
+class Card : public Payment {
+ public:
+  Card();
+  ~Card();
+  void prepare();
+  void payment();
+  void package();
 };
 
-#endif
+#endif  // CARD_H_

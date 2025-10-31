@@ -1,16 +1,26 @@
-#ifndef CUSTOMER_H
-#define CUSTOMER_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-class Customer : People {
+#ifndef CUSTOMER_H_
+#define CUSTOMER_H_
 
-private:
-	Order* order;
-	Request req;
+#include "People.h"
+#include "Request.h"
 
-public:
-	Customer();
+class Order;
 
-	void makeReq(Request* req);
+class Customer : public People {
+ private:
+  Order* order;
+  Request req;
+
+ public:
+  Customer();
+  ~Customer();
+  Customer(const Customer* other);
+  void makeReq(Request* req);
 };
 
-#endif
+#endif  // CUSTOMER_H_

@@ -1,26 +1,51 @@
+/**
+ * @file Staff.cpp
+ * @author your name (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Staff.h"
 
-void Staff::handlePlant(Plant* p, Plant* p) {
-	// TODO - implement Staff::handlePlant
-	throw "Not yet implemented";
+void Staff::handlePlant(Plant* p) {
+  // TODO(user) - implement Staff::handlePlant
+  // throw "Not yet implemented";
 }
 
-void Staff::handleCustomer(Request* req, Request* req) {
-	// TODO - implement Staff::handleCustomer
-	throw "Not yet implemented";
+void Staff::handleCustomer(Request* req) {
+  // TODO(user) - implement Staff::handleCustomer
+  // throw "Not yet implemented";
 }
 
-Staff::Staff() {
-	// TODO - implement Staff::Staff
-	throw "Not yet implemented";
+Staff::Staff() : People() {
+  // TODO(user) - implement Staff::Staff
+  // throw "Not yet implemented";
+}
+
+Staff::Staff(const Staff* other) : People(*other) {
+  if (other) {
+    this->name = other->name;
+    this->level = other->level;
+    this->successor = new Staff(*other->successor);
+
+    vector<string>::const_iterator it = other->responsibilities.begin();
+
+    while (it != other->responsibilities.end()) {
+      responsibilities.push_back(*it);
+    }
+  }
 }
 
 string Staff::JobDesc() {
-	// TODO - implement Staff::JobDesc
-	throw "Not yet implemented";
+  // TODO(user) - implement Staff::JobDesc
+  // throw "Not yet implemented";
 }
 
 string Staff::getType() {
-	// TODO - implement Staff::getType
-	throw "Not yet implemented";
+  // TODO(user) - implement Staff::getType
+  // throw "Not yet implemented";
 }

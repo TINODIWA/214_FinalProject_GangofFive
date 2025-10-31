@@ -1,11 +1,46 @@
+/**
+ * @file Cash.cpp
+ * @author Swelihle Makhathini
+ * @brief
+ * @version 0.1
+ * @date 2025-10-29
+ *
+ * @copyright Copyright (c) 2025
+ *
+ */
+
 #include "Cash.h"
 
-Cash::Cash() {
-	// TODO - implement Cash::Cash
-	throw "Not yet implemented";
+/**
+ * @brief Construct a new Cash:: Cash object
+ *
+ */
+Cash::Cash() : Payment() {}
+
+/**
+ * @brief Destroy the Cash:: Cash object
+ *
+ */
+Cash::~Cash() {}
+
+/**
+ * @brief preparing a Cash order
+ *
+ */
+void Cash::prepare() {
+  cout << "Counting Cash\n";
 }
 
+/**
+ * @brief processing a Card payment
+ *
+ */
 void Cash::payment() {
-	// TODO - implement Cash::payment
-	throw "Not yet implemented";
+  cout << "Confirming purchase\n";
 }
+
+/**
+ * @brief packaging a Card order
+ *
+ */
+void Cash::package() {}
