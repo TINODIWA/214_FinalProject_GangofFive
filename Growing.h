@@ -5,6 +5,7 @@
 
 #ifndef GROWING_H_
 #define GROWING_H_
+#include "PlantState.h"
 
 #include "PlantState.h"
 class Growing : public PlantState {

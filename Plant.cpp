@@ -15,10 +15,9 @@
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant(): state(nullptr), waterStrategy(nullptr),sunStrategy(nullptr),fertiliserStrategy(nullptr){
-  for(int i = 0; i< 2; i++){
+Plant::Plant() : state(nullptr), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
+  for (int i = 0; i < 2; i++) {
     water.push_back(0);
-    sun.push_back(0);
     fertiliser.push_back(0);
   }
 }
@@ -81,7 +80,7 @@ void Plant::setType(string type) {
  * @param water
  */
 void Plant::setWater(int water) {
-  this->water[1] = water;  // seting
+  this->water[1] = water;
 }
 
 /**
@@ -90,7 +89,7 @@ void Plant::setWater(int water) {
  * @param sun
  */
 void Plant::setSun(int sun) {
-  this->sun[1] = sun;
+  this->sun = sun;
 }
 
 /**
@@ -116,8 +115,8 @@ void Plant::setAttention(int attention) {
  *
  * @param water
  */
-void Plant::setWaterCare(PlantCare* water) {
-  // water.clone();
+void Plant::setWaterCare(char level) {
+  this->waterStrategy = setCareStrategy(level);
 }
 
 /**
@@ -125,8 +124,8 @@ void Plant::setWaterCare(PlantCare* water) {
  *
  * @param sun
  */
-void Plant::setSunCare(PlantCare* sun) {
-  // sun.clone()
+void Plant::setSunCare(char level) {
+  this->sunStrategy = setCareStrategy(level);
 }
 
 /**
@@ -134,8 +133,35 @@ void Plant::setSunCare(PlantCare* sun) {
  *
  * @param fertiliser
  */
-void Plant::setFertiliserCare(PlantCare* fertiliser) {
-  // fertiliser.clone()
+void Plant::setFertiliserCare(char level) {
+  this->fertiliserStrategy = setCareStrategy(level);
+}
+
+/**
+ * @brief Returns instannce of required PlantCare level
+ *
+ * @param level
+ */
+PlantCare* Plant::setCareStrategy(char level) {
+  switch (level) {
+    case 'H':
+      return new High();
+      break;
+
+    case 'M':
+      return new Med();
+      break;
+
+    case 'L':
+      //cout << "LOW set...great!!." << endl;
+      return new Low();
+      break;
+
+    default:
+      cout << "No care strategy set...try again." << endl;
+      return NULL;
+      break;
+  }
 }
 
 /**
@@ -189,7 +215,7 @@ vector<int> Plant::getWater() const {
  * @return int
  */
 
-vector<int> Plant::getSun() const {
+int Plant::getSun() const {
   return sun;
 }
 
@@ -272,10 +298,44 @@ void Plant::notify() {
 }
 
 /**
- * @brief clones the plant
- *
- * @return Garden*
+ * @brief updates daily water level
  */
+void Plant::updateWaterLevel(int newLevel) {
+  this->water[0] = newLevel;
+}
+
+/**
+ * @brief Decreases the current plantlevels based on Sun Strategy
+ * @param decrease attribute determined by Sun Strategy
+ */
+void Plant::transpire(int decreasedLevel) {
+  this->water[0] = decreasedLevel;
+}
+
+/**
+ * @brief Decreases the current  water level based on Sun Strategy
+ * @param newLevel attribute determined by Sun Strategy
+ */
+void Plant::updateFertiliserLevel(int newLevel) {
+  this->fertiliser[0] = newLevel;
+}
+
+/**
+ * @brief Updates current day in the life cycle and resets daily water Level
+ */
+void Plant::updateDay() {
+  this->days[0]++;
+  updateFertiliserLevel(0);
+  updateWaterLevel(0);
+}
+
+/**
+ * @brief Returns plants current state
+ */
+string Plant::getState() {
+  return state->getState();
+}
+
 Garden* Plant::clone() {
   return new Plant(*this);
 }
@@ -294,3 +354,4 @@ void Plant::print() {
  * @param p 
  */
 void Plant::add(Garden* p){}
+
