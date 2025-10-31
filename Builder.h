@@ -8,20 +8,21 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
-#include "Crop.h"
-#include "Flower.h"
-#include "Shrub.h"
-#include "Tree.h"
+class Garden;
+class PlantCare;
+class Staff;
+class Plant;
 
-class PlantInfo;
+using namespace std;
 
 class Builder {
  public:
   Builder();
   virtual ~Builder();
-  virtual void addCrop(string name) = 0;
-  virtual void addPlant(const PlantInfo& p) = 0;
+
+  virtual Builder* clone() = 0;
   virtual void reset() = 0;
 };
 

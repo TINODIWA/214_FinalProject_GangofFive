@@ -1,6 +1,6 @@
 /**
  * @file Crop.cpp
- * @author Nathan Chisadza
+ * @author Nathan Chisadza, Swelihle Makhathini
  * @brief
  * @version 0.1
  * @date 2025-10-29
@@ -15,7 +15,7 @@
  * @brief Construct a new Crop:: Crop object
  *
  */
-Crop::Crop() : Plant() {}
+Crop::Crop() : Garden() {}
 
 /**
  * @brief Destructor that deletes all plants in vector
@@ -24,7 +24,7 @@ Crop::Crop() : Plant() {}
  * to prevent memory leaks
  */
 Crop::~Crop() {
-  for (Plant* p : plants) {
+  for (Garden* p : plants) {
     delete p;
   }
   plants.clear();
@@ -38,22 +38,15 @@ Crop::~Crop() {
  * Creates a new Crop with its own copy of each Plant in the vector.
  * Each Plant is cloned to create a completely independent copy.
  */
-Crop::Crop(const Crop& other) : Plant(other) {
-  for (Plant* p : other.plants) {
+Crop::Crop(const Crop& other) : Garden(other) {
+  for (Garden* p : other.plants) {
     if (p != NULL) {
       plants.push_back(p->clone());
     }
   }
 }
 
-/**
- * @brief Construct a new Crop:: Crop object with a name
- */
-Crop::Crop(std::string name) {
-  setName(name);
-}
-
-void Crop::addPlant(Plant* p) {
+void Crop::add(Garden* p) {
   plants.push_back(p);
 }
 
@@ -61,16 +54,15 @@ void Crop::addPlant(Plant* p) {
  * @brief Create a copy of this Crop.
  * @return Pointer to a new Crop.
  */
-Plant* Crop::clone() {
+Garden* Crop::clone() {
   return new Crop(*this);
 }
 
 void Crop::print() {
-  cout << this->getName() << ":\n";
+  vector<Garden*>::iterator it = plants.begin();
+  //cout<<"ERROR\n";
 
-  vector<Plant*>::iterator it = plants.begin();
-
-  int width = 66;
+  int width = 40;
   for (int i = 0; i < width; i++) cout << "-";
 
   cout << endl;
@@ -79,10 +71,10 @@ void Crop::print() {
     (*it)->print();
     ++it;
 
-    if (i % 6 == 0) {
+    if (i % 4 == 0) {
       cout << endl;
       for (int i = 0; i < width; i++) cout << "-";
-      cout << endl << "|";
+      cout << endl;
     }
 
     ++i;

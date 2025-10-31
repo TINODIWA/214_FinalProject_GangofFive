@@ -52,7 +52,10 @@
         "iomanip": "cpp"
     },
     "cSpell.words": [
+        "CROPBUILDER",
         "fertilise",
-        "fertiliser"
+        "fertiliser",
+        "PLANTBUILDER",
+        "PLANTCARE"
     ]
 }

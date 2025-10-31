@@ -15,7 +15,7 @@
  * @brief Construct a new Director:: Director object
  *
  */
-Director::Director() : cropBuilder(nullptr) {}
+Director::Director() : cropBuilder(nullptr), plantBuilder(nullptr) {}
 
 /**
  * @brief Destroy the Director:: Director object
@@ -25,6 +25,11 @@ Director::~Director() {
     delete cropBuilder;
     cropBuilder = nullptr;
   }
+
+  if (plantBuilder) {
+    delete plantBuilder;
+    plantBuilder = nullptr;
+  }
 }
 
 /**
@@ -32,91 +37,97 @@ Director::~Director() {
  *
  * @param p plant builder
  */
-Director::Director(CropBuilder* p) : cropBuilder(p) {}
+Director::Director(CropBuilder* c, PlantBuilder* p) : cropBuilder(c), plantBuilder(p) {}
+
+/**
+ * @brief sets the crop builder to a new one
+ *
+ * @param p
+ */
+void Director::setBuilder(CropBuilder* c) {
+  if (cropBuilder) {
+    delete cropBuilder;
+    cropBuilder = nullptr;
+  }
+
+  cropBuilder = c->clone();
+}
 
 /**
  * @brief sets the plant builder to a new one
  *
  * @param p
  */
-void Director::setBuilder(CropBuilder* p) {
-  if (cropBuilder) {
-    delete cropBuilder;
-    cropBuilder = nullptr;
+void Director::setBuilder(PlantBuilder* p) {
+  if (plantBuilder) {
+    delete plantBuilder;
+    plantBuilder = nullptr;
   }
 
-  cropBuilder = new CropBuilder(p);
+  plantBuilder = p->clone();
 }
 
 /**
  * @brief build the garden of crops
  *
  */
-Plant* Director::construct(string filename) {
+Garden* Director::construct(string filename) {
   cropBuilder->reset();
-  parse(filename);
 
-  map<string, vector<PlantInfo>>::iterator it = plants.begin();
-  bool crop = true;
-  while (it != plants.end()) {
-    cropBuilder->addCrop((*it).first);  //
+  // Parse the file
 
-    vector<PlantInfo>::iterator p_it = (*it).second.begin();
-    while (p_it != (*it).second.end()) {
-      cropBuilder->addPlant(*p_it);
-      ++p_it;
+  fstream plants(filename);
+  if (!plants.is_open()) {
+    return nullptr;
+  }
+
+  string line;
+
+  while (getline(plants, line)) {
+    cropBuilder->addCrop();
+
+    plantBuilder->reset();
+    vector<string> pieces = split(line, '#');
+
+    int amount = stoi(pieces[2]);
+
+    plantBuilder->setName(pieces[0])
+        ->setType(pieces[1])
+        ->setWater(stoi(pieces[3]))
+        ->setSun(stoi(pieces[4]))
+        ->setFertiliser(stoi(pieces[5]));
+
+    vector<int> days = {0, stoi(pieces[7])};
+
+    plantBuilder->setDays(days)->setPrice(stoi(pieces[8]));
+    Garden* p = plantBuilder->build();
+
+    cropBuilder->addPlant(p);
+
+    for (int i = 0; i < amount - 1; i++) {
+      cropBuilder->addPlant(p->clone());
     }
-
-    ++it;
   }
 
   return cropBuilder->getCrop();
 }
 
 /**
- * @brief gets user input for the garden
+ * @brief splits the line of a textfile to instantiate a plant
  *
+ * @param str
+ * @param delim
+ * @return vector<string>
  */
+vector<string> Director::split(const string str, char delim) {
+  vector<string> pieces;
+  stringstream ss(str);
 
-void Director::parse(string filename) {
-  fstream infos(filename);
-  if (infos.is_open()) {
-    string line;
-    while (getline(infos, line)) {
-      stringstream ss(line);
-      string token;
-      int i = 0;
+  string piece;
 
-      PlantInfo p = PlantInfo();
-
-      while (getline(ss, token, '#')) {
-        switch (i) {
-          case 0:  // type
-            p.setType(token);
-            break;
-          case 1:  // name
-            p.setName(token);
-            break;
-          case 2:  // amount
-            p.setAmount(stoi(token));
-            break;
-          case 3:  // water
-            p.setWater(stoi(token), 1);
-            break;
-          case 4:  // sun
-            p.setSun(stoi(token), 1);
-            break;
-          case 5:  // fertiliser
-            p.setFertiliser(stoi(token), 1);
-            break;
-            // case 6: //days
-            // break;
-        }
-
-        i++;
-      }
-      plants[p.getType()].push_back(p);
-    }
-    infos.close();
+  while (getline(ss, piece, delim)) {
+    pieces.push_back(piece);
   }
+
+  return pieces;
 }

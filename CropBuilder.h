@@ -7,36 +7,29 @@
 #define CROPBUILDER_H_
 
 #include <string>
-#include <vector>
 
 #include "Builder.h"
 #include "Crop.h"
-#include "FlowerCreator.h"
+#include "Garden.h"
 #include "PlantCare.h"
-#include "PlantCreator.h"
-#include "ShrubCreator.h"
 #include "Staff.h"
-#include "TreeCreator.h"
 
 class PlantInfo;
 
 class CropBuilder : public Builder {
  private:
-  Plant* root;
-  Plant* currCrop;
-  map<string, PlantCreator*> factories;
+  Garden* root;
+  Garden* currCrop;
 
  public:
   CropBuilder();
   ~CropBuilder();
   CropBuilder(const CropBuilder* other);
-  CropBuilder(map<string, PlantCreator*> factories);
-  void addCrop(string name);
-  void addPlant(const PlantInfo& p);
-  void setFactories(map<string, PlantCreator*> factories);
-  void addFactory(std::string type, PlantCreator* factory);
+  void addCrop();
+  void addPlant(Garden* p);
+  Garden* getCrop();
+  CropBuilder* clone();
   void reset();
-  Plant* getCrop();
 };
 
 #endif  // CROPBUILDER_H_

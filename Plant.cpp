@@ -15,8 +15,11 @@
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant() {
-  info = PlantInfo();
+Plant::Plant() : state(nullptr), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
+  for (int i = 0; i < 2; i++) {
+    water.push_back(0);
+    fertiliser.push_back(0);
+  }
 }
 
 /**
@@ -32,7 +35,24 @@ Plant::~Plant() {}
  */
 
 Plant::Plant(const Plant& other) {
-  this->info = PlantInfo(other.info);
+  name = other.name;
+  type = other.type;
+  water = other.water;
+  sun = other.sun;
+  fertiliser = other.fertiliser;
+  days = other.days;
+  price = other.price;
+  attention = other.attention;
+  state = (other.state) ? other.state->clone() : nullptr;
+
+  if (other.staff.size() > 0) {
+    vector<Staff*>::const_iterator it = other.staff.begin();
+    while (it != other.staff.end()) {
+      staff.push_back(*it);  // shallow copy coz staff have multiple plants
+    }
+  }
+
+  // STRATEGY COPYING WILL BE ADDED WHEN THE CLASSES ARE ADDED
 }
 
 /**
@@ -41,7 +61,7 @@ Plant::Plant(const Plant& other) {
  * @param name
  */
 void Plant::setName(string name) {
-  info.setName(name);
+  this->name = name;
 }
 
 /**
@@ -50,16 +70,7 @@ void Plant::setName(string name) {
  * @param type
  */
 void Plant::setType(string type) {
-  info.setType(type);
-}
-
-/**
- * @brief Construct a new Plant:: Plant object
- *
- * @param info
- */
-Plant::Plant(const PlantInfo& info) {
-  this->info = PlantInfo(info);
+  this->type = type;
 }
 
 /**
@@ -67,15 +78,8 @@ Plant::Plant(const PlantInfo& info) {
  *
  * @param water
  */
-void Plant::setWater(int water, int idx)
-{
-	if (idx < 0 || idx > 1)
-	{
-		cout << "Invalid Index!" << endl;
-		return;
-	}
-
-	info.setWater(water, idx);
+void Plant::setWater(int water) {
+  this->water[1] = water;
 }
 
 /**
@@ -83,15 +87,8 @@ void Plant::setWater(int water, int idx)
  *
  * @param sun
  */
-void Plant::setSun(int sun, int idx)
-{
-	if (idx < 0 || idx > 1)
-	{
-		cout << "Invalid Index!" << endl;
-		return;
-	}
-
-	info.setSun(sun, idx);
+void Plant::setSun(int sun) {
+  this->sun = sun;
 }
 
 /**
@@ -99,15 +96,8 @@ void Plant::setSun(int sun, int idx)
  *
  * @param fertiliser
  */
-void Plant::setFertiliser(int fertiliser, int idx)
-{
-	if (idx < 0 || idx > 1)
-	{
-		cout << "Invalid Index!" << endl;
-		return;
-	}
-
-	info.setFertiliser(fertiliser, idx);
+void Plant::setFertiliser(int fertiliser) {
+  this->fertiliser[1] = fertiliser;
 }
 
 /**
@@ -116,7 +106,52 @@ void Plant::setFertiliser(int fertiliser, int idx)
  * @param attention
  */
 void Plant::setAttention(int attention) {
-  info.setAttention(attention);
+  this->attention = attention;
+}
+
+/**
+ * @brief sets the water strategy of the plant
+ *
+ * @param water
+ */
+void Plant::setWaterCare(PlantCare* water) {
+  // water.clone();
+}
+
+/**
+ * @brief sets the sun strategy of the plant
+ *
+ * @param sun
+ */
+void Plant::setSunCare(PlantCare* sun) {
+  // sun.clone()
+}
+
+/**
+ * @brief sets the fertiliser strategy of the plant
+ *
+ * @param fertiliser
+ */
+void Plant::setFertiliserCare(PlantCare* fertiliser) {
+  // fertiliser.clone()
+}
+
+/**
+ * @brief sets the days for the life cycle
+ *
+ * @param days
+ */
+void Plant::setDays(vector<int> days) {
+  this->days = days;
+}
+
+/**
+ * @brief sets the price of the plant
+ *
+ * @param price
+ */
+void Plant::setPrice(int price) {
+  this->price = price;
 }
 
 /**
@@ -125,7 +160,7 @@ void Plant::setAttention(int attention) {
  * @return string
  */
 string Plant::getName() const {
-  return info.getName();
+  return name;
 }
 
 /**
@@ -134,7 +169,7 @@ string Plant::getName() const {
  * @return string
  */
 string Plant::getType() const {
-  return info.getType();
+  return type;
 }
 
 /**
@@ -143,7 +178,7 @@ string Plant::getType() const {
  * @return int
  */
 vector<int> Plant::getWater() const {
-  return info.getWater();
+  return water;
 }
 
 /**
@@ -152,8 +187,8 @@ vector<int> Plant::getWater() const {
  * @return int
  */
 
-vector<int> Plant::getSun() const {
-  return info.getSun();
+int Plant::getSun() const {
+  return sun;
 }
 
 /**
@@ -162,7 +197,7 @@ vector<int> Plant::getSun() const {
  * @return int
  */
 vector<int> Plant::getFertiliser() const {
-  return info.getFertiliser();
+  return fertiliser;
 }
 
 /**
@@ -171,7 +206,52 @@ vector<int> Plant::getFertiliser() const {
  * @return int
  */
 int Plant::getAttention() const {
-  return info.getAttention();
+  return attention;
+}
+
+/**
+ * @brief returns the water care strategy
+ *
+ * @return PlantCare*
+ */
+PlantCare* Plant::getWaterCare() const {
+  return waterStrategy;
+}
+
+/**
+ * @brief returns the sun care strategy
+ *
+ * @return PlantCare*
+ */
+PlantCare* Plant::getSunCare() const {
+  return sunStrategy;
+}
+
+/**
+ * @brief return the fertiliser care strategy
+ *
+ * @return PlantCare*
+ */
+PlantCare* Plant::getFertiliserCare() const {
+  return fertiliserStrategy;
+}
+
+/**
+ * @brief returns the days of lifecycle progression of the plant
+ *
+ * @return vector<int>
+ */
+vector<int> Plant::getDays() const {
+  return days;
+}
+
+/**
+ * @brief returns the price of the plant
+ *
+ * @return int
+ */
+int Plant::getPrice() const {
+  return price;
 }
 
 void Plant::attach(Staff* s) {
@@ -190,38 +270,40 @@ void Plant::notify() {
 }
 
 /**
- * @brief stubbed - for adding plans to a crop
- *
- * @param p
+ * @brief updates daily water level
  */
-void Plant::addPlant(Plant* p) {}
-
-void Plant::setPlantCare(PlantCare* strategy) {
-  info.setPlantCare(strategy);
-}
-
-void Plant::setStaff(Staff *staff)
-{
-	info.setStaff(staff);
+void Plant::updateWaterLevel(int newLevel) {
+  this->water[0] = newLevel;
 }
 
 /**
- * @brief Updates the current day counter and resets daily requirment levels
+ * @brief Decreases the current  water level based on Sun Strategy
+ * @param decrease attribute determined by Sun Strategy
  */
-void Plant::updateDay()
-{
-	int day = info.getDays()[0];
-	day++;
-	info.setDays(day,0);
-	info.setFertiliser(0,0);
-	info.setSun(0,0);
-	info.setWater(0,0);
-
+void Plant::transpire(int decreasedLevel) {
+  this->water[0] = decreasedLevel;
 }
 
 /**
- * @brief The request function in the Conetxt for state
+ * @brief Decreases the current  water level based on Sun Strategy
+ * @param newLevel attribute determined by Sun Strategy
  */
-void Plant::getState(){
+void Plant::updateFertiliserLevel(int newLevel) {
+  this->fertiliser[0] = newLevel;
+}
 
+/**
+ * @brief Updates current day in the life cycle and resets daily water Level
+ */
+void Plant::updateDay() {
+  this->days[0]++;
+  updateFertiliserLevel(0);
+  updateWaterLevel(0);
+}
+
+/**
+ * @brief Returns plants current state
+ */
+string Plant::getState() {
+  return state->getState();
 }

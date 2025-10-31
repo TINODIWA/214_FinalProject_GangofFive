@@ -14,21 +14,11 @@ using namespace std;
 class PlantState {
  public:
   PlantState();
-
   PlantState(const PlantState& other);
+  virtual ~PlantState();
 
-<<<<<<< HEAD
-public:
-	PlantState();
-
-	PlantState(const PlantState& other);
-	virtual ~PlantState();
-
-	virtual void handleChange() = 0;
-	virtual string getState() = 0;
-=======
   virtual void handleChange() = 0;
->>>>>>> 282cbf42c9195afab4bfb956e3d97ccbde640617
+  virtual string getState() = 0;
 };
 
 #endif  // PLANTSTATE_H_

@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 
+<<<<<<< HEAD
 #include "PlantCare.h"
 #include "PlantState.h"
 
@@ -32,6 +33,13 @@ private:
     int amount; // number of plants in the garden ????? should this be here
     std::vector<int> days;
     int price;
+=======
+class Staff;
+
+class PlantInfo {
+ private:
+ 
+>>>>>>> 53408dad1b696cc90ca5f9184f09cadaa215fe4e
 
  public:
   PlantInfo();
