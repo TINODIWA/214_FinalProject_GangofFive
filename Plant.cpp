@@ -35,6 +35,7 @@ Plant::~Plant() {}
  */
 
 Plant::Plant(const Plant& other) {
+
   name = other.name;
   type = other.type;
   water = other.water;
@@ -353,3 +354,4 @@ void Plant::print() {
  * @param p 
  */
 void Plant::add(Garden* p){}
+
