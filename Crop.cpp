@@ -10,6 +10,7 @@
  */
 
 #include "Crop.h"
+#include "CropIterator.h"
 
 /**
  * @brief Construct a new Crop:: Crop object

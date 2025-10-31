@@ -12,11 +12,13 @@
 
 #include "Garden.h"
 
+class CropIterator;
+
 using namespace std;
 
 class Crop : public Garden {
  public:
-  std::vector<Garden*> plants; 
+  std::vector<Garden*> plants;
 
   Crop();
   ~Crop();
@@ -24,6 +26,7 @@ class Crop : public Garden {
   void add(Garden* p);
   Garden* clone();
   void print();
+  CropIterator* createIterator();
 };
 
 #endif  // CROP_H_
