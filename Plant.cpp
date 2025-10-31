@@ -156,6 +156,9 @@ void Plant::setPrice(int price) {
   this->price = price;
 }
 
+void Plant::setPrice(int price) {
+  info.setPrice(price);
+}
 /**
  * @brief returns the name of the plant
  *

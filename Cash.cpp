@@ -40,7 +40,12 @@ void Cash::payment() {
 }
 
 /**
- * @brief packaging a Card order
- *
+ * @brief returns the type of payment
+ * 
+ * @return string 
  */
-void Cash::package() {}
+
+string Cash::getType(){
+	return "Cash Payment";
+}
+
