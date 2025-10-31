@@ -62,7 +62,7 @@ void Crop::print() {
   vector<Garden*>::iterator it = plants.begin();
   //cout<<"ERROR\n";
 
-  int width = 66;
+  int width = 40;
   for (int i = 0; i < width; i++) cout << "-";
 
   cout << endl;
@@ -71,10 +71,10 @@ void Crop::print() {
     (*it)->print();
     ++it;
 
-    if (i % 6 == 0) {
+    if (i % 4 == 0) {
       cout << endl;
       for (int i = 0; i < width; i++) cout << "-";
-      cout << endl << "|";
+      cout << endl;
     }
 
     ++i;
