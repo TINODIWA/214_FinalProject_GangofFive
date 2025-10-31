@@ -17,6 +17,6 @@ class EFT : public Payment {
   ~EFT();
   void prepare();
   void payment();
-  void package();
+  string getType();
 };
 #endif  // EFT_H_

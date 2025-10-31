@@ -6,33 +6,44 @@
 #ifndef ORDER_H_
 #define ORDER_H_
 
-#include "Customer.h"
+#include <map>
 #include "Plant.h"
-#include <vector>
+#include "Customer.h"
+#include "Staff.h"
+#include "Payment.h"
+#include "EFT.h"
+#include "Card.h"
+#include "Cash.h"
 
 using namespace std;
 
-class Order {
- private:
-  vector<Plant*> plants;
-  Customer* customer;
+class Order
+{
 
- public:
-  Order();
-  ~Order();
-  Order(const Order& other);
+private:
+	map<Plant *, int> plants;
+	Customer *customer;
+	Staff *staff;
+	string receipt;
+	Payment *paymentMethod;
+	int purchaseDate;
 
- private:
-  void prepare();
-  void payment();
-  void package();
+public:
+	Order();
+	Order(Customer *customer, Staff *staff);
+	~Order();
+	Order(const Order &other);
+	void addPlant(Plant *p);
+	void removePlant(Plant *p);
+	void purchase();
+	void setStaff(Staff* s);
+	void setCustomer(Customer* c);
 
- public:
-  void addPlant(Plant* p);
+private:
+	void prepare();
+	void payment();
+	Order *package();
 
-  void removePlant(Plant* p);
-
-  void purchase();
 };
 
 #endif  // ORDER_H_

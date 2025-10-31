@@ -17,7 +17,7 @@ class Card : public Payment {
   ~Card();
   void prepare();
   void payment();
-  void package();
+  string getType();
 };
 
 #endif  // CARD_H_

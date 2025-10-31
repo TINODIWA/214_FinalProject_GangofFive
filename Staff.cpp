@@ -21,14 +21,13 @@ void Staff::handleCustomer(Request* req) {
   // throw "Not yet implemented";
 }
 
-Staff::Staff() : People() {
+Staff::Staff(string name) : People(nullptr,name),successor(nullptr) {
   // TODO(user) - implement Staff::Staff
   // throw "Not yet implemented";
 }
 
 Staff::Staff(const Staff* other) : People(*other) {
   if (other) {
-    this->name = other->name;
     this->level = other->level;
     this->successor = new Staff(*other->successor);
 

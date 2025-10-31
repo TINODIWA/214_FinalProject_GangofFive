@@ -41,8 +41,13 @@ void EFT::payment() {
   cout << "Transfer Complete!\n";
 }
 
+
 /**
- * @brief packages EFT payment
- *
+ * @brief return the type of payment
+ * 
+ * @return string 
  */
-void EFT::package() {}
+string EFT::getType()
+{
+	return "EFT Payment";
+}

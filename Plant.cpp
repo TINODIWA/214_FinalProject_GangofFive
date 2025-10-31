@@ -156,6 +156,9 @@ void Plant::setPrice(int price) {
   this->price = price;
 }
 
+void Plant::setPrice(int price) {
+  info.setPrice(price);
+}
 /**
  * @brief returns the name of the plant
  *
@@ -294,3 +297,13 @@ void Plant::print() {
  * @param p 
  */
 void Plant::add(Garden* p){}
+ 
+/**
+ * @brief advice on how to care for the plant
+ *
+ * @return string
+ */
+string Plant::advice() {
+  return "";
+}
+
