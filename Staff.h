@@ -2,23 +2,28 @@
 #define STAFF_H
 #include "People.h"
 #include "Request.h"
+
 class Plant;
-class Staff : public People {
+class Staff : public People
+{
 
 private:
 	string name;
 	string level;
 	vector<string> responsibilities;
-	Staff* successor;
+
+protected:
+	Staff *successor;
 
 public:
-	void handlePlant(Plant* p);
-	void handleCustomer(Request* req);
 	Staff();
-	Staff(const Staff* other);
-
-	string JobDesc();
-	string getType();
+	Staff(const Staff *other);
+	~Staff();
+	void setSuccessor(Staff *succ);
+	virtual std::string jobDesc() = 0;
+	virtual std::string getType() = 0;
+	virtual void handlePlant(Plant *p) = 0;
+	virtual void handleCustomer(Request *req) = 0;
 };
 
 #endif

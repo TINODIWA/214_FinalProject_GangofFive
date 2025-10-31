@@ -1,16 +1,18 @@
 #include "Roles.h"
 
-Roles::Roles() {
-	// TODO - implement Roles::Roles
-	throw "Not yet implemented";
+Roles::Roles() : Staff() {
+	//calls base class staff to initialize inherited part of roles
 }
 
-string Roles::jobDesc() {
-	// TODO - implement Roles::jobDesc
-	throw "Not yet implemented";
+Roles::~Roles()
+{
+	//niks
 }
 
-string Roles::getType() {
-	// TODO - implement Roles::getType
-	throw "Not yet implemented";
-}
+// std::string Roles::jobDesc() {
+//     return "General role for staff.";
+// }
+
+// std::string Roles::getType() {
+//     return "Roles";
+// }

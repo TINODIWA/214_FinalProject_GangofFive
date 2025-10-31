@@ -6,12 +6,10 @@ class Roles : public Staff {
 
 public:
 	vector<Staff*> staff;
-
 	Roles();
-
-	string jobDesc();
-
-	string getType();
+	virtual ~Roles();
+	virtual std::string jobDesc() override = 0;
+	virtual std::string getType() override = 0;
 };
 
 #endif

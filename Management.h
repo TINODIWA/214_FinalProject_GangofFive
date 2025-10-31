@@ -6,14 +6,13 @@
 class Management : public Roles {
 
 public:
-	Command* cmd;
-
-	string getType();
-
 	Management();
-
-	void handleCustomer(Request* req);
-
+	~Management();
+	std::string getType() override;
+	std::string jobDesc() override;
+	Command* cmd;
+	void handleCustomer(Request* req) override;
+	void handlePlant(Plant* p) override;
 	void assignTasks();
 };
 

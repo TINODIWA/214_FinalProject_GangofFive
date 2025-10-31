@@ -8,11 +8,10 @@ class BaseStaff : public Staff {
 public:
 	BaseStaff();
 
-	string jobDesc();
-
-	void handleCustomer(Request* req);
-
-	string getType();
+	std::string jobDesc() override;
+	void handleCustomer(Request* req) override;
+	void handlePlant(Plant* p) override;
+	std::string getType() override;
 };
 
 #endif

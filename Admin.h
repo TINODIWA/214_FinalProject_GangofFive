@@ -7,12 +7,12 @@ class Admin : public Roles {
 
 public:
 	Admin();
-
-	string handleCustomer(Request* req);
-
+	~Admin();
+	std::string getType() override;
+	std::string jobDesc() override;
 	void updateInventory();
-
-	string getType();
+	void handleCustomer(Request* req) override;
+	void handlePlant(Plant* p) override;
 };
 
 #endif

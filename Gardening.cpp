@@ -1,41 +1,59 @@
+#include <iostream>
+#include <algorithm>
+#include "Plant.h"
 #include "Gardening.h"
+#include "Request.h"
 
-void Gardening::update() {
-	// TODO - implement Gardening::update
-	throw "Not yet implemented";
+
+Gardening::Gardening() : Roles() {
 }
 
-string Gardening::getType() {
-	// TODO - implement Gardening::getType
-	throw "Not yet implemented";
+
+Gardening::~Gardening() {
+}
+
+std::string Gardening::getType() {
+	return "Gardening";
+}
+
+std::string Gardening::jobDesc() {
+	return "Gardening staff responsible for plant care and maintenance.";
+}
+
+void Gardening::update() {
+	// for (int i = 0; i < plants.size(); ++i) {
+	// 	Plant* plant = plants[i];
+	// 	if (plant) {
+	// 		std::cout << "Updating plant: " << plant->getName() << std::endl;
+	// 	}
+	// }
 }
 
 void Gardening::checkPlants() {
-	// TODO - implement Gardening::checkPlants
-	throw "Not yet implemented";
+	// for (int i = 0; i < plants.size(); i++) {
+	// 	if (plants[i]) {
+	// 		std::cout << "Checking plant: " << plants[i]->getName() << std::endl;
+	// 	}
+	// }
 }
 
-string Gardening::handleCustomer(Request* req, Request* req) {
-	// TODO - implement Gardening::handleCustomer
-	throw "Not yet implemented";
-}
-
-void Gardening::handlePlant(Plant* p, Plant* p) {
-	// TODO - implement Gardening::handlePlant
-	throw "Not yet implemented";
-}
-
-Gardening::Gardening() {
-	// TODO - implement Gardening::Gardening
-	throw "Not yet implemented";
-}
-
-string Gardening::handleCustomer(Request* req) {
-	// TODO - implement Gardening::handleCustomer
-	throw "Not yet implemented";
+void Gardening::handleCustomer(Request* req) {
+    // if (req) {
+    //     std::cout << "Gardening staff handled request: " << req->getRequest() << std::endl;
+    // } else if (successor) {
+    //     successor->handleCustomer(req);
+    // } else {
+    //     std::cout << "No staff could handle the request." << std::endl;
+    // }
 }
 
 void Gardening::handlePlant(Plant* p) {
-	// TODO - implement Gardening::handlePlant
-	throw "Not yet implemented";
+    // if (p) {
+    //     std::cout << "Gardening staff is taking care of plant: " << p->getName() << std::endl;
+    // } else if (successor) {
+    //     successor->handlePlant(p);
+    // } else {
+    //     std::cout << "No staff could handle the plant request." << std::endl;
+    // }
 }
+

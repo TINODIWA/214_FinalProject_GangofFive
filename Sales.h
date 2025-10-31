@@ -2,17 +2,17 @@
 #define SALES_H
 #include "Roles.h"
 
-class Sales : public Roles {
-
+class Sales : public Roles
+{
 
 public:
-	string handleCustomer(Request* req);
-
-	void handleSales();
-
 	Sales();
-
-	string getType();
+	~Sales();
+	std::string getType() override;
+	std::string jobDesc() override;
+	void handleCustomer(Request* req) override;
+	void handlePlant(Plant* p) override;
+	void handleSales();
 };
 
 #endif

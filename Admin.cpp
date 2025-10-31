@@ -1,31 +1,45 @@
+#include <iostream>
+#include "Request.h"
 #include "Admin.h"
 
-void Admin::operation() {
-	// TODO - implement Admin::operation
-	throw "Not yet implemented";
+
+Admin::Admin() : Roles() {
+
 }
+
+Admin::~Admin() {
+
+}
+
+// staff.getjobdesc + handling sales
+
+
+
+std::string Admin::getType() {
+	return "Admin";
+}
+
+std::string Admin::jobDesc() {
+	return "Admin staff responsible for administration and inventory.";
+}
+
 
 void Admin::updateInventory() {
-	// TODO - implement Admin::updateInventory
-	throw "Not yet implemented";
+    std::cout << "Admin is checking inventory records" << std::endl;
+    //code
+    std::cout << "Inventory updated by Admin." << std::endl;
 }
 
-string Admin::getType() {
-	// TODO - implement Admin::getType
-	throw "Not yet implemented";
+void Admin::handleCustomer(Request* req) {
+    if (req) {
+        std::cout << "Admin staff handled request: " << req->getRequest() << std::endl;
+    } else if (successor) {
+        successor->handleCustomer(req);
+    } else {
+        std::cout << "No staff could handle the request." << std::endl;
+    }
 }
 
-string Admin::handleCustomer(Request* req, Request* req) {
-	// TODO - implement Admin::handleCustomer
-	throw "Not yet implemented";
-}
-
-Admin::Admin() {
-	// TODO - implement Admin::Admin
-	throw "Not yet implemented";
-}
-
-string Admin::handleCustomer(Request* req) {
-	// TODO - implement Admin::handleCustomer
-	throw "Not yet implemented";
+void Admin::handlePlant(Plant* p) {
+	//doesnt handle plants here chief
 }

@@ -1,31 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include "Request.h"
 #include "Sales.h"
 
-void Sales::operation() {
-	// TODO - implement Sales::operation
-	throw "Not yet implemented";
+
+Sales::Sales() : Roles() {
 }
+
+Sales::~Sales(){
+
+}
+
+std::string Sales::getType() {
+	return "Sales";
+}
+
+std::string Sales::jobDesc() {
+	return "Sales staff responsible for handling sales and customer requests.";
+}
+
 
 void Sales::handleSales() {
-	// TODO - implement Sales::handleSales
-	throw "Not yet implemented";
+    std::cout << "Sales staff is processing a sale..." << std::endl;
+    //sales logic here???????
+    std::cout << "Sale completed successfully." << std::endl;
 }
 
-string Sales::getType() {
-	// TODO - implement Sales::getType
-	throw "Not yet implemented";
+
+void Sales::handleCustomer(Request* req) {
+	if (req) {
+		std::cout << "Sales staff handled request: " << req->getRequest() << std::endl;
+	} else if (successor) {
+		successor->handleCustomer(req);
+	} else {
+		std::cout << "No staff could handle the request." << std::endl;
+	}
 }
 
-string Sales::handleCustomer(Request* req, Request* req) {
-	// TODO - implement Sales::handleCustomer
-	throw "Not yet implemented";
+void Sales::handlePlant(Plant* p) {
+    //doesnt handle plants chief
 }
 
-Sales::Sales() {
-	// TODO - implement Sales::Sales
-	throw "Not yet implemented";
-}
-
-string Sales::handleCustomer(Request* req) {
-	// TODO - implement Sales::handleCustomer
-	throw "Not yet implemented";
-}

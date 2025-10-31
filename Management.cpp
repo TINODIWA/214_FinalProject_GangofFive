@@ -1,31 +1,41 @@
 #include "Management.h"
 
-string Management::getType() {
-	// TODO - implement Management::getType
-	throw "Not yet implemented";
+
+
+Management::Management() : Roles(), cmd(nullptr) {
+
 }
 
-void Management::operation() {
-	// TODO - implement Management::operation
-	throw "Not yet implemented";
+Management::~Management() {
+
 }
+
+std::string Management::getType() {
+	return "Management";
+}
+
+std::string Management::jobDesc() {
+	return "Management staff responsible for assigning tasks and operations.";
+}
+
 
 void Management::assignTasks() {
-	// TODO - implement Management::assignTasks
-	throw "Not yet implemented";
-}
-
-void Management::handleCustomer(Request* req, Request* req) {
-	// TODO - implement Management::handleCustomer
-	throw "Not yet implemented";
-}
-
-Management::Management() {
-	// TODO - implement Management::Management
-	throw "Not yet implemented";
+    std::cout << "Management is reviewing staff workload..." << std::endl;
+    //code
+    std::cout << "Tasks assigned by Management." << std::endl;
 }
 
 void Management::handleCustomer(Request* req) {
-	// TODO - implement Management::handleCustomer
-	throw "Not yet implemented";
+    if (req) {
+        std::cout << "Management staff handled request: " << req->getRequest() << std::endl;
+    } else if (successor) {
+        successor->handleCustomer(req);
+    } else {
+        std::cout << "No staff could handle the request." << std::endl;
+    }
 }
+
+void Management::handlePlant(Plant* p) {
+    //doesnt handle plants boss
+}
+
