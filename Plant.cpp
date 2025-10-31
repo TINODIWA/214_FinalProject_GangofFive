@@ -35,22 +35,21 @@ Plant::~Plant() {}
  * @param other
  */
 
-Plant::Plant(const Plant* other) {
-  if (!other) return;
+Plant::Plant(const Plant& other) {
 
-  name = other->name;
-  type = other->type;
-  water = other->water;
-  sun = other->sun;
-  fertiliser = other->fertiliser;
-  days = other->days;
-  price = other->price;
-  attention = other->attention;
-  state = (other->state) ? other->state->clone() : nullptr;
+  name = other.name;
+  type = other.type;
+  water = other.water;
+  sun = other.sun;
+  fertiliser = other.fertiliser;
+  days = other.days;
+  price = other.price;
+  attention = other.attention;
+  state = (other.state) ? other.state->clone() : nullptr;
 
-  if (other->staff.size() > 0) {
-    vector<Staff*>::const_iterator it = other->staff.begin();
-    while (it != other->staff.end()) {
+  if (other.staff.size() > 0) {
+    vector<Staff*>::const_iterator it = other.staff.begin();
+    while (it != other.staff.end()) {
       staff.push_back(*it);  // shallow copy coz staff have multiple plants
     }
   }
@@ -278,7 +277,7 @@ void Plant::notify() {
  * @return Garden*
  */
 Garden* Plant::clone() {
-  return new Plant(this);
+  return new Plant(*this);
 }
 
 /**

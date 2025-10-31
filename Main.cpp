@@ -33,13 +33,13 @@ using namespace std;
 int main() {
   cout << "TESTING GARDEN BUILDER\n";
   CropBuilder* cropBuilder = new CropBuilder();
+  PlantBuilder* plantBuilder = new PlantBuilder();
 
-  Director dir = Director(cropBuilder);
-  Plant* garden = dir.construct("plants.txt"); ////ROOT
+  Director dir = Director(cropBuilder, plantBuilder);
+  Garden* garden = dir.construct("plants.txt");
 
   cout << "\n\nGarden Created \n";
   garden->print();
-  
 
   // cout << "TESTING ORDER TEMPLATE METHOD\n";
 

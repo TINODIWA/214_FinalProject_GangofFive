@@ -40,7 +40,7 @@ class Plant : public Garden {
  public:
   Plant();
   virtual ~Plant();
-  Plant(const Plant* other);
+  Plant(const Plant& other);
   void setName(string name);
   void setType(string type);
   void setWater(int water);
