@@ -114,8 +114,8 @@ void Plant::setAttention(int attention) {
  *
  * @param water
  */
-void Plant::setWaterCare(PlantCare* water) {
-  // water.clone();
+void Plant::setWaterCare(char level) {
+  this->waterStrategy = setCareStrategy(level);
 }
 
 /**
@@ -123,8 +123,8 @@ void Plant::setWaterCare(PlantCare* water) {
  *
  * @param sun
  */
-void Plant::setSunCare(PlantCare* sun) {
-  // sun.clone()
+void Plant::setSunCare(char level) {
+  this->sunStrategy = setCareStrategy(level);
 }
 
 /**
@@ -132,8 +132,35 @@ void Plant::setSunCare(PlantCare* sun) {
  *
  * @param fertiliser
  */
-void Plant::setFertiliserCare(PlantCare* fertiliser) {
-  // fertiliser.clone()
+void Plant::setFertiliserCare(char level) {
+  this->fertiliserStrategy = setCareStrategy(level);
+}
+
+/**
+ * @brief Returns instannce of required PlantCare level
+ *
+ * @param level
+ */
+PlantCare* Plant::setCareStrategy(char level) {
+  switch (level) {
+    case 'H':
+      return new High();
+      break;
+
+    case 'M':
+      return new Med();
+      break;
+
+    case 'L':
+      //cout << "LOW set...great!!." << endl;
+      return new Low();
+      break;
+
+    default:
+      cout << "No care strategy set...try again." << endl;
+      return NULL;
+      break;
+  }
 }
 
 /**
@@ -277,7 +304,7 @@ void Plant::updateWaterLevel(int newLevel) {
 }
 
 /**
- * @brief Decreases the current  water level based on Sun Strategy
+ * @brief Decreases the current plantlevels based on Sun Strategy
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::transpire(int decreasedLevel) {
@@ -307,3 +334,22 @@ void Plant::updateDay() {
 string Plant::getState() {
   return state->getState();
 }
+
+Garden* Plant::clone() {
+  return new Plant(*this);
+}
+
+/**
+ * @brief prints the plant
+ *
+ */
+void Plant::print() {
+  cout << left << setw(10) << this->name << "|";
+}
+
+/**
+ * @brief stubbed - for the crop
+ * 
+ * @param p 
+ */
+void Plant::add(Garden* p){}

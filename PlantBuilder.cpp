@@ -109,7 +109,8 @@ PlantBuilder* PlantBuilder::setAttention(int attention) {
  * @param water
  * @return Builder*
  */
-PlantBuilder* PlantBuilder::setWaterCare(PlantCare* water) {
+PlantBuilder* PlantBuilder::setWaterCare(char level) {
+  p->setWaterCare(level);
   return this;
 }
 
@@ -119,7 +120,8 @@ PlantBuilder* PlantBuilder::setWaterCare(PlantCare* water) {
  * @param sun
  * @return Builder*
  */
-PlantBuilder* PlantBuilder::setSunCare(PlantCare* sun) {
+PlantBuilder* PlantBuilder::setSunCare(char level) {
+  p->setWaterCare(level);
   return this;
 }
 
@@ -129,7 +131,8 @@ PlantBuilder* PlantBuilder::setSunCare(PlantCare* sun) {
  * @param fertiliser
  * @return Builder*
  */
-PlantBuilder* PlantBuilder::setFertiliserCare(PlantCare* fertiliser) {
+PlantBuilder* PlantBuilder::setFertiliserCare(char level) {
+  p->setWaterCare(level);
   return this;
 }
 
@@ -163,8 +166,6 @@ PlantBuilder* PlantBuilder::setPrice(int price) {
 Plant* PlantBuilder::build() {
   return p;
 }
-
-
 
 /**
  * @brief clones the builder

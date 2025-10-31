@@ -99,7 +99,10 @@ Garden* Director::construct(string filename) {
 
     vector<int> days = {0, stoi(pieces[7])};
 
-    plantBuilder->setDays(days)->setPrice(stoi(pieces[8]));
+    plantBuilder->setDays(days)->setPrice(stoi(pieces[8]))
+          ->setWaterCare(pieces[9][0])
+          ->setSunCare(pieces[10][0])
+          ->setFertiliserCare(pieces[11][0]);
     Garden* p = plantBuilder->build();
 
     cropBuilder->addPlant(p);

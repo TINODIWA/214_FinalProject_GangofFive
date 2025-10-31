@@ -13,13 +13,19 @@ class PlantCare {
  public:
   PlantCare(const PlantCare& other);
 
-  int waterAlgorithm();
-
-  int sunAlgorithm();
-
-  int fertiliseAlgorithm();
-
   PlantCare();
+};
+
+class High : public PlantCare{
+
+};
+
+class Med : public PlantCare{
+
+};
+
+class Low : public PlantCare{
+
 };
 
 #endif  // PLANTCARE_H_

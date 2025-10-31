@@ -36,6 +36,7 @@ class Plant : public Garden {
   vector<int> days;  // <growing,mature>
   int price;
   int attention;
+  PlantCare* setCareStrategy(char level);
 
  public:
   Plant();
@@ -47,9 +48,9 @@ class Plant : public Garden {
   void setSun(int sun);
   void setFertiliser(int fertiliser);
   void setAttention(int attention);
-  void setWaterCare(PlantCare* water);
-  void setSunCare(PlantCare* sun);
-  void setFertiliserCare(PlantCare* fertiliser);
+  void setWaterCare(char level);
+  void setSunCare(char level);
+  void setFertiliserCare(char level);
   void setDays(vector<int> days);
   void setPrice(int price);
 
