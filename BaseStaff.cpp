@@ -1,6 +1,6 @@
 /**
  * @file BaseStaff.cpp
- * @author your name (you@domain.com)
+ * @author Nathan Chisadza, Unathi Tshakalisa, Dominiqu Nigatu
  * @brief
  * @version 0.1
  * @date 2025-10-29
@@ -11,17 +11,14 @@
 
 #include "BaseStaff.h"
 
-/**
- * @brief Construct a new BaseStaff object.
- */
-BaseStaff::BaseStaff() : Staff() {
-}
+BaseStaff::BaseStaff() : Staff() {}
 
-/**
- * @brief Get the job description for this staff role.
- */
-std::string BaseStaff::jobDesc() {
-    return "Base staff member responsible for general duties.";
+BaseStaff::BaseStaff(Nursery* n, std::string name) : Staff(n, name) {}
+
+BaseStaff::~BaseStaff() {}
+
+string BaseStaff::jobDesc() {
+  return "Base staff member responsible for general tasks such as greeting customers and showing customers the plants.";
 }
 
 /**
@@ -33,14 +30,20 @@ std::string BaseStaff::getType() {
 
 
 void BaseStaff::handleCustomer(Request* req) {
-	if (req) {
-		std::cout << "BaseStaff handled request: " << req->getRequest() << std::endl;
-	} else {
-		std::cout << "BaseStaff received an invalid request." << std::endl;
-	}
+  if(req) {
+    std::cout << "BaseStaff handled request: " << req->getRequest() << std::endl;
+  } else if (successor) {
+    successor->handleCustomer(req);
+  } else {
+    std::cout << "No staff could handle the request." << std::endl;
+  }
 }
 
 void BaseStaff::handlePlant(Plant* p) {
-	//??????
+  // TODO(dom) - implement BaseStaff::handlePlant
+  throw "Not yet implemented";
 }
 
+string BaseStaff::getType() {
+  return "BaseStaff";
+}

@@ -11,24 +11,19 @@
 
 #include "Roles.h"
 
-/**
- * @brief Construct a new Roles object.
- */
-Roles::Roles() : Staff() {
-	//calls base class staff to initialize inherited part of roles
-}
+Roles::Roles(Nursery* n, string name) : Staff(n, name) {}
 
-/**
- * @brief Destroy the Roles object.
- */
 Roles::~Roles() {
-	//niks
+  for (Staff* s : staff) {
+    delete s;
+  }
+  staff.clear();
 }
 
-// std::string Roles::jobDesc() {
-//     return "General role for staff.";
-// }
+std::string Roles::jobDesc() {
+  return "Base staff member responsible for general tasks such as greeting customers and showing customers the plants.";
+}
 
-// std::string Roles::getType() {
-//     return "Roles";
-// }
+std::string Roles::getType() {
+  return "BaseStaff";
+}

@@ -18,15 +18,38 @@
  */
 StaffCo_ordination::StaffCo_ordination() : Nursery() {}
 
-/**
- * @brief Send message from one staff to another based on command type
- * @param message Message to be sent
- * @param to Staff sending the message
- * @param type Type of command being sent
- */
-void StaffCo_ordination::sendMessage(string message, Staff* to, string type) {
-  if (to == NULL || (to->getType() != "Gardener" && to->getType() != "Sales" && to->getType() != "Admin")) return;
-  cout << "Manager is asking " << to->getType() << " to: " << message << endl;
+StaffCo_ordination::StaffCo_ordination(Garden* g) : Nursery(g) {}
 
-  to->receiveMessage(type);
+StaffCo_ordination::~StaffCo_ordination() {}
+
+void StaffCo_ordination::sendMessage(string m, Staff* from, string type) {
+  if(from == NULL) return;
+
+  cout << "Manager is broadcasting to all staff to: " << m << endl;
+  for (Staff* s : staff) {
+    s->receive(m, from, this, type);
+  }
+}
+
+void StaffCo_ordination::sendMessage(string m, Staff* to, Staff* from, string type) {
+  if (to == NULL || (to->getType() != "Gardener" && to->getType() != "Sales" && to->getType() != "Admin")) return;
+  if (from == NULL) return;
+
+  cout << "Manager is asking " << to->getType() << " to: " << m << endl;
+
+  to->receive(m, from, this, type);
+}
+
+void StaffCo_ordination::addStaff(Staff* s) {
+  staff.push_back(s);
+}
+void StaffCo_ordination::removeStaff(Staff* s) {
+  for (vector<Staff *>::iterator us = staff.begin(); us != staff.end(); us++)
+    {
+        if (*us == s)
+        {
+            staff.erase(us);
+            return;
+        }
+    }
 }

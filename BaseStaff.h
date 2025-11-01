@@ -2,13 +2,13 @@
 #define BASESTAFF_H
 #include "Staff.h"
 
-class BaseStaff : public Staff {
-
 #include <string>
 
-class BaseStaff : Staff {
+class BaseStaff : public Staff {
  public:
   BaseStaff();
+  BaseStaff(Nursery* n, std::string name);
+  virtual ~BaseStaff();
 
 	std::string jobDesc() override;
 	void handleCustomer(Request* req) override;

@@ -1,15 +1,17 @@
 #ifndef ROLES_H
 #define ROLES_H
+
 #include "Staff.h"
 
 class Roles : public Staff {
+  public:
+    Roles(Nursery* n, std::string name);
+    virtual ~Roles();
+    virtual std::string jobDesc();
+    virtual std::string getType();
 
-public:
-	vector<Staff*> staff;
-	Roles();
-	virtual ~Roles();
-	virtual std::string jobDesc() override = 0;
-	virtual std::string getType() override = 0;
+  protected:
+    std::vector<Staff*> staff;
 };
 
 #endif  // ROLES_H_

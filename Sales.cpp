@@ -8,58 +8,31 @@
  * @copyright Copyright (c) 2025
  *
  */
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include "Request.h"
+
 #include "Sales.h"
 
-/**
- * @brief Construct a new Sales object.
- */
-Sales::Sales() : Roles() {
-}
 
-/**
- * @brief Destroy the Sales object.
- */
-Sales::~Sales(){
 
-}
+Sales::Sales(Nursery* n, std::string name) : Roles(n, name) {}
 
-/**
- * @brief Get the staff type for this object.
- */
-std::string Sales::getType() {
-	return "Sales";
+Sales::~Sales() {}
+
+string Sales::getType() {
+  return Roles::getType() + ": Sales";
 }
 
 /**
  * @brief Get the job description for this staff role.
  */
 std::string Sales::jobDesc() {
-	return "Sales staff responsible for handling sales and customer requests.";
+  return Roles::jobDesc() + "\nAdditionally, Sales staff are responsible for assisting customers with their purchases.";
 }
-
-
-void Sales::handleSales() {
-    std::cout << "Sales staff is processing a sale..." << std::endl;
-    //sales logic here???????
-    std::cout << "Sale completed successfully." << std::endl;
-}
-
 
 void Sales::handleCustomer(Request* req) {
-	if (req) {
-		std::cout << "Sales staff handled request: " << req->getRequest() << std::endl;
-	} else if (successor) {
-		successor->handleCustomer(req);
-	} else {
-		std::cout << "No staff could handle the request." << std::endl;
-	}
+  // TODO(user) - implement Sales::handleCustomer
+  throw "Not yet implemented";
 }
 
 void Sales::handlePlant(Plant* p) {
-    //doesnt handle plants chief
-}
 
+}

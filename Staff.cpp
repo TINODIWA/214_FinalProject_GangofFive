@@ -1,6 +1,6 @@
 /**
  * @file Staff.cpp
- * @author your name (you@domain.com)
+ * @author Nathan Chisadza, Dominiqu Nigatu
  * @brief
  * @version 0.1
  * @date 2025-10-29
@@ -11,40 +11,54 @@
 
 #include "Staff.h"
 
+/**
+ * @brief Construct a new Staff:: Staff object
+ */
+Staff::Staff() : People(), successor(NULL) {}
 
 /**
- * @brief Construct a new Staff object.
+ * @brief Construct a new Staff:: Staff object
+ *
+ * @param n Mediator this staff will communicate through
+ * @param name name of staff member
  */
-Staff::Staff() : People() {
-	successor = nullptr;
+Staff::Staff(Nursery* n, string name) : People(n, name), successor(NULL) {}
+
+/**
+ * @brief Construct a new Staff:: Staff object
+ *
+ * @param other Staff to copy from
+ */
+Staff::Staff(const Staff* other) : People(*other) {
+  if (other) {
+    this->name = other->name;
+    this->successor = other->successor;
+  }
 }
 
 /**
- * @brief Destroy the Staff object.
+ * @brief Destroy the Staff:: Staff object
  */
-Staff::~Staff(){
-
+Staff::~Staff() {
+  this->successor = NULL;
 }
 
-void Staff::setSuccessor(Staff *succ)
-{
-	this->successor = succ;
+/**
+ * @brief Sets the next staff member in the chain of responsibility
+ *
+ * @param succ Next staff member
+ */
+void Staff::setSuccessor(Staff* succ) {
+  this->successor = succ;
 }
 
-Staff::Staff(const Staff* other) : People(*other)
-{
-	// if (other)
-	// {
-	// 	this->name = other->name;
-	// 	this->level = other->level;
-	// 	this->successor = nullptr; // Cannot copy abstract Staff
-	// 	vector<string>::const_iterator it = other->responsibilities.begin();
-	// 	while (it != other->responsibilities.end())
-	// 	{
-	// 		responsibilities.push_back(*it);
-	// 		++it;
-	// 	}
-	// }
+/**
+ * @brief Handles customer requests by passing them to the successor if exists
+ *
+ * @param req Customer request to handle
+ */
+void Staff::handleCustomer(Request* req) {
+  if (this->successor) {
+    this->successor->handleCustomer(req);
+  }
 }
-
-
