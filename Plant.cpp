@@ -35,7 +35,6 @@ Plant::~Plant() {}
  */
 
 Plant::Plant(const Plant& other) {
-
   name = other.name;
   type = other.type;
   water = other.water;
@@ -182,9 +181,6 @@ void Plant::setPrice(int price) {
   this->price = price;
 }
 
-void Plant::setPrice(int price) {
-  info.setPrice(price);
-}
 /**
  * @brief returns the name of the plant
  *
@@ -353,8 +349,17 @@ void Plant::print() {
 
 /**
  * @brief stubbed - for the crop
- * 
- * @param p 
+ *
+ * @param p
  */
-void Plant::add(Garden* p){}
+void Plant::add(Garden* p) {}
+
+/**
+ * @brief advice on how to care for the plant
+ *
+ * @return string
+ */
+string Plant::advice() {
+  return "";
+}
 
