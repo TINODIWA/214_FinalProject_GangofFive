@@ -4,6 +4,8 @@
 
 class Admin : public Roles {
 
+#include <iostream>
+#include <string>
 
 public:
 	Admin();
@@ -15,4 +17,4 @@ public:
 	void handlePlant(Plant* p) override;
 };
 
-#endif
+#endif  // ADMIN_H_

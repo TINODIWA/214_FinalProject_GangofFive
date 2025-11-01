@@ -1,51 +1,86 @@
-#ifndef PLANT_H
-#define PLANT_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
+#ifndef PLANT_H_
+#define PLANT_H_
+
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
+#include <iostream>
+#include <iomanip>
 
-#include "PlantInfo.h"
+#include "Garden.h"
+#include "PlantCare.h"
+#include "PlantState.h"
+#include "Planted.h"
 
-class PlantCare;
 class Staff;
 
 using namespace std;
 
-class Plant {	
+class Plant : public Garden {
+ private:
+  string name;
+  string type;
+  int sun;
+  vector<int> water;
+  vector<int> fertiliser;
+  PlantCare* waterStrategy;
+  PlantCare* sunStrategy;
+  PlantCare* fertiliserStrategy;
+  PlantState* state;
+  vector<Staff*> staff;
+  vector<int> days;  // <growing,mature>
+  int price;
+  int attention;
+  PlantCare* setCareStrategy(char level);
 
-protected:
-	PlantInfo info;
+ public:
+  Plant();
+  virtual ~Plant();
+  Plant(const Plant& other);
+  void setName(string name);
+  void setType(string type);
+  void setWater(int water);
+  void setSun(int sun);
+  void setFertiliser(int fertiliser);
+  void setAttention(int attention);
+  void setWaterCare(char level);
+  void setSunCare(char level);
+  void setFertiliserCare(char level);
+  void setDays(vector<int> days);
+  void setPrice(int price);
 
-public:
-	Plant();
-	virtual ~Plant();	
-	Plant(const Plant& other);
-	Plant(const PlantInfo& info);
-	virtual void addPlant(Plant *p) = 0;
+  string getName() const;
+  string getType() const;
+  int getAttention() const;
+  PlantCare* getWaterCare() const;
+  PlantCare* getSunCare() const;
+  PlantCare* getFertiliserCare() const;
+  vector<int> getDays() const;
+  int getPrice() const;
+  // vector[0] = current   vector[1] = required
+  vector<int> getWater() const;
+  int getSun() const;
+  vector<int> getFertiliser() const;
 
-	void setName(string name);
-	void setType(string type);
-	void setWater(int water);
-	void setSun(int sun);
-	void setFertiliser(int fertiliser);
-	void setAttention(int attention);
-	void setPlantCare(PlantCare* strategy);
-	void setStaff(Staff* staff);
+  Garden* clone();
+  void print();
+  void add(Garden* p);
 
-	string getName() const;
-	string getType() const;
-	vector<int> getWater() const;
-	vector<int> getSun() const;
-	vector<int> getFertiliser() const;
-	int getAttention() const;
+  // Observer functions
+  void attach(Staff* s);
+  void detach(Staff* s);
+  void notify();
 
-	virtual Plant* clone() = 0;
-	void attach(Staff* s);
-	void detach(Staff* s);
-	void notify();
-
-	virtual void print() = 0;
+  void updateWaterLevel(int newLevel);
+  void transpire(int decreasedLevel);
+  void updateFertiliserLevel(int newLevel);
+	void updateDay();
+	string getState();
 };
 
-#endif
+#endif  // PLANT_H_

@@ -1,27 +1,31 @@
-#ifndef PLANTCARE_H
-#define PLANTCARE_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-#include "WaterStrategy.h"
-#include "SunStrategy.h"
-#include "FertiliseStrategy.h"
+#ifndef PLANTCARE_H_
+#define PLANTCARE_H_
+
 
 class PlantCare {
+ private:
 
-private:
-	WaterStrategy* water;
-	SunStrategy* sun;
-	FertiliseStrategy* fertilise;
+ public:
+  PlantCare(const PlantCare& other);
 
-public:
-	PlantCare(const PlantCare& other);
-
-	int waterAlgorithm();
-
-	int sunAlgorithm();
-
-	int fertiliseAlgorithm();
-
-	PlantCare();
+  PlantCare();
 };
 
-#endif
+class High : public PlantCare{
+
+};
+
+class Med : public PlantCare{
+
+};
+
+class Low : public PlantCare{
+
+};
+
+#endif  // PLANTCARE_H_

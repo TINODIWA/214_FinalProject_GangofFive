@@ -1,7 +1,11 @@
-#ifndef CLIENT_H
-#define CLIENT_H
+/**
+ * @copyright Copyright (c) 2025
+ *
+ */
 
-class Client {
-};
+#ifndef CLIENT_H_
+#define CLIENT_H_
 
-#endif
+class Client {};
+
+#endif  // CLIENT_H_

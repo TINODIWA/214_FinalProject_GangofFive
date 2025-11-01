@@ -15,4 +15,4 @@ public:
 	void handleSales();
 };
 
-#endif
+#endif  // SALES_H_

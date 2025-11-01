@@ -16,4 +16,4 @@ public:
 	void assignTasks();
 };
 
-#endif
+#endif  // MANAGEMENT_H_
