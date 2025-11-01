@@ -15,7 +15,7 @@
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant() : state(nullptr), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
+Plant::Plant() : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
   for (int i = 0; i < 2; i++) {
     water.push_back(0);
     fertiliser.push_back(0);
