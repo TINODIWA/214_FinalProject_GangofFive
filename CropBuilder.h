@@ -1,35 +1,27 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef CROPBUILDER_H
+#define CROPBUILDER_H
 
-#ifndef CROPBUILDER_H_
-#define CROPBUILDER_H_
+class CropBuilder : Builder {
 
-#include <string>
+private:
+	Plant* root;
+	Plant* currCrop;
+	map<string, PlantCreator*> factories;
 
-#include "Builder.h"
-#include "Crop.h"
-#include "Garden.h"
-#include "PlantCare.h"
-#include "Staff.h"
+public:
+	CropBuilder();
 
-class PlantInfo;
+	void addCrop(Crop* c);
 
-class CropBuilder : public Builder {
- private:
-  Garden* root;
-  Garden* currCrop;
+	void addTree(Tree* t);
 
- public:
-  CropBuilder();
-  ~CropBuilder();
-  CropBuilder(const CropBuilder* other);
-  void addCrop();
-  void addPlant(Garden* p);
-  Garden* getCrop();
-  CropBuilder* clone();
-  void reset();
+	void addFlower(Flower* f);
+
+	void addShrub(Shrub* s);
+
+	void reset();
+
+	Plant* getCrop();
 };
 
-#endif  // CROPBUILDER_H_
+#endif

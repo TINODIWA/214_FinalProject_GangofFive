@@ -1,16 +1,13 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
-
-#ifndef CUSTOMERCARE_H_
-#define CUSTOMERCARE_H_
+#ifndef CUSTOMERCARE_H
+#define CUSTOMERCARE_H
 
 class CustomerCare : Nursery {
- public:
-  void notify();
 
-  CustomerCare();
+
+public:
+	void notify();
+
+	CustomerCare();
 };
 
-#endif  // CUSTOMERCARE_H_
+#endif

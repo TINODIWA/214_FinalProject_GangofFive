@@ -1,38 +1,33 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
-
-#ifndef ORDER_H_
-#define ORDER_H_
-
-#include "Customer.h"
-#include "Plant.h"
-#include <vector>
-
-using namespace std;
+#ifndef ORDER_H
+#define ORDER_H
 
 class Order {
- private:
-  vector<Plant*> plants;
-  Customer* customer;
 
- public:
-  Order();
-  ~Order();
-  Order(const Order& other);
+private:
+	vector<Plants*> plants;
+	Customer* customer;
+	Memento* store;
 
- private:
-  void prepare();
-  void payment();
-  void package();
+public:
+	Order();
 
- public:
-  void addPlant(Plant* p);
+private:
+	void prepare();
 
-  void removePlant(Plant* p);
+	void payment();
 
-  void purchase();
+	void package();
+
+public:
+	Memento* createMemento();
+
+	void setMemento(Memento* m);
+
+	void addPlant(Plant* p);
+
+	void removePlant(Plant* p);
+
+	void purchase();
 };
 
-#endif  // ORDER_H_
+#endif

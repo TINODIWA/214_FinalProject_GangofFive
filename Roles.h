@@ -1,22 +1,16 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
-
-#ifndef ROLES_H_
-#define ROLES_H_
-#include <string>
-#include <vector>
+#ifndef ROLES_H
+#define ROLES_H
 
 class Roles : Staff {
- public:
-  vector<Staff*> staff;
 
-  Roles();
+public:
+	vector<Staff*> staff;
 
-  string jobDesc();
+	Roles();
 
-  string getType();
+	string jobDesc();
+
+	string getType();
 };
 
-#endif  // ROLES_H_
+#endif

@@ -1,21 +1,15 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef DEAD_H
+#define DEAD_H
 
-#ifndef DEAD_H_
-#define DEAD_H_
+class Dead : PlantState {
 
-#include "PlantState.h"
 
-class Dead : public PlantState {
- public:
-  Dead();
-  ~Dead();
-  Dead(const PlantState& other);
-  void handleChange();
-  string getState();
-  PlantState* clone();
+public:
+	Dead();
+
+	Dead(const PlantState& other);
+
+	void handleChange();
 };
 
-#endif  // DEAD_H_
+#endif

@@ -1,21 +1,15 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef DYING_H
+#define DYING_H
 
-#ifndef DYING_H_
-#define DYING_H_
+class Dying : PlantState {
 
-#include "PlantState.h"
 
-class Dying : public PlantState {
- public:
-  Dying();
-  ~Dying();
-  Dying(const PlantState& other);
-  PlantState* clone();
-  void handleChange();
-  string getState();
+public:
+	Dying();
+
+	Dying(const PlantState& other);
+
+	void handleChange();
 };
 
-#endif  // DYING_H_
+#endif

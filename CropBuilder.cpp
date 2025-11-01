@@ -1,91 +1,36 @@
-/**
- * @file CropBuilder.cpp
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2025-10-29
- *
- * @copyright Copyright (c) 2025
- *
- */
-
 #include "CropBuilder.h"
 
-/**
- * @brief Construct a new Crop Builder:: Crop Builder object
- *
- */
-CropBuilder::CropBuilder() : Builder(), root(nullptr), currCrop(nullptr) {}
-
-/**
- * @brief
- *
- */
-CropBuilder::~CropBuilder() {
-  if (root) {
-    delete root;
-    root = nullptr;
-    currCrop = nullptr;
-  }
-}
-/**
- * @brief Construct a new Crop Builder:: Crop Builder object
- *
- * @param other
- */
-CropBuilder::CropBuilder(const CropBuilder* other) {
-  if (!other) {
-    this->root = nullptr;
-    return;
-  }
-
-  this->root = other->root ? other->root->clone() : nullptr;
-  this->currCrop = this->root;
+CropBuilder::CropBuilder() {
+	// TODO - implement CropBuilder::CropBuilder
+	throw "Not yet implemented";
 }
 
-/**
- * @brief ads a crop to the garden
- *
- * @param name
- */
-void CropBuilder::addCrop() {
-  Crop* crop = new Crop();
-  root->add(crop);
-  currCrop = crop;
+void CropBuilder::addCrop(Crop* c, Crop* c) {
+	// TODO - implement CropBuilder::addCrop
+	throw "Not yet implemented";
 }
 
-/**
- * @brief adds plants to the crop
- *
- * @param p
- */
-void CropBuilder::addPlant(Garden* p) {
-  currCrop->add(p);
+void CropBuilder::addTree(Tree* t, Tree* t) {
+	// TODO - implement CropBuilder::addTree
+	throw "Not yet implemented";
 }
 
-/**
- * @brief initialises a new garden
- *
- */
+void CropBuilder::addFlower(Flower* f, Flower* f) {
+	// TODO - implement CropBuilder::addFlower
+	throw "Not yet implemented";
+}
+
+void CropBuilder::addShrub(Shrub* s, Shrub* s) {
+	// TODO - implement CropBuilder::addShrub
+	throw "Not yet implemented";
+}
+
 void CropBuilder::reset() {
-  root = new Crop();
-  currCrop = root;
+	// TODO - implement CropBuilder::reset
+	throw "Not yet implemented";
 }
 
-/**
- * @brief Get the Crop object
- *
- * @return Plant*
- */
-Garden* CropBuilder::getCrop() {
-  return this->root;
+Plant* CropBuilder::getCrop() {
+	// TODO - implement CropBuilder::getCrop
+	throw "Not yet implemented";
 }
-
-/**
- * @brief clones the builder
- * 
- */
-
- CropBuilder* CropBuilder::clone(){
-  return new CropBuilder(*this);
- }

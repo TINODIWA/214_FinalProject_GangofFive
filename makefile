@@ -4,11 +4,7 @@ CFLAGS = -g -fprofile-arcs -ftest-coverage
 MAIN = main
 TEST = test
 
-
-OBJS = Garden.o Plant.o Crop.o PlantCare.o \
-	People.o Staff.o Customer.o Request.o\
-	Builder.o CropBuilder.o PlantBuilder.o\
-	Director.o
+OBJS = 
 		
 
 MAIN_OBJS = $(OBJS) Main.o
@@ -53,11 +49,3 @@ coverage-main: clean $(MAIN)
 	lcov --capture --directory . --output-file coverage.info
 	genhtml coverage.info --output-directory out
 	@echo "Open coverage report: out/index.html"
-
-LINT_FLAGS = --quiet --linelength=120 --filter=-whitespace/line_length,-build/namespaces,-runtime/explicit
-TIDY_FLAGS = -checks=clang-analyzer-*,-cppcoreguidelines-explicit-ctor,-modernize-use-explicit
-
-lint:
-	clang-format -i *.cpp *.h
-	cpplint $(LINT_FLAGS) *.cpp *.h
-# 	clang-tidy $(TIDY_FLAGS) *.cpp *.h -- -I

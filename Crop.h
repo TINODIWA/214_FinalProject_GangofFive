@@ -1,29 +1,18 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef CROP_H
+#define CROP_H
 
-#ifndef CROP_H_
-#define CROP_H_
+class Crop : Plant {
 
-#include <iostream>
-#include <string>
-#include <vector>
+public:
+	vector<Plant*> plants;
 
-#include "Garden.h"
+	Crop();
 
-using namespace std;
+	void addCrop(Crop* c);
 
-class Crop : public Garden {
- public:
-  std::vector<Garden*> plants; 
+	void addPlant(Plant* p);
 
-  Crop();
-  ~Crop();
-  Crop(const Crop& other);
-  void add(Garden* p);
-  Garden* clone();
-  void print();
+	Plant* clone();
 };
 
-#endif  // CROP_H_
+#endif

@@ -1,27 +1,19 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef PEOPLE_H
+#define PEOPLE_H
 
-#ifndef PEOPLE_H_
-#define PEOPLE_H_
-#include "Nursery.h"
-#include <string>
-
-using namespace std;
 class People {
- private:
-  Nursery* nursery;
 
- public:
-  People(Nursery* n);
+private:
+	Nursery* nursery;
 
-  People();
-  People(const People* other);
+public:
+	People(Nursery* n);
 
-  void send(string m, Nursery* s, string type);
+	People();
 
-  void receive(string m, People* from, Nursery* n);
+	void send(string m, Nursery* s, string type);
+
+	void receive(string m, People* from, Nursery* n);
 };
 
-#endif  // PEOPLE_H_
+#endif

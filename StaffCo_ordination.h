@@ -1,22 +1,13 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef STAFFCO_ORDINATION_H
+#define STAFFCO_ORDINATION_H
 
-#ifndef STAFFCO_ORDINATION_H_
-#define STAFFCO_ORDINATION_H_
+class StaffCo_ordination : Nursery {
 
-#include "Nursery.h"
-#include "Staff.h"
 
-#include <iostream>
-#include <string>
-using namespace std;
+public:
+	void sendMessage(string m, Staff* from, string type);
 
-class StaffCo_ordination : public Nursery {
- public:
-  StaffCo_ordination();
-  void sendMessage(string message, Staff* to, string type);
+	StaffCo_ordination();
 };
 
-#endif  // STAFFCO_ORDINATION_H_
+#endif
