@@ -15,36 +15,38 @@
 /**
  * @brief Construct a new Management object.
  */
-Management::Management() : Roles(), cmd(nullptr) {
+Management::Management(Nursery* n, std::string name) : Roles(n, name), cmd(nullptr) {
 
 }
 
 /**
  * @brief Destroy the Management object.
  */
-Management::~Management() {
-
-}
+Management::~Management() {}
 
 /**
  * @brief Get the staff type for this object.
  */
 std::string Management::getType() {
-	return "Management";
+	return Roles::getType() + ": Management";
 }
 
 /**
  * @brief Get the job description for this staff role.
  */
 std::string Management::jobDesc() {
-	return "Management staff responsible for assigning tasks and operations.";
+	return Roles::jobDesc() + "\nManagement staff responsible for assigning tasks and operations.";
 }
 
 
 void Management::assignTasks() {
-    std::cout << "Management is reviewing staff workload..." << std::endl;
-    //code
-    std::cout << "Tasks assigned by Management." << std::endl;
+    
+}
+
+void Management::addCommand(Command* c) {
+    if (c) {
+        cmd.push_back(c);
+    }
 }
 
 void Management::handleCustomer(Request* req) {

@@ -20,8 +20,22 @@ CheckPlant::CheckPlant(Staff* s, StaffCo_ordination* m) : Command(s, m) {}
 
 /**
  * @brief Execute the Check Plant command
+ * Sends the command only to Gardening staff through the mediator
  * @return void
  */
 void CheckPlant::execute() {
-  mediator->sendMessage("Checking plant status", appointed, "CheckPlant");
+  if (!mediator || !appointed) {
+    return;
+  }
+  
+  // Check if the appointed staff is a Gardening staff member
+  if (appointed->getType().find("Gardening") != string::npos) {
+    // Cast to StaffCo_ordination to use the correct sendMessage signature
+    StaffCo_ordination* coordinator = dynamic_cast<StaffCo_ordination*>(mediator);
+    if (coordinator) {
+      coordinator->sendMessage("Checking plant status", appointed, from, "CheckPlant");
+    }
+  } else {
+    cout << "CheckPlant command can only be assigned to Gardening staff!" << endl;
+  }
 }

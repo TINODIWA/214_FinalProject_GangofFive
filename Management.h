@@ -5,15 +5,19 @@
 
 class Management : public Roles {
 
-public:
-	Management();
-	~Management();
-	std::string getType() override;
-	std::string jobDesc() override;
-	Command* cmd;
-	void handleCustomer(Request* req) override;
-	void handlePlant(Plant* p) override;
-	void assignTasks();
+  public:
+    Management(Nursery* n, std::string name);
+    ~Management();
+    std::string getType() override;
+    std::string jobDesc() override;
+    
+    void handleCustomer(Request* req) override;
+    void handlePlant(Plant* p) override;
+    void assignTasks();
+    void addCommand(Command* c);
+
+  private:
+	  std::vector<Command*> cmd;
 };
 
 #endif  // MANAGEMENT_H_

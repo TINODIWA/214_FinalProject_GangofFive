@@ -4,17 +4,19 @@
 
 class Gardening : public Roles
 {
-
-public:
-	Gardening();
-	~Gardening();
-	std::string getType() override;
-	std::string jobDesc() override;
-	std::vector<Plant *> plants;
-	void update();
-	void handleCustomer(Request* req) override;
-	void handlePlant(Plant* p) override;
-	void checkPlants();
+  public:
+    Gardening(Nursery* n, std::string name);
+    virtual ~Gardening();
+    std::string getType() override;
+    std::string jobDesc() override;
+    
+    void update();
+    void handleCustomer(Request* req) override;
+    void handlePlant(Plant* p) override;
+    void checkPlants();
+    
+  private:
+    std::vector<Plant *> plants;
 };
 
 #endif  // GARDENING_H_

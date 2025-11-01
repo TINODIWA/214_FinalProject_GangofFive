@@ -14,11 +14,15 @@ class Staff;
 
 class Command {
  protected:
+  Staff* from;
+  Nursery* mediator;
+  string msg;
+  string commandType;
   Staff* appointed;
-  StaffCo_ordination* mediator;
 
  public:
-  Command(Staff* s, StaffCo_ordination* m);
+  Command(Staff* s, Nursery* m, string message, string cmdType);
+  void setAppointed(Staff* s);
   virtual ~Command();
   virtual void execute() = 0;
 };

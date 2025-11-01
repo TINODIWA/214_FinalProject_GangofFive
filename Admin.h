@@ -8,7 +8,7 @@ class Admin : public Roles {
 #include <string>
 
 public:
-	Admin();
+	Admin(Nursery* n, std::string name);
 	~Admin();
 	std::string getType() override;
 	std::string jobDesc() override;

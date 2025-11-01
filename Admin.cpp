@@ -5,16 +5,14 @@
 /**
  * @brief Construct a new Admin object.
  */
-Admin::Admin() : Roles() {
+Admin::Admin(Nursery* n, std::string name) : Roles(n, name) {
 
 }
 
 /**
  * @brief Destroy the Admin object.
  */
-Admin::~Admin() {
-
-}
+Admin::~Admin() {}
 
 // staff.getjobdesc + handling sales
 
@@ -23,14 +21,14 @@ Admin::~Admin() {
  * @brief Get the staff type for this object.
  */
 std::string Admin::getType() {
-	return "Admin";
+	return Roles::getType() + ": Admin";
 }
 
 /**
  * @brief Get the job description for this staff role.
  */
 std::string Admin::jobDesc() {
-	return "Admin staff responsible for administration and inventory.";
+	return Roles::jobDesc() + "\nAdmin staff responsible for administration and inventory.";
 }
 
 

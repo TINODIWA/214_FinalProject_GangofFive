@@ -18,28 +18,23 @@
 /**
  * @brief Construct a new Gardening object.
  */
-Gardening::Gardening() : Roles() {
-}
+Gardening::Gardening(Nursery* n, std::string name) : Roles(n, name) {}
 
 
-/**
- * @brief Destroy the Gardening object.
- */
-Gardening::~Gardening() {
-}
+Gardening::~Gardening() {}
 
 /**
  * @brief Get the staff type for this object.
  */
 std::string Gardening::getType() {
-	return "Gardening";
+	return Roles::getType() + ": Gardening";
 }
 
 /**
  * @brief Get the job description for this staff role.
  */
 std::string Gardening::jobDesc() {
-	return "Gardening staff responsible for plant care and maintenance.";
+	return Roles::jobDesc() + "\nGardening staff responsible for plant care and maintenance and giving customers advice.";
 }
 
 void Gardening::update() {

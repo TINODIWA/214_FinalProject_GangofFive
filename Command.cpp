@@ -12,11 +12,13 @@
 #include "Command.h"
 
 /**
- * @brief Construct a new Command object for Command
- * @param s Staff sending the the command
+ * @brief Construct a new Command object
+ * @param s Staff sending the command
  * @param m Staff coordination pointer for the command to go to correct ConcreteMediator
+ * @param message The message to be sent with the command
+ * @param cmdType The type of command being sent
  */
-Command::Command(Staff* s, StaffCo_ordination* m) : appointed(s), mediator(m) {}
+Command::Command(Staff* s, Nursery* m, string message, string cmdType) : from(s), mediator(m), msg(message), commandType(cmdType) {}
 
 /**
  * @brief Destroy the Command object

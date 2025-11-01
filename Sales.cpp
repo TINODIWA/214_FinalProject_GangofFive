@@ -11,8 +11,6 @@
 
 #include "Sales.h"
 
-
-
 Sales::Sales(Nursery* n, std::string name) : Roles(n, name) {}
 
 Sales::~Sales() {}

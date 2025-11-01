@@ -6,7 +6,6 @@ class Sales : public Roles
 {
 
 public:
-	Sales();
   Sales(Nursery* n, std::string name);
   virtual~Sales();
 	std::string getType() override;
