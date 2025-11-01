@@ -29,6 +29,23 @@ PlantCare::PlantCare(const PlantCare& other) {}
 // }
 
 PlantCare::PlantCare() {
-  // TODO(user) - implement PlantCare::PlantCare
-  // throw "Not yet implemented";
+  //TODO
+}
+
+PlantCare::~PlantCare() {
+  //TODO
+}
+
+int PlantCare::apply(int currWL, int WL, int change) {
+  // bool changeAmount = checkPlant();
+  // if (changeAmount) {
+  //   return changeAmount(currWL, WL, change);
+  // }
+  // else{
+  //   return currWL
+  // }
+}
+
+bool PlantCare::checkPlant() {
+  return true;
 }
