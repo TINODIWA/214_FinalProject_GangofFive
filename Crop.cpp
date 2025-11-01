@@ -58,18 +58,24 @@ Garden* Crop::clone() {
   return new Crop(*this);
 }
 
+/**
+ * @brief prints out all the plants in a crop
+ *
+ */
 void Crop::print() {
-  vector<Garden*>::iterator it = plants.begin();
-  //cout<<"ERROR\n";
+  Iterator* it = createIterator();
+
+  //vector<Garden*>::iterator it = plants.begin();
+  // cout<<"ERROR\n";
 
   int width = 40;
   for (int i = 0; i < width; i++) cout << "-";
 
   cout << endl;
   int i = 1;
-  while (it != plants.end()) {
-    (*it)->print();
-    ++it;
+  while (!it->done()) {
+    (**it)->print();
+    ++(*it);
 
     if (i % 4 == 0) {
       cout << endl;
@@ -81,6 +87,46 @@ void Crop::print() {
   }
 
   cout << "\n===================================\n";
+
+  delete it;
+}
+
+/**
+ * @brief encapsulate concrete iterator with pImpl
+ *
+ */
+struct Crop::itImpl : public Iterator {
+  vector<Garden*>& plants;
+  vector<Garden*>::iterator curr;
+
+  itImpl(vector<Garden*>& p) : plants(p) { curr = p.begin(); }
+
+  Garden* first() { return plants.front(); }
+
+  Garden* next() {
+    if (done()) return nullptr;
+
+    return *(++curr);
+  }
+
+  bool done() { return curr == plants.end(); }
+
+  Garden* current() { return *curr; }
+
+  Iterator* operator++() {
+    ++curr;
+    return this;
+  }
+};
+
+/**
+ * @brief Create a Iterator object
+ *
+ * @return CropIterator*
+ */
+
+Iterator* Crop::createIterator() {
+  return new itImpl(plants);
 }
 
 void Crop::removeDeadPlants() {

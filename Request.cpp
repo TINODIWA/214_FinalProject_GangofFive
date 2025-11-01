@@ -18,5 +18,5 @@ string Request::getRequest() {
 
 Request::Request() {
   // TODO(user) - implement Request::Request
-  throw "Not yet implemented";
+//  throw "Not yet implemented";
 }

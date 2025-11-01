@@ -75,6 +75,7 @@ class Plant : public Garden {
   void attach(Staff* s);
   void detach(Staff* s);
   void notify();
+  string advice();
 
   void updateWaterLevel(int newLevel);
   void transpire(int decreasedLevel);

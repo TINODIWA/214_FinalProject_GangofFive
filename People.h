@@ -5,8 +5,10 @@
 
 #ifndef PEOPLE_H_
 #define PEOPLE_H_
+
 #include "Nursery.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 class Nursery;

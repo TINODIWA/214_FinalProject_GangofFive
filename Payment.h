@@ -7,18 +7,29 @@
 #define PAYMENT_H_
 
 #include <iostream>
+#include <sstream>
+#include <iomanip>
+#include <map>
 using namespace std;
 
-class Payment {
- private:
-  virtual void prepare() = 0;
-  virtual void payment() = 0;
-  virtual void package() = 0;
+#include "Customer.h"
+#include "Plant.h"
+#include "Staff.h"
 
- public:
-  Payment();
-  virtual ~Payment();
-  void purchase();
+class Payment
+{
+private:
+    virtual void prepare() = 0;
+    virtual void payment() = 0;
+    virtual string getType() = 0;
+    
+    string receipt(Customer *customer, map<Plant*,int> plants,Staff* staff);
+
+public:
+    Payment();
+    virtual ~Payment();
+    string purchase(Customer *customer, map<Plant*,int> plants,Staff* staff);
+    
 };
 
-#endif  // PAYMENT_H_
+#endif

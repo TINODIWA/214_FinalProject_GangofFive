@@ -10,8 +10,27 @@
  */
 
 #include "Garden.h"
+#include "Iterator.h"
 
+/**
+ * @brief Construct a new Garden:: Garden object
+ * 
+ */
 Garden::Garden() {}
+
+/**
+ * @brief Destroy the Garden:: Garden object
+ * 
+ */
 Garden::~Garden() {}
+
+/**
+ * @brief creates an iterator for cropIterator and null for plants
+ * 
+ * @return Iterator* 
+ */
+Iterator* Garden::createIterator(){
+    return nullptr;
+}
 
 

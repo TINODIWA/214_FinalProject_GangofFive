@@ -86,3 +86,7 @@ void People::setName(const string& name) {
 void People::setNursery(Nursery* n) {
   this->nursery = n;
 }
+
+string People::getName()const {
+	return name;
+}

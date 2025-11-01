@@ -11,14 +11,17 @@
 #include <vector>
 
 #include "Garden.h"
-#include "Plant.h"
+#include "Iterator.h"
 
 using namespace std;
 
 class Crop : public Garden {
- public:
-  std::vector<Garden*> plants; 
+ private:
+  vector<Garden*> plants;
+  struct itImpl;
+  itImpl* pImpl;
 
+ public:
   Crop();
   ~Crop();
   Crop(const Crop& other);
@@ -26,6 +29,11 @@ class Crop : public Garden {
   Garden* clone();
   void print();
   void removeDeadPlants();
+  Iterator* createIterator();
+  
+
+  bool done();
+  Garden* next();
 };
 
 #endif  // CROP_H_
