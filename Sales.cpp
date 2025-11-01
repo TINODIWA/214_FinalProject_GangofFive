@@ -4,18 +4,29 @@
 #include "Request.h"
 #include "Sales.h"
 
-
+/**
+ * @brief Construct a new Sales object.
+ */
 Sales::Sales() : Roles() {
 }
 
+/**
+ * @brief Destroy the Sales object.
+ */
 Sales::~Sales(){
 
 }
 
+/**
+ * @brief Get the staff type for this object.
+ */
 std::string Sales::getType() {
 	return "Sales";
 }
 
+/**
+ * @brief Get the job description for this staff role.
+ */
 std::string Sales::jobDesc() {
 	return "Sales staff responsible for handling sales and customer requests.";
 }

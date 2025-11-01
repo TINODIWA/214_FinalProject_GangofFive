@@ -1,19 +1,30 @@
 #include "Management.h"
 
 
-
+/**
+ * @brief Construct a new Management object.
+ */
 Management::Management() : Roles(), cmd(nullptr) {
 
 }
 
+/**
+ * @brief Destroy the Management object.
+ */
 Management::~Management() {
 
 }
 
+/**
+ * @brief Get the staff type for this object.
+ */
 std::string Management::getType() {
 	return "Management";
 }
 
+/**
+ * @brief Get the job description for this staff role.
+ */
 std::string Management::jobDesc() {
 	return "Management staff responsible for assigning tasks and operations.";
 }

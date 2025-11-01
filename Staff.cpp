@@ -1,13 +1,16 @@
 #include "Staff.h"
 
 
-
-Staff::Staff() : People()
-{
+/**
+ * @brief Construct a new Staff object.
+ */
+Staff::Staff() : People() {
 	successor = nullptr;
 }
 
-
+/**
+ * @brief Destroy the Staff object.
+ */
 Staff::~Staff(){
 
 }

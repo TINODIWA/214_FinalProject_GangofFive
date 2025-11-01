@@ -1,12 +1,25 @@
 #include "BaseStaff.h"
 
+/**
+ * @brief Construct a new BaseStaff object.
+ */
 BaseStaff::BaseStaff() : Staff() {
 }
 
-
+/**
+ * @brief Get the job description for this staff role.
+ */
 std::string BaseStaff::jobDesc() {
     return "Base staff member responsible for general duties.";
 }
+
+/**
+ * @brief Get the staff type for this object.
+ */
+std::string BaseStaff::getType() {
+	return "BaseStaff";
+}
+
 
 void BaseStaff::handleCustomer(Request* req) {
 	if (req) {
@@ -20,6 +33,3 @@ void BaseStaff::handlePlant(Plant* p) {
 	//??????
 }
 
-std::string BaseStaff::getType() {
-    return "BaseStaff";
-}

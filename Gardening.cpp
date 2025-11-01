@@ -4,18 +4,29 @@
 #include "Gardening.h"
 #include "Request.h"
 
-
+/**
+ * @brief Construct a new Gardening object.
+ */
 Gardening::Gardening() : Roles() {
 }
 
 
+/**
+ * @brief Destroy the Gardening object.
+ */
 Gardening::~Gardening() {
 }
 
+/**
+ * @brief Get the staff type for this object.
+ */
 std::string Gardening::getType() {
 	return "Gardening";
 }
 
+/**
+ * @brief Get the job description for this staff role.
+ */
 std::string Gardening::jobDesc() {
 	return "Gardening staff responsible for plant care and maintenance.";
 }

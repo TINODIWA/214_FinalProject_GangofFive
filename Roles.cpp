@@ -1,11 +1,16 @@
 #include "Roles.h"
 
+/**
+ * @brief Construct a new Roles object.
+ */
 Roles::Roles() : Staff() {
 	//calls base class staff to initialize inherited part of roles
 }
 
-Roles::~Roles()
-{
+/**
+ * @brief Destroy the Roles object.
+ */
+Roles::~Roles() {
 	//niks
 }
 

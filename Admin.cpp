@@ -2,11 +2,16 @@
 #include "Request.h"
 #include "Admin.h"
 
-
+/**
+ * @brief Construct a new Admin object.
+ */
 Admin::Admin() : Roles() {
 
 }
 
+/**
+ * @brief Destroy the Admin object.
+ */
 Admin::~Admin() {
 
 }
@@ -14,11 +19,16 @@ Admin::~Admin() {
 // staff.getjobdesc + handling sales
 
 
-
+/**
+ * @brief Get the staff type for this object.
+ */
 std::string Admin::getType() {
 	return "Admin";
 }
 
+/**
+ * @brief Get the job description for this staff role.
+ */
 std::string Admin::jobDesc() {
 	return "Admin staff responsible for administration and inventory.";
 }
