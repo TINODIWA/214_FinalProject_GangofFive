@@ -26,7 +26,28 @@ Plant::Plant() : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullp
  * @brief Destroy the Plant:: Plant object
  *
  */
-Plant::~Plant() {}
+Plant::~Plant() {
+  if(waterStrategy){
+    delete waterStrategy;
+    waterStrategy = nullptr;
+  }
+
+  if(sunStrategy){
+    delete sunStrategy;
+    sunStrategy = nullptr;
+  }
+
+  if(fertiliserStrategy){
+    delete fertiliserStrategy;
+    sunStrategy = nullptr;
+  }
+
+  if(state){
+    delete state;
+    state = nullptr;
+  }
+
+}
 
 /**
  * @brief Construct a new Plant:: Plant object
@@ -44,7 +65,9 @@ Plant::Plant(const Plant& other) {
   price = other.price;
   attention = other.attention;
   state = (other.state) ? other.state->clone() : nullptr;
-
+  //waterStrategy = (other.waterStrategy) ? other.waterStrategy->clone() : nullptr;
+  //sunStrategy = (other.sunStrategy) ? other.sunStrategy->clone() : nullptr;
+  //fertiliserStrategy = (other.fertiliserStrategy) ? other.fertiliserStrategy->clone() : nullptr;
   if (other.staff.size() > 0) {
     vector<Staff*>::const_iterator it = other.staff.begin();
     while (it != other.staff.end()) {
