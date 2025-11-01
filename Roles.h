@@ -9,7 +9,7 @@ class Roles : public Staff {
     virtual ~Roles();
     virtual std::string jobDesc();
     virtual std::string getType();
-
+    virtual void update(Plant* p);
     virtual void receive(string m, People* from, Nursery* group, string type);
 
   protected:

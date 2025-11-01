@@ -19,6 +19,7 @@
 #include "Low.h"
 #include "PlantState.h"
 #include "Planted.h"
+#include "Staff.h"
 
 class Staff;
 
@@ -28,7 +29,7 @@ class Plant : public Garden {
  private:
   string name;
   string type;
-  int sun;
+  vector<int> sun;
   vector<int> water;
   vector<int> fertiliser;
   PlantCare* waterStrategy;
@@ -67,7 +68,7 @@ class Plant : public Garden {
   int getPrice() const;
   // vector[0] = current   vector[1] = required
   vector<int> getWater() const;
-  int getSun() const;
+  vector<int> getSun() const;
   vector<int> getFertiliser() const;
 
   Garden* clone();
@@ -81,6 +82,7 @@ class Plant : public Garden {
   string advice();
 
   void updateWaterLevel(int newLevel);
+  void updateSunLevel(int newLevel);
   void transpire(int decreasedLevel);
   void updateFertiliserLevel(int newLevel);
 	void updateDay();
