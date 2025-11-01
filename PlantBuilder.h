@@ -23,9 +23,9 @@ class PlantBuilder : public Builder {
   PlantBuilder* setSun(int sun);
   PlantBuilder* setFertiliser(int fertiliser);
   PlantBuilder* setAttention(int attention);
-  PlantBuilder* setWaterCare(PlantCare* water);
-  PlantBuilder* setSunCare(PlantCare* sun);
-  PlantBuilder* setFertiliserCare(PlantCare* fertiliser);
+  PlantBuilder* setWaterCare(char level);
+  PlantBuilder* setSunCare(char level);
+  PlantBuilder* setFertiliserCare(char level);
   PlantBuilder* setDays(vector<int> days);
   PlantBuilder* setPrice(int price);
   Plant* build();

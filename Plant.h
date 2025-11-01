@@ -25,8 +25,8 @@ class Plant : public Garden {
  private:
   string name;
   string type;
+  int sun;
   vector<int> water;
-  vector<int> sun;
   vector<int> fertiliser;
   PlantCare* waterStrategy;
   PlantCare* sunStrategy;
@@ -36,6 +36,7 @@ class Plant : public Garden {
   vector<int> days;  // <growing,mature>
   int price;
   int attention;
+  PlantCare* setCareStrategy(char level);
 
  public:
   Plant();
@@ -47,9 +48,9 @@ class Plant : public Garden {
   void setSun(int sun);
   void setFertiliser(int fertiliser);
   void setAttention(int attention);
-  void setWaterCare(PlantCare* water);
-  void setSunCare(PlantCare* sun);
-  void setFertiliserCare(PlantCare* fertiliser);
+  void setWaterCare(char level);
+  void setSunCare(char level);
+  void setFertiliserCare(char level);
   void setDays(vector<int> days);
   void setPrice(int price);
 
@@ -63,7 +64,7 @@ class Plant : public Garden {
   int getPrice() const;
   // vector[0] = current   vector[1] = required
   vector<int> getWater() const;
-  vector<int> getSun() const;
+  int getSun() const;
   vector<int> getFertiliser() const;
 
   Garden* clone();
@@ -75,6 +76,12 @@ class Plant : public Garden {
   void detach(Staff* s);
   void notify();
   string advice();
+
+  void updateWaterLevel(int newLevel);
+  void transpire(int decreasedLevel);
+  void updateFertiliserLevel(int newLevel);
+	void updateDay();
+	string getState();
 };
 
 #endif  // PLANT_H_

@@ -15,9 +15,9 @@ Growing::Growing() {
   throw "Not yet implemented";
 }
 
-Growing::Growing(const PlantState& other, const PlantState& other) {
-  // TODO(user) - implement Growing::Growing
-  throw "Not yet implemented";
+Growing::Growing(const PlantState& other) {
+	// TODO - implement Growing::Growing
+	throw "Not yet implemented";
 }
 
 void Growing::handleChange() {

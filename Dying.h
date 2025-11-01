@@ -15,6 +15,7 @@ class Dying : public PlantState {
   Dying(const PlantState& other);
   PlantState* clone();
   void handleChange();
+  string getState();
 };
 
 #endif  // DYING_H_
