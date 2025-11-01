@@ -12,6 +12,8 @@ Medium::~Medium() {
 
 }
 
-int Medium::changeAmount() {
+int Medium::changeAmount(int currWL, int WL) {
+    (void)currWL;
+    (void)WL;
     return 2;
 }

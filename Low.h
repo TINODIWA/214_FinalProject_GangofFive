@@ -12,7 +12,7 @@ class Low : public PlantCare {
  public:
   Low();
   ~Low() override;
-  int changeAmount() override;
+  int changeAmount(int currWL, int WL) override;
   
   //   Low(const Low& other);
 };

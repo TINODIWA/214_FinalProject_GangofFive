@@ -9,7 +9,7 @@ class High : public PlantCare {
   High(const High& other);
   ~High() override;
 
-  int changeAmount() override;
+  int changeAmount(int currWL, int WL) override;
 };
 
 #endif

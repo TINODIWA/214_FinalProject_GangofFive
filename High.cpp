@@ -12,6 +12,8 @@ High::~High() {
 
 }
 
-int High::changeAmount() {
+int High::changeAmount(int currWL, int WL) {
+    (void)currWL;  // Mark as intentionally unused
+    (void)WL;      // Mark as intentionally unused
     return 3;
 }
