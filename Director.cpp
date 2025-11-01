@@ -105,6 +105,7 @@ Garden* Director::construct(string filename) {
           ->setFertiliserCare(pieces[11][0]);
     Garden* p = plantBuilder->build();
 
+    // cout<<((Plant*) p)->getState()<<endl;
     cropBuilder->addPlant(p);
 
     for (int i = 0; i < amount - 1; i++) {
