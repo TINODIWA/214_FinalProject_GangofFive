@@ -6,7 +6,11 @@
 #ifndef CUSTOMERCARE_H_
 #define CUSTOMERCARE_H_
 
-class CustomerCare : Nursery {
+#include "Nursery.h"
+#include <iostream>
+#include <string>
+
+class CustomerCare : public Nursery {
  public:
   void notify();
 

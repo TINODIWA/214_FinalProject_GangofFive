@@ -11,18 +11,27 @@
 #include <iostream>
 
 using namespace std;
+class Nursery;
 class People {
- private:
-  string name;
+ protected:
   Nursery* nursery;
+  string name;
 
  public:
-  People(Nursery* n, string name);
   People();
+  People(Nursery* n, string name);
   People(const People* other);
-  void send(string m, Nursery* s, string type);
-  void receive(string m, People* from, Nursery* n);
-  string getName() const;
+  virtual ~People();
+
+  virtual void send(string m, Nursery* group, string type);
+  virtual void send(string m, People* to, Nursery* group, string type);
+  virtual void receive(string m, People* from, Nursery* group, string type) = 0;
+  
+  virtual string getName() const;
+  virtual Nursery* getNursery() const;
+  
+  void setName(const string& name);
+  void setNursery(Nursery* n);
 };
 
 #endif  // PEOPLE_H_

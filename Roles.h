@@ -1,22 +1,20 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef ROLES_H
+#define ROLES_H
 
-#ifndef ROLES_H_
-#define ROLES_H_
-#include <string>
-#include <vector>
+#include "Staff.h"
 
-class Roles : Staff {
- public:
-  vector<Staff*> staff;
+class Roles : public Staff {
+  public:
+    Roles(Nursery* n, std::string name, Staff* s);
+    virtual ~Roles();
+    virtual std::string jobDesc();
+    virtual std::string getType();
 
-  Roles();
+    virtual void receive(string m, People* from, Nursery* group, string type);
 
-  string jobDesc();
-
-  string getType();
+  protected:
+    // std::vector<Staff*> staff;
+    Staff* staff;
 };
 
 #endif  // ROLES_H_

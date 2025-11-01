@@ -28,6 +28,7 @@ class Crop : public Garden {
   void add(Garden* p);
   Garden* clone();
   void print();
+  void removeDeadPlants();
   Iterator* createIterator();
   
 

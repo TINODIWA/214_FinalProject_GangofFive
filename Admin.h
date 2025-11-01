@@ -1,23 +1,22 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef ADMIN_H
+#define ADMIN_H
+#include "Roles.h"
 
-#ifndef ADMIN_H_
-#define ADMIN_H_
+class Admin : public Roles {
 
 #include <iostream>
 #include <string>
 
-class Admin : Roles {
- public:
-  Admin();
+public:
+	Admin(Staff* s);
+	~Admin();
+	std::string getType() override;
+	std::string jobDesc() override;
+	void updateInventory();
+	void handleCustomer(Request* req) override;
+	void handlePlant(Plant* p) override;
 
-  string handleCustomer(Request* req);
-
-  void updateInventory();
-
-  string getType();
+	virtual void receive(string m, People* from, Nursery* group, string type);
 };
 
 #endif  // ADMIN_H_
