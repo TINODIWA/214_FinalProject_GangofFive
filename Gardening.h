@@ -9,13 +9,19 @@
 #include <vector>
 #include <string>
 
+#include "Roles.h"
+#include "Plant.h"
+#include "Request.h"
+
+using namespace std;
+
 class Gardening : public Roles {
  public:
   vector<Plant*> plants;
 
   Gardening();
 
-  void update();
+  void update(Plant *p);
 
   string handleCustomer(Request* req);
 
@@ -26,4 +32,4 @@ class Gardening : public Roles {
   void checkPlants();
 };
 
-#endif  // GARDENING_H_
+#endif

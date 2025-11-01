@@ -12,7 +12,8 @@ class PlantCare {
 
  public:
   PlantCare(const PlantCare& other);
-
+  virtual int apply(int current, int required, int change);
+  virtual int changeAmount(int current, int required, int change);
   PlantCare();
 };
 
