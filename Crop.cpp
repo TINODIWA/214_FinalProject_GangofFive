@@ -82,3 +82,31 @@ void Crop::print() {
 
   cout << "\n===================================\n";
 }
+
+void Crop::removeDeadPlants() {
+  //need to change this later to use iterator pattern
+  
+  // iterate in reverse to safely erase while iterating
+  for (int i = (int)plants.size() - 1; i >= 0; --i) {
+    Garden* child = plants[i];
+    if (!child) continue;
+
+    // If child is a Plant, check its state
+    Plant* asPlant = dynamic_cast<Plant*>(child);
+    if (asPlant) {
+      string state = asPlant->getState();
+      if (state.find("Dead") != string::npos) {
+        // remove dead plant
+        delete asPlant;
+        plants.erase(plants.begin() + i);
+        continue;
+      }
+    }
+
+    // If child is a Crop (composite), recurse
+    Crop* asCrop = dynamic_cast<Crop*>(child);
+    if (asCrop) {
+      asCrop->removeDeadPlants();
+    }
+  }
+}

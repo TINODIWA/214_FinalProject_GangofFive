@@ -16,7 +16,7 @@
  * @param s Staff being appointed to fulfill the command
  * @param m Staff coordination pointer for the command to go to correct ConcreteMediator
  */
-CheckPlant::CheckPlant(Staff* s, StaffCo_ordination* m) : Command(s, m) {}
+CheckPlant::CheckPlant(Staff* s, StaffCo_ordination* m) : Command(s, m, "Checking plant status", "CheckPlant") {}
 
 /**
  * @brief Execute the Check Plant command

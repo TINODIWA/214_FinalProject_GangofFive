@@ -14,6 +14,8 @@ class BaseStaff : public Staff {
 	void handleCustomer(Request* req) override;
 	void handlePlant(Plant* p) override;
 	std::string getType() override;
+
+  virtual void receive(string m, People* from, Nursery* group, string type);
 };
 
 #endif  // BASESTAFF_H_

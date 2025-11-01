@@ -1,13 +1,12 @@
 #include <iostream>
 #include "Request.h"
 #include "Admin.h"
+#include "Crop.h"
 
 /**
  * @brief Construct a new Admin object.
  */
-Admin::Admin(Nursery* n, std::string name) : Roles(n, name) {
-
-}
+Admin::Admin(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
 
 /**
  * @brief Destroy the Admin object.
@@ -50,4 +49,7 @@ void Admin::handleCustomer(Request* req) {
 
 void Admin::handlePlant(Plant* p) {
 	//doesnt handle plants here chief
+}
+
+void Admin::receive(string m, People* from, Nursery* group, string type) {
 }

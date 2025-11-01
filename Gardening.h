@@ -5,7 +5,7 @@
 class Gardening : public Roles
 {
   public:
-    Gardening(Nursery* n, std::string name);
+    Gardening(Staff* s);
     virtual ~Gardening();
     std::string getType() override;
     std::string jobDesc() override;
@@ -14,7 +14,8 @@ class Gardening : public Roles
     void handleCustomer(Request* req) override;
     void handlePlant(Plant* p) override;
     void checkPlants();
-    
+
+    virtual void receive(string m, People* from, Nursery* group, string type);
   private:
     std::vector<Plant *> plants;
 };

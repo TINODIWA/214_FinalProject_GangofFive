@@ -10,8 +10,9 @@
  */
 
 #include "Sales.h"
+#include <iostream>
 
-Sales::Sales(Nursery* n, std::string name) : Roles(n, name) {}
+Sales::Sales(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
 
 Sales::~Sales() {}
 
@@ -33,4 +34,7 @@ void Sales::handleCustomer(Request* req) {
 
 void Sales::handlePlant(Plant* p) {
 
+}
+
+void Sales::receive(string m, People* from, Nursery* group, string type) {
 }

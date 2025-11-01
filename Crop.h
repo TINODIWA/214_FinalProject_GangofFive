@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "Garden.h"
+#include "Plant.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ class Crop : public Garden {
   void add(Garden* p);
   Garden* clone();
   void print();
+  void removeDeadPlants();
 };
 
 #endif  // CROP_H_

@@ -25,7 +25,7 @@ string BaseStaff::jobDesc() {
  * @brief Get the staff type for this object.
  */
 std::string BaseStaff::getType() {
-	return "BaseStaff";
+  return "BaseStaff";
 }
 
 
@@ -44,6 +44,7 @@ void BaseStaff::handlePlant(Plant* p) {
   throw "Not yet implemented";
 }
 
-string BaseStaff::getType() {
-  return "BaseStaff";
+void BaseStaff::receive(string m, People* from, Nursery* group, string type) {
 }
+
+ 

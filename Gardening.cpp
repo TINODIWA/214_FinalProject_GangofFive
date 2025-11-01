@@ -18,7 +18,7 @@
 /**
  * @brief Construct a new Gardening object.
  */
-Gardening::Gardening(Nursery* n, std::string name) : Roles(n, name) {}
+Gardening::Gardening(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
 
 
 Gardening::~Gardening() {}
@@ -72,5 +72,8 @@ void Gardening::handlePlant(Plant* p) {
     // } else {
     //     std::cout << "No staff could handle the plant request." << std::endl;
     // }
+}
+
+void Gardening::receive(string m, People* from, Nursery* group, string type) {
 }
 

@@ -20,6 +20,10 @@
  */
 Command::Command(Staff* s, Nursery* m, string message, string cmdType) : from(s), mediator(m), msg(message), commandType(cmdType) {}
 
+void Command::setAppointed(Staff* s) {
+  appointed = s;
+}
+
 /**
  * @brief Destroy the Command object
  */

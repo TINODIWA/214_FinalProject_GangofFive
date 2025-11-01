@@ -15,9 +15,7 @@
 /**
  * @brief Construct a new Management object.
  */
-Management::Management(Nursery* n, std::string name) : Roles(n, name), cmd(nullptr) {
-
-}
+Management::Management(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
 
 /**
  * @brief Destroy the Management object.
@@ -61,5 +59,17 @@ void Management::handleCustomer(Request* req) {
 
 void Management::handlePlant(Plant* p) {
     //doesnt handle plants boss
+}
+
+// void Management::receive(string m, People* from, Nursery* group, string type) {
+//     if (!group) return;
+
+//     if (type == "CheckPlant" || type == "PlantDeadReport") {
+//         std::cout << "Management received plant report: " << m << std::endl;
+//         group->sendMessage(string("Please update inventory to remove dead plants"), this, string("UpdateInventory"));
+//     }
+// }
+
+void Management::receive(string m, People* from, Nursery* group, string type) {
 }
 

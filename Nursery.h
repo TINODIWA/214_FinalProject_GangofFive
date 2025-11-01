@@ -13,6 +13,7 @@
 #include "Garden.h"
 class Customer;
 class Staff;
+class People;
 
 using namespace std;
 

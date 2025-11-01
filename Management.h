@@ -6,7 +6,7 @@
 class Management : public Roles {
 
   public:
-    Management(Nursery* n, std::string name);
+    Management(Staff* s);
     ~Management();
     std::string getType() override;
     std::string jobDesc() override;
@@ -15,6 +15,8 @@ class Management : public Roles {
     void handlePlant(Plant* p) override;
     void assignTasks();
     void addCommand(Command* c);
+
+    virtual void receive(string m, People* from, Nursery* group, string type);
 
   private:
 	  std::vector<Command*> cmd;
