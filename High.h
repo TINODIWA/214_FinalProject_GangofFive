@@ -7,7 +7,7 @@ class High : public PlantCare {
  public:
   High();
   High(const High& other);
-  ~High() override;
+  ~High() ;
   PlantCare* clone();
 
   int changeAmount(int currWL, int WL) override;

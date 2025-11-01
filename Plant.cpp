@@ -39,7 +39,7 @@ Plant::~Plant() {
 
   if(fertiliserStrategy){
     delete fertiliserStrategy;
-    sunStrategy = nullptr;
+    fertiliserStrategy = nullptr;
   }
 
   if(state){
@@ -138,6 +138,7 @@ void Plant::setAttention(int attention) {
  * @param water
  */
 void Plant::setWaterCare(char level) {
+  delete waterStrategy;
   this->waterStrategy = setCareStrategy(level);
 }
 
@@ -147,6 +148,7 @@ void Plant::setWaterCare(char level) {
  * @param sun
  */
 void Plant::setSunCare(char level) {
+  delete sunStrategy;
   this->sunStrategy = setCareStrategy(level);
 }
 
@@ -156,6 +158,7 @@ void Plant::setSunCare(char level) {
  * @param fertiliser
  */
 void Plant::setFertiliserCare(char level) {
+  delete fertiliserStrategy;
   this->fertiliserStrategy = setCareStrategy(level);
 }
 
