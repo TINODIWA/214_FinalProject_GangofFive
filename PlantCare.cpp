@@ -36,6 +36,10 @@ PlantCare::~PlantCare() {
   //TODO
 }
 
+/**
+ * @brief Applies care to the plant based on current and target water levels and change direction.
+ * @return Updated current water level after applying care.
+ */
 int PlantCare::apply(int currWL, int WL, int changeDirection) {
   if (!checkPlant(currWL, WL, changeDirection)) {   //returns currWL if no change is needed
     return currWL;
@@ -51,7 +55,7 @@ int PlantCare::apply(int currWL, int WL, int changeDirection) {
   if (changeDirection > 0) {  //inc
     int remaining = WL - currWL;      // how much more is needed
     if (remaining <= 0) {
-      return currWL;      //already at or above target
+      return currWL;      //already at or above target lil kid
     }
     if (change > remaining) {      //cap at target level
       change = remaining;
@@ -65,7 +69,10 @@ int PlantCare::apply(int currWL, int WL, int changeDirection) {
   return currWL + change;
 }
 
-
+/**
+ * @brief Checks if the plant needs care based on current and target water levels and change direction.
+ * @return True if care is needed, false otherwise.
+ */
 bool PlantCare::checkPlant(int currWL, int WL, int changeDirection) {
   if (changeDirection > 0) {  //where its inc
     return currWL < WL;     //only apply if current is less than target
@@ -73,3 +80,17 @@ bool PlantCare::checkPlant(int currWL, int WL, int changeDirection) {
     return currWL > 0;     //only apply if current is greater than 0
   }
 }
+
+
+//the idea sorta, and an example 
+// Watering increase
+// lowCare->apply(3, 8, 1);     // +1 water level
+// mediumCare->apply(3, 8, 1);  // +2 water level  
+// highCare->apply(3, 8, 1);    // +3 water level
+
+// Sun exposure decrease
+// lowCare->apply(5, 8, -1);    // -1 water level 
+// mediumCare->apply(5, 8, -1); // -2 water level
+// highCare->apply(5, 8, -1);   // -3 water level
+
+//hope this makes sense

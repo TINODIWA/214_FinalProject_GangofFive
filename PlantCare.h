@@ -25,4 +25,4 @@ class PlantCare {
 
 // };
 
-#endif  // PLANTCARE_H_
+#endif
