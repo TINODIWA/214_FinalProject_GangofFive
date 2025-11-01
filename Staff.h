@@ -14,17 +14,15 @@
 class Plant;
 class Staff : public People {
  private:
-  string name;
   string level;
   vector<string> responsibilities;
   Staff* successor;
 
  public:
+  Staff(string name);
+  Staff(const Staff* other);
   void handlePlant(Plant* p);
   void handleCustomer(Request* req);
-  Staff();
-  Staff(const Staff* other);
-
   string JobDesc();
   string getType();
 };

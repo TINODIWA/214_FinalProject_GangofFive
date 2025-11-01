@@ -17,7 +17,7 @@ class Cash : public Payment {
   ~Cash();
   void prepare();
   void payment();
-  void package();
+ string getType();
 };
 
 #endif  // CASH_H_
