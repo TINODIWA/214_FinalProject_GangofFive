@@ -1,22 +1,19 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
-
-#ifndef SALES_H_
-#define SALES_H_
-
+#ifndef SALES_H
+#define SALES_H
 #include "Roles.h"
-#include <iostream>
-#include <string>
 
-class Sales : public Roles {
-  public:
-    Sales();
-    virtual ~Sales();
-    string handleCustomer(Request* req);
-    int handleSales();
-    string getType();
+class Sales : public Roles
+{
+
+public:
+  Sales(Staff* s);
+  virtual ~Sales();
+	std::string getType() override;
+	std::string jobDesc() override;
+	void handleCustomer(Request* req) override;
+	void handlePlant(Plant* p) override;
+
+  virtual void receive(string m, People* from, Nursery* group, string type);
 };
 
 #endif  // SALES_H_

@@ -8,6 +8,9 @@
 
 #include "People.h"
 #include "Request.h"
+#include <iostream>
+
+using namespace std;
 
 class Order;
 
@@ -17,7 +20,7 @@ class Customer : public People {
   Request req;
 
  public:
-  Customer();
+  Customer(string name);
   ~Customer();
   Customer(const Customer* other);
   void makeReq(Request* req);

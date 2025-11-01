@@ -9,31 +9,34 @@
 #include <iostream>
 #include <vector>
 
-#include "Garden.h"
 #include "Plant.h"
+#include "Garden.h"
 class Customer;
 class Staff;
+class People;
 
 using namespace std;
 
 class Nursery {
-  private:
-    vector<vector<Plant*>> plants;
+public:
+    Nursery();
+    Nursery(Garden* g);
+    virtual ~Nursery();
+    Nursery(const Nursery& other);
+    void start(bool sim);
+    virtual void addStaff(Staff* s) = 0;
+    virtual void removeStaff(Staff* s) = 0;
+    virtual void addCustomer(Customer* c) = 0;
+    virtual void removeCustomer(Customer* c) = 0;
+    virtual void sendMessage(string m, People* from, string type) = 0;
+    virtual void sendMessage(string m, People* to, People* from, string type) = 0;
+    void setGarden(Garden* g);
+    Garden* getGarden();
+
+  protected:
+    Garden* garden;
     vector<Customer*> customers;
     vector<Staff*> staff;
-    int staffCount;
-    Garden* garden;
-
-  public:
-    Nursery();
-    ~Nursery();
-    Nursery(const Nursery& other);
-    void addPlant(Plant* p);
-    void removePlant(Plant* p);
-    void start(bool sim);
-    void addStaff(Staff* s);
-    void removeStaff(Staff* s);
-    void notify();
 };
 
 #endif  // NURSERY_H_

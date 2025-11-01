@@ -3,8 +3,9 @@
  *
  */
 
-#ifndef MATURE_H_
-#define MATURE_H_
+#ifndef MATURE_H
+#define MATURE_H
+#include "PlantState.h"
 
 #include "PlantState.h"
 
@@ -15,6 +16,7 @@ class Mature : public PlantState {
   Mature(const PlantState& other);
   PlantState* clone();
   void handleChange();
+  string getState();
 };
 
 #endif  // MATURE_H_

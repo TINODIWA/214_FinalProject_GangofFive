@@ -13,20 +13,20 @@
 
 PlantCare::PlantCare(const PlantCare& other) {}
 
-int PlantCare::waterAlgorithm() {
-  // TODO(user) - implement PlantCare::waterAlgorithm
-  // throw "Not yet implemented";
-}
+// int PlantCare::waterAlgorithm() {
+//   // TODO(user) - implement PlantCare::waterAlgorithm
+//   // throw "Not yet implemented";
+// }
 
-int PlantCare::sunAlgorithm() {
-  // TODO(user) - implement PlantCare::sunAlgorithm
-  // throw "Not yet implemented";
-}
+// int PlantCare::sunAlgorithm() {
+//   // TODO(user) - implement PlantCare::sunAlgorithm
+//   // throw "Not yet implemented";
+// }
 
-int PlantCare::fertiliseAlgorithm() {
-  // TODO(user) - implement PlantCare::fertiliseAlgorithm
-  // throw "Not yet implemented";
-}
+// int PlantCare::fertiliseAlgorithm() {
+//   // TODO(user) - implement PlantCare::fertiliseAlgorithm
+//   // throw "Not yet implemented";
+// }
 
 PlantCare::PlantCare() {
   // TODO(user) - implement PlantCare::PlantCare

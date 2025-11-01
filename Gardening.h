@@ -1,29 +1,23 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
-
-#ifndef GARDENING_H_
-#define GARDENING_H_
-
-#include <vector>
-#include <string>
-
+#ifndef GARDENING_H
+#define GARDENING_H
 #include "Roles.h"
-#include "Plant.h"
 
-class Gardening : public Roles {
- public:
-  Gardening();
-  virtual ~Gardening();
-  void update();
-  string handleCustomer(Request* req);
-  void handlePlant(Plant* p);
-  string getType();
-  void checkPlants();
+class Gardening : public Roles
+{
+  public:
+    Gardening(Staff* s);
+    virtual ~Gardening();
+    std::string getType() override;
+    std::string jobDesc() override;
+    
+    void update();
+    void handleCustomer(Request* req) override;
+    void handlePlant(Plant* p) override;
+    void checkPlants();
 
+    virtual void receive(string m, People* from, Nursery* group, string type);
   private:
-    vector<Plant*> plants;
+    std::vector<Plant *> plants;
 };
 
 #endif  // GARDENING_H_
