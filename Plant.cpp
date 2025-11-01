@@ -39,7 +39,7 @@ Plant::~Plant() {
 
   if(fertiliserStrategy){
     delete fertiliserStrategy;
-    sunStrategy = nullptr;
+    fertiliserStrategy = nullptr;
   }
 
   if(state){
@@ -65,9 +65,9 @@ Plant::Plant(const Plant& other) {
   price = other.price;
   attention = other.attention;
   state = (other.state) ? other.state->clone() : nullptr;
-  //waterStrategy = (other.waterStrategy) ? other.waterStrategy->clone() : nullptr;
-  //sunStrategy = (other.sunStrategy) ? other.sunStrategy->clone() : nullptr;
-  //fertiliserStrategy = (other.fertiliserStrategy) ? other.fertiliserStrategy->clone() : nullptr;
+  waterStrategy = (other.waterStrategy) ? other.waterStrategy->clone() : nullptr;
+  sunStrategy = (other.sunStrategy) ? other.sunStrategy->clone() : nullptr;
+  fertiliserStrategy = (other.fertiliserStrategy) ? other.fertiliserStrategy->clone() : nullptr;
   if (other.staff.size() > 0) {
     vector<Staff*>::const_iterator it = other.staff.begin();
     while (it != other.staff.end()) {
@@ -138,6 +138,7 @@ void Plant::setAttention(int attention) {
  * @param water
  */
 void Plant::setWaterCare(char level) {
+  delete waterStrategy;
   this->waterStrategy = setCareStrategy(level);
 }
 
@@ -147,6 +148,7 @@ void Plant::setWaterCare(char level) {
  * @param sun
  */
 void Plant::setSunCare(char level) {
+  delete sunStrategy;
   this->sunStrategy = setCareStrategy(level);
 }
 
@@ -156,6 +158,7 @@ void Plant::setSunCare(char level) {
  * @param fertiliser
  */
 void Plant::setFertiliserCare(char level) {
+  delete fertiliserStrategy;
   this->fertiliserStrategy = setCareStrategy(level);
 }
 
@@ -171,7 +174,7 @@ PlantCare* Plant::setCareStrategy(char level) {
       break;
 
     case 'M':
-      return new Med();
+      return new Medium();
       break;
 
     case 'L':
