@@ -8,7 +8,7 @@ TEST = test
 OBJS = Garden.o Plant.o Crop.o PlantCare.o \
 	People.o Staff.o Customer.o Request.o\
 	Builder.o CropBuilder.o PlantBuilder.o\
-	Director.o
+	Director.o 
 		
 
 MAIN_OBJS = $(OBJS) Main.o

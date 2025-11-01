@@ -24,3 +24,10 @@ int High::changeAmount(int currWL, int WL) {
     (void)WL;      // Mark as intentionally unused
     return 3;
 }
+
+/**
+ * @brief Returns a deep copy of the current object
+ */
+PlantCare* High::clone(){
+    return new High(*this);
+}

@@ -25,3 +25,10 @@ int Low::changeAmount(int currWL, int WL) {
      if (delta < 0) delta = 0;
      return delta;
 }
+
+/**
+ * @brief Returns a deep copy of the current object
+ */
+PlantCare* Low::clone(){
+    return new Low(*this);
+}

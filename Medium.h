@@ -9,6 +9,8 @@ class Medium : public PlantCare {
   Medium(const Medium& other);
   ~Medium() override;
 
+  PlantCare* clone();
+
   int changeAmount(int currWL, int WL) override;
 };
 

@@ -13,8 +13,8 @@ class Low : public PlantCare {
   Low();
   ~Low() override;
   int changeAmount(int currWL, int WL) override;
-  
-  //   Low(const Low& other);
+  PlantCare* clone();
+  Low(const Low& other);
 };
 
 #endif

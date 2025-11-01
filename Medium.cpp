@@ -23,3 +23,10 @@ int Medium::changeAmount(int currWL, int WL) {
     (void)WL;
     return 2;
 }
+
+/**
+ * @brief Returns a deep copy of the current object
+ */
+PlantCare* Medium::clone(){
+    return new Medium(*this);
+}
