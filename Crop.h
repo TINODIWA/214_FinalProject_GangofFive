@@ -32,9 +32,10 @@ class Crop : public Garden {
   string print();
   void removeDeadPlants();
   Iterator* createIterator();
-  string summary();
-   bool done();
+  map<string, int> summary(map<string, int>& sum);
+  bool done();
   Garden* next();
+  vector<Garden*> get(string name, int num);
 };
 
 #endif  // CROP_H_

@@ -15,7 +15,7 @@
  * @brief Construct a new Crop:: Crop object
  *
  */
-Crop::Crop() : Garden(id) {}
+Crop::Crop() : Garden() {}
 
 /**
  * @brief Destructor that deletes all plants in vector
@@ -162,29 +162,38 @@ void Crop::removeDeadPlants() {
  *
  * @return string
  */
-string Crop::summary() {
+map<string, int> Crop::summary(map<string, int>& sum) {
   Iterator* it = createIterator();
   int PlantCount = 0;
   string type = "";
-  string sum = "";
 
   while (!it->done()) {
-    string plant = (**it)->summary();
-    if ( plant == "") {
-      type = (type == "")?(**it)->print():type;
-      ++PlantCount; 
-    }
-    else{
-      sum += plant;
+    map<string, int> plant = (**it)->summary(sum);
+    if (plant.empty()) {
+      type = (type == "") ? (**it)->print() : type;
+      ++PlantCount;
+    } else {
+      if (type != "") sum[type] = PlantCount;
     }
 
     ++(*it);
   }
   delete it;
-  
-  string line = (type != "")?type + "\t" + to_string(PlantCount) + "\n": "";
-  sum = line + sum;
 
+  if (type != "") sum[type] = PlantCount;
   return sum;
 }
 
+/**
+ * @brief return the specified number of plants with the passed in name;
+ *
+ * @param name
+ * @param num
+ * @return Garden*
+ */
+vector<Garden*> Crop::get(string name, int num) {
+  Iterator* it = createIterator();
+  int
+
+  delete it;
+}
