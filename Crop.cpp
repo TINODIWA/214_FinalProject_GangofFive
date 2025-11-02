@@ -119,7 +119,7 @@ struct Crop::itImpl : public Iterator {
   }
   Garden* remove() {
     if (!plants.empty() && curr != plants.end()) {
-        Garden* rem = (*curr);
+      Garden* rem = (*curr);
       curr = plants.erase(curr);
 
       return rem;
@@ -234,19 +234,20 @@ vector<Garden*> Crop::get(string name, int num) {
  * @return string
  */
 string Crop::getAdvice(string name) {
-  // Iterator* it = createIterator();
-  // string advice = "";
+  Iterator* it = createIterator();
+  string advice = "";
 
-  // while (!it->done()) {
-  //   if ((**it)->operator==(name)) {
-  //     return (**it)->advice();
-  //   } else {
-  //     advice += (**it)->getAdvice(name);
-  //   }
+  while (!it->done()) {
+    if ((**it)->operator==(name)) {
+      advice = (**it)->advice();
+      break;
+    } else {
+      advice += (**it)->getAdvice(name);
+    }
 
-  //   ++(*it);
-  // }
+    ++(*it);
+  }
 
-  // return advice;
-  return "";
+  delete it;
+  return advice;
 }
