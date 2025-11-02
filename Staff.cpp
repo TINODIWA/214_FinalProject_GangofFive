@@ -84,3 +84,25 @@ bool Staff::operator==(const Staff& other) const {
 
   return true;
 }
+
+string Staff::getLevel() const {
+  return level;
+}
+
+vector<string> Staff::getResponsibilities() const {
+  return responsibilities;
+}
+
+bool Staff::operator==(const Staff& other) const {
+  if (getName() != other.getName()) {
+    return false;
+  }
+  if (level != other.level) {
+    return false;
+  }
+  if (responsibilities != other.responsibilities) {
+    return false;
+  }
+
+  return true;
+}
