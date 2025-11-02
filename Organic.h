@@ -1,14 +1,11 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
-
-#ifndef ORGANIC_H_
-#define ORGANIC_H_
+#ifndef ORGANIC_H
+#define ORGANIC_H
 
 class Organic : FertiliseStrategy {
- public:
-  int fertiliseAlgorithm();
+
+
+public:
+	int fertiliseAlgorithm();
 };
 
-#endif  // ORGANIC_H_
+#endif

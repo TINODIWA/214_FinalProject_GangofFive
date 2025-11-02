@@ -1,11 +1,7 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef CLIENT_H
+#define CLIENT_H
 
-#ifndef CLIENT_H_
-#define CLIENT_H_
+class Client {
+};
 
-class Client {};
-
-#endif  // CLIENT_H_
+#endif

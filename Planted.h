@@ -1,21 +1,15 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef PLANTED_H
+#define PLANTED_H
 
-#ifndef PLANTED_H_
-#define PLANTED_H_
+class Planted : PlantState {
 
-#include "PlantState.h"
 
-class Planted : public PlantState {
- public:
-  Planted();
-  ~Planted();
-  Planted(const PlantState& other);
-  PlantState* clone();
-  void handleChange();
-  string getState();
+public:
+	Planted();
+
+	Planted(const PlantState& other);
+
+	void handleChange();
 };
 
-#endif  // PLANTED_H_
+#endif

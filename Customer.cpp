@@ -1,39 +1,21 @@
-
-/**
- * @file Customer.cpp
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2025-10-29
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "Customer.h"
 
-// void Customer::operation() {
-//// TODO(unathi,nathan,ryan) - implement Customer::operation
-// throw "Not yet implemented";
-//  }
-
-// void Customer::makeReq(Request* req, Request* req) {
-//// TODO(unathi,nathan,ryan) - implement Customer::makeReq
-// throw "Not yet implemented";
-//  }
-
-Customer::Customer() {
-  // TODO(unathi,nathan,ryan) - implement Customer::Customer
-  throw "Not yet implemented";
+void Customer::operation() {
+	// TODO - implement Customer::operation
+	throw "Not yet implemented";
 }
 
-Customer::~Customer() {}
+void Customer::makeReq(Request* req, Request* req) {
+	// TODO - implement Customer::makeReq
+	throw "Not yet implemented";
+}
 
-Customer::Customer(const Customer* other) {
-  // if (other)
-  // this->order = new Order(*other->order);
+Customer::Customer() {
+	// TODO - implement Customer::Customer
+	throw "Not yet implemented";
 }
 
 void Customer::makeReq(Request* req) {
-  // TODO(unathi,nathan,ryan) - implement Customer::makeReq
-  throw "Not yet implemented";
+	// TODO - implement Customer::makeReq
+	throw "Not yet implemented";
 }

@@ -1,32 +1,24 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef STAFF_H
+#define STAFF_H
 
-#ifndef STAFF_H_
-#define STAFF_H_
+class Staff : People {
 
-#include <string>
-#include <vector>
+private:
+	string name;
+	string level;
+	vector<string> responsibilities;
+	Staff successor;
 
-#include "People.h"
-#include "Request.h"
-class Plant;
-class Staff : public People {
- private:
-  string name;
-  string level;
-  vector<string> responsibilities;
-  Staff* successor;
+public:
+	void handlePlant(Plant* p);
 
- public:
-  void handlePlant(Plant* p);
-  void handleCustomer(Request* req);
-  Staff();
-  Staff(const Staff* other);
+	void handleCustomer(Request* req);
 
-  string JobDesc();
-  string getType();
+	Staff();
+
+	string JobDesc();
+
+	string getType();
 };
 
-#endif  // STAFF_H_
+#endif
