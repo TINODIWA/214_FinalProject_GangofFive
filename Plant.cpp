@@ -308,13 +308,17 @@ int Plant::getPrice() const {
 }
 
 void Plant::attach(Staff* s) {
-  // TODO(user) - implement Plant::attach
-  // throw "Not yet implemented";
+  if (!s) return;
+  // avoid duplicates
+  if (std::find(staff.begin(), staff.end(), s) == staff.end()) {
+    staff.push_back(s);
+  }
 }
 
 void Plant::detach(Staff* s) {
-  // TODO(user) - implement Plant::detach
-  // throw "Not yet implemented";
+  if (!s) return;
+  auto it = std::find(staff.begin(), staff.end(), s);
+  if (it != staff.end()) staff.erase(it);
 }
 
 void Plant::notify() {

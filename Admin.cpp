@@ -2,6 +2,7 @@
 #include "Request.h"
 #include "Admin.h"
 #include "Crop.h"
+#include "Staff.h"
 
 /**
  * @brief Construct a new Admin object.
@@ -53,4 +54,11 @@ void Admin::handlePlant(Plant* p) {
 }
 
 void Admin::receive(string m, People* from, Nursery* group, string type) {
+  if (!(from && group)) return;
+
+  if (dynamic_cast<Staff*>(from)->getType() == "Manager" && group->getName() == "StaffCo_ordination") {
+    if (type == "CheckInventory") {
+      this->updateInventory();
+    }
+  }
 }

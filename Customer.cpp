@@ -10,8 +10,9 @@
  *
  */
 #include "Customer.h"
+#include "CustomerCare.h"
 
-Customer::Customer(string name): People(nullptr,name) {
+Customer::Customer(string name): People(NULL, name) {
   // TODO(unathi,nathan,ryan) - implement Customer::Customer
   // throw "Not yet implemented";
   req = new Request("Enter");
@@ -25,8 +26,17 @@ Customer::Customer(const Customer* other) {
 }
 
 void Customer::makeReq(Request* req) {
-  // TODO(unathi,nathan,ryan) - implement Customer::makeReq
-  // throw "Not yet implemented";
-  ((CustomerCare*)nursery)->notify(req);//send through chain!!
+  if (!req) return;
+  Nursery* n = getNursery();
+  if (n) {
+    if (CustomerCare* cc = dynamic_cast<CustomerCare*>(n)) {
+      cc->routeRequest(req, this);
+    } else {
+      // Fallback to message-based mediation
+      send(req->getRequest(), n, "CustomerRequest");
+    }
+  } else {
+    std::cout << "No customer care mediator set for customer: " << getName() << std::endl;
+  }
 }
 

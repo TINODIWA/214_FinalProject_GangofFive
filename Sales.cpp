@@ -79,4 +79,7 @@ void Sales::handleCustomer(Request* req) {
 
 // }
 
-void Sales::receive(string m, People* from, Nursery* group, string type) {}
+void Sales::receive(string m, People* from, Nursery* group, string type) {
+  if(!(from || group)) return;
+  
+}

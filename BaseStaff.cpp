@@ -82,4 +82,8 @@ void BaseStaff::handlePlant(Plant* p) {
   //throw "Not yet implemented";
 }
 
-void BaseStaff::receive(string m, People* from, Nursery* group, string type) {}
+void BaseStaff::receive(string m, People* from, Nursery* group, string type) {
+  
+}
+
+ 

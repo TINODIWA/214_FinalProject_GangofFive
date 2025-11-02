@@ -18,10 +18,12 @@ class StaffCo_ordination : public Nursery {
   StaffCo_ordination();
   StaffCo_ordination(Garden* g);
   virtual ~StaffCo_ordination();
-  virtual void sendMessage(string m, Staff* from, string type);
-  virtual void sendMessage(string m, Staff* to, Staff* from, string type);
+
+  virtual void sendMessage(string m, People* from, string type);
+  virtual void sendMessage(string m, People* to, People* from, string type);
   virtual void addStaff(Staff* s);
   virtual void removeStaff(Staff* s);
+  virtual string getName() const;
 };
 
 #endif  // STAFFCO_ORDINATION_H_
