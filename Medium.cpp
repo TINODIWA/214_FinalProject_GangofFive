@@ -1,4 +1,6 @@
 #include "Medium.h"
+#include <cstdlib>  
+#include <algorithm>  
 
 Medium::Medium() : PlantCare() {
 
@@ -17,9 +19,9 @@ Medium::~Medium() {
 
 /**
  * @brief Determines the amount of change for medium care level.
+ * Moderate approach - balanced changes, won't exceed what's needed.
  */
-int Medium::changeAmount(int currWL, int WL) {
-    (void)currWL;
-    (void)WL;
-    return 2;
+int Medium::changeAmount(int curr, int target) {
+    int difference = abs(target - curr);
+    return std::min(difference, 3);
 }

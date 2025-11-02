@@ -1,4 +1,6 @@
 #include "Low.h"
+#include <cstdlib>  //for abs
+#include <algorithm>  //for min
 
 Low::Low() : PlantCare() {
     
@@ -17,11 +19,9 @@ Low::~Low() {
 
 /**
  * @brief Determines the amount of change for low care level.
+ * Conservative approach - small changes, won't exceed what's needed.
  */
-int Low::changeAmount(int currWL, int WL) {
-     (void)WL;
-     int base = 1;
-     int delta = base;
-     if (delta < 0) delta = 0;
-     return delta;
+int Low::changeAmount(int curr, int target) {
+    int difference = abs(target - curr);
+    return std::min(difference, 1);
 }

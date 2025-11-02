@@ -1,14 +1,3 @@
-
-/**
- * @file PlantCare.cpp
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2025-10-29
- *
- * @copyright Copyright (c) 2025
- *
- */
 #include "PlantCare.h"
 
 PlantCare::PlantCare(const PlantCare& other) {}
@@ -29,18 +18,15 @@ PlantCare::PlantCare(const PlantCare& other) {}
 // }
 
 PlantCare::PlantCare() {
-  //TODO
+  
 }
 
 PlantCare::~PlantCare() {
-  //TODO
+  
 }
 
-/**
- * @brief Applies care to the plant based on current and target water levels and change direction.
- * @return Updated current water level after applying care.
- */
-int PlantCare::apply(int currWL, int WL, int changeDirection) {
+
+int PlantCare::apply(int currWL, int WL, int changeDirection, int* currNL, int NL) {
   if (!checkPlant(currWL, WL, changeDirection)) {   //returns currWL if no change is needed
     return currWL;
   }
@@ -52,21 +38,38 @@ int PlantCare::apply(int currWL, int WL, int changeDirection) {
 
   int change = amount * changeDirection;  //direction. -1 dcr and 1 inc
   
+  // Apply to water level
+  int newWaterLevel = currWL;
   if (changeDirection > 0) {  //inc
     int remaining = WL - currWL;      // how much more is needed
     if (remaining <= 0) {
-      return currWL;      //already at or above target lil kid
-    }
-    if (change > remaining) {      //cap at target level
-      change = remaining;
+      newWaterLevel = currWL;      //already at or above target
+    } else {
+      if (change > remaining) {      //cap at target level
+        change = remaining;
+      }
+      newWaterLevel = currWL + change;
     }
   } else {
     if (currWL + change < 0) {      //max at 0. cant go 
       change = -currWL;
     }
+    newWaterLevel = currWL + change;
   }
 
-  return currWL + change;
+  //affects nutrients when dec, sun exposure
+  if (changeDirection < 0 && currNL != nullptr && *currNL > 0) {
+    int NAmount = changeAmount(*currNL, NL);
+    int NChange = NAmount * changeDirection;
+    
+    if (*currNL + NChange < 0) {
+      *currNL = 0;  //NL shouldnt go below 0
+    } else {
+      *currNL += NChange;
+    }
+  }
+
+  return newWaterLevel;
 }
 
 /**
@@ -80,17 +83,3 @@ bool PlantCare::checkPlant(int currWL, int WL, int changeDirection) {
     return currWL > 0;     //only apply if current is greater than 0
   }
 }
-
-
-//the idea sorta, and an example 
-// Watering increase
-// lowCare->apply(3, 8, 1);     // +1 water level
-// mediumCare->apply(3, 8, 1);  // +2 water level  
-// highCare->apply(3, 8, 1);    // +3 water level
-
-// Sun exposure decrease
-// lowCare->apply(5, 8, -1);    // -1 water level 
-// mediumCare->apply(5, 8, -1); // -2 water level
-// highCare->apply(5, 8, -1);   // -3 water level
-
-//hope this makes sense

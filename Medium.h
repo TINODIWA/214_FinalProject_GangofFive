@@ -9,7 +9,7 @@ class Medium : public PlantCare {
   Medium(const Medium& other);
   ~Medium() override;
 
-  int changeAmount(int currWL, int WL) override;
+  int changeAmount(int curr, int target) override;
 };
 
 #endif

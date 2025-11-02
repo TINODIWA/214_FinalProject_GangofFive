@@ -1,4 +1,6 @@
 #include "High.h"
+#include <cstdlib>  
+#include <algorithm>  
 
 High::High() : PlantCare() {
 
@@ -18,9 +20,9 @@ High::~High() {
 
 /**
  * @brief Determines the amount of change for high care level.
+ * Aggressive approach - large changes, won't exceed what's needed.
  */
-int High::changeAmount(int currWL, int WL) {
-    (void)currWL;  // Mark as intentionally unused
-    (void)WL;      // Mark as intentionally unused
-    return 3;
+int High::changeAmount(int curr, int target) {
+    int difference = abs(target - curr);
+    return std::min(difference, 5);
 }
