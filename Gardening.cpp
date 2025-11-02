@@ -110,18 +110,6 @@ void Gardening::handlePlant(Plant* p) {
     }
   }
 
-  vector<int> sun = p->getSun();
-  PlantCare* sc = p->getSunCare();
-  if (sc != nullptr && sun.size() >= 2) {
-    int curr = sun[0];
-    int req  = sun[1];
-    if (curr < req) {
-      int change = req - curr;
-      int newCurr = sc->apply(curr, req, change);
-      p->updateSunLevel(newCurr);
-    }
-  }
-
   vector<int> fert = p->getFertiliser();
   PlantCare* fc = p->getFertiliserCare();
   if (fc != nullptr && fert.size() >= 2) {

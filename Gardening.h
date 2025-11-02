@@ -20,4 +20,4 @@ class Gardening : public Roles
     std::vector<Plant *> plants;
 };
 
-#endif
+#endif  //GARDENING_H

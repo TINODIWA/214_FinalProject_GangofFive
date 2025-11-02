@@ -29,7 +29,7 @@ class Plant : public Garden {
  private:
   string name;
   string type;
-  vector<int> sun;
+  int sun;
   vector<int> water;
   vector<int> fertiliser;
   PlantCare* waterStrategy;
@@ -68,7 +68,7 @@ class Plant : public Garden {
   int getPrice() const;
   // vector[0] = current   vector[1] = required
   vector<int> getWater() const;
-  vector<int> getSun() const;
+  int getSun() const;
   vector<int> getFertiliser() const;
 
   Garden* clone();
