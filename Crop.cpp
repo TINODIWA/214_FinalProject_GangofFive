@@ -116,12 +116,15 @@ struct Crop::itImpl : public Iterator {
   Iterator* operator++() {
     ++curr;
     return this;
-  } 
-  Iterator* remove() {
-    // if (!plants.empty() && curr != plants.end()) {
-    //   curr = plants.erase(curr);
-    // }
-    return this;
+  }
+  Garden* remove() {
+    if (!plants.empty() && curr != plants.end()) {
+        Garden* rem = (*curr);
+      curr = plants.erase(curr);
+
+      return rem;
+    }
+    return nullptr;
   }
 };
 
@@ -175,6 +178,7 @@ map<string, int> Crop::summary(map<string, int>& sum) {
 
   while (!it->done()) {
     map<string, int> plant = (**it)->summary(sum);
+
     if (plant.empty()) {
       type = (type == "") ? (**it)->print() : type;
       ++PlantCount;
@@ -199,29 +203,29 @@ map<string, int> Crop::summary(map<string, int>& sum) {
  */
 vector<Garden*> Crop::get(string name, int num) {
   Iterator* it = createIterator();
-  // vector<Garden*> g;
-  // int count = num;
+  vector<Garden*> g;
+  int count = num;
 
-  // while (!it->done() && count > 0) {
-  //   if ((**it)->operator==(name)) {
-  //     g.push_back((**it)->clone());
-  //     it->remove();
-  //     --count;
-  //   } else {
-  //     vector<Garden*> curr = (**it)->get(name, count);
+  while (!it->done() && count > 0) {
+    if ((**it)->operator==(name)) {
+      g.push_back(it->remove());
+      --count;
+    } else {
+      vector<Garden*> curr = (**it)->get(name, count);
 
-  //     if (!curr.empty()) {
-  //       for (Garden* c : curr) {
-  //         g.push_back(c);
-  //       }
-  //       count -= curr.size();
-  //       continue;
-  //     }
-  //     ++(*it);
-  //   }
-  // }
+      if (!curr.empty()) {
+        for (Garden* c : curr) {
+          g.push_back(c);
+        }
+        count -= curr.size();
+      }
+
+      ++(*it);
+    }
+  }
 
   delete it;
+  return g;
 }
 
 /**
