@@ -9,22 +9,10 @@ class PlantCare {
  public:
   PlantCare(const PlantCare& other);
   PlantCare();
+  virtual PlantCare* clone() = 0;
   virtual ~PlantCare();
   int apply(int currWL, int WL, int changeDirection = 1, int* currNL = nullptr, int NL = 0);
 };
 
-
-
-// class High : public PlantCare{
-
-// };
-
-// class Med : public PlantCare{
-
-// };
-
-// class Low : public PlantCare{
-
-// };
 
 #endif

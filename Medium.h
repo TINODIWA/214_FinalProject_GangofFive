@@ -7,7 +7,9 @@ class Medium : public PlantCare {
  public:
   Medium();
   Medium(const Medium& other);
-  ~Medium() override;
+  ~Medium() ;
+
+  PlantCare* clone();
 
   int changeAmount(int curr, int target) override;
 };

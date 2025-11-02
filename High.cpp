@@ -26,3 +26,10 @@ int High::changeAmount(int curr, int target) {
     int difference = abs(target - curr);
     return std::min(difference, 5);
 }
+
+/**
+ * @brief Returns a deep copy of the current object
+ */
+PlantCare* High::clone(){
+    return new High(*this);
+}
