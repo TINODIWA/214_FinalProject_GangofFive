@@ -50,14 +50,25 @@ void Gardening::update(Plant* p) {
 
 /**
  * @brief Check and handle all plants under management
- * Iterates through managed plants calling handlePlant on each
+ * Iterates through managed plants, checking their state
+ * Calls handlePlant for dying plants, notifies manager for dead plants
  */
 void Gardening::checkPlants() {
-	// for (int i = 0; i < plants.size(); i++) {
-	// 	if (plants[i]) {
-	// 		std::cout << "Checking plant: " << plants[i]->getName() << std::endl;
-	// 	}
-	// }
+	for (int i = 0; i < plants.size(); i++) {
+		if (plants[i]) {
+			std::string state = plants[i]->getState();
+			std::cout << "Checking plant: " << plants[i]->getName() 
+			          << " - State: " << state << std::endl;
+			
+			if (state == "Dying") {
+				handlePlant(plants[i]);
+			} 
+			else if (state == "Dead") {
+				std::string message = "Plant " + plants[i]->getName() + " has died.";
+				send(message, nullptr, getNursery(), "Manager");
+			}
+		}
+	}
 }
 
 void Gardening::handleCustomer(Request* req) {
