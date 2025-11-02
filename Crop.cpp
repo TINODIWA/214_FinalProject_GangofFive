@@ -251,3 +251,33 @@ string Crop::getAdvice(string name) {
   delete it;
   return advice;
 }
+
+/**
+ * @brief return the pointer to the first plant with the passed in name
+ *
+ * @param name
+ * @return Garden*
+ */
+Garden* Crop::get(string name) {
+  Iterator* it = createIterator();
+  Garden* want = nullptr;
+
+  while (!it->done()) {
+    if ((**it)->operator==(name)) {
+      want = *(*it);
+      break;
+    } else {
+      want = (**it)->get(name);
+    }
+
+    if (want) {
+      delete it;
+      return want;
+    }
+
+    ++(*it);
+  }
+
+  delete it;
+  return want;
+}

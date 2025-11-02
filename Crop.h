@@ -37,6 +37,7 @@ class Crop : public Garden {
   Garden* next();
   string getAdvice(string name);
   vector<Garden*> get(string name, int num);
+  Garden* get(string name);
 };
 
 #endif  // CROP_H_

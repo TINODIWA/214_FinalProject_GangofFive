@@ -18,14 +18,14 @@ int gID = 0;
  * @brief Construct a new Garden:: Garden object
  *
  */
-Garden::Garden(): id(-1){}
+Garden::Garden() : id(-1) {}
 
 /**
  * @brief Construct a new Garden object
- * 
- * @param id 
+ *
+ * @param id
  */
-Garden::Garden(int id): id(gID++){}
+Garden::Garden(int id) : id(gID++) {}
 /**
  * @brief Destroy the Garden:: Garden object
  *
@@ -46,7 +46,7 @@ Iterator* Garden::createIterator() {
  *
  * @return string
  */
-map<string,int> Garden::summary(map<string,int>& sum) {
+map<string, int> Garden::summary(map<string, int>& sum) {
   return {};
 }
 
@@ -80,14 +80,13 @@ string Garden::advice() {
   return "";
 }
 
-
 /**
  * @brief returns advice for a specific plant - stubbed
- * 
- * @param name 
- * @return string 
+ *
+ * @param name
+ * @return string
  */
-string Garden::getAdvice(string name){
+string Garden::getAdvice(string name) {
   return "";
 }
 /**
@@ -97,17 +96,26 @@ string Garden::getAdvice(string name){
  * @param num
  * @return Garden*
  */
-vector<Garden*> Garden::get(string name, int num){
+vector<Garden*> Garden::get(string name, int num) {
   // cout<<"DEFAULT!!!\n";
   return {};
 }
 
 /**
  * @brief check if plants have equal ids
- * 
- * @return true 
- * @return false 
+ *
+ * @return true
+ * @return false
  */
 bool Garden::operator==(string name) {
-    return false;
+  return false;
+}
+
+/**
+ * @brief returns the plant with the passed in name - stubbed
+ *
+ */
+
+Garden* Garden::get(string name) {
+  return nullptr;
 }

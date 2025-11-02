@@ -32,6 +32,7 @@ class GardenPlot {
   map<string,int> viewAvailable();
   void transpire(int decreasedLevel);
   vector<Garden*> get(string name, int num);
+  Garden* get(string name);
   string getAdvice(string name);
 
 };

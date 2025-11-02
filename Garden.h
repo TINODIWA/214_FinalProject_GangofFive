@@ -32,6 +32,7 @@ class Garden {
   virtual string advice();
   virtual string getAdvice(string name);
   virtual  vector<Garden*> get(string name, int num);
+  virtual Garden* get(string name);
   virtual bool operator==(string name);
 };
 
