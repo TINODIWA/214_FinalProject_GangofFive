@@ -31,7 +31,7 @@ class GardenPlot {
   map<string,int> viewAll();
   map<string,int> viewAvailable();
   void transpire(int decreasedLevel);
-  vector<Garden*> get(string name, int num);
+  Garden* get(int id, int num);
 
 };
 #endif  // GARDENPLOT_H_
