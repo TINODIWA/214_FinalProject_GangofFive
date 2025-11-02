@@ -28,3 +28,5 @@ void Customer::makeReq(Request* req) {
   // throw "Not yet implemented";
 }
 
+void Customer::receive(string m, People* from, Nursery* group, string type){}
+

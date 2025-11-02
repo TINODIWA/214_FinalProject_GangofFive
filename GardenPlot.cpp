@@ -24,7 +24,6 @@ GardenPlot::GardenPlot(): garden(nullptr){}
  */
 GardenPlot::GardenPlot(string filename){
     Director dir = Director(new CropBuilder(), new PlantBuilder());
-
     garden = dir.construct(filename);
 }
 
@@ -45,6 +44,8 @@ GardenPlot::~GardenPlot(){
  * @return string 
  */
 string GardenPlot::viewAll(){
+    if(!garden)
+        return "Please create your garden first.\n";
     return garden->summary();
 }
 string GardenPlot::viewAvailable(){}

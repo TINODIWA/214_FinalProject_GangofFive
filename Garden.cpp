@@ -14,36 +14,50 @@
 
 /**
  * @brief Construct a new Garden:: Garden object
- * 
+ *
  */
 Garden::Garden() {}
 
 /**
  * @brief Destroy the Garden:: Garden object
- * 
+ *
  */
 Garden::~Garden() {}
 
 /**
  * @brief creates an iterator for cropIterator and null for plants
- * 
- * @return Iterator* 
+ *
+ * @return Iterator*
  */
-Iterator* Garden::createIterator(){
-    return nullptr;
+Iterator* Garden::createIterator() {
+  return nullptr;
 }
 
 /**
  * @brief simulates plants losing water as a result of sun exposure - stubbed
- * 
+ *
  */
-void transpire(int decreasedLevel){}
+void transpire(int decreasedLevel) {}
 
 /**
  * @brief summary of number of plants in a crop - stubbed
- * 
- * @return string 
+ *
+ * @return string
  */
-string Garden::summary(){
-    return "";
+string Garden::summary() {
+  return "";
 }
+
+/**
+ * @brief adds a plant to a crop - stubbed
+ * 
+ * @param p 
+ */
+void Garden::add(Garden* p){}
+
+/**
+ * @brief simulates loss of water due to transpiration - stubbed
+ * 
+ * @param decreasedLevel 
+ */
+void Garden::transpire(int decreasedLevel){}

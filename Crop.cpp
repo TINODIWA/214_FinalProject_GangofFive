@@ -162,14 +162,28 @@ void Crop::removeDeadPlants() {
  *
  * @return string
  */
-string Crop::summary(){
+string Crop::summary() {
   Iterator* it = createIterator();
   int PlantCount = 0;
+  string type = "";
+  string sum = "";
 
-  while(!it->done()){
-    if((**it)->summary().compare("")) ++ PlantCount;
+  while (!it->done()) {
+    string plant = (**it)->summary();
+    if ( plant == "") {
+      type = (type == "")?(**it)->print():type;
+      ++PlantCount; 
+    }
+    else{
+      sum += plant;
+    }
 
-    ++it;
+    ++(*it);
   }
-  return plants[0] -> print() + "\t" + to_string(PlantCount) + "\n";
+  delete it;
+  
+  string line = (type != "")?type + "\t" + to_string(PlantCount) + "\n": "";
+  sum = line + sum;
+
+  return sum;
 }

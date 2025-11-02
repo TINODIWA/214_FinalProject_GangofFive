@@ -112,7 +112,7 @@ Garden* Director::construct(string filename) {
     }
   }
 
-  return cropBuilder->getCrop();
+  return cropBuilder->getCrop()->clone();
 }
 
 /**

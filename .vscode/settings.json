@@ -58,6 +58,7 @@
         "fertiliser",
         "GARDENPLOT",
         "PLANTBUILDER",
-        "PLANTCARE"
+        "PLANTCARE",
+        "plantlevels"
     ]
 }
