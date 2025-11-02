@@ -11,6 +11,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <algorithm>  
 
 #include "Garden.h"
 #include "PlantCare.h"

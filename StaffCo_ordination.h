@@ -20,7 +20,7 @@ class StaffCo_ordination : public Nursery {
   virtual ~StaffCo_ordination();
 
   virtual void sendMessage(string m, People* from, string type);
-  virtual void sendMessage(string m, People* to, People* from, string type);
+  virtual void sendMessage(string m, Staff* to, Staff* from, string type);
   virtual void addStaff(Staff* s);
   virtual void removeStaff(Staff* s);
   virtual string getName() const;

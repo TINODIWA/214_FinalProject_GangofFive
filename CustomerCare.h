@@ -19,7 +19,7 @@ class Request;
 // It also configures a Chain of Responsibility among staff for handling customer requests.
 class CustomerCare : public Nursery {
  private:
-  void setChain();
+  //void setChain();
   Staff* chain;
 
  public:
