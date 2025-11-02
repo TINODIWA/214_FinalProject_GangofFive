@@ -314,9 +314,16 @@ void Plant::attach(Staff* s) {
   }
 }
 
+/**
+ * @brief Detach an observer (Staff) from this Plant
+ * Removes a Staff member from the list of observers
+ * Uses operator== to find matching Staff member
+ * 
+ * @param s Pointer to Staff object to detach
+ */
 void Plant::detach(Staff* s) {
   if (s == nullptr) 
-  return;
+    return;
   for (auto it = staff.begin(); it != staff.end(); ++it) {
     if (*it != nullptr && **it == *s) {
       staff.erase(it);
