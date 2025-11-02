@@ -19,9 +19,9 @@ class BuildPlant {
   virtual BuildPlant* setSun(int sun) = 0;
   virtual BuildPlant* setFertiliser(int fertiliser) = 0;
   virtual BuildPlant* setAttention(int attention) = 0;
-  virtual BuildPlant* setWaterCare(PlantCare* water) = 0;
-  virtual BuildPlant* setSunCare(PlantCare* sun) = 0;
-  virtual BuildPlant* setFertiliserCare(PlantCare* fertiliser) = 0;
+  virtual BuildPlant* setWaterCare(char level) = 0;
+  virtual BuildPlant* setSunCare(char level) = 0;
+  virtual BuildPlant* setFertiliserCare(char level) = 0;
   virtual BuildPlant* setDays(vector<int> days) = 0;
   virtual BuildPlant* setPrice(int price) = 0;
   virtual Plant* build() = 0;
