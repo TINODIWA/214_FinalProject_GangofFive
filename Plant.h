@@ -15,6 +15,9 @@
 
 #include "Garden.h"
 #include "PlantCare.h"
+#include "High.h"
+#include "Medium.h"
+#include "Low.h"
 #include "PlantState.h"
 #include "Planted.h"
 

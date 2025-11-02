@@ -21,7 +21,9 @@ class Builder {
  public:
   Builder();
   virtual ~Builder();
-
+  virtual void add() = 0;
+  virtual void add(Garden* p) = 0;
+  virtual Garden* getCrop() = 0;
   virtual Builder* clone() = 0;
   virtual void reset() = 0;
 };
