@@ -325,6 +325,11 @@ void Plant::detach(Staff* s) {
   }
 }
 
+/**
+ * @brief Notify all attached observers of a state change
+ * Calls update() on each Staff observer in the list
+ * Part of the Observer design pattern implementation
+ */
 void Plant::notify() {
   for (Staff* observer : staff) {
     if (observer != nullptr) {
