@@ -13,6 +13,7 @@
 #include "Card.h"
 #include "Cash.h"
 #include "CropBuilder.h"
+#include "PlantBuilder.h"
 #include "Customer.h"
 #include "Director.h"
 #include "EFT.h"
@@ -27,13 +28,12 @@
 #include <map>
 #include <iostream>
 #include <vector>
-
-using namespace std;
+#include "BuildPlant.h"
 
 int main() {
   cout << "TESTING GARDEN BUILDER\n";
-  CropBuilder* cropBuilder = new CropBuilder();
-  PlantBuilder* plantBuilder = new PlantBuilder();
+  Builder* cropBuilder = new CropBuilder();
+  BuildPlant* plantBuilder = new PlantBuilder();
 
   Director dir = Director(cropBuilder, plantBuilder);
   Garden* garden = dir.construct("plants.txt");
