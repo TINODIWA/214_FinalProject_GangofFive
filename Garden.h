@@ -14,9 +14,10 @@ class Garden {
   Garden();
   virtual ~Garden();
   virtual Garden* clone() = 0;
-  virtual void add(Garden* p) = 0;
+  virtual void add(Garden* p);
   virtual void print() = 0;
   virtual Iterator* createIterator();
+  virtual void transpire(int decreasedLevel);
 };
 
 #endif  // GARDEN_H_

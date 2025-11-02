@@ -33,4 +33,9 @@ Iterator* Garden::createIterator(){
     return nullptr;
 }
 
+/**
+ * @brief simulates plants losing water as a result of sun exposure - stubbed
+ * 
+ */
+void transpire(int decreasedLevel){}
 

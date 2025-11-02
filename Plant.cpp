@@ -348,13 +348,6 @@ void Plant::print() {
 }
 
 /**
- * @brief stubbed - for the crop
- *
- * @param p
- */
-void Plant::add(Garden* p) {}
-
-/**
  * @brief advice on how to care for the plant
  *
  * @return string
