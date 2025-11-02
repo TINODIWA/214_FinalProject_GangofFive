@@ -5,6 +5,7 @@
 
 #ifndef GROWING_H_
 #define GROWING_H_
+#include "PlantState.h"
 
 #include "PlantState.h"
 class Growing : public PlantState {
@@ -14,6 +15,7 @@ class Growing : public PlantState {
   Growing(const PlantState& other);
   PlantState* clone();
   void handleChange();
+  string getState();
 };
 
 #endif  // GROWING_H_

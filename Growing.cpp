@@ -10,17 +10,45 @@
  */
 #include "Growing.h"
 
+/**
+ * @brief Default constructor for the Growing state
+ */
 Growing::Growing() {
-  // TODO(user) - implement Growing::Growing
-  throw "Not yet implemented";
+    // Constructor implementation
 }
 
-Growing::Growing(const PlantState& other, const PlantState& other) {
-  // TODO(user) - implement Growing::Growing
-  throw "Not yet implemented";
+/**
+ * @brief Default destructor for the Growing state
+ */
+Growing::~Growing(){}
+
+/**
+ * @brief Copy constructor for the Growing state
+ * @param other Reference to another PlantState object to copy from
+ */
+Growing::Growing(const PlantState& other) : PlantState(other) {
+    // Copy constructor implementation
 }
 
+/**
+ * @brief Handles the state transition from Growing to the next state
+ */
 void Growing::handleChange() {
-  // TODO(user) - implement Growing::handleChange
-  throw "Not yet implemented";
+    // State transition logic implementation
+}
+
+/**
+ * @brief Creates a deep copy of the current Growing state
+ * @return PlantState* Pointer to a new Growing state object
+ */
+PlantState* Growing::clone() {
+    return new Growing(*this);
+}
+
+/**
+ * @brief Returns the string representation of the current state
+ * @return string The name of the current state ("Growing")
+ */
+string Growing::getState() {
+    return "Growing";
 }

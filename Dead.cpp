@@ -11,17 +11,45 @@
 
 #include "Dead.h"
 
+/**
+ * @brief Default constructor for the Dead state
+ */
 Dead::Dead() {
-  // TODO(unathi) - implement Dead::Dead
-  throw "Not yet implemented";
+    // Constructor implementation
 }
 
-Dead::Dead(const PlantState& other) {
-  // TODO(unathi) - implement Dead::Dead
-  throw "Not yet implemented";
+/**
+ * @brief Default destructor for the Dead state
+ */
+Dead::~Dead(){}
+
+/**
+ * @brief Copy constructor for the Dead state
+ * @param other Reference to another PlantState object to copy from
+ */
+Dead::Dead(const PlantState& other) : PlantState(other) {
+    // Copy constructor implementation
 }
 
+/**
+ * @brief Handles the state transition from Dead to the next state
+ */
 void Dead::handleChange() {
-  // TODO(unathi) - implement Dead::handleChange
-  throw "Not yet implemented";
+    // State transition logic implementation
+}
+
+/**
+ * @brief Creates a deep copy of the current Dead state
+ * @return PlantState* Pointer to a new Dead state object
+ */
+PlantState* Dead::clone() {
+    return new Dead(*this);
+}
+
+/**
+ * @brief Returns the string representation of the current state
+ * @return string The name of the current state ("Dead")
+ */
+string Dead::getState() {
+    return "Dead";
 }

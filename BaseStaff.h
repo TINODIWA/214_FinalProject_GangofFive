@@ -1,22 +1,21 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
-
-#ifndef BASESTAFF_H_
-#define BASESTAFF_H_
+#ifndef BASESTAFF_H
+#define BASESTAFF_H
+#include "Staff.h"
 
 #include <string>
 
-class BaseStaff : Staff {
+class BaseStaff : public Staff {
  public:
   BaseStaff();
+  BaseStaff(Nursery* n, std::string name);
+  virtual ~BaseStaff();
 
-  string jobDesc();
+	std::string jobDesc() override;
+	void handleCustomer(Request* req) override;
+	void handlePlant(Plant* p) override;
+	std::string getType() override;
 
-  void handleCustomer(Request* req);
-
-  string getType();
+  virtual void receive(string m, People* from, Nursery* group, string type);
 };
 
 #endif  // BASESTAFF_H_

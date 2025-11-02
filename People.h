@@ -5,23 +5,33 @@
 
 #ifndef PEOPLE_H_
 #define PEOPLE_H_
+
 #include "Nursery.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
+class Nursery;
 class People {
- private:
+ protected:
   Nursery* nursery;
+  string name;
 
  public:
-  People(Nursery* n);
-
   People();
+  People(Nursery* n, string name);
   People(const People* other);
+  virtual ~People();
 
-  void send(string m, Nursery* s, string type);
-
-  void receive(string m, People* from, Nursery* n);
+  virtual void send(string m, Nursery* group, string type);
+  virtual void send(string m, People* to, Nursery* group, string type);
+  virtual void receive(string m, People* from, Nursery* group, string type) = 0;
+  
+  virtual string getName() const;
+  virtual Nursery* getNursery() const;
+  
+  void setName(const string& name);
+  void setNursery(Nursery* n);
 };
 
 #endif  // PEOPLE_H_

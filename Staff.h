@@ -11,22 +11,27 @@
 
 #include "People.h"
 #include "Request.h"
+
 class Plant;
-class Staff : public People {
- private:
-  string name;
-  string level;
-  vector<string> responsibilities;
-  Staff* successor;
 
- public:
-  void handlePlant(Plant* p);
-  void handleCustomer(Request* req);
-  Staff();
-  Staff(const Staff* other);
+class Staff : public People
+{
+  protected:
+    Staff *successor;
 
-  string JobDesc();
-  string getType();
+  public:
+    Staff();
+    Staff(Nursery* n, string name);
+    Staff(const Staff *other);
+    ~Staff();
+    
+    virtual std::string jobDesc() = 0;
+    virtual std::string getType() = 0;
+    virtual void handlePlant(Plant *p) = 0;
+    virtual void handleCustomer(Request *req);
+    virtual void receive(string m, People* from, Nursery* group, string type) = 0;
+    
+    void setSuccessor(Staff *succ);
 };
 
 #endif  // STAFF_H_

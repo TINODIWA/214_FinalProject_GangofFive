@@ -1,42 +1,55 @@
-/**
- * @file Admin.cpp
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2025-10-29
- *
- * @copyright Copyright (c) 2025
- *
- */
-
+#include <iostream>
+#include "Request.h"
 #include "Admin.h"
+#include "Crop.h"
 
-void Admin::operation() {
-  // TODO(dom) - implement Admin::operation
-  throw "Not yet implemented";
+/**
+ * @brief Construct a new Admin object.
+ */
+Admin::Admin(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
+
+/**
+ * @brief Destroy the Admin object.
+ */
+Admin::~Admin() {}
+
+// staff.getjobdesc + handling sales
+
+
+/**
+ * @brief Get the staff type for this object.
+ */
+std::string Admin::getType() {
+	return Roles::getType() + ": Admin";
 }
+
+/**
+ * @brief Get the job description for this staff role.
+ */
+std::string Admin::jobDesc() {
+	return Roles::jobDesc() + "\nAdmin staff responsible for administration and inventory.";
+}
+
 
 void Admin::updateInventory() {
-  // TODO(dom) - implement Admin::updateInventory
-  throw "Not yet implemented";
+    std::cout << "Admin is checking inventory records" << std::endl;
+    //code
+    std::cout << "Inventory updated by Admin." << std::endl;
 }
 
-string Admin::getType() {
-  // TODO(dom) - implement Admin::getType
-  throw "Not yet implemented";
+void Admin::handleCustomer(Request* req) {
+    if (req) {
+        std::cout << "Admin staff handled request: " << req->getRequest() << std::endl;
+    } else if (successor) {
+        successor->handleCustomer(req);
+    } else {
+        std::cout << "No staff could handle the request." << std::endl;
+    }
 }
 
-string Admin::handleCustomer(Request* req, Request* req) {
-  // TODO(dom) - implement Admin::handleCustomer
-  throw "Not yet implemented";
+void Admin::handlePlant(Plant* p) {
+	//doesnt handle plants here chief
 }
 
-Admin::Admin() {
-  // TODO(dom) - implement Admin::Admin
-  throw "Not yet implemented";
-}
-
-string Admin::handleCustomer(Request* req) {
-  // TODO(dom) - implement Admin::handleCustomer
-  throw "Not yet implemented";
+void Admin::receive(string m, People* from, Nursery* group, string type) {
 }

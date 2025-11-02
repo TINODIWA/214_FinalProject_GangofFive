@@ -8,7 +8,8 @@ TEST = test
 OBJS = Garden.o Plant.o Crop.o PlantCare.o \
 	People.o Staff.o Customer.o Request.o\
 	Builder.o BuildPlant.o CropBuilder.o PlantBuilder.o\
-	Director.o
+	Director.o High.o Medium.o Low.o  Iterator.o Payment.o EFT.o Card.o Cash.o\
+	PlantState.o Planted.o
 		
 
 MAIN_OBJS = $(OBJS) Main.o

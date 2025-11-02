@@ -10,33 +10,31 @@
  */
 
 #include "Sales.h"
+#include <iostream>
 
-void Sales::operation() {
-  // TODO(user) - implement Sales::operation
-  throw "Not yet implemented";
-}
+Sales::Sales(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
 
-void Sales::handleSales() {
-  // TODO(user) - implement Sales::handleSales
-  throw "Not yet implemented";
-}
+Sales::~Sales() {}
 
 string Sales::getType() {
-  // TODO(user) - implement Sales::getType
-  throw "Not yet implemented";
+  return Roles::getType() + ": Sales";
 }
 
-string Sales::handleCustomer(Request* req, Request* req) {
+/**
+ * @brief Get the job description for this staff role.
+ */
+std::string Sales::jobDesc() {
+  return Roles::jobDesc() + "\nAdditionally, Sales staff are responsible for assisting customers with their purchases.";
+}
+
+void Sales::handleCustomer(Request* req) {
   // TODO(user) - implement Sales::handleCustomer
   throw "Not yet implemented";
 }
 
-Sales::Sales() {
-  // TODO(user) - implement Sales::Sales
-  throw "Not yet implemented";
+void Sales::handlePlant(Plant* p) {
+
 }
 
-string Sales::handleCustomer(Request* req) {
-  // TODO(user) - implement Sales::handleCustomer
-  throw "Not yet implemented";
+void Sales::receive(string m, People* from, Nursery* group, string type) {
 }

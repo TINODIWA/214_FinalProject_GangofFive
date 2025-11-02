@@ -1,6 +1,6 @@
 /**
  * @file Staff.cpp
- * @author your name (you@domain.com)
+ * @author Nathan Chisadza, Dominiqu Nigatu
  * @brief
  * @version 0.1
  * @date 2025-10-29
@@ -11,41 +11,54 @@
 
 #include "Staff.h"
 
-void Staff::handlePlant(Plant* p) {
-  // TODO(user) - implement Staff::handlePlant
-  // throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Staff:: Staff object
+ */
+Staff::Staff() : People(), successor(NULL) {}
 
-void Staff::handleCustomer(Request* req) {
-  // TODO(user) - implement Staff::handleCustomer
-  // throw "Not yet implemented";
-}
+/**
+ * @brief Construct a new Staff:: Staff object
+ *
+ * @param n Mediator this staff will communicate through
+ * @param name name of staff member
+ */
+Staff::Staff(Nursery* n, string name) : People(n, name), successor(NULL) {}
 
-Staff::Staff() : People() {
-  // TODO(user) - implement Staff::Staff
-  // throw "Not yet implemented";
-}
-
+/**
+ * @brief Construct a new Staff:: Staff object
+ *
+ * @param other Staff to copy from
+ */
 Staff::Staff(const Staff* other) : People(*other) {
   if (other) {
     this->name = other->name;
-    this->level = other->level;
-    this->successor = new Staff(*other->successor);
-
-    vector<string>::const_iterator it = other->responsibilities.begin();
-
-    while (it != other->responsibilities.end()) {
-      responsibilities.push_back(*it);
-    }
+    this->successor = other->successor;
   }
 }
 
-string Staff::JobDesc() {
-  // TODO(user) - implement Staff::JobDesc
-  // throw "Not yet implemented";
+/**
+ * @brief Destroy the Staff:: Staff object
+ */
+Staff::~Staff() {
+  this->successor = NULL;
 }
 
-string Staff::getType() {
-  // TODO(user) - implement Staff::getType
-  // throw "Not yet implemented";
+/**
+ * @brief Sets the next staff member in the chain of responsibility
+ *
+ * @param succ Next staff member
+ */
+void Staff::setSuccessor(Staff* succ) {
+  this->successor = succ;
+}
+
+/**
+ * @brief Handles customer requests by passing them to the successor if exists
+ *
+ * @param req Customer request to handle
+ */
+void Staff::handleCustomer(Request* req) {
+  if (this->successor) {
+    this->successor->handleCustomer(req);
+  }
 }

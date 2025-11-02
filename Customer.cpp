@@ -11,19 +11,9 @@
  */
 #include "Customer.h"
 
-// void Customer::operation() {
-//// TODO(unathi,nathan,ryan) - implement Customer::operation
-// throw "Not yet implemented";
-//  }
-
-// void Customer::makeReq(Request* req, Request* req) {
-//// TODO(unathi,nathan,ryan) - implement Customer::makeReq
-// throw "Not yet implemented";
-//  }
-
-Customer::Customer() {
+Customer::Customer(string name): People(nullptr,name) {
   // TODO(unathi,nathan,ryan) - implement Customer::Customer
-  throw "Not yet implemented";
+  // throw "Not yet implemented";
 }
 
 Customer::~Customer() {}
@@ -35,5 +25,6 @@ Customer::Customer(const Customer* other) {
 
 void Customer::makeReq(Request* req) {
   // TODO(unathi,nathan,ryan) - implement Customer::makeReq
-  throw "Not yet implemented";
+  // throw "Not yet implemented";
 }
+

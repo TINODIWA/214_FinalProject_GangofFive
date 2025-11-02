@@ -1,23 +1,25 @@
-/**
- * @copyright Copyright (c) 2025
- *
- */
+#ifndef MANAGEMENT_H
+#define MANAGEMENT_H
+#include "Roles.h"
+#include "Command.h"
 
-#ifndef MANAGEMENT_H_
-#define MANAGEMENT_H_
-#include <string>
+class Management : public Roles {
 
-class Management : Roles {
- public:
-  Command* cmd;
+  public:
+    Management(Staff* s);
+    ~Management();
+    std::string getType() override;
+    std::string jobDesc() override;
+    
+    void handleCustomer(Request* req) override;
+    void handlePlant(Plant* p) override;
+    void assignTasks();
+    void addCommand(Command* c);
 
-  string getType();
+    virtual void receive(string m, People* from, Nursery* group, string type);
 
-  Management();
-
-  void handleCustomer(Request* req);
-
-  void assignTasks();
+  private:
+	  std::vector<Command*> cmd;
 };
 
 #endif  // MANAGEMENT_H_
