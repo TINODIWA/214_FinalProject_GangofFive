@@ -12,6 +12,7 @@
 
 #include "Garden.h"
 #include "Iterator.h"
+#include "Plant.h"
 
 using namespace std;
 

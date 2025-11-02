@@ -48,7 +48,7 @@ CropBuilder::CropBuilder(const CropBuilder* other) {
  *
  * @param name
  */
-void CropBuilder::addCrop() {
+void CropBuilder::add() {
   Crop* crop = new Crop();
   root->add(crop);
   currCrop = crop;
@@ -59,7 +59,7 @@ void CropBuilder::addCrop() {
  *
  * @param p
  */
-void CropBuilder::addPlant(Garden* p) {
+void CropBuilder::add(Garden* p) {
   currCrop->add(p);
 }
 

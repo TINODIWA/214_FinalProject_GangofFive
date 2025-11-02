@@ -25,8 +25,8 @@ class CropBuilder : public Builder {
   CropBuilder();
   ~CropBuilder();
   CropBuilder(const CropBuilder* other);
-  void addCrop();
-  void addPlant(Garden* p);
+  void add();
+  void add(Garden* p);
   Garden* getCrop();
   CropBuilder* clone();
   void reset();
