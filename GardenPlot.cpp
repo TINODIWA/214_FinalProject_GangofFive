@@ -23,10 +23,29 @@ GardenPlot::GardenPlot(): garden(nullptr){}
  * @param filename 
  */
 GardenPlot::GardenPlot(string filename){
-    
-}
-GardenPlot::~GardenPlot(){}
+    Director dir = Director(new CropBuilder(), new PlantBuilder());
 
-string GardenPlot::viewAll(){}
+    garden = dir.construct(filename);
+}
+
+/**
+ * @brief Destroy the Garden Plot:: Garden Plot object
+ * 
+ */
+GardenPlot::~GardenPlot(){
+    if (garden){
+        delete garden;
+        garden = nullptr;
+    }
+}
+
+/**
+ * @brief a summaries view of all the plants in the garden
+ * 
+ * @return string 
+ */
+string GardenPlot::viewAll(){
+    return garden->summary();
+}
 string GardenPlot::viewAvailable(){}
 void GardenPlot::transpire(int decreasedLevel){}

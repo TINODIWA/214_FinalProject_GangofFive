@@ -9,9 +9,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
 
 #include "Garden.h"
 #include "Iterator.h"
+#include "Plant.h"
 
 using namespace std;
 
@@ -27,10 +29,10 @@ class Crop : public Garden {
   Crop(const Crop& other);
   void add(Garden* p);
   Garden* clone();
-  void print();
+  string print();
   void removeDeadPlants();
   Iterator* createIterator();
-  
+  string summary();
 
   bool done();
   Garden* next();

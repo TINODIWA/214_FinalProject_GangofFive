@@ -343,8 +343,10 @@ Garden* Plant::clone() {
  * @brief prints the plant
  *
  */
-void Plant::print() {
-  cout << left << setw(10) << this->name << "|";
+string Plant::print() {
+  stringstream ss;
+  ss << left << setw(10) << this->name << "|";
+  return ss.str();
 }
 
 /**

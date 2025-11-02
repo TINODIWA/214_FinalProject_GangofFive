@@ -39,3 +39,11 @@ Iterator* Garden::createIterator(){
  */
 void transpire(int decreasedLevel){}
 
+/**
+ * @brief summary of number of plants in a crop - stubbed
+ * 
+ * @return string 
+ */
+string Garden::summary(){
+    return "";
+}

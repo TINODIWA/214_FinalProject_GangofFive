@@ -11,6 +11,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 
 #include "Garden.h"
 #include "PlantCare.h"
@@ -68,7 +69,7 @@ class Plant : public Garden {
   vector<int> getFertiliser() const;
 
   Garden* clone();
-  void print();
+  string print();
 
   // Observer functions
   void attach(Staff* s);

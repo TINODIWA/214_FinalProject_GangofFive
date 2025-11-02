@@ -62,33 +62,33 @@ Garden* Crop::clone() {
  * @brief prints out all the plants in a crop
  *
  */
-void Crop::print() {
+string Crop::print() {
   Iterator* it = createIterator();
-
-  //vector<Garden*>::iterator it = plants.begin();
-  // cout<<"ERROR\n";
+  stringstream crop;
 
   int width = 40;
-  for (int i = 0; i < width; i++) cout << "-";
+  for (int i = 0; i < width; i++) crop << "-";
 
-  cout << endl;
+  crop << "\n";
   int i = 1;
   while (!it->done()) {
-    (**it)->print();
+    crop << (**it)->print();
     ++(*it);
 
     if (i % 4 == 0) {
-      cout << endl;
-      for (int i = 0; i < width; i++) cout << "-";
-      cout << endl;
+      crop << "\n";
+      for (int i = 0; i < width; i++) crop << "-";
+      crop << "\n";
     }
 
     ++i;
   }
 
-  cout << "\n===================================\n";
+  crop << "\n===================================\n";
 
   delete it;
+
+  return crop.str();
 }
 
 /**
@@ -130,8 +130,8 @@ Iterator* Crop::createIterator() {
 }
 
 void Crop::removeDeadPlants() {
-  //need to change this later to use iterator pattern
-  
+  // need to change this later to use iterator pattern
+
   // iterate in reverse to safely erase while iterating
   for (int i = (int)plants.size() - 1; i >= 0; --i) {
     Garden* child = plants[i];
@@ -155,4 +155,21 @@ void Crop::removeDeadPlants() {
       asCrop->removeDeadPlants();
     }
   }
+}
+
+/**
+ * @brief summary of the number of plants and what plant
+ *
+ * @return string
+ */
+string Crop::summary(){
+  Iterator* it = createIterator();
+  int PlantCount = 0;
+
+  while(!it->done()){
+    if((**it)->summary().compare("")) ++ PlantCount;
+
+    ++it;
+  }
+  return plants[0] -> print() + "\t" + to_string(PlantCount) + "\n";
 }
