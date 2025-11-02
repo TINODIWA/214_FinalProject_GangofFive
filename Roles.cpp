@@ -30,4 +30,5 @@ std::string Roles::getType() {
 }
 
 void Roles::receive(string m, People* from, Nursery* group, string type) {
+  
 }

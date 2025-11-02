@@ -43,7 +43,7 @@ void Management::assignTasks() {
 
 void Management::addCommand(Command* c) {
     if (c) {
-        cmd.push_back(c);
+        this->cmd = c;
     }
 }
 
@@ -71,5 +71,16 @@ void Management::handlePlant(Plant* p) {
 // }
 
 void Management::receive(string m, People* from, Nursery* group, string type) {
+    std::cout << getName() << " (" << getType() << ") received [" << type << "]: " << m;
+    if (from) std::cout << " from " << from->getName() << " (" << static_cast<Staff*>(from)->getType() << ")";
+    std::cout << std::endl;
+
+    if (type == "PlantDeadReport") {
+        CheckInventory cmd(this, group);
+        cmd.execute();
+    }
+    else{
+        cout << "Sorry, " << this->getName() << " (" << this->getType() << ") can not help with this request" << endl;
+    }
 }
 

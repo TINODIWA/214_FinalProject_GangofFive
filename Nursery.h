@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 
+#include "Garden.h"
 #include "Plant.h"
 #include "Garden.h"
 class Customer;
@@ -32,6 +33,10 @@ public:
     virtual void sendMessage(string m, People* to, People* from, string type) = 0;
     void setGarden(Garden* g);
     Garden* getGarden();
+    vector<Staff*> getStaff();
+    virtual string getName() const = 0;
+
+    Staff* findStaffByType(const string& type);
 
   protected:
     Garden* garden;

@@ -45,6 +45,7 @@ void BaseStaff::handlePlant(Plant* p) {
 }
 
 void BaseStaff::receive(string m, People* from, Nursery* group, string type) {
+  
 }
 
  

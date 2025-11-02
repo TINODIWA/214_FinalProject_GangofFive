@@ -22,34 +22,35 @@ StaffCo_ordination::StaffCo_ordination(Garden* g) : Nursery(g) {}
 
 StaffCo_ordination::~StaffCo_ordination() {}
 
-void StaffCo_ordination::sendMessage(string m, Staff* from, string type) {
-  if(from == NULL) return;
-
-  cout << "Manager is broadcasting to all staff to: " << m << endl;
+void StaffCo_ordination::sendMessage(string m, People* from, string type) {
+  if (!from) return;
+  cout << from->getName() << "[" << static_cast<Staff*>(from)->getType() << "] broadcasts: " << m << endl;
   for (Staff* s : staff) {
-    s->receive(m, from, this, type);
+    if (s && s != static_cast<Staff*>(from)) {
+      s->receive(m, from, this, type);
+    }
   }
 }
 
 void StaffCo_ordination::sendMessage(string m, Staff* to, Staff* from, string type) {
-  if (to == NULL || (to->getType() != "Gardener" && to->getType() != "Sales" && to->getType() != "Admin")) return;
-  if (from == NULL) return;
-
-  cout << "Manager is asking " << to->getType() << " to: " << m << endl;
-
+  if (!to || !from) return;
+  cout << from->getName() << "[" << from->getType() << "] -> " << to->getName() << "[" << to->getType() << "]: " << m << endl;
   to->receive(m, from, this, type);
 }
 
 void StaffCo_ordination::addStaff(Staff* s) {
-  staff.push_back(s);
+  if (s) staff.push_back(s);
 }
+
 void StaffCo_ordination::removeStaff(Staff* s) {
-  for (vector<Staff *>::iterator us = staff.begin(); us != staff.end(); us++)
-    {
-        if (*us == s)
-        {
-            staff.erase(us);
-            return;
-        }
+  for (vector<Staff*>::iterator it = staff.begin(); it != staff.end(); ++it) {
+    if (*it == s) {
+      staff.erase(it);
+      return;
     }
+  }
+}
+
+string StaffCo_ordination::getName() const {
+  return "StaffCo_ordination";
 }

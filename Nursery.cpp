@@ -1,6 +1,6 @@
 /**
  * @file Nursery.cpp
- * @author your name (you@domain.com)
+ * @author Unathi Tshakalisa, Nathan Chisadza
  * @brief
  * @version 0.1
  * @date 2025-10-29
@@ -17,7 +17,6 @@ Nursery::Nursery() {}
 Nursery::Nursery(Garden* g) : garden(g) {}
 
 Nursery::~Nursery() {}
-
 Nursery::Nursery(const Nursery& other) {
   // vector<vector<Plant*>>::const_iterator otherPlants = (other.garden).begin();
   Garden* otherGarden = other.garden;
@@ -41,4 +40,17 @@ void Nursery::setGarden(Garden* g) {
 
 Garden* Nursery::getGarden() {
   return garden;
+}
+
+vector<Staff*> Nursery::getStaff() {
+    return staff;
+}
+
+Staff* Nursery::findStaffByType(const string& type) {
+  for (Staff* s : staff) {
+    if (s && s->getType() == type) {
+      return s;
+    }
+  }
+  return NULL;
 }

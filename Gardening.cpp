@@ -14,6 +14,8 @@
 #include <iostream>
 #include <algorithm>
 #include "Plant.h"
+#include "Crop.h"
+#include <functional>
 
 /**
  * @brief Construct a new Gardening object.
@@ -47,11 +49,35 @@ void Gardening::update() {
 }
 
 void Gardening::checkPlants() {
-	// for (int i = 0; i < plants.size(); i++) {
-	// 	if (plants[i]) {
-	// 		std::cout << "Checking plant: " << plants[i]->getName() << std::endl;
-	// 	}
-	// }
+    Nursery* med = getNursery();
+    if (!med || !med->getGarden()) return;
+
+    Crop* root = dynamic_cast<Crop*>(med->getGarden());
+    if (!root) return;
+
+    std::function<void(Crop*)> traverse = [&](Crop* c){
+        if (!c) return;
+        Iterator* it = c->createIterator();
+        if (!it) return;
+        for (Garden* g = it->first(); !it->done(); g = it->next()) {
+            if (!g) continue;
+            if (Plant* p = dynamic_cast<Plant*>(g)) {
+                std::string state = p->getState();
+                if (state == "Dead") {
+                    Staff* mgmt = med->findStaffByType("Management");
+                    std::string msg = "Plant '" + p->getName() + "' has died";
+                    if (mgmt) send(msg, mgmt, med, "PlantDeadReport");
+                } else if (state == "Dying") {
+                    this->handlePlant(p);
+                }
+            } else if (Crop* sub = dynamic_cast<Crop*>(g)) {
+                traverse(sub);
+            }
+        }
+        delete it;
+    };
+
+    traverse(root);
 }
 
 void Gardening::handleCustomer(Request* req) {
@@ -65,13 +91,13 @@ void Gardening::handleCustomer(Request* req) {
 }
 
 void Gardening::handlePlant(Plant* p) {
-    // if (p) {
-    //     std::cout << "Gardening staff is taking care of plant: " << p->getName() << std::endl;
-    // } else if (successor) {
-    //     successor->handlePlant(p);
-    // } else {
-    //     std::cout << "No staff could handle the plant request." << std::endl;
-    // }
+    if (!p) return;
+    // Start watering: set current water to required level
+    auto w = p->getWater();
+    if (w.size() >= 2) {
+        p->updateWaterLevel(w[1]);
+        std::cout << getName() << " watered '" << p->getName() << "' to required level (" << w[1] << ")" << std::endl;
+    }
 }
 
 void Gardening::receive(string m, People* from, Nursery* group, string type) {

@@ -2,6 +2,8 @@
 #define MANAGEMENT_H
 #include "Roles.h"
 #include "Command.h"
+#include "CheckInventory.h"
+#include "CheckPlant.h"
 
 class Management : public Roles {
 
@@ -19,7 +21,7 @@ class Management : public Roles {
     virtual void receive(string m, People* from, Nursery* group, string type);
 
   private:
-	  std::vector<Command*> cmd;
+	  Command* cmd;
 };
 
 #endif  // MANAGEMENT_H_

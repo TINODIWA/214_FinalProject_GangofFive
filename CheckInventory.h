@@ -5,11 +5,13 @@
 
 #ifndef CHECKINVENTORY_H_
 #define CHECKINVENTORY_H_
+
 #include "Command.h"
+#include "Nursery.h"
 
 class CheckInventory : public Command {
  public:
-  CheckInventory(Staff* s, StaffCo_ordination* m);
+  CheckInventory(Staff* from, Nursery* m);
   virtual void execute();
 };
 

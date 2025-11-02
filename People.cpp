@@ -41,7 +41,7 @@ People::People(const People* other) {
  *
  */
 People::~People() {
-  delete nursery;
+  nursery = NULL;
 }
 
 /**

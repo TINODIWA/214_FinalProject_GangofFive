@@ -28,8 +28,13 @@ std::string Sales::jobDesc() {
 }
 
 void Sales::handleCustomer(Request* req) {
-  // TODO(user) - implement Sales::handleCustomer
-  throw "Not yet implemented";
+  if(req != NULL && req->getRequest() == "Purchase"){
+    // setColleague(this, ?)
+  }
+  else{
+    cout << "Sales is passing on this request." << endl;
+    Staff::handleCustomer(req);
+  }
 }
 
 void Sales::handlePlant(Plant* p) {
@@ -37,4 +42,6 @@ void Sales::handlePlant(Plant* p) {
 }
 
 void Sales::receive(string m, People* from, Nursery* group, string type) {
+  if(!(from || group)) return;
+  
 }

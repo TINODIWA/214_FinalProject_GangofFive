@@ -6,11 +6,12 @@
 #ifndef CHECKPLANT_H_
 #define CHECKPLANT_H_
 
+#include "Nursery.h"
 #include "Command.h"
 
 class CheckPlant : public Command {
  public:
-  CheckPlant(Staff* s, StaffCo_ordination* m);
+  CheckPlant(Staff* s, Nursery* m);
   virtual void execute();
 };
 
