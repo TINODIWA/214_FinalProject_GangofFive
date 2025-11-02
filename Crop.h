@@ -33,8 +33,7 @@ class Crop : public Garden {
   void removeDeadPlants();
   Iterator* createIterator();
   string summary();
-
-  bool done();
+   bool done();
   Garden* next();
 };
 

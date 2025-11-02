@@ -73,6 +73,8 @@ class Plant : public Garden {
 
   Garden* clone();
   string print();
+  Garden* get(int id);
+  bool operator==(const Garden* other);
 
   // Observer functions
   void attach(Staff* s);
@@ -83,8 +85,8 @@ class Plant : public Garden {
   void updateWaterLevel(int newLevel);
   void transpire(int decreasedLevel);
   void updateFertiliserLevel(int newLevel);
-	void updateDay();
-	string getState();
+  void updateDay();
+  string getState();
 };
 
 #endif  // PLANT_H_

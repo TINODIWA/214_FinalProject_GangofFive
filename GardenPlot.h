@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <map>
 
 #include "Iterator.h"
 #include "Director.h"
@@ -30,7 +31,7 @@ class GardenPlot {
   string viewAll();
   string viewAvailable();
   void transpire(int decreasedLevel);
-
+  Garden* get(int id, int num);
 
 };
 #endif  // GARDENPLOT_H_

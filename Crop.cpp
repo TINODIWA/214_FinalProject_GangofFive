@@ -15,7 +15,7 @@
  * @brief Construct a new Crop:: Crop object
  *
  */
-Crop::Crop() : Garden() {}
+Crop::Crop() : Garden(id) {}
 
 /**
  * @brief Destructor that deletes all plants in vector
@@ -187,3 +187,4 @@ string Crop::summary() {
 
   return sum;
 }
+

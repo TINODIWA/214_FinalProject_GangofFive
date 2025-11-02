@@ -21,12 +21,7 @@ PlantBuilder::PlantBuilder() :p(nullptr) {}
  * @brief Destroy the Plant Builder:: Plant Builder object
  *
  */
-PlantBuilder::~PlantBuilder() {
-  // if (p) {
-  //   delete p;
-  //   p = nullptr;
-  // }
-}
+PlantBuilder::~PlantBuilder() {}
 
 /**
  * @brief Construct a new Plant Builder:: Plant Builder object
@@ -121,7 +116,7 @@ PlantBuilder* PlantBuilder::setWaterCare(char level) {
  * @return Builder*
  */
 PlantBuilder* PlantBuilder::setSunCare(char level) {
-  p->setWaterCare(level);
+  p->setSunCare(level);
   return this;
 }
 
@@ -132,7 +127,7 @@ PlantBuilder* PlantBuilder::setSunCare(char level) {
  * @return Builder*
  */
 PlantBuilder* PlantBuilder::setFertiliserCare(char level) {
-  p->setWaterCare(level);
+  p->setFertiliserCare(level);
   return this;
 }
 

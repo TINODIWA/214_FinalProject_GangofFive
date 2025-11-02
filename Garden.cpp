@@ -12,12 +12,20 @@
 #include "Garden.h"
 #include "Iterator.h"
 
+int gID = 0;
+
 /**
  * @brief Construct a new Garden:: Garden object
  *
  */
-Garden::Garden() {}
+Garden::Garden(){}
 
+/**
+ * @brief Construct a new Garden object
+ * 
+ * @param id 
+ */
+Garden::Garden(int id): id(gID++){}
 /**
  * @brief Destroy the Garden:: Garden object
  *
@@ -34,12 +42,6 @@ Iterator* Garden::createIterator() {
 }
 
 /**
- * @brief simulates plants losing water as a result of sun exposure - stubbed
- *
- */
-void transpire(int decreasedLevel) {}
-
-/**
  * @brief summary of number of plants in a crop - stubbed
  *
  * @return string
@@ -50,14 +52,50 @@ string Garden::summary() {
 
 /**
  * @brief adds a plant to a crop - stubbed
- * 
- * @param p 
+ *
+ * @param p
  */
-void Garden::add(Garden* p){}
+void Garden::add(Garden* p) {}
 
 /**
  * @brief simulates loss of water due to transpiration - stubbed
- * 
- * @param decreasedLevel 
+ *
+ * @param decreasedLevel
  */
-void Garden::transpire(int decreasedLevel){}
+void Garden::transpire(int decreasedLevel) {}
+
+/**
+ * @brief stubbed to return state of plant
+ *
+ */
+string Garden::getState() {
+  return "";
+}
+
+/**
+ * @brief advice on what the plant needs to grow - stubbed
+ *
+ */
+string Garden::advice() {
+  return "";
+}
+
+/**
+ * @brief return the plant with the passed in id
+ *
+ * @param id
+ * @return Garden*
+ */
+Garden* Garden::get(int id) {
+  return nullptr;
+}
+
+/**
+ * @brief check if plants have equal ids
+ * 
+ * @return true 
+ * @return false 
+ */
+bool Garden::operator==(int id) {
+    return this->id == id;
+}
