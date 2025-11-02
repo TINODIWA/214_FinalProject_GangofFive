@@ -14,6 +14,7 @@
 Customer::Customer(string name): People(nullptr,name) {
   // TODO(unathi,nathan,ryan) - implement Customer::Customer
   // throw "Not yet implemented";
+  req = new Request("Enter");
 }
 
 Customer::~Customer() {}
@@ -26,5 +27,6 @@ Customer::Customer(const Customer* other) {
 void Customer::makeReq(Request* req) {
   // TODO(unathi,nathan,ryan) - implement Customer::makeReq
   // throw "Not yet implemented";
+  ((CustomerCare*)nursery)->notify(req);//send through chain!!
 }
 

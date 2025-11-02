@@ -10,6 +10,7 @@
  */
 
 #include "Staff.h"
+#include "People.h"
 
 /**
  * @brief Construct a new Staff:: Staff object
@@ -53,12 +54,12 @@ void Staff::setSuccessor(Staff* succ) {
 }
 
 /**
- * @brief Handles customer requests by passing them to the successor if exists
+ * @brief stubbed for concrete staff
  *
  * @param req Customer request to handle
  */
 void Staff::handleCustomer(Request* req) {
-  if (this->successor) {
-    this->successor->handleCustomer(req);
-  }
+  // if (this->successor) {
+  //   this->successor->handleCustomer(req);
+  // }
 }

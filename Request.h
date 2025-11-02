@@ -18,7 +18,7 @@ class Request {
   string description;
 
  public:
-  Request();
+  Request(string description);
   string getRequest();
 };
 

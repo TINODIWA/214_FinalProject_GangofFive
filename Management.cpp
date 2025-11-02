@@ -48,13 +48,15 @@ void Management::addCommand(Command* c) {
 }
 
 void Management::handleCustomer(Request* req) {
-    if (req) {
-        std::cout << "Management staff handled request: " << req->getRequest() << std::endl;
-    } else if (successor) {
-        successor->handleCustomer(req);
-    } else {
-        std::cout << "No staff could handle the request." << std::endl;
-    }
+    if (req->getRequest() == "Return") {
+    std::cout << "I am " + name +
+                     " and I will be assisting you with your return today.\n Passing order back to manager..."
+              << std::endl;
+  } else if (successor) {
+    successor->handleCustomer(req);
+  } else {
+    std::cout << "No staff could handle the request." << std::endl;
+  }
 }
 
 void Management::handlePlant(Plant* p) {

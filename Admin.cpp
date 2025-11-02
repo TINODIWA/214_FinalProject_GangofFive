@@ -37,7 +37,8 @@ void Admin::updateInventory() {
     std::cout << "Inventory updated by Admin." << std::endl;
 }
 
-void Admin::handleCustomer(Request* req) {
+void Admin::handleCustomer(Request* req) {//I dont think they handle Customers
+
     if (req) {
         std::cout << "Admin staff handled request: " << req->getRequest() << std::endl;
     } else if (successor) {

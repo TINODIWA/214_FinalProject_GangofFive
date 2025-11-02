@@ -66,6 +66,7 @@ int main() {
     cout << staff_5->getName() << "\n" << staff_5->getType() << "\n" << staff_5->jobDesc() << endl;
 
     delete staff_5;
+    delete staff_4;
     delete staff_3;
     delete staff_2;
     delete staff_1;

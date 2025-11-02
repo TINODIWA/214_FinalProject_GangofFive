@@ -17,7 +17,7 @@ class Order;
 class Customer : public People {
  private:
   Order* order;
-  Request req;
+  Request* req;
 
  public:
   Customer(string name);
