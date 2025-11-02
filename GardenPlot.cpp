@@ -43,33 +43,32 @@ GardenPlot::~GardenPlot() {
  *
  * @return string
  */
-string GardenPlot::viewAll() {
-  if (!garden) return "Please create your garden first.\n";
-  return "All Plants in Garden\n" + garden->summary();
+map<string, int> GardenPlot::viewAll() {
+  if (!garden) return {};
+  map<string, int> all;
+  return garden->summary(all);
 }
-string GardenPlot::viewAvailable() {
+map<string, int> GardenPlot::viewAvailable() {
   Iterator* it = garden->createIterator();
   int PlantCount = 0;
   string type = "";
-  string sum = "";
+  map<string, int> all;
 
   while (!it->done()) {
-    string plant = (**it)->summary();
-    if (plant == "" && (((**it)->getState() != "Dying") || (**it)->getState() != "Dead")) {
+    map<string, int> plant = (**it)->summary(all);
+    if (plant.empty() && ((**it)->getState() != "Dying" || (**it)->getState() != "Dead")) {
       type = (type == "") ? (**it)->print() : type;
       ++PlantCount;
     } else {
-      sum += plant;
+      if (type != "") all[type] = PlantCount;
     }
 
     ++(*it);
   }
   delete it;
 
-  string line = (type != "") ? type + to_string(PlantCount) + "\n" : "";
-  sum = line + sum;
-
-  return "Plants Available for Sale\n" + sum;
+  if (type != "") all[type] = PlantCount;
+  return all;
 }
 
 /**
@@ -92,15 +91,15 @@ void GardenPlot::transpire(int decreasedLevel) {
  *
  */
 Garden* GardenPlot::get(int id, int num) {
-    Iterator* it = garden->createIterator();
+  Iterator* it = garden->createIterator();
 
-    while(!it->done()){
-        if((**it)->operator==(id)){
-            return (**it);
-        }
-
-        ++(*it);
+  while (!it->done()) {
+    if ((**it)->operator==(id)) {
+      return (**it);
     }
 
-    delete it;
+    ++(*it);
+  }
+
+  delete it;
 }

@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <map>
+#include <vector>
+
 #include "Iterator.h"
 
 using namespace std;
@@ -25,10 +27,10 @@ class Garden {
   virtual string print() = 0;
   virtual Iterator* createIterator();
   virtual void transpire(int decreasedLevel);
-  virtual string summary();
+  virtual map<string,int> summary(map<string,int>& sum);
   virtual string getState();
   virtual string advice();
-  virtual Garden* get(int id);
+  virtual  vector<Garden*> get(string name, int num);
   bool operator==(int id);
 };
 

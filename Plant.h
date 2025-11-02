@@ -73,7 +73,6 @@ class Plant : public Garden {
 
   Garden* clone();
   string print();
-  Garden* get(int id);
   bool operator==(const Garden* other);
 
   // Observer functions
