@@ -308,6 +308,12 @@ int Plant::getPrice() const {
   return price;
 }
 
+/**
+ * @brief Attach an observer (Staff) to this Plant
+ * Adds a Staff member to the list of observers that will be notified of state changes
+ * 
+ * @param s Pointer to Staff object to attach as observer
+ */
 void Plant::attach(Staff* s) {
   if (s != nullptr) {
     staff.push_back(s);
