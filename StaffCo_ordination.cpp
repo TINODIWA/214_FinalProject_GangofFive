@@ -32,9 +32,9 @@ void StaffCo_ordination::sendMessage(string m, People* from, string type) {
   }
 }
 
-void StaffCo_ordination::sendMessage(string m, Staff* to, Staff* from, string type) {
+void StaffCo_ordination::sendMessage(string m, People* to, People* from, string type) {
   if (!to || !from) return;
-  cout << from->getName() << "[" << from->getType() << "] -> " << to->getName() << "[" << to->getType() << "]: " << m << endl;
+  cout << from->getName() << "(" << static_cast<Staff*>(from)->getType() << ") -> " << to->getName() << "(" << static_cast<Staff*>(to)->getType() << "): " << m << endl;
   to->receive(m, from, this, type);
 }
 
@@ -49,6 +49,14 @@ void StaffCo_ordination::removeStaff(Staff* s) {
       return;
     }
   }
+}
+
+void StaffCo_ordination::addCustomer(Customer* c) {
+  cout << "Customers not allowed in StaffCo_ordination nursery." << endl;
+}
+
+void StaffCo_ordination::removeCustomer(Customer* c) {
+  cout << "Customers not allowed in StaffCo_ordination nursery." << endl;
 }
 
 string StaffCo_ordination::getName() const {

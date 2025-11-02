@@ -23,6 +23,8 @@ class StaffCo_ordination : public Nursery {
   virtual void sendMessage(string m, People* to, People* from, string type);
   virtual void addStaff(Staff* s);
   virtual void removeStaff(Staff* s);
+  virtual void addCustomer(Customer* c);
+  virtual void removeCustomer(Customer* c);
   virtual string getName() const;
 };
 

@@ -86,6 +86,6 @@ void CustomerCare::routeRequest(Request* req, Customer* from) {
   }
 }
 
-void CustomerCare::notify() {
-  // Optional: could broadcast a status update to staff or customers.
-}
+// void CustomerCare::notify() {
+//   // Optional: could broadcast a status update to staff or customers.
+// }

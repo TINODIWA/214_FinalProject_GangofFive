@@ -12,7 +12,7 @@ class Gardening : public Roles
     
     void update();
     void handleCustomer(Request* req) override;
-    void handlePlant(Plant* p) override;
+    void handlePlant(Plant* p);
     void checkPlants();
 
     virtual void receive(string m, People* from, Nursery* group, string type);

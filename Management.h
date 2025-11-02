@@ -4,19 +4,23 @@
 #include "Command.h"
 #include "CheckInventory.h"
 #include "CheckPlant.h"
+#include "HireStaff.h"
+#include "FireStaff.h"
+#include <iostream>
+#include <string>
 
 class Management : public Roles {
 
   public:
     Management(Staff* s);
-    ~Management();
+    virtual ~Management();
     std::string getType() override;
     std::string jobDesc() override;
     
     void handleCustomer(Request* req) override;
-    void handlePlant(Plant* p) override;
-    void assignTasks();
-    void addCommand(Command* c);
+    void hireStaff(Staff* newStaff);
+    void fireStaff(Staff* exStaff);
+    void assignTasks(Nursery* group);
 
     virtual void receive(string m, People* from, Nursery* group, string type);
 

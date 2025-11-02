@@ -25,15 +25,8 @@ CheckPlant::CheckPlant(Staff* s, Nursery* m) : Command(s, m, "Please check up on
  */
 void CheckPlant::execute() {
   if (!mediator) return;
-  Staff* appointed = NULL;
-  vector<Staff*> staffList = mediator->getStaff();
-  for (Staff* s : staffList) {
-    if (s->getType() == "Gardening") {
-      appointed = s;
-      break;
-    }
-  }
+  Staff* appointed = mediator->findStaffByType("BaseStaff: Gardening");
 
+  if (appointed) cout << "Gardner is gonna check" << endl;
   if (appointed) mediator->sendMessage(msg, appointed, from, commandType);
-  delete appointed;
 }

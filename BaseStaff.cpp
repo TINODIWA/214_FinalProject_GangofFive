@@ -17,7 +17,7 @@ BaseStaff::BaseStaff(Nursery* n, std::string name) : Staff(n, name) {}
 
 BaseStaff::~BaseStaff() {}
 
-string BaseStaff::jobDesc() {
+std::string BaseStaff::jobDesc() {
   return "Base staff member responsible for general tasks such as greeting customers and showing customers the plants.";
 }
 
@@ -39,13 +39,8 @@ void BaseStaff::handleCustomer(Request* req) {
   }
 }
 
-void BaseStaff::handlePlant(Plant* p) {
-  // TODO(dom) - implement BaseStaff::handlePlant
-  throw "Not yet implemented";
+void BaseStaff::receive(std::string m, People* from, Nursery* group, std::string type) {
+  std::cout << "[BaseStaff::receive] from: "
+            << (from ? from->getName() : std::string("unknown"))
+            << ", type: " << type << ", msg: " << m << std::endl;
 }
-
-void BaseStaff::receive(string m, People* from, Nursery* group, string type) {
-  
-}
-
- 

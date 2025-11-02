@@ -11,7 +11,6 @@ public:
 	std::string getType() override;
 	std::string jobDesc() override;
 	void handleCustomer(Request* req) override;
-	void handlePlant(Plant* p) override;
 
   virtual void receive(string m, People* from, Nursery* group, string type);
 };

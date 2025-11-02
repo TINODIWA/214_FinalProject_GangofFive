@@ -33,9 +33,12 @@ std::string Admin::jobDesc() {
 
 
 void Admin::updateInventory() {
-    std::cout << "Admin is checking inventory records" << std::endl;
-    //code
-    std::cout << "Inventory updated by Admin." << std::endl;
+  Nursery* med = getNursery();
+  if (!med) return;
+  Garden* g = med->getGarden();
+  Crop* root = dynamic_cast<Crop*>(g);
+  if (!root) return;
+    root->removeDeadPlants();
 }
 
 void Admin::handleCustomer(Request* req) {
@@ -46,10 +49,6 @@ void Admin::handleCustomer(Request* req) {
     } else {
         std::cout << "No staff could handle the request." << std::endl;
     }
-}
-
-void Admin::handlePlant(Plant* p) {
-	//doesnt handle plants here chief
 }
 
 void Admin::receive(string m, People* from, Nursery* group, string type) {

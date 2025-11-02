@@ -23,11 +23,10 @@ class Staff : public People
     Staff();
     Staff(Nursery* n, string name);
     Staff(const Staff *other);
-    ~Staff();
+    virtual ~Staff();
     
     virtual std::string jobDesc() = 0;
     virtual std::string getType() = 0;
-    virtual void handlePlant(Plant *p) = 0;
     virtual void handleCustomer(Request *req);
     virtual void receive(string m, People* from, Nursery* group, string type) = 0;
     

@@ -10,6 +10,7 @@
  */
 
 #include "Plant.h"
+#include <algorithm>
 
 /**
  * @brief Construct a new Plant:: Plant object
@@ -26,7 +27,25 @@ Plant::Plant() : state(nullptr), waterStrategy(nullptr), sunStrategy(nullptr), f
  * @brief Destroy the Plant:: Plant object
  *
  */
-Plant::~Plant() {}
+Plant::~Plant() {
+  // Clean up dynamically allocated strategies and state
+  if (waterStrategy) {
+    delete waterStrategy;
+    waterStrategy = nullptr;
+  }
+  if (sunStrategy) {
+    delete sunStrategy;
+    sunStrategy = nullptr;
+  }
+  if (fertiliserStrategy) {
+    delete fertiliserStrategy;
+    fertiliserStrategy = nullptr;
+  }
+  if (state) {
+    delete state;
+    state = nullptr;
+  }
+}
 
 /**
  * @brief Construct a new Plant:: Plant object
@@ -44,6 +63,10 @@ Plant::Plant(const Plant& other) {
   price = other.price;
   attention = other.attention;
   state = (other.state) ? other.state->clone() : nullptr;
+  // Deep-copy strategies if present
+  waterStrategy = other.waterStrategy ? other.waterStrategy->clone() : nullptr;
+  sunStrategy = other.sunStrategy ? other.sunStrategy->clone() : nullptr;
+  fertiliserStrategy = other.fertiliserStrategy ? other.fertiliserStrategy->clone() : nullptr;
 
   if (other.staff.size() > 0) {
     vector<Staff*>::const_iterator it = other.staff.begin();
@@ -115,6 +138,10 @@ void Plant::setAttention(int attention) {
  * @param water
  */
 void Plant::setWaterCare(char level) {
+  if (this->waterStrategy) {
+    delete this->waterStrategy;
+    this->waterStrategy = nullptr;
+  }
   this->waterStrategy = setCareStrategy(level);
 }
 
@@ -124,6 +151,10 @@ void Plant::setWaterCare(char level) {
  * @param sun
  */
 void Plant::setSunCare(char level) {
+  if (this->sunStrategy) {
+    delete this->sunStrategy;
+    this->sunStrategy = nullptr;
+  }
   this->sunStrategy = setCareStrategy(level);
 }
 
@@ -133,6 +164,10 @@ void Plant::setSunCare(char level) {
  * @param fertiliser
  */
 void Plant::setFertiliserCare(char level) {
+  if (this->fertiliserStrategy) {
+    delete this->fertiliserStrategy;
+    this->fertiliserStrategy = nullptr;
+  }
   this->fertiliserStrategy = setCareStrategy(level);
 }
 

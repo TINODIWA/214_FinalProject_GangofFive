@@ -37,10 +37,6 @@ void Sales::handleCustomer(Request* req) {
   }
 }
 
-void Sales::handlePlant(Plant* p) {
-
-}
-
 void Sales::receive(string m, People* from, Nursery* group, string type) {
   if(!(from || group)) return;
   

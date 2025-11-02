@@ -25,15 +25,8 @@ CheckInventory::CheckInventory(Staff* from, Nursery* m)
  */
 void CheckInventory::execute() {
   if (!mediator) return;
-  Staff* appointed = NULL;
-  vector<Staff*> staffList = mediator->getStaff();
-  for (Staff* s : staffList) {
-    if (s->getType() == "Admin") {
-      appointed = s;
-      break;
-    }
-  }
+  Staff* appointed = mediator->findStaffByType("BaseStaff: Admin");
 
+  if (appointed) cout << "Admin is gonna update" << endl;
   if (appointed) mediator->sendMessage(msg, appointed, from, commandType);
-  delete appointed;
 }
