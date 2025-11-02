@@ -18,7 +18,7 @@ int gID = 0;
  * @brief Construct a new Garden:: Garden object
  *
  */
-Garden::Garden(): id(-1){}
+Garden::Garden(){}
 
 /**
  * @brief Construct a new Garden object
@@ -46,8 +46,8 @@ Iterator* Garden::createIterator() {
  *
  * @return string
  */
-map<string,int> Garden::summary(map<string,int>& sum) {
-  return {};
+string Garden::summary() {
+  return "";
 }
 
 /**
@@ -86,8 +86,8 @@ string Garden::advice() {
  * @param id
  * @return Garden*
  */
-vector<Garden*> Garden::get(string name, int num){
-  return {};
+Garden* Garden::get(int id) {
+  return nullptr;
 }
 
 /**

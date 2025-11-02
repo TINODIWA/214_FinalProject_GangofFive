@@ -28,8 +28,8 @@ class GardenPlot {
   GardenPlot(string filename);
   ~GardenPlot();
 
-  map<string,int> viewAll();
-  map<string,int> viewAvailable();
+  string viewAll();
+  string viewAvailable();
   void transpire(int decreasedLevel);
   Garden* get(int id, int num);
 
