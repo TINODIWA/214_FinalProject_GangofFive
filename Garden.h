@@ -30,8 +30,9 @@ class Garden {
   virtual map<string,int> summary(map<string,int>& sum);
   virtual string getState();
   virtual string advice();
+  virtual string getAdvice(string name);
   virtual  vector<Garden*> get(string name, int num);
-  bool operator==(int id);
+  virtual bool operator==(string name);
 };
 
 #endif  // GARDEN_H_

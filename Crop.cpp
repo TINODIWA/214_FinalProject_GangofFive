@@ -116,6 +116,12 @@ struct Crop::itImpl : public Iterator {
   Iterator* operator++() {
     ++curr;
     return this;
+  } 
+  Iterator* remove() {
+    // if (!plants.empty() && curr != plants.end()) {
+    //   curr = plants.erase(curr);
+    // }
+    return this;
   }
 };
 
@@ -193,7 +199,50 @@ map<string, int> Crop::summary(map<string, int>& sum) {
  */
 vector<Garden*> Crop::get(string name, int num) {
   Iterator* it = createIterator();
-  int
+  // vector<Garden*> g;
+  // int count = num;
+
+  // while (!it->done() && count > 0) {
+  //   if ((**it)->operator==(name)) {
+  //     g.push_back((**it)->clone());
+  //     it->remove();
+  //     --count;
+  //   } else {
+  //     vector<Garden*> curr = (**it)->get(name, count);
+
+  //     if (!curr.empty()) {
+  //       for (Garden* c : curr) {
+  //         g.push_back(c);
+  //       }
+  //       count -= curr.size();
+  //       continue;
+  //     }
+  //     ++(*it);
+  //   }
+  // }
 
   delete it;
+}
+
+/**
+ * @brief returns advice on how to care for a plant
+ *
+ * @return string
+ */
+string Crop::getAdvice(string name) {
+  // Iterator* it = createIterator();
+  // string advice = "";
+
+  // while (!it->done()) {
+  //   if ((**it)->operator==(name)) {
+  //     return (**it)->advice();
+  //   } else {
+  //     advice += (**it)->getAdvice(name);
+  //   }
+
+  //   ++(*it);
+  // }
+
+  // return advice;
+  return "";
 }

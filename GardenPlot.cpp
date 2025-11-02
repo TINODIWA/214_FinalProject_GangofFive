@@ -87,19 +87,20 @@ void GardenPlot::transpire(int decreasedLevel) {
 }
 
 /**
- * @brief
+ * @brief returns a vector of num of the passed in plants
  *
  */
-Garden* GardenPlot::get(int id, int num) {
-  Iterator* it = garden->createIterator();
-
-  while (!it->done()) {
-    if ((**it)->operator==(id)) {
-      return (**it);
-    }
-
-    ++(*it);
+vector<Garden*> GardenPlot::get(string name, int num) {
+  if (!garden) {
+    return {};
   }
 
-  delete it;
+  return garden->get(name, num);
+}
+/**
+ * @brief return advice on how to care for the passed in plant
+ *
+ */
+string GardenPlot::getAdvice(string name) {
+  return garden->getAdvice(name);
 }

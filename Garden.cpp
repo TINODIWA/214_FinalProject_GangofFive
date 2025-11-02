@@ -80,13 +80,25 @@ string Garden::advice() {
   return "";
 }
 
+
+/**
+ * @brief returns advice for a specific plant - stubbed
+ * 
+ * @param name 
+ * @return string 
+ */
+string Garden::getAdvice(string name){
+  return "";
+}
 /**
  * @brief return the plant with the passed in id
  *
- * @param id
+ * @param name
+ * @param num
  * @return Garden*
  */
 vector<Garden*> Garden::get(string name, int num){
+  // cout<<"DEFAULT!!!\n";
   return {};
 }
 
@@ -96,6 +108,6 @@ vector<Garden*> Garden::get(string name, int num){
  * @return true 
  * @return false 
  */
-bool Garden::operator==(int id) {
-    return this->id == id;
+bool Garden::operator==(string name) {
+    return false;
 }
