@@ -399,4 +399,13 @@ string Plant::advice() {
   return ss.str();
 }
 
-
+/**
+ * @brief return if two plants are equal based on name
+ *
+ */
+bool Plant::operator==(string name) {
+  if (this->name == name) {
+    return true;
+  }
+  return false;
+}

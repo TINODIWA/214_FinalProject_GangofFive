@@ -90,16 +90,10 @@ void GardenPlot::transpire(int decreasedLevel) {
  * @brief
  *
  */
-Garden* GardenPlot::get(int id, int num) {
-  Iterator* it = garden->createIterator();
-
-  while (!it->done()) {
-    if ((**it)->operator==(id)) {
-      return (**it);
-    }
-
-    ++(*it);
+vector<Garden*> GardenPlot::get(string name, int num) {
+  if (!garden) {
+    return {};
   }
 
-  delete it;
+  return garden->get(name, num);
 }

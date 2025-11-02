@@ -31,7 +31,7 @@ class Garden {
   virtual string getState();
   virtual string advice();
   virtual  vector<Garden*> get(string name, int num);
-  bool operator==(int id);
+  virtual bool operator==(string name);
 };
 
 #endif  // GARDEN_H_

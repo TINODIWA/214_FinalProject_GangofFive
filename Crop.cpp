@@ -117,6 +117,13 @@ struct Crop::itImpl : public Iterator {
     ++curr;
     return this;
   }
+
+  Iterator* remove() {
+    if(!plants.empty() && curr != plants.end()){
+      curr = plants.erase(curr);
+    }
+    return this;
+  }
 };
 
 /**
@@ -193,7 +200,26 @@ map<string, int> Crop::summary(map<string, int>& sum) {
  */
 vector<Garden*> Crop::get(string name, int num) {
   Iterator* it = createIterator();
-  int
+  vector<Garden*> g;
+  int count = num;
+
+  while (!it->done() && count > 0) {
+    if ((**it)->operator==(name)) {
+      g.push_back((**it));
+      it->remove();
+      --count;
+    } else {
+      g = (**it)->get(name, num);
+
+      if (!g.empty()) {
+        delete it;
+        return g;
+      }
+    }
+
+    ++(*it);
+  }
 
   delete it;
+  return g;
 }
