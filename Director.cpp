@@ -37,14 +37,14 @@ Director::~Director() {
  *
  * @param p plant builder
  */
-Director::Director(CropBuilder* c, PlantBuilder* p) : cropBuilder(c), plantBuilder(p) {}
+Director::Director(Builder* c, BuildPlant* p) : cropBuilder(c), plantBuilder(p) {}
 
 /**
  * @brief sets the crop builder to a new one
  *
  * @param p
  */
-void Director::setBuilder(CropBuilder* c) {
+void Director::setBuilder(Builder* c) {
   if (cropBuilder) {
     delete cropBuilder;
     cropBuilder = nullptr;
@@ -58,7 +58,7 @@ void Director::setBuilder(CropBuilder* c) {
  *
  * @param p
  */
-void Director::setBuilder(PlantBuilder* p) {
+void Director::setBuilder(BuildPlant* p) {
   if (plantBuilder) {
     delete plantBuilder;
     plantBuilder = nullptr;
@@ -84,7 +84,7 @@ Garden* Director::construct(string filename) {
   string line;
 
   while (getline(plants, line)) {
-    cropBuilder->addCrop();
+    cropBuilder->add();
 
     plantBuilder->reset();
     vector<string> pieces = split(line, '#');
@@ -105,10 +105,10 @@ Garden* Director::construct(string filename) {
           ->setFertiliserCare(pieces[11][0]);
     Garden* p = plantBuilder->build();
 
-    cropBuilder->addPlant(p);
+    cropBuilder->add(p);
 
     for (int i = 0; i < amount - 1; i++) {
-      cropBuilder->addPlant(p->clone());
+      cropBuilder->add(p->clone());
     }
   }
 

@@ -5,11 +5,11 @@
 #ifndef PLANTBUILDER_H_
 #define PLANTBUILDER_H_
 
-#include "Builder.h"
+#include "BuildPlant.h"
 #include "Plant.h"
 #include "Garden.h"
 
-class PlantBuilder : public Builder {
+class PlantBuilder : public BuildPlant {
  private:
   Plant* p;
 

@@ -16,20 +16,21 @@
 #include "Garden.h"
 #include "CropBuilder.h"
 #include "PlantBuilder.h"
+#include "BuildPlant.h"
 
 using namespace std;
 
 class Director {
  private:
-  CropBuilder* cropBuilder;
-  PlantBuilder* plantBuilder;
+  Builder* cropBuilder;
+  BuildPlant* plantBuilder;
 
  public:
   Director();
   ~Director();
-  Director(CropBuilder* c, PlantBuilder* p);
-  void setBuilder(CropBuilder* c);
-  void setBuilder(PlantBuilder* p);
+  Director(Builder* c, BuildPlant* p);
+  void setBuilder(Builder* c);
+  void setBuilder(BuildPlant* p);
   Garden* construct(string filename);
   void parse(string filename);
   vector<string> split(const string str, char delim);

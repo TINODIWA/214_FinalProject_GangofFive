@@ -11,17 +11,45 @@
 
 #include "Dying.h"
 
+/**
+ * @brief Default constructor for the Dying state
+ */
 Dying::Dying() {
-  // TODO(user) - implement Dying::Dying
-  throw "Not yet implemented";
+    // Constructor implementation
 }
 
-Dying::Dying(const PlantState& other) {
-  // TODO(user) - implement Dying::Dying
-  throw "Not yet implemented";
+/**
+ * @brief Default destructor for the Dying state
+ */
+Dying::~Dying(){}
+
+/**
+ * @brief Copy constructor for the Dying state
+ * @param other Reference to another PlantState object to copy from
+ */
+Dying::Dying(const PlantState& other) : PlantState(other) {
+    // Copy constructor implementation
 }
 
+/**
+ * @brief Handles the state transition from Dying to the next state
+ */
 void Dying::handleChange() {
-  // TODO(user) - implement Dying::handleChange
-  throw "Not yet implemented";
+    // State transition logic implementation
+}
+
+/**
+ * @brief Creates a deep copy of the current Dying state
+ * @return PlantState* Pointer to a new Dying state object
+ */
+PlantState* Dying::clone() {
+    return new Dying(*this);
+}
+
+/**
+ * @brief Returns the string representation of the current state
+ * @return string The name of the current state ("Dying")
+ */
+string Dying::getState() {
+    return "Dying";
 }
