@@ -25,7 +25,15 @@ PlantCare::~PlantCare() {
   
 }
 
-
+/**
+ * @brief Applies care to the plant. Handles water and optionally nutrients.
+ * @param currWL Current water level
+ * @param WL Target water level  
+ * @param changeDirection 1 for increase, -1 for decrease
+ * @param currNL Pointer to current nutrients (optional, for sun exposure)
+ * @param NL Target nutrients level (used when currNL is provided)
+ * @return Updated current water level after applying care
+ */
 int PlantCare::apply(int currWL, int WL, int changeDirection, int* currNL, int NL) {
   if (!checkPlant(currWL, WL, changeDirection)) {   //returns currWL if no change is needed
     return currWL;
