@@ -394,6 +394,9 @@ string Plant::getState() {
   return state->getState();
 }
 
+/**
+ * @brief Returns clone of the plant
+ */
 Garden* Plant::clone() {
   return new Plant(*this);
 }
