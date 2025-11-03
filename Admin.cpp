@@ -3,6 +3,7 @@
 #include "Admin.h"
 #include "Crop.h"
 #include "Staff.h"
+#include "CustomerCare.h"
 
 /**
  * @brief Construct a new Admin object.
@@ -41,15 +42,8 @@ void Admin::updateInventory() {
     root->removeDeadPlants();
 }
 
-void Admin::handleCustomer(Request* req) {//I dont think they handle Customers
+void Admin::handleCustomer(Request req) {//stubbed
 
-    if (req) {
-        std::cout << "Admin staff handled request: " << req->getRequest() << std::endl;
-    } else if (successor) {
-        successor->handleCustomer(req);
-    } else {
-        std::cout << "No staff could handle the request." << std::endl;
-    }
 }
 
 void Admin::receive(string m, People* from, Nursery* group, string type) {
@@ -61,3 +55,6 @@ void Admin::receive(string m, People* from, Nursery* group, string type) {
     }
   }
 }
+
+ void Admin::update(Plant *p){}//stubbed
+     void Admin::handlePlant(Plant *p){}//stubbed

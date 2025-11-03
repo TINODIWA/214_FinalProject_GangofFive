@@ -75,8 +75,8 @@ void CustomerCare::setChain(const std::vector<Staff*>& order) {
   chainHead = order.front();
 }
 
-void CustomerCare::routeRequest(Request* req, Customer* from) {
-  if (chainHead && req) {
+void CustomerCare::routeRequest(Request req, Customer* from) {
+  if (chainHead ) {
     chainHead->handleCustomer(req);
   } else {
     // Fallback: notify staff via receive
@@ -86,8 +86,8 @@ void CustomerCare::routeRequest(Request* req, Customer* from) {
   }
 }
 
-void CustomerCare::notify(Request* req) {
-  if (chainHead && req) {
+void CustomerCare::notify(Request req) {
+  if (chainHead) {
     chainHead->handleCustomer(req);
   }
 }

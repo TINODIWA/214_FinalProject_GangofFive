@@ -6,10 +6,8 @@
 #ifndef PEOPLE_H_
 #define PEOPLE_H_
 
-#include "Nursery.h"
+// #include "Nursery.h"
 #include <string>
-#include <iostream>
-#include "CustomerCare.h"
 using namespace std;
 class Nursery;
 class People {
@@ -26,10 +24,10 @@ class People {
   virtual void send(string m, Nursery* group, string type);
   virtual void send(string m, People* to, Nursery* group, string type);
   virtual void receive(string m, People* from, Nursery* group, string type) = 0;
-  
+
   virtual string getName() const;
   virtual Nursery* getNursery() const;
-  
+
   void setName(const string& name);
   void setNursery(Nursery* n);
 };

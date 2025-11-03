@@ -16,6 +16,7 @@
 #include "Plant.h"
 #include "Crop.h"
 #include <functional>
+#include "CustomerCare.h"
 
 /**
  * @brief Construct a new Gardening object.
@@ -55,69 +56,63 @@ void Gardening::update(Plant* p) {
  * Calls handlePlant for dying plants, notifies manager for dead plants
  */
 void Gardening::checkPlants() {
-	for (int i = 0; i < plants.size(); i++) {
-		if (plants[i]) {
-			std::string state = plants[i]->getState();
-			std::cout << "Checking plant: " << plants[i]->getName() 
-			          << " - State: " << state << std::endl;
-			
-			if (state == "Dying") {
-				handlePlant(plants[i]);
-			} 
-			else if (state == "Dead") {
-				std::string message = "Plant " + plants[i]->getName() + " has died.";
-				send(message, nullptr, getNursery(), "Manager");
-			}
-		}
-	}
-}
+  for (int i = 0; i < plants.size(); i++) {
+    if (plants[i]) {
+      std::string state = plants[i]->getState();
+      std::cout << "Checking plant: " << plants[i]->getName() << " - State: " << state << std::endl;
 
-void Gardening::handleCustomer(Request* req) {
-  if (req->getRequest() == "Advice") {
-    std::cout << ". I am " + name +
-                     " and I will be assisting you.\n nursery->getGarden()->viewAll() \n\tPlease "
-                     "enter the number of the plant you'd like advice on below.\n\t Number:"
-              << std::endl;
-    int plantId;
-    cin >> plantId;
-
-    while (plantId < 1 || plantId > 5) {
-      cout << "\n\t nursery->getGarden()->viewAll() \n Please enter a valid number: " << endl;
-      cin >> plantId;
+      if (state == "Dying") {
+        handlePlant(plants[i]);
+      } else if (state == "Dead") {
+        std::string message = "Plant " + plants[i]->getName() + " has died.";
+        send(message, nullptr, getNursery(), "Manager");
+      }
     }
+  }
+}
+void Gardening::handleCustomer(Request req) {
+  if (req.getRequest() == "Advice") {
+    std::cout << "I am " << name << " and I will be assisting you.\n"
+              << "nursery->getGarden()->viewAll()\n"
+              << "\tPlease enter the number of the plant you'd like advice on below.\n";
 
-    cout << "Plant advice of garden.getAdvice().... \n Would you like: 1)Advice on another plant.\n\t2)Create an "
-            "order.\n\t3)Return an old "
-            "order\n\t4)Repurchase an old order. \n Please enter a number: ";
+    int plantId =
+        readIntInRange(1, 5, "\tNumber: ", "\n\t nursery->getGarden()->viewAll() \n Please enter a valid number: ");
 
-    int request;
-    cin >> request;
+    std::cout << "Plant advice of garden.getAdvice().... \n"
+              << "Would you like:\n"
+              << "\t1) Advice on another plant.\n"
+              << "\t2) Create an order.\n"
+              << "\t3) Return an old order.\n"
+              << "\t4) Repurchase an old order.\n";
 
-    string pass = "Passing your request on...";
-    switch (request) {
+    int next = readIntInRange(1, 4, "Please enter a number: ", "Please enter a valid number (1-4): ");
+
+    const std::string pass = "Passing your request on...";
+    switch (next) {
       case 1:
-        cout << "Plant advice of garden.getAdvice()...." << endl;
+        std::cout << "Plant advice of garden.getAdvice()....\n";
         break;
       case 2:
-        cout << pass << endl;
-        ((CustomerCare*)nursery)->notify(new Request("Order"));
+        std::cout << pass << "\n";
+        // ((CustomerCare*)nursery)->notify( Request("Order"));
         break;
       case 3:
-        cout << pass << endl;
-        ((CustomerCare*)nursery)->notify(new Request("Return"));
+        std::cout << pass << "\n";
+        // ((CustomerCare*)nursery)->notify(Request("Return"));
         break;
       case 4:
-        cout << pass << endl;
-        ((CustomerCare*)nursery)->notify(new Request("Repurchase"));
+        std::cout << pass << "\n";
+        // ((CustomerCare*)nursery)->notify( Request("Repurchase"));
         break;
       default:
-        cout << "Error in request case switch!" << endl;
+        std::cout << "Error in request case switch!\n";
         break;
     }
   } else if (successor) {
     successor->handleCustomer(req);
   } else {
-    std::cout << "No staff could handle the request." << std::endl;
+    std::cout << "No staff could handle the request.\n";
   }
 }
 
@@ -142,7 +137,7 @@ void Gardening::handlePlant(Plant* p) {
   PlantCare* wc = p->getWaterCare();
   if (wc != nullptr && water.size() >= 2) {
     int curr = water[0];
-    int req  = water[1];
+    int req = water[1];
     if (curr < req) {
       int change = req - curr;
       int newCurr = wc->apply(curr, req, change);
@@ -154,14 +149,12 @@ void Gardening::handlePlant(Plant* p) {
   PlantCare* fc = p->getFertiliserCare();
   if (fc != nullptr && fert.size() >= 2) {
     int curr = fert[0];
-    int req  = fert[1];
+    int req = fert[1];
     if (curr < req) {
       int change = req - curr;
       int newCurr = fc->apply(curr, req, change);
-      p->updateFertiliserLevel(newCurr);;
+      p->updateFertiliserLevel(newCurr);
+      ;
     }
   }
 }
-
-
-

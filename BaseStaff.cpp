@@ -10,6 +10,7 @@
  */
 
 #include "BaseStaff.h"
+#include "CustomerCare.h"
 
 BaseStaff::BaseStaff() : Staff() {}
 
@@ -28,57 +29,56 @@ std::string BaseStaff::getType() {
   return "BaseStaff";
 }
 
-void BaseStaff::handleCustomer(Request* req) {
-  if (req->getRequest() == "Enter") {
-    std::cout << "Welcome to the GOF Nursery. I am " + name +
-                     " and I will be helping you today.\n Would you like to:\n\t1)View the Garden\n\t2)Create an "
-                     "order.\n\t3)Request Plant Advice.\n\t4)Return an old order\n\t5)Repurchase an old order.\nPlease "
-                     "enter the number below.\n Number:"
-              << std::endl;
-    int request;
-    cin >> request;
+void BaseStaff::receive(std::string m, People* from, Nursery* group, std::string type) {
+  std::cout << "[BaseStaff::receive] from: " << (from ? from->getName() : std::string("unknown")) << ", type: " << type
+            << ", msg: " << m << std::endl;
+}
 
-    while (request < 1 || request > 5) {
-      cout << "\n\t1)View the Garden\n\t2)Create an order.\n\t3)Request Plant Advice.\n\t4)Return an old "
-              "order\n\t5)Repurchase an old order. \n Please enter a valid number: "
-           << endl;
-      cin >> request;
-    }
+void BaseStaff::update(Plant* p) {}       // stubbed
+void BaseStaff::handlePlant(Plant* p) {}  // stubbed
 
-    string pass = "Passing your request on...";
-    switch (request) {
+void BaseStaff::handleCustomer(Request req) {
+  if (req.getRequest() == "Enter") {
+    std::cout << "Welcome to the GOF Nursery. I am " << name << " and I will be helping you today.\n"
+              << "Would you like to:\n"
+              << "\t1) View the Garden\n"
+              << "\t2) Create an order.\n"
+              << "\t3) Request Plant Advice.\n"
+              << "\t4) Return an old order\n"
+              << "\t5) Repurchase an old order.\n";
+
+    int choice = readIntInRange(1, 5, "Please enter the number below.\nNumber: ",
+                                "\n\t1)View the Garden\n\t2)Create an order.\n\t3)Request Plant Advice.\n\t4)Return an "
+                                "old order\n\t5)Repurchase an old order.\nPlease enter a valid number: ");
+
+    const std::string pass = "Passing your request on...";
+    switch (choice) {
       case 1:
-        cout <<"Lovely, this is our garden.\n nursery->getGarden()->print()" << endl;
+        std::cout << "Lovely, this is our garden.\n nursery->getGarden()->print()\n";
         break;
       case 2:
-        cout << pass << endl;
-        ((CustomerCare*)nursery)->notify(new Request("Order"));
+        std::cout << pass << "\n";
+        // ((CustomerCare*)nursery)->notify(new Request("Order"));
         break;
       case 3:
-        cout << pass << endl;
-        ((CustomerCare*)nursery)->notify(new Request("Advice"));
+        std::cout << pass << "\n";
+        // ((CustomerCare*)nursery)->notify(new Request("Advice"));
         break;
       case 4:
-        cout << pass << endl;
-        ((CustomerCare*)nursery)->notify(new Request("Return"));
+        std::cout << pass << "\n";
+        // ((CustomerCare*)nursery)->notify(new Request("Return"));
         break;
       case 5:
-        cout << pass << endl;
-        ((CustomerCare*)nursery)->notify(new Request("Repurchase"));
+        std::cout << pass << "\n";
+        // ((CustomerCare*)nursery)->notify(new Request("Repurchase"));
         break;
       default:
-        cout<<"Error in request case switch!"<<endl;
+        std::cout << "Error in request case switch!\n";
         break;
     }
   } else if (successor) {
     successor->handleCustomer(req);
   } else {
-    std::cout << "No staff could handle the request." << std::endl;
+    std::cout << "No staff could handle the request.\n";
   }
-}
-
-void BaseStaff::receive(std::string m, People* from, Nursery* group, std::string type) {
-  std::cout << "[BaseStaff::receive] from: "
-            << (from ? from->getName() : std::string("unknown"))
-            << ", type: " << type << ", msg: " << m << std::endl;
 }

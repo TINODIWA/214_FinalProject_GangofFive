@@ -58,7 +58,7 @@ void Staff::setSuccessor(Staff* succ) {
  *
  * @param req Customer request to handle
  */
-void Staff::handleCustomer(Request* req) {
+void Staff::handleCustomer(Request req) {
   // if (this->successor) {
   //   this->successor->handleCustomer(req);
   // }
@@ -67,7 +67,7 @@ void Staff::handleCustomer(Request* req) {
 /**
  * @brief Equality operator for Staff objects
  * Compares two Staff objects based on their names
- * 
+ *
  * @param other The Staff object to compare with
  * @return true if both Staff objects have the same name
  * @return false if the Staff objects have different names
@@ -78,4 +78,20 @@ bool Staff::operator==(const Staff& other) const {
   }
 
   return true;
+}
+
+int Staff::readIntInRange(int lo, int hi, const std::string& prompt, const std::string& errPrompt) {
+  int value;
+  std::cout << prompt;
+
+  for (;;) {
+    if ((std::cin >> value) && value >= lo && value <= hi) {
+      // valid number in range
+      return value;
+    }
+
+    std::cin.clear();
+    std::cin.ignore(10000, '\n');  // discard bad input
+    std::cout << errPrompt;
+  }
 }

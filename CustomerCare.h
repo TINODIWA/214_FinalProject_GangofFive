@@ -23,7 +23,7 @@ class CustomerCare : public Nursery {
   Staff* chain;
 
  public:
-  void notify(Request* req);  // I think this would functioin sa my setCollegues thing...
+  void notify(Request req);  // I think this would functioin sa my setCollegues thing...
   CustomerCare();
   CustomerCare(Garden* g);
   virtual ~CustomerCare();
@@ -41,7 +41,7 @@ class CustomerCare : public Nursery {
   void setChain(const std::vector<Staff*>& order);
 
   // Route a concrete Request to the head of chain (if configured)
-  void routeRequest(Request* req, Customer* from);
+  void routeRequest(Request req, Customer* from);
 
  private:
   Staff* chainHead = NULL;

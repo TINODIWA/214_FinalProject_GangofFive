@@ -23,7 +23,7 @@ class Customer : public People {
   Customer(string name);
   ~Customer();
   Customer(const Customer* other);
-  void makeReq(Request* req);
+  void makeReq(Request req);
 };
 
 #endif  // CUSTOMER_H_

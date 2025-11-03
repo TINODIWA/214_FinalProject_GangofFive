@@ -20,7 +20,6 @@ Roles::~Roles() {
   }
 }
 
-
 std::string Roles::jobDesc() {
   return "Base staff member responsible for general tasks such as greeting customers and showing customers the plants.";
 }
@@ -28,3 +27,6 @@ std::string Roles::jobDesc() {
 std::string Roles::getType() {
   return "BaseStaff";
 }
+
+ void Roles::update(Plant* p){}//stubbed
+ void Roles::receive(string m, People* from, Nursery* group, string type){}//stubbed

@@ -11,6 +11,7 @@
 
 #include "Sales.h"
 #include <iostream>
+#include "CustomerCare.h"
 
 Sales::Sales(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
 
@@ -27,55 +28,62 @@ std::string Sales::jobDesc() {
   return Roles::jobDesc() + "\nAdditionally, Sales staff are responsible for assisting customers with their purchases.";
 }
 
-void Sales::handleCustomer(Request* req) {
-  if (req->getRequest() == "Sales") {
-    std::cout << ". I am " + name +
-                     " and I will be assisting you.\n nursery->getGarden()->viewAvailable() \n\tPlease "
-                     "enter the number of the plant you'd like to add below, followed by the quantity. \neg)Number: 01 "
-                     "\nQuantity: 5 \n\t Number:"
-              << std::endl;
-    int plantId;
-    cin >> plantId;
+void Sales::handleCustomer(Request req) {
+  if (req.getRequest() == "Order") {
+    std::cout
+      << "I am " << name << " and I will be assisting you.\n"
+      << "nursery->getGarden()->viewAvailable()\n"
+      << "\tPlease enter the number of the plant you'd like to add below, followed by the quantity.\n"
+      << "\te.g.) Number: 01 \nQuantity: 5\n";
 
-    while (plantId < 1 || plantId > 5) {
-      cout << "\n\t nursery->getGarden()->viewAll() \n Please enter a valid number: " << endl;
-      cin >> plantId;
-    }
+    int plantId = readIntInRange(
+      1, 5,
+      "\tNumber: ",
+      "\n\t nursery->getGarden()->viewAll() \n Please enter a valid number: "
+    );
 
-    int quantity;
-    cout << "Quantity: " << endl;
-    cin >> quantity;
+    int quantity = readIntInRange(
+      1, 1000000,
+      "Quantity: ",
+      "Please enter a valid quantity (>=1): "
+    );
 
-    cout << "Would you like to: \n\t1)Add more plants.\n\t2)Remove a plant from order.\n\t3)Place your order. \n Please enter a number: ";
+    std::cout
+      << "Would you like to:\n"
+      << "\t1) Add more plants.\n"
+      << "\t2) Remove a plant from order.\n"
+      << "\t3) Place your order.\n";
 
-    int request;
-    cin >> request;
+    int next = readIntInRange(
+      1, 3,
+      "Please enter a number: ",
+      "Please enter a valid number (1-3): "
+    );
 
-    string pass = "Passing your request on...";
-    switch (request) {
-      case 1:
-        cout << "Adding more plants logic" << endl;
-        break;
-      case 2:
-        cout <<"Removing plants logic"<< endl;
-        break;
+    switch (next) {
+      case 1: std::cout << "Adding more plants logic\n"; break;
+      case 2: std::cout << "Removing plants logic\n";    break;
       case 3:
-        cout << "Purchasing logic. Thanks for shoppig with GOF Nursery. Advice on your plants is attached in th receipt:)" << endl;
+        std::cout << "Purchasing logic. Thanks for shoppig with GOF Nursery. "
+                     "Advice on your plants is attached in the receipt:)\n";
         break;
       default:
-        cout << "Error in request case switch!" << endl;
+        std::cout << "Error in request case switch!\n";
         break;
     }
-  } else if (req->getRequest() == "Repurchase") {
-    cout << "repurchaing logic" << endl;
+  } else if (req.getRequest() == "Repurchase") {
+    std::cout << "repurchaing logic\n";
   } else if (successor) {
     successor->handleCustomer(req);
   } else {
-    std::cout << "No staff could handle the request." << std::endl;
+    std::cout << "No staff could handle the request.\n";
   }
 }
 
+
 void Sales::receive(string m, People* from, Nursery* group, string type) {
-  if(!(from || group)) return;
-  
+  if (!(from || group)) return;
 }
+
+void Sales::update(Plant* p) {}       // stubbed
+void Sales::handlePlant(Plant* p) {}  // stubbed

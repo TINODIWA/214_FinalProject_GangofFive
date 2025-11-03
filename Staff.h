@@ -14,10 +14,11 @@
 
 class Plant;
 
-class Staff : public People
-{
+class Staff : public People{
   protected:
     Staff *successor;
+    void flushBadInput();
+    int readIntInRange(int lo, int hi, const std::string& prompt, const std::string& errPrompt); 
 
   public:
     Staff();
@@ -29,7 +30,7 @@ class Staff : public People
     virtual std::string getType() = 0;
     virtual void update(Plant *p) = 0;
     virtual void handlePlant(Plant *p) = 0;
-    virtual void handleCustomer(Request *req);
+    virtual void handleCustomer(Request req);
     virtual void receive(string m, People* from, Nursery* group, string type) = 0;
     
     void setSuccessor(Staff *succ);

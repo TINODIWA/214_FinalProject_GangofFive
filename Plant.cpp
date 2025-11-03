@@ -20,7 +20,6 @@ Plant::Plant() : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullp
   for (int i = 0; i < 2; i++) {
     water.push_back(0);
     fertiliser.push_back(0);
-    sun.push_back(0);
   }
 }
 
@@ -113,7 +112,7 @@ void Plant::setWater(int water) {
  * @param sun
  */
 void Plant::setSun(int sun) {
-  this->sun[1] = sun;
+  this->sun = sun;
 }
 
 /**
@@ -251,7 +250,7 @@ vector<int> Plant::getWater() const {
  * @return int
  */
 
-vector<int> Plant::getSun() const {
+int Plant::getSun() const {
   return sun;
 }
 
@@ -373,7 +372,7 @@ void Plant::updateWaterLevel(int newLevel) {
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::updateSunLevel(int newLevel) {
-  if (sun.size() >= 1) sun[0] = newLevel;
+  // if (sun.size() >= 1) sun[0] = newLevel;
 }
 
 void Plant::transpire(int decreasedLevel) {
