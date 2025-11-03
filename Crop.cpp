@@ -20,17 +20,16 @@ class Crop::itImpl {
   vector<Garden*> plants;
 
  public:
-
- /**
-  * @brief Construct a new it Impl object
-  * 
-  */
-  itImpl(){}
+  /**
+   * @brief Construct a new it Impl object
+   *
+   */
+  itImpl() {}
 
   /**
    * @brief Construct a new it Impl object
-   * 
-   * @param other 
+   *
+   * @param other
    */
   itImpl(const itImpl& other) {
     for (Garden* p : other.plants) {
@@ -40,11 +39,11 @@ class Crop::itImpl {
 
   /**
    * @brief Destroy the it Impl object
-   * 
+   *
    */
-  ~itImpl(){
-    for(Garden* p: plants){
-      if(p){
+  ~itImpl() {
+    for (Garden* p : plants) {
+      if (p) {
         delete p;
         p = nullptr;
       }
@@ -103,8 +102,11 @@ class Crop::itImpl {
      */
     Garden* next() {
       if (done()) return nullptr;
+      Garden* next = *curr;
 
-      return *(++curr);
+      ++curr;
+
+      return next;
     }
 
     /**
@@ -161,10 +163,10 @@ Crop::Crop() : Garden(), pImpl(new itImpl()) {}
  * to prevent memory leaks
  */
 Crop::~Crop() {
- if(pImpl){
-  delete pImpl;
-  pImpl = nullptr;
- }
+  if (pImpl) {
+    delete pImpl;
+    pImpl = nullptr;
+  }
 }
 
 /**
