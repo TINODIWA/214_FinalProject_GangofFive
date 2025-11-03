@@ -16,15 +16,10 @@
  *
  */
 Plant::Plant()
-    : state(new Planted()),
-      waterStrategy(nullptr),
-      sunStrategy(nullptr),
-      fertiliserStrategy(nullptr),
-      sun(0) {
+    : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
   for (int i = 0; i < 2; i++) {
     water.push_back(0);
     fertiliser.push_back(0);
-    sun.push_back(0);
   }
 }
 
@@ -116,7 +111,7 @@ void Plant::setWater(int water) {
  * @param sun
  */
 void Plant::setSun(int sun) {
-  this->sun[1] = sun;
+  this->sun = sun;
 }
 
 /**
@@ -245,7 +240,7 @@ vector<int> Plant::getWater() const {
  * @return int
  */
 
-vector<int> Plant::getSun() const {
+int Plant::getSun() const {
   return sun;
 }
 
@@ -315,7 +310,7 @@ float Plant::getPrice() const {
 /**
  * @brief Attach an observer (Staff) to this Plant
  * Adds a Staff member to the list of observers that will be notified of state changes
- * 
+ *
  * @param s Pointer to Staff object to attach as observer
  */
 void Plant::attach(Staff* s) {
@@ -328,12 +323,11 @@ void Plant::attach(Staff* s) {
  * @brief Detach an observer (Staff) from this Plant
  * Removes a Staff member from the list of observers
  * Uses operator== to find matching Staff member
- * 
+ *
  * @param s Pointer to Staff object to detach
  */
 void Plant::detach(Staff* s) {
-  if (s == nullptr) 
-    return;
+  if (s == nullptr) return;
   for (auto it = staff.begin(); it != staff.end(); ++it) {
     if (*it != nullptr && **it == *s) {
       staff.erase(it);
@@ -367,12 +361,12 @@ void Plant::updateWaterLevel(int newLevel) {
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::updateSunLevel(int newLevel) {
-  if (sun.size() >= 1) sun[0] = newLevel;
+  sun = newLevel;
 }
 
 void Plant::transpire(int decreasedLevel) {
-  this->water[0] = sunStrategy->apply(water[0],sun,-1);
-  this->fertiliser[0] = sunStrategy->apply(fertiliser[0],sun,-1);
+  this->water[0] = sunStrategy->apply(water[0], sun, -1);
+  this->fertiliser[0] = sunStrategy->apply(fertiliser[0], sun, -1);
   state->handleChange();
 }
 

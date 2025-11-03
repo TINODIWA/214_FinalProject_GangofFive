@@ -19,8 +19,7 @@ using namespace std;
 
 class Crop : public Garden {
  private:
-  vector<Garden*> plants;
-  struct itImpl;
+  class itImpl;
   itImpl* pImpl;
 
  public:
@@ -30,11 +29,9 @@ class Crop : public Garden {
   void add(Garden* p);
   Garden* clone();
   string print();
-  void removeDeadPlants();
+  //void removeDeadPlants();
   Iterator* createIterator();
   map<string, int> summary(map<string, int>& sum);
-  bool done();
-  Garden* next();
   vector<Garden*> get(string name, int num);
   Garden* get(string name);
 };

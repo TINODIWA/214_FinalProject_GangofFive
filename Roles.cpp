@@ -29,5 +29,7 @@ std::string Roles::getType() {
   return "BaseStaff";
 }
 
+void Roles::update(Plant* p){}
+
 void Roles::receive(string m, People* from, Nursery* group, string type) {
 }

@@ -14,8 +14,7 @@
 
 class Plant;
 
-class Staff : public People
-{
+class Staff : public People{
   protected:
     Staff *successor;
 

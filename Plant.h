@@ -20,7 +20,6 @@
 #include "Low.h"
 #include "PlantState.h"
 #include "Planted.h"
-#include "Staff.h"
 
 class Staff;
 
@@ -45,7 +44,7 @@ class Plant : public Garden {
 
  public:
   Plant();
-  virtual ~Plant();
+  ~Plant();
   Plant(const Plant& other);
   void setName(string name);
   void setType(string type);
