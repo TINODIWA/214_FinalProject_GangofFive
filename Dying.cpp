@@ -46,6 +46,9 @@ void Dying::handleChange(Plant* p) {
   } else if (!dying(p)) {
     delete curr;
     p->setState(prev);
+  } else if (dying(p)) {
+    delete curr;
+    p->setState(new Dead());
   }
 }
 
