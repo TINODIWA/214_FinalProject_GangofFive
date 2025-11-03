@@ -62,9 +62,23 @@ void Management::fireStaff(Staff* exStaff) {
 
 void Management::handleCustomer(Request req, Customer* customer) {  // add complaints
   if (req.getRequest() == "Complaint") {
-    std::cout << "I am " + name + " and I will be assisting you with you today.\n Passing order back to manager..."
+    std::cout << "\nI am " + name + " and I will be assisting you today.\nPlease enter your complaint below:"
               << std::endl;
-  }  else if (successor) {
+
+    string complaint;
+    cin >> complaint;
+    nursery->complaints.push_back(complaint);
+    std::cout << "\nI'm so sorry this was your experience.At GoF Nursery we value our customers feed back and so your "
+                 "complaint has been added to our complaints log for improvement. \nRecent complaints:"
+              << endl;
+    for (string c : nursery->complaints) {
+      cout << c << "\n" << endl;
+    }
+    std::cout << " \nPlease visit soon for a better "
+                 "experience!"
+              << endl;
+
+  } else if (successor) {
     successor->handleCustomer(req, customer);
   } else {
     std::cout << "No staff could handle the request." << std::endl;

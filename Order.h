@@ -41,8 +41,7 @@ public:
 	void setCustomer(Customer* c);
 	string printOldOrder();
 	map<Plant *, int> getPlants();
-
-
+	void clearOrder();
 };
 
 #endif  // ORDER_H_

@@ -149,6 +149,7 @@ int main() {
   order->addPlant(plant);
   order->setCustomer(swey);;
   order->setStaff(sales);
+  order->purchase(0);
   swey->addOrder(order);
 
   swey->makeReq(req);
@@ -165,5 +166,8 @@ int main() {
   delete unathi;
   delete cc;
   delete garden;
+  // delete plant;
+  // delete order;
+  delete swey;
   return 0;
 }

@@ -20,6 +20,7 @@ using namespace std;
 
 class Nursery {
  public:
+  vector<string> complaints;
   Nursery();
   Nursery(GardenPlot* g);
   virtual ~Nursery();

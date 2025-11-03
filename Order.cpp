@@ -16,7 +16,11 @@
  */
 Order::Order() : customer(nullptr), paymentMethod(nullptr) {}
 
-Order::~Order(){}
+Order::~Order(){
+    clearOrder();
+    delete paymentMethod;
+    paymentMethod = nullptr;
+}
 
 Order::Order(const Order &other){
 
@@ -135,4 +139,14 @@ string Order::printOldOrder(){
 
 map<Plant *, int> Order::getPlants(){
 	return plants;
+}
+
+/**
+ * @brief Clears all plants from the order
+ */
+void Order::clearOrder() {
+	for (auto& pair : plants) {
+        delete pair.first;  
+    }
+    plants.clear();
 }

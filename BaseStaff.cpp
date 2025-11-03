@@ -61,20 +61,22 @@ void BaseStaff::handleCustomer(Request req, Customer* customer) {
                   << "\t1) View the Garden\n"
                   << "\t2) Create an Order.\n"
                   << "\t3) Request Plant Advice.\n"
-                  << "\t4) Return an old order\n"
-                  << "\t5) Repurchase an old order.\n";
+                  << "\t4) Place a complaint\n"
+                  << "\t5) Repurchase an old order.\n"
+                  << "\t6) Exit Nursery.\n";
       } else {
         std::cout << "\nWhat would you like to do next?\n"
                   << "\t2) Create an Order.\n"
                   << "\t3) Request Plant Advice.\n"
-                  << "\t4) Return an old order\n"
-                  << "\t5) Repurchase an old order.\n";
+                  << "\t4) Place a complaint\n"
+                  << "\t5) Repurchase an old order.\n"
+                  << "\t6) Exit Nursery.\n";
       }
 
 
       int minOption = gardenShown ? 2 : 1;
       int choice =
-          readIntInRange(minOption, 5, "Please enter the number below.\nNumber: ", "\nPlease enter a valid number: ");
+          readIntInRange(minOption, 6, "Please enter the number below.\nNumber: ", "\nPlease enter a valid number: ");
 
       switch (choice) {
         case 1: {
@@ -97,14 +99,19 @@ void BaseStaff::handleCustomer(Request req, Customer* customer) {
           break;
 
         case 4:
-          std::cout << "\nPassing your request on to process a return...\n";
-          ((CustomerCare*)nursery)->notify(Request("Return"), customer);
+          std::cout << "\nPassing your request on to process a complaint...\n";
+          ((CustomerCare*)nursery)->notify(Request("Complaint"), customer);
           finished = true;
           break;
 
         case 5:
           std::cout << "\nPassing your request on to repurchase an old order...\n";
           ((CustomerCare*)nursery)->notify(Request("Repurchase"), customer);
+          finished = true;
+          break;
+
+        case 6:
+          std::cout << "\nThanks for visiting GoF Nursery!!\n";
           finished = true;
           break;
 
