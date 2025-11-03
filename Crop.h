@@ -13,14 +13,14 @@
 
 #include "Garden.h"
 #include "Iterator.h"
+#include "CropIterator.h"
 #include "Plant.h"
 
 using namespace std;
 
 class Crop : public Garden {
  private:
-  class itImpl;
-  itImpl* pImpl;
+  vector<Garden*> plants;
 
  public:
   Crop();
@@ -29,7 +29,7 @@ class Crop : public Garden {
   void add(Garden* p);
   Garden* clone();
   string print();
-  //void removeDeadPlants();
+  // void removeDeadPlants();
   Iterator* createIterator();
   map<string, int> summary(map<string, int>& sum);
   vector<Garden*> get(string name, int num);

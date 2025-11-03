@@ -12,150 +12,10 @@
 #include "Crop.h"
 
 /**
- * @brief encapsulate concrete iterator with pImpl
- *
- */
-class Crop::itImpl {
- private:
-  vector<Garden*> plants;
-
- public:
-  /**
-   * @brief Construct a new it Impl object
-   *
-   */
-  itImpl() {}
-
-  /**
-   * @brief Construct a new it Impl object
-   *
-   * @param other
-   */
-  itImpl(const itImpl& other) {
-    for (Garden* p : other.plants) {
-      if (p) plants.push_back(p->clone());
-    }
-  }
-
-  /**
-   * @brief Destroy the it Impl object
-   *
-   */
-  ~itImpl() {
-    for (Garden* p : plants) {
-      if (p) {
-        delete p;
-        p = nullptr;
-      }
-    }
-
-    plants.clear();
-  }
-  /**
-   * @brief adds a plant to the plants vector
-   *
-   * @param p
-   */
-  void add(Garden* p) {
-    if (p) {
-      plants.push_back(p);
-    }
-  }
-
-  /**
-   * @brief Create a Iterator object
-   *
-   * @return Iterator*
-   */
-  Iterator* createIterator() { return new IteratorImpl(plants); };
-
-  /**
-   * @brief the implementation for the iterator
-   *
-   */
-  class IteratorImpl : public Iterator {
-    vector<Garden*>& plants;
-    vector<Garden*>::iterator curr;
-
-   public:
-    /**
-     * @brief Construct a new Iterator Impl object
-     *
-     * @param p
-     */
-    IteratorImpl(vector<Garden*>& p) : plants(p) { curr = p.begin(); }
-
-    /**
-     * @brief returns the first element and resets the current index to the beginning
-     *
-     * @return Garden*
-     */
-    Garden* first() {
-      curr = plants.begin();
-      return current();
-    }
-
-    /**
-     * @brief returns the next object and updates current
-     *
-     * @return Garden*
-     */
-    Garden* next() {
-      if (done()) return nullptr;
-      Garden* next = *curr;
-
-      ++curr;
-
-      return next;
-    }
-
-    /**
-     * @brief has the end of the vector been reached
-     *
-     * @return true
-     * @return false
-     */
-    bool done() { return curr == plants.end(); }
-
-    /**
-     * @brief returns the current element being pointed to
-     *
-     * @return Garden*
-     */
-    Garden* current() { return *curr; }
-
-    /**
-     * @brief increments the iterator
-     *
-     * @return Iterator*
-     */
-    Iterator* operator++() {
-      ++curr;
-      return this;
-    }
-
-    /**
-     * @brief removes the current element being pointed
-     *
-     * @return Garden*
-     */
-    Garden* remove() {
-      if (!plants.empty() && curr != plants.end()) {
-        Garden* rem = (*curr);
-        curr = plants.erase(curr);
-
-        return rem;
-      }
-      return nullptr;
-    }
-  };
-};
-
-/**
  * @brief Construct a new Crop:: Crop object
  *
  */
-Crop::Crop() : Garden(), pImpl(new itImpl()) {}
+Crop::Crop() : Garden() {}
 /**
  * @brief Destructor that deletes all plants in vector
  *
@@ -163,10 +23,22 @@ Crop::Crop() : Garden(), pImpl(new itImpl()) {}
  * to prevent memory leaks
  */
 Crop::~Crop() {
-  if (pImpl) {
-    delete pImpl;
-    pImpl = nullptr;
+  // Iterator* it = createIterator();
+
+  // while (!it->done()) {
+  //   if (**it) {
+  //     delete (**it);
+  //   }
+  //   ++(*it);
+  // }
+
+  // delete it;
+
+  for (Garden* p : plants) {
+    if (p) delete p;
   }
+
+  plants.clear();
 }
 
 /**
@@ -177,14 +49,18 @@ Crop::~Crop() {
  * Creates a new Crop with its own copy of each Plant in the vector.
  * Each Plant is cloned to create a completely independent copy.
  */
-Crop::Crop(const Crop& other) : Garden(other), pImpl(new itImpl(*other.pImpl)) {}
+Crop::Crop(const Crop& other) : Garden(other) {
+  for (Garden* p : other.plants) {
+    this->plants.push_back(p->clone());
+  }
+}
 
 void Crop::add(Garden* p) {
-  pImpl->add(p);
+  plants.push_back(p);
 }
 
 Iterator* Crop::createIterator() {
-  return pImpl->createIterator();
+  return new CropIterator(plants);
 }
 /**
  * @brief Create a copy of this Crop.
