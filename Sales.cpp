@@ -84,6 +84,8 @@ void Sales::handleCustomer(Request req, Customer* customer) {
 
 void Sales::receive(string m, People* from, Nursery* group, string type) {
   if (!(from || group)) return;
+  std::cout << "[Sales::receive] from: " << (from ? from->getName() : std::string("unknown")) << ", type: " << type
+            << ", msg: " << m << std::endl;
 }
 
 void Sales::update(Plant* p) {}       // stubbed

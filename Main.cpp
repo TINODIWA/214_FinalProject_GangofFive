@@ -119,6 +119,7 @@ int main() {
   Staff* gardener = new Gardening(new BaseStaff(NULL, "Grace"));
   Staff* sales = new Sales(new BaseStaff(NULL, "Peace"));
   Staff* manager = new Management(new BaseStaff(NULL, "Love"));
+  Staff* admin = new Admin(new BaseStaff(NULL, "Faith"));
 
   Customer* unathi = new Customer("unathi");
 
@@ -143,7 +144,47 @@ int main() {
 // unathi->setNursery(cc);
   unathi->makeReq(req);
 
+  StaffCo_ordination staffCoord(&plot);
+  staffCoord.addStaff(base);
+  staffCoord.addStaff(gardener);
+  staffCoord.addStaff(sales);
+  staffCoord.addStaff(manager);
+  staffCoord.addStaff(admin);
+
+  cout << "\n-- Broadcast: Gardener reports dead plant (PlantDeadReport) --\n";
+  gardener->send("Detected dead plant in section A", manager, &staffCoord, "PlantDeadReport");
+
+  cout << "\n-- Direct: Manager -> Admin (CheckInventory) --\n";
+  manager->send("Please check inventory now", admin, &staffCoord, "CheckInventory");
+
+  cout << "\n-- Commands: Management assigns tasks (CheckInventory, CheckPlant) --\n";
+  if (auto mgmt = dynamic_cast<Management*>(manager)) {
+    mgmt->assignTasks(&staffCoord);
+  }
+
+  cout << "\n-- Commands: Hire and Fire staff via Management --\n";
+  Staff* tempBase = new BaseStaff(&staffCoord, "TempWorker");
+  Staff* tempRole = new Gardening(tempBase);
+  if (auto mgmt = dynamic_cast<Management*>(manager)) {
+    mgmt->hireStaff(tempRole);
+    for(Staff* s : staffCoord.getStaff()) {
+      cout << "  Current staff: " << s->getName() << " [" << s->getType() << "]\n";
+    }
+    cout << endl;
+    mgmt->fireStaff(tempRole);
+    for(Staff* s : staffCoord.getStaff()) {
+      cout << "  Current staff: " << s->getName() << " [" << s->getType() << "]\n";
+    }
+  }
+  // Defer deletion of tempRole until after all mediator interactions are done.
+  // Do NOT delete tempBase separately; the decorator (tempRole) owns and deletes it.
+
+  cout << "\n-- Broadcast: Manager daily announcement --\n";
+  manager->send("Daily plant care checks, please.", &staffCoord, "Announcement");
+
   cout << "\n===================Memory Management!!!" << endl;
+  // Clean up temporary role (also deletes its wrapped BaseStaff)
+  delete tempRole;
   delete staff_5;
   delete staff_3;
   delete staff_2;
@@ -151,6 +192,7 @@ int main() {
   delete base;
   delete gardener;
   delete sales;
+  delete admin;
   delete manager;
   delete unathi;
   delete cc;
