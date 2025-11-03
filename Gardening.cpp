@@ -71,44 +71,98 @@ void Gardening::checkPlants() {
     }
   }
 }
+
 void Gardening::handleCustomer(Request req, Customer* customer) {
+  if (!customer) {
+    std::cout << "Error: No customer assigned. Cannot proceed.\n";
+    return;
+  }
+
+  if (!nursery) {
+    std::cout << "Error: Nursery is not available. Please try again later.\n";
+    return;
+  }
+
   if (req.getRequest() == "Advice") {
-    std::cout << "I am " << name << " and I will be assisting you.\n"
-              << "nursery->getGarden()->viewAll()\n"
-              << "\tPlease enter the number of the plant you'd like advice on below.\n";
+    std::cout << "\nI am " << name << " and I will be assisting you.\n\n";
 
-    int plantId =
-        readIntInRange(1, 5, "\tNumber: ", "\n\t nursery->getGarden()->viewAll() \n Please enter a valid number: ");
+    bool askAgain = true;
+    while (askAgain) {
+      auto inventory = nursery->getGarden()->viewAll();
 
-    std::cout << "Plant advice of garden.getAdvice().... \n"
-              << "Would you like:\n"
-              << "\t1) Advice on another plant.\n"
-              << "\t2) Create an order.\n"
-              << "\t3) Return an old order.\n"
-              << "\t4) Repurchase an old order.\n";
+      if (inventory.empty()) {
+        std::cout << "There are currently no plants in the garden inventory.\n";
+        return;
+      }
 
-    int next = readIntInRange(1, 4, "Please enter a number: ", "Please enter a valid number (1-4): ");
+      std::string inventoryList = printAll(inventory);
+      std::cout << inventoryList << "\tPlease enter the number of the plant you'd like advice on below.\n";
 
-    const std::string pass = "Passing your request on...";
-    switch (next) {
-      case 1:
-        std::cout << "Plant advice of garden.getAdvice()....\n";
-        break;
-      case 2:
-        std::cout << pass << "\n";
-        ((CustomerCare*)nursery)->notify( Request("Order"),customer);
-        break;
-      case 3:
-        std::cout << pass << "\n";
-        ((CustomerCare*)nursery)->notify(Request("Return"),customer);
-        break;
-      case 4:
-        std::cout << pass << "\n";
-        ((CustomerCare*)nursery)->notify( Request("Repurchase"),customer);
-        break;
-      default:
-        std::cout << "Error in request case switch!\n";
-        break;
+      int maxIndex = static_cast<int>(inventory.size());
+      int plantId = readIntInRange(1, maxIndex, "\tNumber: ", inventoryList + "\nPlease enter a valid number: ");
+
+      auto it = inventory.begin();
+      // cout<< it->first<<endl;
+      std::advance(it, plantId - 1);
+      const std::string& plantName = it->first;
+
+      Garden* plant = nursery->getGarden()->get(plantName);
+      if (!plant) {
+        std::cout << "Error: could not find plant \"" << plantName << "\" in the garden.\n";
+        return;
+      }
+
+      Plant* plantPtr = dynamic_cast<Plant*>(plant);
+      if (!plantPtr) {
+        std::cout << "Error: plant is not of type Plant*\n";
+        return;
+      }
+
+      std::cout << "\nAdvice for " << plantPtr->getName() << ":\n"
+                << plantPtr->advice() << "\n\n"
+                << "Would you like:\n"
+                << "\t1) Advice on another plant.\n"
+                << "\t2) Create an order.\n"
+                << "\t3) Place a complaint\n"
+                << "\t4) Repurchase an old order.\n"
+                << "\t5) Exit Nursery.\n";
+
+      int next = readIntInRange(1, 5, "Please enter a number: ", "Please enter a valid number (1-4): ");
+
+      switch (next) {
+        case 1:
+
+          askAgain = true;
+          break;
+
+        case 2:
+          std::cout << "\nPassing your request on to create an order...\n" << endl;
+          ((CustomerCare*)nursery)->notify(Request("Order"), customer);
+          askAgain = false;
+          break;
+
+        case 3:
+          std::cout << "\nPassing your request on to process a return...\n" << endl;
+          ((CustomerCare*)nursery)->notify(Request("Complaint"), customer);
+          askAgain = false;
+          break;
+
+        case 4:
+          std::cout << "\nPassing your request on to repurchase an old order...\n" << endl;
+          ((CustomerCare*)nursery)->notify(Request("Repurchase"), customer);
+          askAgain = false;
+          break;
+
+        case 5:
+          std::cout << "\nThanks for visiting GoF Nursery!!\n";
+          askAgain = false;
+          break;
+
+        default:
+          std::cout << "Error in request case switch!\n";
+          askAgain = false;
+          break;
+      }
     }
   } else if (successor) {
     successor->handleCustomer(req, customer);

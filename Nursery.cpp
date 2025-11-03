@@ -54,3 +54,7 @@ Staff* Nursery::findStaffByType(const string& type) {
   }
   return NULL;
 }
+
+int Nursery::getDay(){
+  return this->day;
+}

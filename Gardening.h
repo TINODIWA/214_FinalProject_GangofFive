@@ -1,6 +1,7 @@
 #ifndef GARDENING_H
 #define GARDENING_H
 #include "Roles.h"
+#include <map>
 
 class Gardening : public Roles
 {
@@ -14,6 +15,7 @@ class Gardening : public Roles
     void handleCustomer(Request req, Customer* customer) override;
     void handlePlant(Plant* p);
     void checkPlants();
+    //addCrop(): 
 
     virtual void receive(string m, People* from, Nursery* group, string type);
   private:

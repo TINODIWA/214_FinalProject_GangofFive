@@ -1,7 +1,7 @@
 
 /**
  * @file Customer.cpp
- * @author your name (you@domain.com)
+ * @author Unathi Tshakalisa
  * @brief
  * @version 0.1
  * @date 2025-10-29
@@ -11,27 +11,48 @@
  */
 #include "Customer.h"
 #include "CustomerCare.h"
+#include "Order.h"
 
-Customer::Customer(string name): People(NULL, name) {
-  //req = Request("Enter");
+/**
+ * @brief Construct a new Customer object
+ * @param name Name of the customer
+ */
+Customer::Customer(string name) : People(NULL, name) {
+  // req = Request("Enter");
   // order = NULL;
 }
 
-Customer::~Customer() {}//should probably deletee their orders
+/**
+ * @brief Destroy the Customer object and free its order history
+ */
+Customer::~Customer() {
+  for (Order* o : orderHistory) {
+    if (o) {
+      delete o;
+      o = NULL;
+    }
+  }
+}  // should probably deletee their orders
 
+/**
+ * @brief Copy constructor for Customer
+ * @param other Pointer to another Customer to copy from
+ */
 Customer::Customer(const Customer* other) {
   // if (other)
   // this->order = new Order(*other->order);
 }
 
+/**
+ * @brief Make a request on behalf of the customer
+ * @param req The request to send
+ */
 void Customer::makeReq(Request req) {
-
   Nursery* n = getNursery();
   if (n) {
     if (CustomerCare* cc = dynamic_cast<CustomerCare*>(n)) {
       cc->notify(req, this);
     } else {
-      
       send(req.getRequest(), n, "CustomerRequest");
     }
   } else {
@@ -39,5 +60,24 @@ void Customer::makeReq(Request req) {
   }
 }
 
-void Customer::receive(string m, People* from, Nursery* group, string type){}
+/**
+ * @brief Add an order to the customer's order history
+ * @param order Pointer to the Order to add
+ */
+void Customer::addOrder(Order* order) {
+  this->orderHistory.push_back(order);
+}
 
+vector<Order*> Customer::getOrderHistory(){
+  return this->orderHistory;
+}
+
+/**
+ * @brief Receive a message from another People object
+ * @param m Message string
+ * @param from Pointer to the sender
+ * @param group Pointer to the nursery/mediator group
+ * @param type Type of the message
+ * @return void
+ */
+void Customer::receive(string m, People* from, Nursery* group, string type) {}

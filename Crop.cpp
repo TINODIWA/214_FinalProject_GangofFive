@@ -145,7 +145,9 @@ map<string, int> Crop::summary(map<string, int>& sum) {
     map<string, int> plant = (**it)->summary(sum);
 
     if (plant.empty()) {
-      type = (type == "") ? (**it)->print() : type;
+      Plant* asPlant = dynamic_cast<Plant*>(*(*it));
+      string key = (asPlant != nullptr) ? asPlant->getName() : (**it)->print();
+      type = (type == "") ? key : type;
       ++PlantCount;
     } else {
       if (type != "") sum[type] = PlantCount;

@@ -17,7 +17,7 @@ class Order;
 
 class Customer : public People {
  private:
-  vector<Order*> order;
+  vector<Order*> orderHistory;
   //Request req;
 
  public:
@@ -25,6 +25,8 @@ class Customer : public People {
   ~Customer();
   Customer(const Customer* other);
   void makeReq(Request req);
+  void addOrder(Order* order);
+  vector<Order*> getOrderHistory();
   void receive(string m, People* from, Nursery* group, string type);
 };
 

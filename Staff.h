@@ -11,6 +11,10 @@
 
 #include "People.h"
 #include "Request.h"
+#include <map>
+#include <sstream>
+#include <iostream> 
+#include <iomanip>
 
 class Plant;
 class Customer;
@@ -19,6 +23,7 @@ class Staff : public People{
   protected:
     Staff *successor;
     int readIntInRange(int lo, int hi, const std::string& prompt, const std::string& errPrompt); 
+    string printAll(map<std::string, int> inventory);
 
   public:
     Staff();
