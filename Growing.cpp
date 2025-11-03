@@ -37,16 +37,18 @@ Growing::Growing(const PlantState& other) : PlantState(other) {
  * @brief Handles the state transition from Growing to the next state
  */
 void Growing::handleChange(Plant* p) {
+  PlantState* curr = p->currState();
   if (dying(p)) {
-    PlantState* curr = p->currState();
-
     p->setState(new Dying());
     p->currState()->setPrev(curr);
     return;
   }
 
   vector<int> days = p->getDays();
-  if (days[0] == days[2]) p->setState(new Mature());
+  if (days[0] == days[2]) {
+    delete curr;
+    p->setState(new Mature());
+  }
 }
 
 /**
@@ -55,4 +57,12 @@ void Growing::handleChange(Plant* p) {
  */
 string Growing::getState() {
   return "Growing";
+}
+
+/**
+ * @brief clones the state of the plant
+ *
+ */
+PlantState* Growing::clone() {
+  return new Growing(*this);
 }

@@ -65,7 +65,7 @@ Plant::Plant(const Plant& other) {
   days = other.days;
   price = other.price;
   attention = other.attention;
-  state = other.state;
+  state = other.state ? other.state->clone() : nullptr;
   waterStrategy = (other.waterStrategy) ? other.waterStrategy->clone() : nullptr;
   sunStrategy = (other.sunStrategy) ? other.sunStrategy->clone() : nullptr;
   fertiliserStrategy = (other.fertiliserStrategy) ? other.fertiliserStrategy->clone() : nullptr;
@@ -224,9 +224,13 @@ void Plant::setPrice(int price) {
  */
 
 void Plant::setState(PlantState* state) {
-  if (state) delete state;
+  cout << "CHANGING FROM STATE: " << this->state->getState() << endl;
+  // if (this->state) delete this->state;
 
   this->state = state;
+  if (this->state) {
+    cout << "TO STATE: " << this->state->getState() << endl;
+  }
 }
 
 /**
@@ -383,16 +387,12 @@ void Plant::updateWaterLevel(int newLevel) {
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::updateSunLevel(int newLevel) {
-<<<<<<< HEAD
-  sun = newLevel;
-=======
   // if (sun.size() >= 1) sun[0] = newLevel;
->>>>>>> origin/Development
 }
 
 void Plant::transpire(int decreasedLevel) {
   this->water[0] = decreasedLevel;
-  //state->handleChange(this,);
+  // state->handleChange(this,);
 }
 
 /**
@@ -421,10 +421,10 @@ string Plant::getState() {
 
 /**
  * @brief returns the state objects
- * 
- * @return PlantState* 
+ *
+ * @return PlantState*
  */
-PlantState* Plant::currState() const{
+PlantState* Plant::currState() const {
   return state;
 }
 /**
@@ -478,5 +478,6 @@ bool Plant::operator==(string name) {
  *
  */
 void Plant::changeState() {
+  cout<<state->getState()<<" handling change\n";
   state->handleChange(this);
 }

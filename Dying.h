@@ -20,6 +20,7 @@ class Dying : public PlantState {
   void handleChange(Plant* p);
   string getState();
   void setPrev(PlantState* prev);
+  PlantState* clone();
 };
 
 #endif  // DYING_H_

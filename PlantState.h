@@ -21,6 +21,7 @@ class PlantState {
   virtual void handleChange(Plant* p) = 0;
   virtual string getState() = 0;
   virtual void setPrev(PlantState* prev);
+  virtual PlantState* clone() = 0;
 };
 
 #endif  // PLANTSTATE_H_

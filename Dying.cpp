@@ -16,7 +16,7 @@
 /**
  * @brief Default constructor for the Dying state
  */
-Dying::Dying():prev(nullptr){
+Dying::Dying() : prev(nullptr) {
   // Constructor implementation
 }
 
@@ -37,12 +37,15 @@ Dying::Dying(const PlantState& other) : PlantState(other) {
  * @brief Handles the state transition from Dying to the next state
  */
 void Dying::handleChange(Plant* p) {
+  PlantState* curr = p->currState();
+
   string state = prev->getState();
-  if(state == "Mature"){
-        p->setState(new Dead());
-  }
-  else if(!dying(p)){
-        p->setState(prev);
+  if (state == "Mature") {
+    delete curr;
+    p->setState(new Dead());
+  } else if (!dying(p)) {
+    delete curr;
+    p->setState(prev);
   }
 }
 
@@ -56,8 +59,16 @@ string Dying::getState() {
 
 /**
  * @brief sets the prev attribute
- * 
+ *
  */
-void Dying::setPrev(PlantState* prev){
-    this->prev = prev;
+void Dying::setPrev(PlantState* prev) {
+  this->prev = prev;
+}
+
+/**
+ * @brief clones the state of the plant
+ *
+ */
+PlantState* Dying::clone() {
+  return new Dying(*this);
 }

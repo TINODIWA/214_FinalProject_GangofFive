@@ -37,16 +37,18 @@ Mature::Mature(const PlantState& other) : PlantState(other) {
  * @brief Handles the state transition from Mature to the next state
  */
 void Mature::handleChange(Plant* p) {
+  PlantState* curr = p->currState();
   if (dying(p)) {
-    PlantState* curr = p->currState();
-
     p->setState(new Dying());
     p->currState()->setPrev(curr);
     return;
   }
 
-   vector<int> days = p->getDays();
-  if (days[0] == days[3]) p->setState(new Dead());
+  vector<int> days = p->getDays();
+  if (days[0] == days[3]) {
+    delete curr;
+    p->setState(new Dead());
+  }
 }
 
 /**
@@ -55,4 +57,12 @@ void Mature::handleChange(Plant* p) {
  */
 string Mature::getState() {
   return "Mature";
+}
+
+/**
+ * @brief clones the state of the plant
+ *
+ */
+PlantState* Mature::clone() {
+  return new Mature(*this);
 }

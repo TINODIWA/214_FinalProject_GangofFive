@@ -16,6 +16,7 @@ class Growing : public PlantState {
   Growing(const PlantState& other);
   void handleChange(Plant* p);
   string getState();
+  PlantState* clone();
 };
 
 #endif  // GROWING_H_

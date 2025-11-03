@@ -16,6 +16,7 @@ class Dead : public PlantState {
   Dead(const PlantState& other);
   void handleChange(Plant* p);
   string getState();
+  PlantState* clone();
 };
 
 #endif  // DEAD_H_

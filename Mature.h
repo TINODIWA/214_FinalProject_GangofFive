@@ -17,6 +17,7 @@ class Mature : public PlantState {
   Mature(const PlantState& other);
   void handleChange(Plant* p);
   string getState();
+  PlantState* clone();
 };
 
 #endif  // MATURE_H_

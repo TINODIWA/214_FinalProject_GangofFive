@@ -33,16 +33,20 @@ Planted::Planted(const PlantState& other) : PlantState(other) {}
  * @brief Handles the state transition from Planted to the next state
  */
 void Planted::handleChange(Plant* p) {
+  PlantState* curr = p->currState();
   if (dying(p)) {
-    PlantState* curr = p->currState();
-
-    p->setState(new Dying());
-    p->currState()->setPrev(curr);
+    PlantState* dying = new Dying();
+    dying->setPrev(curr);
+    p->setState(dying);
     return;
   }
 
   vector<int> days = p->getDays();
-  if (days[0] == days[1]) p->setState(new Growing());
+
+  if (days[0] == days[1]) {
+    delete curr;
+    p->setState(new Growing());
+  }
 }
 
 /**
@@ -51,4 +55,12 @@ void Planted::handleChange(Plant* p) {
  */
 string Planted::getState() {
   return "Planted";
+}
+
+/**
+ * @brief clones the state of the plant
+ *
+ */
+PlantState* Planted::clone() {
+  return new Planted(*this);
 }
