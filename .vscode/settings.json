@@ -56,7 +56,9 @@
         "CROPITERATOR",
         "fertilise",
         "fertiliser",
+        "GARDENPLOT",
         "PLANTBUILDER",
-        "PLANTCARE"
+        "PLANTCARE",
+        "plantlevels"
     ]
 }

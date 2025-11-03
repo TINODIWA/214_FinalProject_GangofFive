@@ -62,30 +62,33 @@ Garden* Crop::clone() {
  * @brief prints out all the plants in a crop
  *
  */
-void Crop::print() {
+string Crop::print() {
   Iterator* it = createIterator();
+  stringstream crop;
 
   int width = 40;
-  for (int i = 0; i < width; i++) cout << "-";
+  for (int i = 0; i < width; i++) crop << "-";
 
-  cout << endl;
+  crop << "\n";
   int i = 1;
   while (!it->done()) {
-    (**it)->print();
+    crop << (**it)->print();
     ++(*it);
 
     if (i % 4 == 0) {
-      cout << endl;
-      for (int i = 0; i < width; i++) cout << "-";
-      cout << endl;
+      crop << "\n";
+      for (int i = 0; i < width; i++) crop << "-";
+      crop << "\n";
     }
 
     ++i;
   }
 
-  cout << "\n===================================\n";
+  crop << "\n===================================\n";
 
   delete it;
+
+  return crop.str();
 }
 
 /**
@@ -114,6 +117,15 @@ struct Crop::itImpl : public Iterator {
     ++curr;
     return this;
   }
+  Garden* remove() {
+    if (!plants.empty() && curr != plants.end()) {
+      Garden* rem = (*curr);
+      curr = plants.erase(curr);
+
+      return rem;
+    }
+    return nullptr;
+  }
 };
 
 /**
@@ -127,8 +139,8 @@ Iterator* Crop::createIterator() {
 }
 
 void Crop::removeDeadPlants() {
-  //need to change this later to use iterator pattern
-  
+  // need to change this later to use iterator pattern
+
   // iterate in reverse to safely erase while iterating
   for (int i = (int)plants.size() - 1; i >= 0; --i) {
     Garden* child = plants[i];
@@ -152,4 +164,96 @@ void Crop::removeDeadPlants() {
       asCrop->removeDeadPlants();
     }
   }
+}
+
+/**
+ * @brief summary of the number of plants and what plant
+ *
+ * @return string
+ */
+map<string, int> Crop::summary(map<string, int>& sum) {
+  Iterator* it = createIterator();
+  int PlantCount = 0;
+  string type = "";
+
+  while (!it->done()) {
+    map<string, int> plant = (**it)->summary(sum);
+
+    if (plant.empty()) {
+      type = (type == "") ? (**it)->print() : type;
+      ++PlantCount;
+    } else {
+      if (type != "") sum[type] = PlantCount;
+    }
+
+    ++(*it);
+  }
+  delete it;
+
+  if (type != "") sum[type] = PlantCount;
+  return sum;
+}
+
+/**
+ * @brief return the specified number of plants with the passed in name;
+ *
+ * @param name
+ * @param num
+ * @return Garden*
+ */
+vector<Garden*> Crop::get(string name, int num) {
+  Iterator* it = createIterator();
+  vector<Garden*> g;
+  int count = num;
+
+  while (!it->done() && count > 0) {
+    if ((**it)->operator==(name)) {
+      g.push_back(it->remove());
+      --count;
+    } else {
+      vector<Garden*> curr = (**it)->get(name, count);
+
+      if (!curr.empty()) {
+        for (Garden* c : curr) {
+          g.push_back(c);
+        }
+        count -= curr.size();
+      }
+
+      ++(*it);
+    }
+  }
+
+  delete it;
+  return g;
+}
+
+/**
+ * @brief return the pointer to the first plant with the passed in name
+ *
+ * @param name
+ * @return Garden*
+ */
+Garden* Crop::get(string name) {
+  Iterator* it = createIterator();
+  Garden* want = nullptr;
+
+  while (!it->done()) {
+    if ((**it)->operator==(name)) {
+      want = *(*it);
+      break;
+    } else {
+      want = (**it)->get(name);
+    }
+
+    if (want) {
+      delete it;
+      return want;
+    }
+
+    ++(*it);
+  }
+
+  delete it;
+  return want;
 }

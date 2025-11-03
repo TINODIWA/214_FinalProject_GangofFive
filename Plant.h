@@ -11,6 +11,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 
 #include "Garden.h"
 #include "PlantCare.h"
@@ -72,8 +73,8 @@ class Plant : public Garden {
   vector<int> getFertiliser() const;
 
   Garden* clone();
-  void print();
-  void add(Garden* p);
+  string print();
+  bool operator==(string name);
 
   // Observer functions
   void attach(Staff* s);
@@ -85,8 +86,8 @@ class Plant : public Garden {
   void updateSunLevel(int newLevel);
   void transpire(int decreasedLevel);
   void updateFertiliserLevel(int newLevel);
-	void updateDay();
-	string getState();
+  void updateDay();
+  string getState();
 };
 
 #endif  // PLANT_H_

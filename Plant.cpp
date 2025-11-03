@@ -15,7 +15,12 @@
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant() : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
+Plant::Plant()
+    : state(new Planted()),
+      waterStrategy(nullptr),
+      sunStrategy(nullptr),
+      fertiliserStrategy(nullptr),
+      sun(0) {
   for (int i = 0; i < 2; i++) {
     water.push_back(0);
     fertiliser.push_back(0);
@@ -28,26 +33,25 @@ Plant::Plant() : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullp
  *
  */
 Plant::~Plant() {
-  if(waterStrategy){
+  if (waterStrategy) {
     delete waterStrategy;
     waterStrategy = nullptr;
   }
 
-  if(sunStrategy){
+  if (sunStrategy) {
     delete sunStrategy;
     sunStrategy = nullptr;
   }
 
-  if(fertiliserStrategy){
+  if (fertiliserStrategy) {
     delete fertiliserStrategy;
     fertiliserStrategy = nullptr;
   }
 
-  if(state){
+  if (state) {
     delete state;
     state = nullptr;
   }
-
 }
 
 /**
@@ -179,7 +183,7 @@ PlantCare* Plant::setCareStrategy(char level) {
       break;
 
     case 'L':
-      //cout << "LOW set...great!!." << endl;
+      // cout << "LOW set...great!!." << endl;
       return new Low();
       break;
 
@@ -368,6 +372,7 @@ void Plant::updateSunLevel(int newLevel) {
 
 void Plant::transpire(int decreasedLevel) {
   this->water[0] = decreasedLevel;
+  state->handleChange();
 }
 
 /**
@@ -405,16 +410,11 @@ Garden* Plant::clone() {
  * @brief prints the plant
  *
  */
-void Plant::print() {
-  cout << left << setw(10) << this->name << "|";
+string Plant::print() {
+  stringstream ss;
+  ss << left << setw(10) << this->name << "|";
+  return ss.str();
 }
-
-/**
- * @brief stubbed - for the crop
- *
- * @param p
- */
-void Plant::add(Garden* p) {}
 
 /**
  * @brief advice on how to care for the plant
@@ -422,6 +422,25 @@ void Plant::add(Garden* p) {}
  * @return string
  */
 string Plant::advice() {
-  return "";
+  stringstream ss;
+
+  ss << "Advice on how to care for your " << name << "\n";
+
+  ss << "Water:\t" << water[1] << " ml/day\n";
+  ss << "Fertiliser:\t" << fertiliser[1] << "ml/day\n";
+
+  // not sure abt sun and attention yet
+
+  return ss.str();
 }
 
+/**
+ * @brief return if two plants are equal based on name
+ *
+ */
+bool Plant::operator==(string name) {
+  if (this->name == name) {
+    return true;
+  }
+  return false;
+}

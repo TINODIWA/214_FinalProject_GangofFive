@@ -20,7 +20,6 @@ using namespace std;
 class Nursery {
 public:
     Nursery();
-    Nursery(Garden* g);
     virtual ~Nursery();
     Nursery(const Nursery& other);
     void start(bool sim);
@@ -30,11 +29,8 @@ public:
     virtual void removeCustomer(Customer* c) = 0;
     virtual void sendMessage(string m, People* from, string type) = 0;
     virtual void sendMessage(string m, People* to, People* from, string type) = 0;
-    void setGarden(Garden* g);
-    Garden* getGarden();
 
   protected:
-    Garden* garden;
     vector<Customer*> customers;
     vector<Staff*> staff;
 };

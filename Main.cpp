@@ -29,6 +29,7 @@
 #include "Admin.h"
 #include "Management.h"
 #include "BaseStaff.h"
+#include "GardenPlot.h"
 
 #include <map>
 #include <iostream>
@@ -105,6 +106,50 @@ int main() {
 
   // string order_receipt = eft->purchase(c1, order_1, teller_1);
   // cout << order_receipt << endl;
+
+   cout << "TESTING GardenPlot Summary\n\n";
+
+  GardenPlot plot = GardenPlot("plants.txt");
+
+  cout << "ALL PLANTS" << endl;
+
+  for (auto p : plot.viewAll()) {
+    cout << p.first << "\t" << p.second << endl;
+  }
+
+  cout << "\n AVAILABLE PLANTS" << endl;
+  for (auto p : plot.viewAvailable()) {
+    cout << p.first << "\t" << p.second << endl;
+  }
+
+  cout << "\nTESTING GETTING PLANTS FROM THE GARDEN - REMOVE\n" << endl;
+  vector<Garden*> buy = plot.get("Azalea", 4);
+  cout << "Order:\n";
+
+  for (int i = 0; i < buy.size(); i++) {
+    if (buy[i]) {
+      cout << buy[i]->print() << endl;
+      delete buy[i];
+    }
+  }
+
+  cout << "------------------------------------\n";
+
+  cout << endl;
+  cout << endl;
+  for (auto p : plot.viewAll()) {
+    cout << p.first << "\t" << p.second << endl;
+  }
+
+  cout << "\nTESTING GETTING PLANT ADVICE\n" << endl;
+  cout << plot.get("Rosemary")->advice() << endl;
+
+  cout << "\nTESTING GETTING PA PLANT BY NAME - NO REMOVE\n" << endl;
+  Garden* ptr = plot.get("Oak");
+
+  if (ptr) cout << "Got " << ptr->print() << endl;
+  else cout <<":(\n";
+
 
   // delete eft;
   // delete acacia;
