@@ -9,6 +9,7 @@
  *
  */
 #include "Growing.h"
+#include "Plant.h"
 
 /**
  * @brief Default constructor for the Growing state
@@ -33,17 +34,10 @@ Growing::Growing(const PlantState& other) : PlantState(other) {
 /**
  * @brief Handles the state transition from Growing to the next state
  */
-void Growing::handleChange() {
-    // State transition logic implementation
+void Growing::handleChange(Plant* p) {
+   p->setState(new Mature());
 }
 
-/**
- * @brief Creates a deep copy of the current Growing state
- * @return PlantState* Pointer to a new Growing state object
- */
-PlantState* Growing::clone() {
-    return new Growing(*this);
-}
 
 /**
  * @brief Returns the string representation of the current state

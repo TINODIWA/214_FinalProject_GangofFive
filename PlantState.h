@@ -8,6 +8,7 @@
 
 #include "PlantState.h"
 #include <string>
+class Plant;
 
 using namespace std;
 
@@ -16,10 +17,9 @@ class PlantState {
   PlantState();
   PlantState(const PlantState& other);
   virtual ~PlantState();
-
-  virtual void handleChange() = 0;
+  bool dying(Plant*p);
+  virtual void handleChange(Plant* p,int day) = 0;
   virtual string getState() = 0;
-  virtual PlantState* clone() = 0;
 };
 
 #endif  // PLANTSTATE_H_

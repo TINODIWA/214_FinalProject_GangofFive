@@ -9,40 +9,36 @@
  */
 
 #include "Planted.h"
+#include "Plant.h"
+#include "Growing.h"
 
 /**
  * @brief Default constructor for the Planted state
  */
-Planted::Planted() {
-    // Constructor implementation
-}
+Planted::Planted() {}
 
 /**
  * @brief Default destructor for the Planted state
  */
-Planted::~Planted(){}
+Planted::~Planted() {}
 
 /**
  * @brief Copy constructor for the Planted state
  * @param other Reference to another PlantState object to copy from
  */
-Planted::Planted(const PlantState& other) : PlantState(other) {
-    // Copy constructor implementation
-}
+Planted::Planted(const PlantState& other) : PlantState(other) {}
 
 /**
  * @brief Handles the state transition from Planted to the next state
  */
-void Planted::handleChange() {
-    // State transition logic implementation
-}
+void Planted::handleChange(Plant* p, int day) {
+  if (dying(p)) {
+    p->setState(new Dying());
+    return;
+  }
 
-/**
- * @brief Creates a deep copy of the current Planted state
- * @return PlantState* Pointer to a new Planted state object
- */
-PlantState* Planted::clone() {
-    return new Planted(*this);
+  int check = p->getDays()[0];
+  if (check == day) p->setState(new Growing());
 }
 
 /**
@@ -50,5 +46,5 @@ PlantState* Planted::clone() {
  * @return string The name of the current state ("Planted")
  */
 string Planted::getState() {
-    return "Planted";
+  return "Planted";
 }

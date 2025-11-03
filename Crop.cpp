@@ -126,6 +126,10 @@ struct Crop::itImpl : public Iterator {
     }
     return nullptr;
   }
+
+  int size(){
+    return static_cast<int>(plants.size());
+  }
 };
 
 /**

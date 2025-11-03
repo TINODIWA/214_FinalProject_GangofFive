@@ -33,6 +33,9 @@ class GardenPlot {
   void transpire(int decreasedLevel);
   vector<Garden*> get(string name, int num);
   Garden* get(string name);
+  int size();
+  int numCrops();
+  Iterator* access();
 
 };
 #endif  // GARDENPLOT_H_

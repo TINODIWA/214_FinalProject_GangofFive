@@ -102,3 +102,5 @@ bool Garden::operator==(string name) {
 Garden* Garden::get(string name) {
   return nullptr;
 }
+
+void Garden::changeState(){}
