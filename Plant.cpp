@@ -24,6 +24,7 @@ Plant::Plant()
   for (int i = 0; i < 2; i++) {
     water.push_back(0);
     fertiliser.push_back(0);
+    sun.push_back(0);
   }
 }
 
@@ -115,7 +116,7 @@ void Plant::setWater(int water) {
  * @param sun
  */
 void Plant::setSun(int sun) {
-  this->sun = sun;
+  this->sun[1] = sun;
 }
 
 /**
@@ -244,7 +245,7 @@ vector<int> Plant::getWater() const {
  * @return int
  */
 
-int Plant::getSun() const {
+vector<int> Plant::getSun() const {
   return sun;
 }
 
@@ -311,19 +312,47 @@ float Plant::getPrice() const {
   return price;
 }
 
+/**
+ * @brief Attach an observer (Staff) to this Plant
+ * Adds a Staff member to the list of observers that will be notified of state changes
+ * 
+ * @param s Pointer to Staff object to attach as observer
+ */
 void Plant::attach(Staff* s) {
-  // TODO(user) - implement Plant::attach
-  // throw "Not yet implemented";
+  if (s != nullptr) {
+    staff.push_back(s);
+  }
 }
 
+/**
+ * @brief Detach an observer (Staff) from this Plant
+ * Removes a Staff member from the list of observers
+ * Uses operator== to find matching Staff member
+ * 
+ * @param s Pointer to Staff object to detach
+ */
 void Plant::detach(Staff* s) {
-  // TODO(user) - implement Plant::detach
-  // throw "Not yet implemented";
+  if (s == nullptr) 
+    return;
+  for (auto it = staff.begin(); it != staff.end(); ++it) {
+    if (*it != nullptr && **it == *s) {
+      staff.erase(it);
+      break;
+    }
+  }
 }
 
+/**
+ * @brief Notify all attached observers of a state change
+ * Calls update() on each Staff observer in the list
+ * Part of the Observer design pattern implementation
+ */
 void Plant::notify() {
-  // TODO(user) - implement Plant::notify
-  // throw "Not yet implemented";
+  for (Staff* observer : staff) {
+    if (observer != nullptr) {
+      observer->update(this);
+    }
+  }
 }
 
 /**
@@ -337,6 +366,10 @@ void Plant::updateWaterLevel(int newLevel) {
  * @brief Decreases the current plantlevels based on Sun Strategy
  * @param decrease attribute determined by Sun Strategy
  */
+void Plant::updateSunLevel(int newLevel) {
+  if (sun.size() >= 1) sun[0] = newLevel;
+}
+
 void Plant::transpire(int decreasedLevel) {
   this->water[0] = sunStrategy->apply(water[0],sun,-1);
   this->fertiliser[0] = sunStrategy->apply(fertiliser[0],sun,-1);
@@ -367,6 +400,9 @@ string Plant::getState() {
   return state->getState();
 }
 
+/**
+ * @brief Returns clone of the plant
+ */
 Garden* Plant::clone() {
   return new Plant(*this);
 }
