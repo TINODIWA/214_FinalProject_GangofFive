@@ -42,6 +42,8 @@ Director::Director(Builder* c, BuildPlant* p) : cropBuilder(c), plantBuilder(p) 
 
 /**
  * @brief sets the crop builder to a new one
+ * NOTICE
+ * setting the builder will delete any crop held by the precious one
  *
  * @param p
  */
@@ -56,6 +58,8 @@ void Director::setBuilder(Builder* c) {
 
 /**
  * @brief sets the plant builder to a new one
+ * NOTICE
+ * setting the builder will delete any crop held by the precious one
  *
  * @param p
  */
@@ -73,15 +77,37 @@ void Director::setBuilder(BuildPlant* p) {
  *
  */
 Garden* Director::construct(string filename) {
-  cropBuilder->reset();
-
   // Parse the file
+  fstream plants;
 
-  fstream plants(filename);
-  if (!plants.is_open()) {
+  try {
+    plants.open(filename);
+    if (!plants.is_open()) {
+      throw std::runtime_error("Error accessing file");
+    }
+
+  } catch (const std::exception& err) {
+    cout << "ERROR: " << err.what() << endl;
+
     return nullptr;
   }
 
+  plants.seekg(0, ios::end);
+  if (plants.tellg() == 0) {
+    cout << "Oops. It looks like your file is empty.\n";
+    cout << "Please populate your file with data in the format: \n";
+    cout << "Name#Type#amount#water_requirement(integer)#fertiliser_requirement(integer)#\n"
+            "required_sun_exposure(integer)#number_of_days_to_start_growing#\n"
+            "number_of_days_to_maturity#price#water_care(H/M/L)#\n"
+            "sun_care(H/M/L)#fertiliser_care(H/M/L)\n\n With no spaces and a new line after each plant\n";
+    cout << "example: Lily#Flower#4#10#18#9#1#2#75#H#M#L\n\n";
+
+    return nullptr;
+  }
+
+  plants.seekg(0, ios::beg);
+
+  cropBuilder->reset();
   string line;
 
   while (getline(plants, line)) {
@@ -89,6 +115,7 @@ Garden* Director::construct(string filename) {
 
     plantBuilder->reset();
     vector<string> pieces = split(line, '#');
+
 
     int amount = stoi(pieces[2]);
 
@@ -101,7 +128,7 @@ Garden* Director::construct(string filename) {
     vector<int> days = {0, stoi(pieces[7])};
 
     plantBuilder->setDays(days)
-        ->setPrice(stoi(pieces[8]))
+        ->setPrice(stof(pieces[8]))
         ->setWaterCare(pieces[9][0])
         ->setSunCare(pieces[10][0])
         ->setFertiliserCare(pieces[11][0]);

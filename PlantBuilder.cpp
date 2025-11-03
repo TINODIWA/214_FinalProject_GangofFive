@@ -148,7 +148,7 @@ PlantBuilder* PlantBuilder::setDays(vector<int> days) {
  * @param price 
  * @return Builder* 
  */
-PlantBuilder* PlantBuilder::setPrice(int price) {
+PlantBuilder* PlantBuilder::setPrice(float price) {
     p->setPrice(price);
     return this;
 }

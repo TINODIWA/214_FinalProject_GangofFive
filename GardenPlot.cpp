@@ -108,6 +108,16 @@ Garden* GardenPlot::get(string name) {
   return garden->get(name);
 }
 
+
+/**
+ * @brief prints the garden
+ * 
+ * @return string 
+ */
+string GardenPlot::print(){
+  return garden->print();
+}
+
 /**
  * @brief return number if plants in the garden
  *

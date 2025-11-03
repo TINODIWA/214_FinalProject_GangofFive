@@ -16,7 +16,6 @@
  *
  */
 Crop::Crop() : Garden() {}
-
 /**
  * @brief Destructor that deletes all plants in vector
  *
@@ -24,9 +23,21 @@ Crop::Crop() : Garden() {}
  * to prevent memory leaks
  */
 Crop::~Crop() {
+  // Iterator* it = createIterator();
+
+  // while (!it->done()) {
+  //   if (**it) {
+  //     delete (**it);
+  //   }
+  //   ++(*it);
+  // }
+
+  // delete it;
+
   for (Garden* p : plants) {
-    delete p;
+    if (p) delete p;
   }
+
   plants.clear();
 }
 
@@ -40,9 +51,7 @@ Crop::~Crop() {
  */
 Crop::Crop(const Crop& other) : Garden(other) {
   for (Garden* p : other.plants) {
-    if (p != NULL) {
-      plants.push_back(p->clone());
-    }
+    this->plants.push_back(p->clone());
   }
 }
 
@@ -50,6 +59,9 @@ void Crop::add(Garden* p) {
   plants.push_back(p);
 }
 
+Iterator* Crop::createIterator() {
+  return new CropIterator(plants);
+}
 /**
  * @brief Create a copy of this Crop.
  * @return Pointer to a new Crop.
@@ -91,93 +103,33 @@ string Crop::print() {
   return crop.str();
 }
 
-/**
- * @brief encapsulate concrete iterator with pImpl
- *
- */
-struct Crop::itImpl : public Iterator {
-  vector<Garden*>& plants;
-  vector<Garden*>::iterator curr;
-
-  itImpl(vector<Garden*>& p) : plants(p) { curr = p.begin(); }
-
-  Garden* first() { return plants.front(); }
-
-  Garden* next() {
-    if (done()) return nullptr;
-
-    return *(++curr);
-  }
-
-  bool done() { return curr == plants.end(); }
-
-  Garden* current() { return *curr; }
-
-  Iterator* operator++() {
-    ++curr;
-    return this;
-  }
-  Garden* remove() {
-    if (!plants.empty() && curr != plants.end()) {
-      Garden* rem = (*curr);
-      curr = plants.erase(curr);
-
-      return rem;
-    }
-    return nullptr;
-  }
-
-  int size(){
-    return static_cast<int>(plants.size());
-  }
-};
-
-/**
- * @brief Create a Iterator object
- *
- * @return CropIterator*
- */
-
-Iterator* Crop::createIterator() {
-  return new itImpl(plants);
-}
-
 // void Crop::removeDeadPlants() {
-//   // need to change this later to use iterator pattern
+// need to change this later to use iterator pattern
 
-//   // iterate in reverse to safely erase while iterating
-//   for (int i = (int)plants.size() - 1; i >= 0; --i) {
-//     Garden* child = plants[i];
-//     if (!child) continue;
+// iterate in reverse to safely erase while iterating
+// for (int i = (int)plants.size() - 1; i >= 0; --i) {
+//   Garden* child = plants[i];
+//   if (!child) continue;
 
-//     // If child is a Plant, check its state
-//     Plant* asPlant = dynamic_cast<Plant*>(child);
-//     if (asPlant) {
-//       string state = asPlant->getState();
-//       if (state.find("Dead") != string::npos) {
-//         // remove dead plant
-//         delete asPlant;
-//         plants.erase(plants.begin() + i);
-//         continue;
-//       }
+//   // If child is a Plant, check its state
+//   Plant* asPlant = dynamic_cast<Plant*>(child);
+//   if (asPlant) {
+//     string state = asPlant->getState();
+//     if (state.find("Dead") != string::npos) {
+//       // remove dead plant
+//       delete asPlant;
+//       plants.erase(plants.begin() + i);
+//       continue;
 //     }
-//     delete it;
 //   }
 
-//   // Erase-and-delete collected dead plants from this crop's direct children
-//   if (!toRemove.empty()) {
-//     for (auto* dead : toRemove) {
-//       for (auto itv = plants.begin(); itv != plants.end(); ) {
-//         if (*itv == dead) {
-//           delete dead;
-//           itv = plants.erase(itv);
-//         } else {
-//           ++itv;
-//         }
-//       }
-//     }
+//   // If child is a Crop (composite), recurse
+//   Crop* asCrop = dynamic_cast<Crop*>(child);
+//   if (asCrop) {
+//     asCrop->removeDeadPlants();
 //   }
 // }
+//}
 
 /**
  * @brief summary of the number of plants and what plant
