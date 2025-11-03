@@ -29,7 +29,7 @@ class Crop : public Garden {
   void add(Garden* p);
   Garden* clone();
   string print();
-  // void removeDeadPlants();
+  void removeDeadPlants();
   Iterator* createIterator();
   map<string, int> summary(map<string, int>& sum);
   vector<Garden*> get(string name, int num);
