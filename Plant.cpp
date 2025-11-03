@@ -207,7 +207,7 @@ void Plant::setDays(vector<int> days) {
  *
  * @param price
  */
-void Plant::setPrice(int price) {
+void Plant::setPrice(float price) {
   this->price = price;
 }
 
@@ -305,9 +305,9 @@ vector<int> Plant::getDays() const {
 /**
  * @brief returns the price of the plant
  *
- * @return int
+ * @return float
  */
-int Plant::getPrice() const {
+float Plant::getPrice() const {
   return price;
 }
 
@@ -338,7 +338,8 @@ void Plant::updateWaterLevel(int newLevel) {
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::transpire(int decreasedLevel) {
-  this->water[0] = decreasedLevel;
+  this->water[0] = sunStrategy->apply(water[0],sun,-1);
+  this->fertiliser[0] = sunStrategy->apply(fertiliser[0],sun,-1);
   state->handleChange();
 }
 

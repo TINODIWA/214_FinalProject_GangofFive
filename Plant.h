@@ -38,7 +38,7 @@ class Plant : public Garden {
   PlantState* state;
   vector<Staff*> staff;
   vector<int> days;  // <growing,mature>
-  int price;
+  float price;
   int attention;
   PlantCare* setCareStrategy(char level);
 
@@ -56,7 +56,7 @@ class Plant : public Garden {
   void setSunCare(char level);
   void setFertiliserCare(char level);
   void setDays(vector<int> days);
-  void setPrice(int price);
+  void setPrice(float price);
 
   string getName() const;
   string getType() const;
@@ -65,7 +65,7 @@ class Plant : public Garden {
   PlantCare* getSunCare() const;
   PlantCare* getFertiliserCare() const;
   vector<int> getDays() const;
-  int getPrice() const;
+  float getPrice() const;
   // vector[0] = current   vector[1] = required
   vector<int> getWater() const;
   int getSun() const;

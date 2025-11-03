@@ -47,7 +47,7 @@ Crop::Crop(const Crop& other) : Garden(other) {
 }
 
 void Crop::add(Garden* p) {
-  plants.push_back(p);
+  if (p) plants.push_back(p);
 }
 
 /**
