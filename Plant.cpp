@@ -17,11 +17,7 @@
  *
  */
 Plant::Plant()
-    : state(new Planted()),
-      waterStrategy(nullptr),
-      sunStrategy(nullptr),
-      fertiliserStrategy(nullptr),
-      sun(0) {
+    : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
   for (int i = 0; i < 2; i++) {
     water.push_back(0);
     fertiliser.push_back(0);
@@ -69,7 +65,7 @@ Plant::Plant(const Plant& other) {
   days = other.days;
   price = other.price;
   attention = other.attention;
-  state = (other.state) ? other.state->clone() : nullptr;
+  state = other.state ? other.state->clone() : nullptr;
   waterStrategy = (other.waterStrategy) ? other.waterStrategy->clone() : nullptr;
   sunStrategy = (other.sunStrategy) ? other.sunStrategy->clone() : nullptr;
   fertiliserStrategy = (other.fertiliserStrategy) ? other.fertiliserStrategy->clone() : nullptr;
@@ -217,8 +213,18 @@ void Plant::setDays(vector<int> days) {
  *
  * @param price
  */
-void Plant::setPrice(int price) {
+void Plant::setPrice(float price) {
   this->price = price;
+}
+
+/**
+ * @brief Set the State object
+ *
+ * @param state
+ */
+
+void Plant::setState(PlantState* state) {
+  this->state = state;
 }
 
 /**
@@ -315,16 +321,16 @@ vector<int> Plant::getDays() const {
 /**
  * @brief returns the price of the plant
  *
- * @return int
+ * @return float
  */
-int Plant::getPrice() const {
+float Plant::getPrice() const {
   return price;
 }
 
 /**
  * @brief Attach an observer (Staff) to this Plant
  * Adds a Staff member to the list of observers that will be notified of state changes
- * 
+ *
  * @param s Pointer to Staff object to attach as observer
  */
 void Plant::attach(Staff* s) {
@@ -337,32 +343,40 @@ void Plant::attach(Staff* s) {
  * @brief Detach an observer (Staff) from this Plant
  * Removes a Staff member from the list of observers
  * Uses operator== to find matching Staff member
- * 
+ *
  * @param s Pointer to Staff object to detach
  */
-void Plant::detach(Staff* s) {
-  if (s == nullptr) 
-    return;
-  for (auto it = staff.begin(); it != staff.end(); ++it) {
-    if (*it != nullptr && **it == *s) {
-      staff.erase(it);
-      break;
-    }
-  }
-}
+// void Plant::detach(Staff* s) {
+//   if (s == nullptr) return;
+//   for (auto it = staff.begin(); it != staff.end(); ++it) {
+//     if (*it != nullptr && **it == *s) {
+//       staff.erase(it);
+//       break;
+//     }
+//   }
+// }
+// void Plant::detach(Staff* s) {
+//   if (s == nullptr) return;
+//   for (auto it = staff.begin(); it != staff.end(); ++it) {
+//     if (*it != nullptr && **it == *s) {
+//       staff.erase(it);
+//       break;
+//     }
+//   }
+// }
 
-/**
- * @brief Notify all attached observers of a state change
- * Calls update() on each Staff observer in the list
- * Part of the Observer design pattern implementation
- */
-void Plant::notify() {
-  for (Staff* observer : staff) {
-    if (observer != nullptr) {
-      observer->update(this);
-    }
-  }
-}
+// /**
+//  * @brief Notify all attached observers of a state change
+//  * Calls update() on each Staff observer in the list
+//  * Part of the Observer design pattern implementation
+//  */
+// void Plant::notify() {
+//   for (Staff* observer : staff) {
+//     if (observer != nullptr) {
+//       observer->update(this);
+//     }
+//   }
+// }
 
 /**
  * @brief updates daily water level
@@ -376,12 +390,13 @@ void Plant::updateWaterLevel(int newLevel) {
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::updateSunLevel(int newLevel) {
-  // if (sun.size() >= 1) sun[0] = newLevel;
+  sun = newLevel;
 }
 
 void Plant::transpire(int decreasedLevel) {
-  this->water[0] = decreasedLevel;
-  state->handleChange();
+  this->water[0] = sunStrategy->apply(water[0], sun, -1);
+  this->fertiliser[0] = sunStrategy->apply(fertiliser[0], sun, -1);
+  state->handleChange(this);
 }
 
 /**
@@ -408,6 +423,14 @@ string Plant::getState() {
   return state->getState();
 }
 
+/**
+ * @brief returns the state objects
+ *
+ * @return PlantState*
+ */
+PlantState* Plant::currState() const {
+  return state;
+}
 /**
  * @brief Returns clone of the plant
  */
@@ -452,4 +475,12 @@ bool Plant::operator==(string name) {
     return true;
   }
   return false;
+}
+
+/**
+ * @brief changes the state of the plant
+ *
+ */
+void Plant::changeState() {
+  state->handleChange(this);
 }

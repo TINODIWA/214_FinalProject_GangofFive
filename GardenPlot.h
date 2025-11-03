@@ -34,6 +34,9 @@ class GardenPlot {
   vector<Garden*> get(string name, int num);
   Garden* get(string name);
   string print();
+  int size();
+  int numCrops();
+  Iterator* access();
 
 };
 #endif  // GARDENPLOT_H_

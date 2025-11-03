@@ -13,6 +13,7 @@
 
 #include "Garden.h"
 #include "Iterator.h"
+#include "CropIterator.h"
 #include "Plant.h"
 
 using namespace std;
@@ -20,8 +21,6 @@ using namespace std;
 class Crop : public Garden {
  private:
   vector<Garden*> plants;
-  struct itImpl;
-  itImpl* pImpl;
 
  public:
   Crop();
@@ -30,11 +29,9 @@ class Crop : public Garden {
   void add(Garden* p);
   Garden* clone();
   string print();
-  void removeDeadPlants();
+  // void removeDeadPlants();
   Iterator* createIterator();
   map<string, int> summary(map<string, int>& sum);
-  bool done();
-  Garden* next();
   vector<Garden*> get(string name, int num);
   Garden* get(string name);
 };

@@ -7,15 +7,16 @@
 #define GROWING_H_
 #include "PlantState.h"
 
-#include "PlantState.h"
+class Plant;
+
 class Growing : public PlantState {
  public:
   Growing();
   ~Growing();
   Growing(const PlantState& other);
-  PlantState* clone();
-  void handleChange();
+  void handleChange(Plant* p);
   string getState();
+  PlantState* clone();
 };
 
 #endif  // GROWING_H_

@@ -10,40 +10,46 @@
  */
 
 #include "Dying.h"
+#include "Plant.h"
+#include "Dead.h"
 
 /**
  * @brief Default constructor for the Dying state
  */
-Dying::Dying() {
-    // Constructor implementation
+Dying::Dying() : prev(nullptr) {
+  // Constructor implementation
 }
 
 /**
  * @brief Default destructor for the Dying state
  */
-Dying::~Dying(){}
+Dying::~Dying() {}
 
 /**
  * @brief Copy constructor for the Dying state
  * @param other Reference to another PlantState object to copy from
  */
 Dying::Dying(const PlantState& other) : PlantState(other) {
-    // Copy constructor implementation
+  // Copy constructor implementation
 }
 
 /**
  * @brief Handles the state transition from Dying to the next state
  */
-void Dying::handleChange() {
-    // State transition logic implementation
-}
+void Dying::handleChange(Plant* p) {
+  PlantState* curr = p->currState();
 
-/**
- * @brief Creates a deep copy of the current Dying state
- * @return PlantState* Pointer to a new Dying state object
- */
-PlantState* Dying::clone() {
-    return new Dying(*this);
+  string state = prev->getState();
+  if (state == "Mature") {
+    delete curr;
+    p->setState(new Dead());
+  } else if (!dying(p)) {
+    delete curr;
+    p->setState(prev);
+  } else if (dying(p)) {
+    delete curr;
+    p->setState(new Dead());
+  }
 }
 
 /**
@@ -51,5 +57,21 @@ PlantState* Dying::clone() {
  * @return string The name of the current state ("Dying")
  */
 string Dying::getState() {
-    return "Dying";
+  return "Dying";
+}
+
+/**
+ * @brief sets the prev attribute
+ *
+ */
+void Dying::setPrev(PlantState* prev) {
+  this->prev = prev;
+}
+
+/**
+ * @brief clones the state of the plant
+ *
+ */
+PlantState* Dying::clone() {
+  return new Dying(*this);
 }

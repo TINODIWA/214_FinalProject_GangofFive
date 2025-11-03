@@ -23,7 +23,7 @@ class BuildPlant {
   virtual BuildPlant* setSunCare(char level) = 0;
   virtual BuildPlant* setFertiliserCare(char level) = 0;
   virtual BuildPlant* setDays(vector<int> days) = 0;
-  virtual BuildPlant* setPrice(int price) = 0;
+  virtual BuildPlant* setPrice(float price) = 0;
   virtual Plant* build() = 0;
   virtual BuildPlant* clone() = 0;
   virtual void reset() = 0;

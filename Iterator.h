@@ -20,6 +20,7 @@ class Iterator {
   virtual Garden* remove() = 0;
   Garden* operator*();
   virtual Iterator* operator++() = 0;
+  virtual int size() = 0;
 };
 
 #endif  // ITERATOR_H_

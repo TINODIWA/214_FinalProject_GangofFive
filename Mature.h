@@ -6,17 +6,18 @@
 #ifndef MATURE_H
 #define MATURE_H
 #include "PlantState.h"
+#include <vector>
 
-#include "PlantState.h"
+class Plant;
 
 class Mature : public PlantState {
  public:
   Mature();
   ~Mature();
   Mature(const PlantState& other);
-  PlantState* clone();
-  void handleChange();
+  void handleChange(Plant* p);
   string getState();
+  PlantState* clone();
 };
 
 #endif  // MATURE_H_
