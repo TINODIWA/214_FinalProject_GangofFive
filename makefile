@@ -5,14 +5,14 @@ MAIN = main
 TEST = test
 
 
-OBJS = Garden.o Plant.o Crop.o PlantCare.o \
-	People.o Staff.o Customer.o Request.o\
-	Builder.o BuildPlant.o CropBuilder.o PlantBuilder.o\
-	Director.o High.o Medium.o Low.o  Iterator.o CropIterator.o \
-	Payment.o EFT.o Card.o Cash.o\
-	PlantState.o Planted.o\
-	Roles.o BaseStaff.o Sales.o Admin.o Management.o Gardening.o\
-	GardenPlot.o
+OBJS = Garden.o Plant.o Crop.o PlantCare.o Nursery.o \
+	CustomerCare.o People.o Staff.o Customer.o Request.o \
+	Builder.o CropBuilder.o PlantBuilder.o BuildPlant.o \
+	Director.o Iterator.o  CropIterator.o Payment.o EFT.o Card.o Cash.o \
+	BaseStaff.o Roles.o Sales.o Gardening.o Admin.o Management.o \
+	StaffCo_ordination.o Command.o CheckInventory.o \
+	High.o Medium.o Low.o PlantState.o Planted.o \
+	CheckPlant.o HireStaff.o FireStaff.o  GardenPlot.o
 		
 
 MAIN_OBJS = $(OBJS) Main.o

@@ -10,6 +10,7 @@
  */
 
 #include "Staff.h"
+#include "People.h"
 
 /**
  * @brief Construct a new Staff:: Staff object
@@ -53,20 +54,20 @@ void Staff::setSuccessor(Staff* succ) {
 }
 
 /**
- * @brief Handles customer requests by passing them to the successor if exists
+ * @brief stubbed for concrete staff
  *
  * @param req Customer request to handle
  */
-void Staff::handleCustomer(Request* req) {
-  if (this->successor) {
-    this->successor->handleCustomer(req);
-  }
+void Staff::handleCustomer(Request req, Customer* customer) {
+  // if (this->successor) {
+  //   this->successor->handleCustomer(req);
+  // }
 }
 
 /**
  * @brief Equality operator for Staff objects
  * Compares two Staff objects based on their names
- * 
+ *
  * @param other The Staff object to compare with
  * @return true if both Staff objects have the same name
  * @return false if the Staff objects have different names
@@ -77,4 +78,20 @@ bool Staff::operator==(const Staff& other) const {
   }
 
   return true;
+}
+
+int Staff::readIntInRange(int lo, int hi, const std::string& prompt, const std::string& errPrompt) {
+  int value;
+  std::cout << prompt;
+
+  for (;;) {
+    if ((std::cin >> value) && value >= lo && value <= hi) {
+      
+      return value;
+    }
+
+    std::cin.clear();
+    std::cin.ignore(10000, '\n');  
+    std::cout << errPrompt;
+  }
 }

@@ -10,7 +10,8 @@
  */
 
 #include "Management.h"
-
+#include "CustomerCare.h"
+#include "Customer.h"
 
 /**
  * @brief Construct a new Management object.
@@ -26,50 +27,65 @@ Management::~Management() {}
  * @brief Get the staff type for this object.
  */
 std::string Management::getType() {
-	return Roles::getType() + ": Management";
+  return Roles::getType() + ": Management";
 }
 
 /**
  * @brief Get the job description for this staff role.
  */
 std::string Management::jobDesc() {
-	return Roles::jobDesc() + "\nManagement staff responsible for assigning tasks and operations.";
+  return Roles::jobDesc() + "\nManagement staff responsible for assigning tasks and operations.";
 }
 
-
-void Management::assignTasks() {
-    
+void Management::assignTasks(Nursery* group) {
+  CheckInventory cmd1(this, group);
+  cmd1.execute();
+  CheckPlant cmd2(this, group);
+  cmd2.execute();
 }
 
-void Management::addCommand(Command* c) {
-    if (c) {
-        cmd.push_back(c);
-    }
+void Management::hireStaff(Staff* newStaff) {
+  Nursery* med = getNursery();
+  if (!med || !newStaff) return;
+
+  HireStaff cmd(this, med, newStaff);
+  cmd.execute();
 }
 
-void Management::handleCustomer(Request* req) {
-    if (req) {
-        std::cout << "Management staff handled request: " << req->getRequest() << std::endl;
-    } else if (successor) {
-        successor->handleCustomer(req);
-    } else {
-        std::cout << "No staff could handle the request." << std::endl;
-    }
+void Management::fireStaff(Staff* exStaff) {
+  Nursery* med = getNursery();
+  if (!med || !exStaff) return;
+
+  FireStaff cmd(this, med, exStaff);
+  cmd.execute();
 }
 
-void Management::handlePlant(Plant* p) {
-    //doesnt handle plants boss
+void Management::handleCustomer(Request req, Customer* customer) {  // add complaints
+  if (req.getRequest() == "Complaint") {
+    std::cout << "I am " + name + " and I will be assisting you with you today.\n Passing order back to manager..."
+              << std::endl;
+  } else if (req.getRequest() == "Return") {
+    std::cout << "I am " + name + " and I will be assisting your RETURN.\n Passing order back to manager..."
+              << std::endl;
+  } else if (successor) {
+    successor->handleCustomer(req, customer);
+  } else {
+    std::cout << "No staff could handle the request." << std::endl;
+  }
 }
-
-// void Management::receive(string m, People* from, Nursery* group, string type) {
-//     if (!group) return;
-
-//     if (type == "CheckPlant" || type == "PlantDeadReport") {
-//         std::cout << "Management received plant report: " << m << std::endl;
-//         group->sendMessage(string("Please update inventory to remove dead plants"), this, string("UpdateInventory"));
-//     }
-// }
 
 void Management::receive(string m, People* from, Nursery* group, string type) {
+  std::cout << getName() << " (" << getType() << ") received [" << type << "]: " << m;
+  if (from) std::cout << " from " << from->getName() << " (" << static_cast<Staff*>(from)->getType() << ")";
+  std::cout << std::endl;
+
+  if (type == "PlantDeadReport") {
+    CheckInventory cmd(this, group);
+    cmd.execute();
+  } else {
+    cout << "Sorry, " << this->getName() << " (" << this->getType() << ") can not help with this request" << endl;
+  }
 }
 
+void Management::update(Plant* p) {}       // stubbed
+void Management::handlePlant(Plant* p) {}  // stubbed
