@@ -355,28 +355,28 @@ void Plant::attach(Staff* s) {
 //     }
 //   }
 // }
-void Plant::detach(Staff* s) {
-  if (s == nullptr) return;
-  for (auto it = staff.begin(); it != staff.end(); ++it) {
-    if (*it != nullptr && **it == *s) {
-      staff.erase(it);
-      break;
-    }
-  }
-}
+// void Plant::detach(Staff* s) {
+//   if (s == nullptr) return;
+//   for (auto it = staff.begin(); it != staff.end(); ++it) {
+//     if (*it != nullptr && **it == *s) {
+//       staff.erase(it);
+//       break;
+//     }
+//   }
+// }
 
 // /**
 //  * @brief Notify all attached observers of a state change
 //  * Calls update() on each Staff observer in the list
 //  * Part of the Observer design pattern implementation
 //  */
-void Plant::notify() {
-  for (Staff* observer : staff) {
-    if (observer != nullptr) {
-      observer->update(this);
-    }
-  }
-}
+// void Plant::notify() {
+//   for (Staff* observer : staff) {
+//     if (observer != nullptr) {
+//       observer->update(this);
+//     }
+//   }
+// }
 
 /**
  * @brief updates daily water level
@@ -396,7 +396,7 @@ void Plant::updateSunLevel(int newLevel) {
 void Plant::transpire(int decreasedLevel) {
   this->water[0] = sunStrategy->apply(water[0], sun, -1);
   this->fertiliser[0] = sunStrategy->apply(fertiliser[0], sun, -1);
-  state->handleChange();
+  state->handleChange(this);
 }
 
 /**

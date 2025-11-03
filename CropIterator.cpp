@@ -98,3 +98,12 @@ Garden* CropIterator::remove() {
   }
   return nullptr;
 }
+
+/**
+ * @brief return the number of elements in the crop
+ * 
+ */
+
+ int CropIterator::size(){
+  return static_cast<int>(plants.size());
+ }
