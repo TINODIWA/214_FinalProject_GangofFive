@@ -87,5 +87,5 @@ Garden* CropBuilder::getCrop() {
  */
 
  CropBuilder* CropBuilder::clone(){
-  return new CropBuilder(*this);
+  return new CropBuilder(this);
  }

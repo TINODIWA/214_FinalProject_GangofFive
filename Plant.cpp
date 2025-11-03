@@ -17,11 +17,7 @@
  *
  */
 Plant::Plant()
-    : state(new Planted()),
-      waterStrategy(nullptr),
-      sunStrategy(nullptr),
-      fertiliserStrategy(nullptr),
-      sun(0) {
+    : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
   for (int i = 0; i < 2; i++) {
     water.push_back(0);
     fertiliser.push_back(0);
@@ -217,7 +213,7 @@ void Plant::setDays(vector<int> days) {
  *
  * @param price
  */
-void Plant::setPrice(int price) {
+void Plant::setPrice(float price) {
   this->price = price;
 }
 
@@ -315,16 +311,16 @@ vector<int> Plant::getDays() const {
 /**
  * @brief returns the price of the plant
  *
- * @return int
+ * @return float
  */
-int Plant::getPrice() const {
+float Plant::getPrice() const {
   return price;
 }
 
 /**
  * @brief Attach an observer (Staff) to this Plant
  * Adds a Staff member to the list of observers that will be notified of state changes
- * 
+ *
  * @param s Pointer to Staff object to attach as observer
  */
 void Plant::attach(Staff* s) {
@@ -337,32 +333,31 @@ void Plant::attach(Staff* s) {
  * @brief Detach an observer (Staff) from this Plant
  * Removes a Staff member from the list of observers
  * Uses operator== to find matching Staff member
- * 
+ *
  * @param s Pointer to Staff object to detach
  */
-void Plant::detach(Staff* s) {
-  if (s == nullptr) 
-    return;
-  for (auto it = staff.begin(); it != staff.end(); ++it) {
-    if (*it != nullptr && **it == *s) {
-      staff.erase(it);
-      break;
-    }
-  }
-}
+// void Plant::detach(Staff* s) {
+//   if (s == nullptr) return;
+//   for (auto it = staff.begin(); it != staff.end(); ++it) {
+//     if (*it != nullptr && **it == *s) {
+//       staff.erase(it);
+//       break;
+//     }
+//   }
+// }
 
-/**
- * @brief Notify all attached observers of a state change
- * Calls update() on each Staff observer in the list
- * Part of the Observer design pattern implementation
- */
-void Plant::notify() {
-  for (Staff* observer : staff) {
-    if (observer != nullptr) {
-      observer->update(this);
-    }
-  }
-}
+// /**
+//  * @brief Notify all attached observers of a state change
+//  * Calls update() on each Staff observer in the list
+//  * Part of the Observer design pattern implementation
+//  */
+// void Plant::notify() {
+//   for (Staff* observer : staff) {
+//     if (observer != nullptr) {
+//       observer->update(this);
+//     }
+//   }
+// }
 
 /**
  * @brief updates daily water level
@@ -376,11 +371,12 @@ void Plant::updateWaterLevel(int newLevel) {
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::updateSunLevel(int newLevel) {
-  // if (sun.size() >= 1) sun[0] = newLevel;
+  sun = newLevel;
 }
 
 void Plant::transpire(int decreasedLevel) {
-  this->water[0] = decreasedLevel;
+  this->water[0] = sunStrategy->apply(water[0], sun, -1);
+  this->fertiliser[0] = sunStrategy->apply(fertiliser[0], sun, -1);
   state->handleChange();
 }
 

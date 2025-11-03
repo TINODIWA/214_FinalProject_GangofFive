@@ -27,7 +27,7 @@ class PlantBuilder : public BuildPlant {
   PlantBuilder* setSunCare(char level);
   PlantBuilder* setFertiliserCare(char level);
   PlantBuilder* setDays(vector<int> days);
-  PlantBuilder* setPrice(int price);
+  PlantBuilder* setPrice(float price);
   Plant* build();
   PlantBuilder* clone();
   void reset();
