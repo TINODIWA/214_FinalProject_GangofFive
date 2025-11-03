@@ -31,6 +31,13 @@ PlantState::PlantState(const PlantState& other) {}
  */
 PlantState::~PlantState() {}
 
+/**
+ * @brief checks if the plant has its required water and fertiliser
+ * 
+ * @param p 
+ * @return true 
+ * @return false 
+ */
 bool PlantState::dying(Plant* p) {
   bool bad = false;
 
@@ -42,3 +49,10 @@ bool PlantState::dying(Plant* p) {
 
   return bad;
 }
+
+/**
+ * @brief sets previous state for dying - stubbed
+ * 
+ * @param prev 
+ */
+void PlantState::setPrev(PlantState* prev){}

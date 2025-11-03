@@ -378,7 +378,7 @@ void Plant::updateSunLevel(int newLevel) {
 
 void Plant::transpire(int decreasedLevel) {
   this->water[0] = decreasedLevel;
-  state->handleChange(this);
+  //state->handleChange(this,);
 }
 
 /**
@@ -405,6 +405,14 @@ string Plant::getState() {
   return state->getState();
 }
 
+/**
+ * @brief returns the state objects
+ * 
+ * @return PlantState* 
+ */
+PlantState* Plant::currState() const{
+  return state;
+}
 /**
  * @brief Returns clone of the plant
  */

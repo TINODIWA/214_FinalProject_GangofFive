@@ -10,6 +10,7 @@
  */
 
 #include "Dead.h"
+#include "Plant.h"
 
 /**
  * @brief Default constructor for the Dead state
@@ -34,17 +35,10 @@ Dead::Dead(const PlantState& other) : PlantState(other) {
 /**
  * @brief Handles the state transition from Dead to the next state
  */
-void Dead::handleChange() {
-    // State transition logic implementation
+void Dead::handleChange(Plant* p) {
+    cout<<"This Plant is dead :(\n";
 }
 
-/**
- * @brief Creates a deep copy of the current Dead state
- * @return PlantState* Pointer to a new Dead state object
- */
-PlantState* Dead::clone() {
-    return new Dead(*this);
-}
 
 /**
  * @brief Returns the string representation of the current state

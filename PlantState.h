@@ -18,8 +18,9 @@ class PlantState {
   PlantState(const PlantState& other);
   virtual ~PlantState();
   bool dying(Plant*p);
-  virtual void handleChange(Plant* p,int day) = 0;
+  virtual void handleChange(Plant* p) = 0;
   virtual string getState() = 0;
+  virtual void setPrev(PlantState* prev);
 };
 
 #endif  // PLANTSTATE_H_

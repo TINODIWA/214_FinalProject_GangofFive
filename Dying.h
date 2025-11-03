@@ -7,15 +7,19 @@
 #define DYING_H_
 
 #include "PlantState.h"
+class Plant;
 
 class Dying : public PlantState {
+ private:
+  PlantState* prev;
+
  public:
   Dying();
   ~Dying();
   Dying(const PlantState& other);
-  PlantState* clone();
-  void handleChange();
+  void handleChange(Plant* p);
   string getState();
+  void setPrev(PlantState* prev);
 };
 
 #endif  // DYING_H_

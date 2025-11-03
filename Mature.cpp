@@ -11,6 +11,7 @@
 #include "Mature.h"
 #include "Plant.h"
 #include "Dying.h"
+#include "Dead.h"
 
 /**
  * @brief Default constructor for the Mature state
@@ -36,7 +37,16 @@ Mature::Mature(const PlantState& other) : PlantState(other) {
  * @brief Handles the state transition from Mature to the next state
  */
 void Mature::handleChange(Plant* p) {
-  
+  if (dying(p)) {
+    PlantState* curr = p->currState();
+
+    p->setState(new Dying());
+    p->currState()->setPrev(curr);
+    return;
+  }
+
+   vector<int> days = p->getDays();
+  if (days[0] == days[3]) p->setState(new Dead());
 }
 
 /**

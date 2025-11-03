@@ -14,7 +14,7 @@ class Planted : public PlantState {
   Planted();
   ~Planted();
   Planted(const PlantState& other);
-  void handleChange(Plant* p,int day);
+  void handleChange(Plant* p);
   string getState();
 };
 

@@ -89,6 +89,7 @@ class Plant : public Garden {
   void updateFertiliserLevel(int newLevel);
   void updateDay();
   string getState();
+  PlantState* currState() const;
   void changeState();
 };
 

@@ -11,6 +11,7 @@
 #include "Planted.h"
 #include "Plant.h"
 #include "Growing.h"
+#include "Dying.h"
 
 /**
  * @brief Default constructor for the Planted state
@@ -31,14 +32,17 @@ Planted::Planted(const PlantState& other) : PlantState(other) {}
 /**
  * @brief Handles the state transition from Planted to the next state
  */
-void Planted::handleChange(Plant* p, int day) {
+void Planted::handleChange(Plant* p) {
   if (dying(p)) {
+    PlantState* curr = p->currState();
+
     p->setState(new Dying());
+    p->currState()->setPrev(curr);
     return;
   }
 
-  int check = p->getDays()[0];
-  if (check == day) p->setState(new Growing());
+  vector<int> days = p->getDays();
+  if (days[0] == days[1]) p->setState(new Growing());
 }
 
 /**
