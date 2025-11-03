@@ -19,27 +19,37 @@ CustomerCare::CustomerCare() : Nursery() {}
 
 CustomerCare::CustomerCare(Garden* g) : Nursery(g) {}
 
-CustomerCare::~CustomerCare(){
-
-}
+CustomerCare::~CustomerCare() {}
 
 void CustomerCare::addStaff(Staff* s) {
-  if (s) staff.push_back(s);
+  if (s) {
+    staff.push_back(s);
+    s->setNursery(this);
+  }
 }
 
 void CustomerCare::removeStaff(Staff* s) {
   for (auto it = staff.begin(); it != staff.end(); ++it) {
-    if (*it == s) { staff.erase(it); return; }
+    if (*it == s) {
+      staff.erase(it);
+      return;
+    }
   }
 }
 
 void CustomerCare::addCustomer(Customer* c) {
-  if (c) customers.push_back(c);
+  if (c) {
+    customers.push_back(c);
+    c->setNursery(this);
+  }
 }
 
 void CustomerCare::removeCustomer(Customer* c) {
   for (auto it = customers.begin(); it != customers.end(); ++it) {
-    if (*it == c) { customers.erase(it); return; }
+    if (*it == c) {
+      customers.erase(it);
+      return;
+    }
   }
 }
 
@@ -64,30 +74,25 @@ string CustomerCare::getName() const {
   return "CustomerCare";
 }
 
-void CustomerCare::setChain(const std::vector<Staff*>& order) {
-  if (order.empty()) { chainHead = NULL; return; }
-  // Link successors in the provided order
-  for (size_t i = 0; i + 1 < order.size(); ++i) {
-    if (order[i]) order[i]->setSuccessor(order[i+1]);
-  }
-  // Last in chain has no successor
-  if (order.back()) order.back()->setSuccessor(NULL);
-  chainHead = order.front();
+void CustomerCare::setChain() {
+  Staff* base = this->findStaffByType("BaseStaff");
+  Staff* gardener = this->findStaffByType("Gardening");
+  Staff* sales = this->findStaffByType("Sales");
+  Staff* manager = this->findStaffByType("Management");
+  chainHead = base;
+  base->setSuccessor(gardener);
+  gardener->setSuccessor(sales);
+  sales->setSuccessor(manager);
+  manager->setSuccessor(NULL);
 }
 
-void CustomerCare::routeRequest(Request req, Customer* from) {
-  if (chainHead ) {
-    chainHead->handleCustomer(req);
-  } else {
-    // Fallback: notify staff via receive
-    for (Staff* s : staff) {
-      if (s) s->receive("Customer request", from, this, "CustomerRequest");
-    }
-  }
-}
-
-void CustomerCare::notify(Request req) {
+void CustomerCare::notify(Request req, Customer* customer) {
+  // setChain(),
   if (chainHead) {
-    chainHead->handleCustomer(req);
+    chainHead->handleCustomer(req, customer);
+  } else {
+    for (Staff* s : staff) {
+      if (s) s->receive("Customer request", customer, this, "CustomerRequest");
+    }
   }
 }

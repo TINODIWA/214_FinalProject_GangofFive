@@ -42,7 +42,7 @@ void Admin::updateInventory() {
     root->removeDeadPlants();
 }
 
-void Admin::handleCustomer(Request req) {//stubbed
+void Admin::handleCustomer(Request req, Customer* customer) {//stubbed
 
 }
 

@@ -17,6 +17,7 @@
 #include "Crop.h"
 #include <functional>
 #include "CustomerCare.h"
+#include "Customer.h"
 
 /**
  * @brief Construct a new Gardening object.
@@ -70,7 +71,7 @@ void Gardening::checkPlants() {
     }
   }
 }
-void Gardening::handleCustomer(Request req) {
+void Gardening::handleCustomer(Request req, Customer* customer) {
   if (req.getRequest() == "Advice") {
     std::cout << "I am " << name << " and I will be assisting you.\n"
               << "nursery->getGarden()->viewAll()\n"
@@ -95,22 +96,22 @@ void Gardening::handleCustomer(Request req) {
         break;
       case 2:
         std::cout << pass << "\n";
-        // ((CustomerCare*)nursery)->notify( Request("Order"));
+        ((CustomerCare*)nursery)->notify( Request("Order"),customer);
         break;
       case 3:
         std::cout << pass << "\n";
-        // ((CustomerCare*)nursery)->notify(Request("Return"));
+        ((CustomerCare*)nursery)->notify(Request("Return"),customer);
         break;
       case 4:
         std::cout << pass << "\n";
-        // ((CustomerCare*)nursery)->notify( Request("Repurchase"));
+        ((CustomerCare*)nursery)->notify( Request("Repurchase"),customer);
         break;
       default:
         std::cout << "Error in request case switch!\n";
         break;
     }
   } else if (successor) {
-    successor->handleCustomer(req);
+    successor->handleCustomer(req, customer);
   } else {
     std::cout << "No staff could handle the request.\n";
   }

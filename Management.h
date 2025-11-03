@@ -16,7 +16,7 @@ class Management : public Roles {
   std::string getType() override;
   std::string jobDesc() override;
 
-  void handleCustomer(Request req) override;
+  void handleCustomer(Request req, Customer* customer) override;
   void hireStaff(Staff* newStaff);
   void fireStaff(Staff* exStaff);
   void assignTasks(Nursery* group);

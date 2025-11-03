@@ -58,7 +58,7 @@ void Staff::setSuccessor(Staff* succ) {
  *
  * @param req Customer request to handle
  */
-void Staff::handleCustomer(Request req) {
+void Staff::handleCustomer(Request req, Customer* customer) {
   // if (this->successor) {
   //   this->successor->handleCustomer(req);
   // }
@@ -86,12 +86,12 @@ int Staff::readIntInRange(int lo, int hi, const std::string& prompt, const std::
 
   for (;;) {
     if ((std::cin >> value) && value >= lo && value <= hi) {
-      // valid number in range
+      
       return value;
     }
 
     std::cin.clear();
-    std::cin.ignore(10000, '\n');  // discard bad input
+    std::cin.ignore(10000, '\n');  
     std::cout << errPrompt;
   }
 }

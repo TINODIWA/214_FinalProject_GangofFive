@@ -12,6 +12,7 @@
 #include "Sales.h"
 #include <iostream>
 #include "CustomerCare.h"
+#include "Customer.h"
 
 Sales::Sales(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
 
@@ -28,7 +29,7 @@ std::string Sales::jobDesc() {
   return Roles::jobDesc() + "\nAdditionally, Sales staff are responsible for assisting customers with their purchases.";
 }
 
-void Sales::handleCustomer(Request req) {
+void Sales::handleCustomer(Request req, Customer* customer) {
   if (req.getRequest() == "Order") {
     std::cout
       << "I am " << name << " and I will be assisting you.\n"
@@ -74,7 +75,7 @@ void Sales::handleCustomer(Request req) {
   } else if (req.getRequest() == "Repurchase") {
     std::cout << "repurchaing logic\n";
   } else if (successor) {
-    successor->handleCustomer(req);
+    successor->handleCustomer(req,customer);
   } else {
     std::cout << "No staff could handle the request.\n";
   }

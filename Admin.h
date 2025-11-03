@@ -12,7 +12,7 @@ class Admin : public Roles {
   std::string getType() override;
   std::string jobDesc() override;
   void updateInventory();
-  void handleCustomer(Request req) override;
+  void handleCustomer(Request req, Customer* customer) override;
   void update(Plant* p);       // stubbed
   void handlePlant(Plant* p);  // stubbed
 

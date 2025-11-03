@@ -30,9 +30,9 @@ void Nursery::start(bool sim) {
 }
 
 void Nursery::setGarden(Garden* g) {
-  if(g == NULL) return;
-  if(garden == g) return;
-  if(garden) {
+  if (g == NULL) return;
+  if (garden == g) return;
+  if (garden) {
     delete garden;
   }
   garden = g;
@@ -43,12 +43,12 @@ Garden* Nursery::getGarden() {
 }
 
 vector<Staff*> Nursery::getStaff() {
-    return staff;
+  return staff;
 }
 
 Staff* Nursery::findStaffByType(const string& type) {
   for (Staff* s : staff) {
-    if (s && s->getType() == type) {
+    if (s && s->getType().find(type) != string::npos) {
       return s;
     }
   }

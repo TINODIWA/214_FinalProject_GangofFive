@@ -11,6 +11,7 @@
 
 #include "Management.h"
 #include "CustomerCare.h"
+#include "Customer.h"
 
 /**
  * @brief Construct a new Management object.
@@ -59,13 +60,15 @@ void Management::fireStaff(Staff* exStaff) {
   cmd.execute();
 }
 
-void Management::handleCustomer(Request req) {  // add complaints
+void Management::handleCustomer(Request req, Customer* customer) {  // add complaints
   if (req.getRequest() == "Complaint") {
-    std::cout << "I am " + name +
-                     " and I will be assisting you with you today.\n Passing order back to manager..."
+    std::cout << "I am " + name + " and I will be assisting you with you today.\n Passing order back to manager..."
+              << std::endl;
+  } else if (req.getRequest() == "Return") {
+    std::cout << "I am " + name + " and I will be assisting your RETURN.\n Passing order back to manager..."
               << std::endl;
   } else if (successor) {
-    successor->handleCustomer(req);
+    successor->handleCustomer(req, customer);
   } else {
     std::cout << "No staff could handle the request." << std::endl;
   }

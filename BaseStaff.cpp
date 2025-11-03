@@ -11,6 +11,7 @@
 
 #include "BaseStaff.h"
 #include "CustomerCare.h"
+#include "Customer.h"
 
 BaseStaff::BaseStaff() : Staff() {}
 
@@ -37,9 +38,9 @@ void BaseStaff::receive(std::string m, People* from, Nursery* group, std::string
 void BaseStaff::update(Plant* p) {}       // stubbed
 void BaseStaff::handlePlant(Plant* p) {}  // stubbed
 
-void BaseStaff::handleCustomer(Request req) {
+void BaseStaff::handleCustomer(Request req, Customer* customer) {
   if (req.getRequest() == "Enter") {
-    std::cout << "Welcome to the GOF Nursery. I am " << name << " and I will be helping you today.\n"
+    std::cout << "Welcome to the GOF Nursery, "<<customer->getName()<<". I am " << name << " and I will be helping you today.\n"
               << "Would you like to:\n"
               << "\t1) View the Garden\n"
               << "\t2) Create an order.\n"
@@ -58,26 +59,26 @@ void BaseStaff::handleCustomer(Request req) {
         break;
       case 2:
         std::cout << pass << "\n";
-        // ((CustomerCare*)nursery)->notify(new Request("Order"));
+        ((CustomerCare*)nursery)->notify(Request("Order"),customer);
         break;
       case 3:
         std::cout << pass << "\n";
-        // ((CustomerCare*)nursery)->notify(new Request("Advice"));
+        ((CustomerCare*)nursery)->notify(Request("Advice"),customer);
         break;
       case 4:
         std::cout << pass << "\n";
-        // ((CustomerCare*)nursery)->notify(new Request("Return"));
+        ((CustomerCare*)nursery)->notify(Request("Return"),customer);
         break;
       case 5:
         std::cout << pass << "\n";
-        // ((CustomerCare*)nursery)->notify(new Request("Repurchase"));
+        ((CustomerCare*)nursery)->notify(Request("Repurchase"),customer);
         break;
       default:
         std::cout << "Error in request case switch!\n";
         break;
     }
   } else if (successor) {
-    successor->handleCustomer(req);
+    successor->handleCustomer(req,customer);
   } else {
     std::cout << "No staff could handle the request.\n";
   }

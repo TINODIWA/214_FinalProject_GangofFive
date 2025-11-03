@@ -11,7 +11,7 @@ class Gardening : public Roles
     std::string jobDesc() override;
     
     void update(Plant* p);
-    void handleCustomer(Request req) override;
+    void handleCustomer(Request req, Customer* customer) override;
     void handlePlant(Plant* p);
     void checkPlants();
 

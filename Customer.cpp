@@ -13,12 +13,11 @@
 #include "CustomerCare.h"
 
 Customer::Customer(string name): People(NULL, name) {
-  // TODO(unathi,nathan,ryan) - implement Customer::Customer
-  // throw "Not yet implemented";
-  req = new Request("Enter");
+  //req = Request("Enter");
+  // order = NULL;
 }
 
-Customer::~Customer() {}
+Customer::~Customer() {}//should probably deletee their orders
 
 Customer::Customer(const Customer* other) {
   // if (other)
@@ -30,13 +29,15 @@ void Customer::makeReq(Request req) {
   Nursery* n = getNursery();
   if (n) {
     if (CustomerCare* cc = dynamic_cast<CustomerCare*>(n)) {
-      cc->routeRequest(req, this);
+      cc->notify(req, this);
     } else {
-      // Fallback to message-based mediation
+      
       send(req.getRequest(), n, "CustomerRequest");
     }
   } else {
     std::cout << "No customer care mediator set for customer: " << getName() << std::endl;
   }
 }
+
+void Customer::receive(string m, People* from, Nursery* group, string type){}
 
