@@ -58,6 +58,7 @@ class Plant : public Garden {
   void setFertiliserCare(char level);
   void setDays(vector<int> days);
   void setPrice(float price);
+  void setState(PlantState* state);
 
   string getName() const;
   string getType() const;
@@ -88,6 +89,8 @@ class Plant : public Garden {
   void updateFertiliserLevel(int newLevel);
   void updateDay();
   string getState();
+  PlantState* currState() const;
+  void changeState();
 };
 
 #endif  // PLANT_H_

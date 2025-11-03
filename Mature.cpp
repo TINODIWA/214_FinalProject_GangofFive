@@ -9,40 +9,46 @@
  *
  */
 #include "Mature.h"
+#include "Plant.h"
+#include "Dying.h"
+#include "Dead.h"
 
 /**
  * @brief Default constructor for the Mature state
  */
 Mature::Mature() {
-    // Constructor implementation
+  // Constructor implementation
 }
 
 /**
  * @brief Default destructor for the Mature state
  */
-Mature::~Mature(){}
+Mature::~Mature() {}
 
 /**
  * @brief Copy constructor for the Mature state
  * @param other Reference to another PlantState object to copy from
  */
 Mature::Mature(const PlantState& other) : PlantState(other) {
-    // Copy constructor implementation
+  // Copy constructor implementation
 }
 
 /**
  * @brief Handles the state transition from Mature to the next state
  */
-void Mature::handleChange() {
-    // State transition logic implementation
-}
+void Mature::handleChange(Plant* p) {
+  PlantState* curr = p->currState();
+  if (dying(p)) {
+    p->setState(new Dying());
+    p->currState()->setPrev(curr);
+    return;
+  }
 
-/**
- * @brief Creates a deep copy of the current Mature state
- * @return PlantState* Pointer to a new Mature state object
- */
-PlantState* Mature::clone() {
-    return new Mature(*this);
+  vector<int> days = p->getDays();
+  if (days[0] == days[3]) {
+    delete curr;
+    p->setState(new Dead());
+  }
 }
 
 /**
@@ -50,5 +56,13 @@ PlantState* Mature::clone() {
  * @return string The name of the current state ("Mature")
  */
 string Mature::getState() {
-    return "Mature";
+  return "Mature";
+}
+
+/**
+ * @brief clones the state of the plant
+ *
+ */
+PlantState* Mature::clone() {
+  return new Mature(*this);
 }

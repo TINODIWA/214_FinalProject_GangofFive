@@ -29,6 +29,7 @@ class Garden {
   virtual  vector<Garden*> get(string name, int num);
   virtual Garden* get(string name);
   virtual bool operator==(string name);
+  virtual void changeState(int days);
 };
 
 #endif  // GARDEN_H_

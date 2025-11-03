@@ -10,40 +10,33 @@
  */
 
 #include "Dead.h"
+#include "Plant.h"
 
 /**
  * @brief Default constructor for the Dead state
  */
 Dead::Dead() {
-    // Constructor implementation
+  // Constructor implementation
 }
 
 /**
  * @brief Default destructor for the Dead state
  */
-Dead::~Dead(){}
+Dead::~Dead() {}
 
 /**
  * @brief Copy constructor for the Dead state
  * @param other Reference to another PlantState object to copy from
  */
 Dead::Dead(const PlantState& other) : PlantState(other) {
-    // Copy constructor implementation
+  // Copy constructor implementation
 }
 
 /**
  * @brief Handles the state transition from Dead to the next state
  */
-void Dead::handleChange() {
-    // State transition logic implementation
-}
-
-/**
- * @brief Creates a deep copy of the current Dead state
- * @return PlantState* Pointer to a new Dead state object
- */
-PlantState* Dead::clone() {
-    return new Dead(*this);
+void Dead::handleChange(Plant* p) {
+  cout << "This Plant is dead :(\n";
 }
 
 /**
@@ -51,5 +44,13 @@ PlantState* Dead::clone() {
  * @return string The name of the current state ("Dead")
  */
 string Dead::getState() {
-    return "Dead";
+  return "Dead";
+}
+
+/**
+ * @brief clones the state of the plant
+ *
+ */
+PlantState* Dead::clone() {
+  return new Dead(*this);
 }

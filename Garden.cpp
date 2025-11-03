@@ -16,7 +16,7 @@
  * @brief Construct a new Garden:: Garden object
  *
  */
-Garden::Garden(){}
+Garden::Garden() {}
 
 /**
  * @brief Destroy the Garden:: Garden object
@@ -102,3 +102,5 @@ bool Garden::operator==(string name) {
 Garden* Garden::get(string name) {
   return nullptr;
 }
+
+void Garden::changeState(int days) {}

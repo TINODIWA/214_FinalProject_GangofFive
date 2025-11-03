@@ -100,11 +100,11 @@ vector<Garden*> GardenPlot::get(string name, int num) {
 
 /**
  * @brief get the plant with the passed in name
- * 
- * @param name 
- * @return Garden* 
+ *
+ * @param name
+ * @return Garden*
  */
-Garden* GardenPlot::get(string name){
+Garden* GardenPlot::get(string name) {
   return garden->get(name);
 }
 
@@ -116,4 +116,52 @@ Garden* GardenPlot::get(string name){
  */
 string GardenPlot::print(){
   return garden->print();
+}
+
+/**
+ * @brief return number if plants in the garden
+ *
+ * @return int
+ */
+int GardenPlot::size() {
+  Iterator* it = garden->createIterator();
+
+  int size = 0;
+
+  while (!it->done()) {
+    size += it->size();
+
+    ++(*it);
+  }
+
+  delete it;
+  return size;
+}
+
+/**
+ * @brief return the number of crops in the garden
+ *
+ * @return int
+ */
+int GardenPlot::numCrops() {
+  Iterator* it = garden->createIterator();
+
+  int num = 0;
+
+  while (!it->done()) {
+    ++num;
+    ++(*it);
+  }
+
+  delete it;
+  return num;
+}
+
+/**
+ * @brief gives an iterator to the root of the garden
+ *
+ * @return Iterator*
+ */
+Iterator* GardenPlot::access() {
+  return garden->createIterator();
 }

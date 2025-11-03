@@ -25,6 +25,7 @@ class CropIterator : public Iterator {
   Garden* current();
   Iterator* operator++();
   Garden* remove();
+  int size();
 };
 
 #endif  // CROPITERATOR_H_
