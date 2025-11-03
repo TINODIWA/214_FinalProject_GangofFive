@@ -107,3 +107,13 @@ vector<Garden*> GardenPlot::get(string name, int num) {
 Garden* GardenPlot::get(string name){
   return garden->get(name);
 }
+
+
+/**
+ * @brief prints the garden
+ * 
+ * @return string 
+ */
+string GardenPlot::print(){
+  return garden->print();
+}
