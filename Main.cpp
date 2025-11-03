@@ -1,17 +1,5 @@
-/**
- * @file TestingMain.cpp
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2025-10-29
- *
- * @copyright Copyright (c) 2025
- *
- */
-
+#include "Director.h"
 #include "Builder.h"
-#include "Card.h"
-#include "Cash.h"
 #include "CropBuilder.h"
 #include "PlantBuilder.h"
 #include "Customer.h"
@@ -113,5 +101,5 @@ int main() {
   // delete teller_1;
   // delete c1;
 
-  return 0;
+    return 0;
 }

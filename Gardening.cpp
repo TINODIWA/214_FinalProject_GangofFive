@@ -39,12 +39,6 @@ std::string Gardening::jobDesc() {
 }
 
 void Gardening::update() {
-  // for (int i = 0; i < plants.size(); ++i) {
-  // 	Plant* plant = plants[i];
-  // 	if (plant) {
-  // 		std::cout << "Updating plant: " << plant->getName() << std::endl;
-  // 	}
-  // }
 }
 
 void Gardening::checkPlants() {
@@ -63,7 +57,7 @@ void Gardening::checkPlants() {
             if (Plant* p = dynamic_cast<Plant*>(g)) {
                 std::string state = p->getState();
                 if (state == "Dead") {
-                    Staff* mgmt = med->findStaffByType("Management");
+                    Staff* mgmt = med->findStaffByType("BaseStaff: Management");
                     std::string msg = "Plant '" + p->getName() + "' has died";
                     if (mgmt) send(msg, mgmt, med, "PlantDeadReport");
                 } else if (state == "Dying") {
@@ -130,12 +124,20 @@ void Gardening::handleCustomer(Request* req) {
 
 void Gardening::handlePlant(Plant* p) {
     if (!p) return;
-    // Start watering: set current water to required level
-    auto w = p->getWater();
+    vector<int> w = p->getWater();
     if (w.size() >= 2) {
-        p->updateWaterLevel(w[1]);
-        std::cout << getName() << " watered '" << p->getName() << "' to required level (" << w[1] << ")" << std::endl;
+        // p->plantCare();
+        std::cout << getName() << " watered '" << p->getName() << "'" << std::endl;
     }
 }
 
-void Gardening::receive(string m, People* from, Nursery* group, string type) {}
+void Gardening::receive(string m, People* from, Nursery* group, string type) {
+  if (!(from && group)) return;
+
+  if (dynamic_cast<Staff*>(from)->getType() == "Manager" && group->getName() == "StaffCo_ordination") {
+    if (type == "CheckPlants") {
+      this->checkPlants();
+    }
+  }
+}
+

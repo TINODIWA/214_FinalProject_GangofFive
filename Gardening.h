@@ -1,6 +1,10 @@
 #ifndef GARDENING_H
 #define GARDENING_H
 #include "Roles.h"
+#include <string>
+#include <vector>
+#include <iostream>
+using namespace std;
 
 class Gardening : public Roles
 {
@@ -12,7 +16,7 @@ class Gardening : public Roles
     
     void update();
     void handleCustomer(Request* req) override;
-    void handlePlant(Plant* p) override;
+    void handlePlant(Plant* p);
     void checkPlants();
 
     virtual void receive(string m, People* from, Nursery* group, string type);

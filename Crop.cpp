@@ -127,29 +127,36 @@ Iterator* Crop::createIterator() {
 }
 
 void Crop::removeDeadPlants() {
-  //need to change this later to use iterator pattern
-  
-  // iterate in reverse to safely erase while iterating
-  for (int i = (int)plants.size() - 1; i >= 0; --i) {
-    Garden* child = plants[i];
-    if (!child) continue;
+  // Use the iterator to traverse children and collect dead plants to remove
+  std::vector<Garden*> toRemove;
 
-    // If child is a Plant, check its state
-    Plant* asPlant = dynamic_cast<Plant*>(child);
-    if (asPlant) {
-      string state = asPlant->getState();
-      if (state.find("Dead") != string::npos) {
-        // remove dead plant
-        delete asPlant;
-        plants.erase(plants.begin() + i);
-        continue;
+  Iterator* it = this->createIterator();
+  if (it) {
+    for (Garden* node = it->first(); !it->done(); node = it->next()) {
+      if (!node) continue;
+      if (Plant* p = dynamic_cast<Plant*>(node)) {
+        std::string state = p->getState();
+        if (state.find("Dead") != std::string::npos) {
+          toRemove.push_back(node);
+        }
+      } else if (Crop* c = dynamic_cast<Crop*>(node)) {
+        c->removeDeadPlants();
       }
     }
+    delete it;
+  }
 
-    // If child is a Crop (composite), recurse
-    Crop* asCrop = dynamic_cast<Crop*>(child);
-    if (asCrop) {
-      asCrop->removeDeadPlants();
+  // Erase-and-delete collected dead plants from this crop's direct children
+  if (!toRemove.empty()) {
+    for (auto* dead : toRemove) {
+      for (auto itv = plants.begin(); itv != plants.end(); ) {
+        if (*itv == dead) {
+          delete dead;
+          itv = plants.erase(itv);
+        } else {
+          ++itv;
+        }
+      }
     }
   }
 }

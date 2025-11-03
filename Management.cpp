@@ -37,17 +37,30 @@ std::string Management::jobDesc() {
 }
 
 
-void Management::assignTasks() {
-    
+void Management::assignTasks(Nursery* group) {
+    CheckInventory cmd1(this, group);
+    cmd1.execute();
+    CheckPlant cmd2(this, group);
+    cmd2.execute();
 }
 
-void Management::addCommand(Command* c) {
-    if (c) {
-        this->cmd = c;
-    }
+void Management::hireStaff(Staff* newStaff) {
+    Nursery* med = getNursery();
+    if (!med || !newStaff) return;
+
+    HireStaff cmd(this, med, newStaff);
+    cmd.execute();
 }
 
-void Management::handleCustomer(Request* req) {
+void Management::fireStaff(Staff* exStaff) {
+    Nursery* med = getNursery();
+    if (!med || !exStaff) return;
+
+    FireStaff cmd(this, med, exStaff);
+    cmd.execute();
+}
+
+void Management::handleCustomer(Request* req) {//add complaints
     if (req->getRequest() == "Return") {
     std::cout << "I am " + name +
                      " and I will be assisting you with your return today.\n Passing order back to manager..."
@@ -58,19 +71,6 @@ void Management::handleCustomer(Request* req) {
     std::cout << "No staff could handle the request." << std::endl;
   }
 }
-
-void Management::handlePlant(Plant* p) {
-    //doesnt handle plants boss
-}
-
-// void Management::receive(string m, People* from, Nursery* group, string type) {
-//     if (!group) return;
-
-//     if (type == "CheckPlant" || type == "PlantDeadReport") {
-//         std::cout << "Management received plant report: " << m << std::endl;
-//         group->sendMessage(string("Please update inventory to remove dead plants"), this, string("UpdateInventory"));
-//     }
-// }
 
 void Management::receive(string m, People* from, Nursery* group, string type) {
     std::cout << getName() << " (" << getType() << ") received [" << type << "]: " << m;

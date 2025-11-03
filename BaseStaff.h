@@ -2,6 +2,7 @@
 #define BASESTAFF_H
 #include "Staff.h"
 
+#include <iostream>
 #include <string>
 
 class BaseStaff : public Staff {
@@ -12,7 +13,6 @@ class BaseStaff : public Staff {
 
 	std::string jobDesc() override;
 	void handleCustomer(Request* req) override;
-	void handlePlant(Plant* p) override;
 	std::string getType() override;
 
   virtual void receive(string m, People* from, Nursery* group, string type);

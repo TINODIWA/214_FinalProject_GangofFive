@@ -2,6 +2,8 @@
 #define ROLES_H
 
 #include "Staff.h"
+#include <string>
+#include <iostream>
 
 class Roles : public Staff {
   public:
@@ -10,7 +12,7 @@ class Roles : public Staff {
     virtual std::string jobDesc();
     virtual std::string getType();
 
-    virtual void receive(string m, People* from, Nursery* group, string type);
+    virtual void receive(string m, People* from, Nursery* group, string type) = 0;
 
   protected:
     // std::vector<Staff*> staff;

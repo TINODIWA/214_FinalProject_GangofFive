@@ -9,12 +9,11 @@ class Admin : public Roles {
 
 public:
 	Admin(Staff* s);
-	~Admin();
+	virtual ~Admin();
 	std::string getType() override;
 	std::string jobDesc() override;
 	void updateInventory();
 	void handleCustomer(Request* req) override;
-	void handlePlant(Plant* p) override;
 
 	virtual void receive(string m, People* from, Nursery* group, string type);
 };
