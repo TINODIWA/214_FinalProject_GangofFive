@@ -16,13 +16,18 @@
  */
 Order::Order() : customer(nullptr), paymentMethod(nullptr) {}
 
+Order::~Order(){}
+
+Order::Order(const Order &other){
+
+}
 
 Order::Order(Customer *customer, Staff *staff): customer(customer),staff(staff){}
 /**
  * @brief purchase and order
  *
  */
-void Order::purchase()
+void Order::purchase(int day)
 {
 	cout << "Please select a payment method:\n";
 
@@ -31,7 +36,7 @@ void Order::purchase()
 
 	while (!valid)
 	{
-		cout << "** Please type the payment method exactly as displayed below**\n";
+		cout << "** Please enter the correct number from below**\n";
 		cout << "1. EFT\n";
 		cout << "2. Card\n";
 		cout << "3. Cash\n";
@@ -41,17 +46,17 @@ void Order::purchase()
 
 		if (choice == "")
 			continue;
-		if (choice == "EFT")
+		if (choice == "1")
 		{
 			paymentMethod = new EFT();
 			valid = true;
 		}
-		else if (choice == "Card")
+		else if (choice == "2")
 		{
 			paymentMethod = new Card();
 			valid = true;
 		}
-		else if (choice == "Cash")
+		else if (choice == "3")
 		{
 			paymentMethod = new Cash();
 			valid = true;
@@ -62,7 +67,9 @@ void Order::purchase()
 		}
 	}
 
-	paymentMethod->purchase(customer, plants, staff);
+	this->receipt = paymentMethod->purchase(customer, plants, staff);
+	cout<<"\nYour receipt: \n\t"<<receipt<<"\n\n"<<endl;
+	this->purchaseDate = day;
 }
 
 /**
@@ -118,4 +125,14 @@ void Order::setCustomer(Customer *c){
 	if(!c) return;
 
 	customer = c;
+}
+
+string Order::printOldOrder(){
+	stringstream ss ;
+	ss<< this->receipt << "\tPurchased on day: "<<this->purchaseDate;
+	return ss.str();
+}
+
+map<Plant *, int> Order::getPlants(){
+	return plants;
 }

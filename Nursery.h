@@ -34,6 +34,7 @@ class Nursery {
   void setGarden(GardenPlot* g);
   GardenPlot* getGarden();
   vector<Staff*> getStaff();
+  int getDay();
   virtual string getName() const = 0;
 
   Staff* findStaffByType(const string& type);
@@ -42,6 +43,7 @@ class Nursery {
   vector<Customer*> customers;
   vector<Staff*> staff;
   GardenPlot* garden;
+  int day;
 };
 
 #endif  // NURSERY_H_

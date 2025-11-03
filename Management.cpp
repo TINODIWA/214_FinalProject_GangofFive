@@ -64,10 +64,7 @@ void Management::handleCustomer(Request req, Customer* customer) {  // add compl
   if (req.getRequest() == "Complaint") {
     std::cout << "I am " + name + " and I will be assisting you with you today.\n Passing order back to manager..."
               << std::endl;
-  } else if (req.getRequest() == "Return") {
-    std::cout << "I am " + name + " and I will be assisting your RETURN.\n Passing order back to manager..."
-              << std::endl;
-  } else if (successor) {
+  }  else if (successor) {
     successor->handleCustomer(req, customer);
   } else {
     std::cout << "No staff could handle the request." << std::endl;

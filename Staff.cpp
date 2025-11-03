@@ -86,12 +86,38 @@ int Staff::readIntInRange(int lo, int hi, const std::string& prompt, const std::
 
   for (;;) {
     if ((std::cin >> value) && value >= lo && value <= hi) {
-      
       return value;
     }
 
     std::cin.clear();
-    std::cin.ignore(10000, '\n');  
+    std::cin.ignore(10000, '\n');
     std::cout << errPrompt;
   }
+}
+
+string Staff::printAll(map<std::string, int> inventory) {
+  std::ostringstream out;
+
+  if (inventory.empty()) {
+    out << "The garden inventory is currently empty.\n";
+    return out.str();
+  }
+
+  out << "Current Garden Inventory:\n";
+  out << std::left << std::setw(5) << "No." << std::setw(25) << "Plant Name"
+      << "Quantity\n";
+  out << std::string(45, '-') << "\n";
+
+  int index = 1;
+  for (std::map<std::string, int>::const_iterator it = inventory.begin(); it != inventory.end(); ++it) {
+    const std::string& plant = it->first;
+    int quantity = it->second;
+    out << std::left << std::setw(5) << (std::to_string(index) + ".") << std::setw(25) << plant << quantity << "\n";
+    ++index;
+  }
+
+  out << std::string(45, '-') << "\n";
+  out << "Total plant types: " << inventory.size() << "\n";
+
+  return out.str();
 }

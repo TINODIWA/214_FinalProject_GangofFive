@@ -79,6 +79,7 @@ void CustomerCare::setChain() {
   Staff* gardener = this->findStaffByType("Gardening");
   Staff* sales = this->findStaffByType("Sales");
   Staff* manager = this->findStaffByType("Management");
+  
   chainHead = base;
   base->setSuccessor(gardener);
   gardener->setSuccessor(sales);

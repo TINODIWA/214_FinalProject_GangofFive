@@ -12,7 +12,7 @@ OBJS = Garden.o Plant.o Crop.o PlantCare.o Nursery.o \
 	BaseStaff.o Roles.o Sales.o Gardening.o Admin.o Management.o \
 	StaffCo_ordination.o Command.o CheckInventory.o \
 	High.o Medium.o Low.o PlantState.o Planted.o \
-	CheckPlant.o HireStaff.o FireStaff.o  GardenPlot.o
+	CheckPlant.o HireStaff.o FireStaff.o  GardenPlot.o Order.o
 		
 
 MAIN_OBJS = $(OBJS) Main.o

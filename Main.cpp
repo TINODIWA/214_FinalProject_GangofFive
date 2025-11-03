@@ -57,7 +57,7 @@ int main() {
   cout << endl;
   cout << staff_5->getName() << "\n" << staff_5->getType() << "\n" << staff_5->jobDesc() << endl;
 
-    // delete baseStaff_2;
+  // delete baseStaff_2;
   // delete baseStaff_3;
   // delete staff_4;
   // delete baseStaff;
@@ -71,48 +71,48 @@ int main() {
   cout << "\n\nGarden Created \n";
   garden->print();
 
-   cout << "TESTING GardenPlot Summary\n\n";
+  cout << "TESTING GardenPlot Summary\n\n";
 
   GardenPlot plot = GardenPlot("plants.txt");
 
-  // cout << "ALL PLANTS" << endl;
+  cout << "ALL PLANTS" << endl;
 
-  // for (auto p : plot.viewAll()) {
-  //   cout << p.first << "\t" << p.second << endl;
-  // }
+  for (auto p : plot.viewAll()) {
+    cout << p.first << "\t" << p.second << endl;
+  }
 
-  // cout << "\n AVAILABLE PLANTS" << endl;
-  // for (auto p : plot.viewAvailable()) {
-  //   cout << p.first << "\t" << p.second << endl;
-  // }
+  cout << "\n AVAILABLE PLANTS" << endl;
+  for (auto p : plot.viewAvailable()) {
+    cout << p.first << "\t" << p.second << endl;
+  }
 
-  // cout << "\nTESTING GETTING PLANTS FROM THE GARDEN - REMOVE\n" << endl;
-  // vector<Garden*> buy = plot.get("Azalea", 4);
-  // cout << "Order:\n";
+  cout << "\nTESTING GETTING PLANTS FROM THE GARDEN - REMOVE\n" << endl;
+  vector<Garden*> buy = plot.get("Azalea", 4);
+  cout << "Order:\n";
 
-  // for (int i = 0; i < buy.size(); i++) {
-  //   if (buy[i]) {
-  //     cout << buy[i]->print() << endl;
-  //     delete buy[i];
-  //   }
-  // }
+  for (int i = 0; i < buy.size(); i++) {
+    if (buy[i]) {
+      cout << buy[i]->print() << endl;
+      delete buy[i];
+    }
+  }
 
-  // cout << "------------------------------------\n";
+  cout << "------------------------------------\n";
 
-  // cout << endl;
-  // cout << endl;
-  // for (auto p : plot.viewAll()) {
-  //   cout << p.first << "\t" << p.second << endl;
-  // }
+  cout << endl;
+  cout << endl;
+  for (auto p : plot.viewAll()) {
+    cout << p.first << "\t" << p.second << endl;
+  }
 
-  // cout << "\nTESTING GETTING PLANT ADVICE\n" << endl;
-  // cout << plot.get("Rosemary")->advice() << endl;
+  cout << "\nTESTING GETTING PLANT ADVICE\n" << endl;
+  cout << plot.get("Rosemary")->advice() << endl;
 
-  // cout << "\nTESTING GETTING PA PLANT BY NAME - NO REMOVE\n" << endl;
-  // Garden* ptr = plot.get("Oak");
+  cout << "\nTESTING GETTING PA PLANT BY NAME - NO REMOVE\n" << endl;
+  Garden* ptr = plot.get("Oak");
 
-  // if (ptr) cout << "Got " << ptr->print() << endl;
-  // else cout <<":(\n";
+  if (ptr) cout << "Got " << ptr->print() << endl;
+  else cout <<":(\n";
 
   cout << "\n==================TESTING CHAIN\n";
   Staff* base = new BaseStaff(nullptr, "Joy");
@@ -121,15 +121,16 @@ int main() {
   Staff* manager = new Management(new BaseStaff(NULL, "Love"));
 
   Customer* unathi = new Customer("unathi");
+  Customer* swey = new Customer("Swey");
 
   Request req = Request("Enter");
 
-//   Staff* chain = base;
-//   base->setSuccessor(gardener);
-//   gardener->setSuccessor(sales);
-//   sales->setSuccessor(manager);
-//   manager->setSuccessor(NULL);
-//   chain->handleCustomer(req,unathi);
+  // Staff* chain = base;
+  // base->setSuccessor(gardener);
+  // gardener->setSuccessor(sales);
+  // sales->setSuccessor(manager);
+  // manager->setSuccessor(NULL);
+  // chain->handleCustomer(req,unathi);
 
   Nursery* cc = new CustomerCare(&plot);
   cc->addStaff(base);
@@ -137,11 +138,20 @@ int main() {
   cc->addStaff(sales);
   cc->addStaff(manager);
 
-  ((CustomerCare*) cc)->setChain();
+  ((CustomerCare*)cc)->setChain();
   cc->addCustomer(unathi);
+  cc->addCustomer(swey);
 
-// unathi->setNursery(cc);
+  // unathi->setNursery(cc);
   unathi->makeReq(req);
+  Plant* plant = new Plant();
+  Order* order = new Order();
+  order->addPlant(plant);
+  order->setCustomer(swey);;
+  order->setStaff(sales);
+  swey->addOrder(order);
+
+  swey->makeReq(req);
 
   cout << "\n===================Memory Management!!!" << endl;
   delete staff_5;
