@@ -1,10 +1,6 @@
 #ifndef GARDENING_H
 #define GARDENING_H
 #include "Roles.h"
-#include <string>
-#include <vector>
-#include <iostream>
-using namespace std;
 
 class Gardening : public Roles
 {

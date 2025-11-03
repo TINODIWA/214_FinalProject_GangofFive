@@ -63,3 +63,19 @@ void Staff::handleCustomer(Request* req) {
   //   this->successor->handleCustomer(req);
   // }
 }
+
+/**
+ * @brief Equality operator for Staff objects
+ * Compares two Staff objects based on their names
+ * 
+ * @param other The Staff object to compare with
+ * @return true if both Staff objects have the same name
+ * @return false if the Staff objects have different names
+ */
+bool Staff::operator==(const Staff& other) const {
+  if (getName() != other.getName()) {
+    return false;
+  }
+
+  return true;
+}

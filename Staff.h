@@ -27,10 +27,14 @@ class Staff : public People
     
     virtual std::string jobDesc() = 0;
     virtual std::string getType() = 0;
+    virtual void update(Plant *p) = 0;
+    virtual void handlePlant(Plant *p) = 0;
     virtual void handleCustomer(Request *req);
     virtual void receive(string m, People* from, Nursery* group, string type) = 0;
     
     void setSuccessor(Staff *succ);
+
+    bool operator==(const Staff& other) const;
 };
 
 #endif  // STAFF_H_

@@ -20,6 +20,7 @@
 #include "Low.h"
 #include "PlantState.h"
 #include "Planted.h"
+#include "Staff.h"
 
 class Staff;
 
@@ -82,6 +83,7 @@ class Plant : public Garden {
   string advice();
 
   void updateWaterLevel(int newLevel);
+  void updateSunLevel(int newLevel);
   void transpire(int decreasedLevel);
   void updateFertiliserLevel(int newLevel);
 	void updateDay();
