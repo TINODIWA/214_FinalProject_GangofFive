@@ -111,8 +111,10 @@ int main() {
   cout << "\nTESTING GETTING PA PLANT BY NAME - NO REMOVE\n" << endl;
   Garden* ptr = plot.get("Oak");
 
-  if (ptr) cout << "Got " << ptr->print() << endl;
-  else cout <<":(\n";
+  if (ptr)
+    cout << "Got " << ptr->print() << endl;
+  else
+    cout << ":(\n";
 
   cout << "\n==================TESTING CHAIN\n";
   Staff* base = new BaseStaff(nullptr, "Joy");
@@ -145,13 +147,19 @@ int main() {
 
   // unathi->setNursery(cc);
   unathi->makeReq(req);
-  Plant* plant = new Plant();
-  Order* order = new Order();
-  order->addPlant(plant);
-  order->setCustomer(swey);;
-  order->setStaff(sales);
-  order->purchase(0);
-  swey->addOrder(order);
+  cout << "Customer 2 made order to repurchase!!!" << endl;
+  vector<Garden*> plants = plot.get("Baobab", 1);
+  if (!plants.empty()) {
+    Plant* plant = dynamic_cast<Plant*>(plants[0]);
+    if (plant) {
+      Order* order = new Order();
+      order->addPlant(plant);
+      order->setCustomer(swey);
+      order->setStaff(sales);
+      order->purchase(0);
+      swey->addOrder(order);
+    }
+  }
 
   swey->makeReq(req);
 
@@ -178,12 +186,12 @@ int main() {
   Staff* tempRole = new Gardening(tempBase);
   if (auto mgmt = dynamic_cast<Management*>(manager)) {
     mgmt->hireStaff(tempRole);
-    for(Staff* s : staffCoord.getStaff()) {
+    for (Staff* s : staffCoord.getStaff()) {
       cout << "  Current staff: " << s->getName() << " [" << s->getType() << "]\n";
     }
     cout << endl;
     mgmt->fireStaff(tempRole);
-    for(Staff* s : staffCoord.getStaff()) {
+    for (Staff* s : staffCoord.getStaff()) {
       cout << "  Current staff: " << s->getName() << " [" << s->getType() << "]\n";
     }
   }
