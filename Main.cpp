@@ -20,6 +20,7 @@
 #include "Management.h"
 #include "BaseStaff.h"
 #include "GardenPlot.h"
+#include "CustomerCare.h"
 
 #include <map>
 #include <iostream>
@@ -119,16 +120,28 @@ int main() {
   Staff* sales = new Sales(new BaseStaff(NULL, "Peace"));
   Staff* manager = new Management(new BaseStaff(NULL, "Love"));
 
+  Customer* unathi = new Customer("unathi");
 
-  Request req = Request("HIIIII");
+  Request req = Request("Enter");
 
-  Staff* chain = base;
-  base->setSuccessor(gardener);
-  gardener->setSuccessor(sales);
-  sales->setSuccessor(manager);
-  manager->setSuccessor(NULL);
+//   Staff* chain = base;
+//   base->setSuccessor(gardener);
+//   gardener->setSuccessor(sales);
+//   sales->setSuccessor(manager);
+//   manager->setSuccessor(NULL);
+//   chain->handleCustomer(req,unathi);
 
-  chain->handleCustomer(req);
+  Nursery* cc = new CustomerCare(garden);
+  cc->addStaff(base);
+  cc->addStaff(gardener);
+  cc->addStaff(sales);
+  cc->addStaff(manager);
+
+  ((CustomerCare*) cc)->setChain();
+  cc->addCustomer(unathi);
+
+// unathi->setNursery(cc);
+  unathi->makeReq(req);
 
   cout << "\n===================Memory Management!!!" << endl;
   delete staff_5;
