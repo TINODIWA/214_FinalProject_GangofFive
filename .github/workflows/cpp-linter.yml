@@ -12,21 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 
-
-      - name: Run C/C++ Linter Action
-        uses: cpp-linter/cpp-linter-action@v2
+      - uses: actions/checkout@v5
+      - uses: cpp-linter/cpp-linter-action@v2
         id: linter
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          style: 'file' 
-          tidy-checks: '-*,modernize-use-trailing-return-type,modernize-use-auto,modernize-use-nullptr'
-          version: '11' 
-
+          style: 'file'
+          tidy-checks: '' 
+          thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
         run: exit 1
