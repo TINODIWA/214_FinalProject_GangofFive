@@ -27,6 +27,5 @@ void CheckPlant::execute() {
   if (!mediator) return;
   Staff* appointed = mediator->findStaffByType("BaseStaff: Gardening");
 
-  if (appointed) cout << "Gardner is gonna check" << endl;
   if (appointed) mediator->sendMessage(msg, appointed, from, commandType);
 }

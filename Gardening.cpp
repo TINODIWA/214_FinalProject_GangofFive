@@ -172,9 +172,13 @@ void Gardening::handleCustomer(Request req, Customer* customer) {
 }
 
 void Gardening::receive(string m, People* from, Nursery* group, string type) {
-  for (Plant* p : plants) {
-    if (p != nullptr) {
-      handlePlant(p);
+  if (!(from && group)) return;
+
+  cout << this->getName() << "(Gardening) received message from " << from->getName() << "( " << static_cast<Staff*>(from)->getType() << " ): " << m << " [type: " << type << "]"
+       << endl;
+  if (dynamic_cast<Staff*>(from)->getType() == "Manager" && group->getName() == "StaffCo_ordination") {
+    if (type == "CheckPlants") {
+      this->checkPlants();
     }
   }
 }
@@ -195,7 +199,7 @@ void Gardening::handlePlant(Plant* p) {
     int req = water[1];
     if (curr < req) {
       int change = req - curr;
-      int newCurr = wc->apply(curr, req, change);
+      int newCurr = wc->apply(curr, req, 1);
       p->updateWaterLevel(newCurr);
     }
   }
@@ -207,9 +211,8 @@ void Gardening::handlePlant(Plant* p) {
     int req = fert[1];
     if (curr < req) {
       int change = req - curr;
-      int newCurr = fc->apply(curr, req, change);
+      int newCurr = fc->apply(curr, req, 1);
       p->updateFertiliserLevel(newCurr);
-      ;
     }
   }
 }

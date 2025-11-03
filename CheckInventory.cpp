@@ -27,6 +27,5 @@ void CheckInventory::execute() {
   if (!mediator) return;
   Staff* appointed = mediator->findStaffByType("BaseStaff: Admin");
 
-  if (appointed) cout << "Admin is gonna update" << endl;
   if (appointed) mediator->sendMessage(msg, appointed, from, commandType);
 }
