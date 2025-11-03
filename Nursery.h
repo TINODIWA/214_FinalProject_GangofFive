@@ -21,7 +21,6 @@ using namespace std;
 class Nursery {
 public:
     Nursery();
-    Nursery(Garden* g);
     virtual ~Nursery();
     Nursery(const Nursery& other);
     void start(bool sim);
@@ -39,7 +38,6 @@ public:
     Staff* findStaffByType(const string& type);
 
   protected:
-    Garden* garden;
     vector<Customer*> customers;
     vector<Staff*> staff;
 };

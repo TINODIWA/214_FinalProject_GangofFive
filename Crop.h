@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
 
 #include "Garden.h"
 #include "Iterator.h"
@@ -28,13 +29,14 @@ class Crop : public Garden {
   Crop(const Crop& other);
   void add(Garden* p);
   Garden* clone();
-  void print();
+  string print();
   void removeDeadPlants();
   Iterator* createIterator();
-  
-
+  map<string, int> summary(map<string, int>& sum);
   bool done();
   Garden* next();
+  vector<Garden*> get(string name, int num);
+  Garden* get(string name);
 };
 
 #endif  // CROP_H_
