@@ -224,13 +224,7 @@ void Plant::setPrice(int price) {
  */
 
 void Plant::setState(PlantState* state) {
-  cout << "CHANGING FROM STATE: " << this->state->getState() << endl;
-  // if (this->state) delete this->state;
-
   this->state = state;
-  if (this->state) {
-    cout << "TO STATE: " << this->state->getState() << endl;
-  }
 }
 
 /**
@@ -478,6 +472,5 @@ bool Plant::operator==(string name) {
  *
  */
 void Plant::changeState() {
-  cout<<state->getState()<<" handling change\n";
   state->handleChange(this);
 }

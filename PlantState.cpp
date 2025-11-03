@@ -47,7 +47,6 @@ bool PlantState::dying(Plant* p) {
   if (water[0] != water[1]) bad = true;
   if (fertiliser[0] != fertiliser[1]) bad = true;
 
-  cout<<"Plant is "<<((bad)?"Bad": "Good")<<endl;
   return bad;
 }
 
