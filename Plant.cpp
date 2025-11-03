@@ -10,6 +10,7 @@
  */
 
 #include "Plant.h"
+#include <algorithm>
 
 /**
  * @brief Construct a new Plant:: Plant object
@@ -24,7 +25,6 @@ Plant::Plant()
   for (int i = 0; i < 2; i++) {
     water.push_back(0);
     fertiliser.push_back(0);
-    sun.push_back(0);
   }
 }
 
@@ -116,7 +116,7 @@ void Plant::setWater(int water) {
  * @param sun
  */
 void Plant::setSun(int sun) {
-  this->sun[1] = sun;
+  this->sun = sun;
 }
 
 /**
@@ -143,7 +143,10 @@ void Plant::setAttention(int attention) {
  * @param water
  */
 void Plant::setWaterCare(char level) {
-  delete waterStrategy;
+  if (this->waterStrategy) {
+    delete this->waterStrategy;
+    this->waterStrategy = nullptr;
+  }
   this->waterStrategy = setCareStrategy(level);
 }
 
@@ -153,7 +156,10 @@ void Plant::setWaterCare(char level) {
  * @param sun
  */
 void Plant::setSunCare(char level) {
-  delete sunStrategy;
+  if (this->sunStrategy) {
+    delete this->sunStrategy;
+    this->sunStrategy = nullptr;
+  }
   this->sunStrategy = setCareStrategy(level);
 }
 
@@ -163,7 +169,10 @@ void Plant::setSunCare(char level) {
  * @param fertiliser
  */
 void Plant::setFertiliserCare(char level) {
-  delete fertiliserStrategy;
+  if (this->fertiliserStrategy) {
+    delete this->fertiliserStrategy;
+    this->fertiliserStrategy = nullptr;
+  }
   this->fertiliserStrategy = setCareStrategy(level);
 }
 
@@ -245,7 +254,7 @@ vector<int> Plant::getWater() const {
  * @return int
  */
 
-vector<int> Plant::getSun() const {
+int Plant::getSun() const {
   return sun;
 }
 
@@ -367,7 +376,7 @@ void Plant::updateWaterLevel(int newLevel) {
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::updateSunLevel(int newLevel) {
-  if (sun.size() >= 1) sun[0] = newLevel;
+  // if (sun.size() >= 1) sun[0] = newLevel;
 }
 
 void Plant::transpire(int decreasedLevel) {

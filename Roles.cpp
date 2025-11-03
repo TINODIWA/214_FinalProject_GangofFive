@@ -14,12 +14,11 @@
 Roles::Roles(Nursery* n, string name, Staff* s) : Staff(n, name), staff(s) {}
 
 Roles::~Roles() {
-  // Important: Roles does not own pointers in 'staff' by default.
-  // They may be managed elsewhere (e.g., mediator), so avoid double-deletes.
-  // Do not call methods like clear() on a raw pointer; reset to nullptr if desired.
-  staff = NULL;
+  if (staff) {
+    delete staff;
+    staff = NULL;
+  }
 }
-
 
 std::string Roles::jobDesc() {
   return "Base staff member responsible for general tasks such as greeting customers and showing customers the plants.";
@@ -29,5 +28,5 @@ std::string Roles::getType() {
   return "BaseStaff";
 }
 
-void Roles::receive(string m, People* from, Nursery* group, string type) {
-}
+ void Roles::update(Plant* p){}//stubbed
+ void Roles::receive(string m, People* from, Nursery* group, string type){}//stubbed

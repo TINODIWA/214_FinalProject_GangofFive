@@ -2,6 +2,8 @@
 #define ROLES_H
 
 #include "Staff.h"
+#include <string>
+#include <iostream>
 
 class Roles : public Staff {
   public:

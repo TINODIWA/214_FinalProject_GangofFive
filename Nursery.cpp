@@ -1,6 +1,6 @@
 /**
  * @file Nursery.cpp
- * @author your name (you@domain.com)
+ * @author Unathi Tshakalisa, Nathan Chisadza
  * @brief
  * @version 0.1
  * @date 2025-10-29
@@ -14,13 +14,12 @@
 
 Nursery::Nursery() {}
 
-Nursery::Nursery(Garden* g) : garden(g) {}
+Nursery::Nursery(GardenPlot* g) : garden(g) {}
 
 Nursery::~Nursery() {}
-
 Nursery::Nursery(const Nursery& other) {
   // vector<vector<Plant*>>::const_iterator otherPlants = (other.garden).begin();
-  Garden* otherGarden = other.garden;
+  GardenPlot* otherGarden = other.garden;
   vector<Customer*>::const_iterator otherCustomer = (other.customers).begin();
   vector<Staff*>::const_iterator otherStaff = (other.staff).begin();
 }
@@ -30,15 +29,28 @@ void Nursery::start(bool sim) {
   // throw "Not yet implemented";
 }
 
-void Nursery::setGarden(Garden* g) {
-  if(g == NULL) return;
-  if(garden == g) return;
-  if(garden) {
+void Nursery::setGarden(GardenPlot* g) {
+  if (g == NULL) return;
+  if (garden == g) return;
+  if (garden) {
     delete garden;
   }
   garden = g;
 }
 
-Garden* Nursery::getGarden() {
+GardenPlot* Nursery::getGarden() {
   return garden;
+}
+
+vector<Staff*> Nursery::getStaff() {
+  return staff;
+}
+
+Staff* Nursery::findStaffByType(const string& type) {
+  for (Staff* s : staff) {
+    if (s && s->getType().find(type) != string::npos) {
+      return s;
+    }
+  }
+  return NULL;
 }
