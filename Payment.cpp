@@ -39,7 +39,7 @@ string Payment::receipt(Customer* customer, map<Plant*, int> plants, Staff* staf
 
   receipt << "Customer Copy\n";
   receipt << "---------------------------\n";
-  receipt << staff->getName() << "\n";
+  receipt << ((People*)staff)->getName() << "\n";
   receipt << "Customer: " << customer->getName() << "\n";
   receipt << "---------------------------\n";
   receipt << "Payment Method: " << getType() << "\n";

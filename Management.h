@@ -2,24 +2,31 @@
 #define MANAGEMENT_H
 #include "Roles.h"
 #include "Command.h"
+#include "CheckInventory.h"
+#include "CheckPlant.h"
+#include "HireStaff.h"
+#include "FireStaff.h"
+#include <iostream>
+#include <string>
 
 class Management : public Roles {
+ public:
+  Management(Staff* s);
+  virtual ~Management();
+  std::string getType() override;
+  std::string jobDesc() override;
 
-  public:
-    Management(Staff* s);
-    ~Management();
-    std::string getType() override;
-    std::string jobDesc() override;
-    
-    void handleCustomer(Request* req) override;
-    void handlePlant(Plant* p) override;
-    void assignTasks();
-    void addCommand(Command* c);
+  void handleCustomer(Request req, Customer* customer) override;
+  void hireStaff(Staff* newStaff);
+  void fireStaff(Staff* exStaff);
+  void assignTasks(Nursery* group);
+  void update(Plant* p);       // stubbed
+  void handlePlant(Plant* p);  // stubbed
 
-    virtual void receive(string m, People* from, Nursery* group, string type);
+  virtual void receive(string m, People* from, Nursery* group, string type);
 
-  private:
-	  std::vector<Command*> cmd;
+ private:
+  Command* cmd;
 };
 
 #endif  // MANAGEMENT_H_

@@ -16,12 +16,16 @@ using namespace std;
 class StaffCo_ordination : public Nursery {
  public:
   StaffCo_ordination();
-  StaffCo_ordination(Garden* g);
+  StaffCo_ordination(GardenPlot* g);
   virtual ~StaffCo_ordination();
-  virtual void sendMessage(string m, Staff* from, string type);
-  virtual void sendMessage(string m, Staff* to, Staff* from, string type);
+
+  virtual void sendMessage(string m, People* from, string type);
+  virtual void sendMessage(string m, People* to, People* from, string type);
   virtual void addStaff(Staff* s);
   virtual void removeStaff(Staff* s);
+  virtual void addCustomer(Customer* c);
+  virtual void removeCustomer(Customer* c);
+  virtual string getName() const;
 };
 
 #endif  // STAFFCO_ORDINATION_H_

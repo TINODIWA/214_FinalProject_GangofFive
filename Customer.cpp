@@ -10,22 +10,33 @@
  *
  */
 #include "Customer.h"
+#include "CustomerCare.h"
 
-Customer::Customer(string name): People(nullptr,name) {
-  // TODO(unathi,nathan,ryan) - implement Customer::Customer
-  // throw "Not yet implemented";
+Customer::Customer(string name): People(NULL, name) {
+  //req = Request("Enter");
+  // order = NULL;
 }
 
-Customer::~Customer() {}
+Customer::~Customer() {}//should probably deletee their orders
 
 Customer::Customer(const Customer* other) {
   // if (other)
   // this->order = new Order(*other->order);
 }
 
-void Customer::makeReq(Request* req) {
-  // TODO(unathi,nathan,ryan) - implement Customer::makeReq
-  // throw "Not yet implemented";
+void Customer::makeReq(Request req) {
+
+  Nursery* n = getNursery();
+  if (n) {
+    if (CustomerCare* cc = dynamic_cast<CustomerCare*>(n)) {
+      cc->notify(req, this);
+    } else {
+      
+      send(req.getRequest(), n, "CustomerRequest");
+    }
+  } else {
+    std::cout << "No customer care mediator set for customer: " << getName() << std::endl;
+  }
 }
 
 void Customer::receive(string m, People* from, Nursery* group, string type){}

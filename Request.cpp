@@ -13,10 +13,11 @@
 
 string Request::getRequest() {
   // TODO(user) - implement Request::getRequest
-  throw "Not yet implemented";
+  return description;
 }
 
-Request::Request() {
+Request::Request(string description) {
   // TODO(user) - implement Request::Request
-//  throw "Not yet implemented";
+  // throw "Not yet implemented";
+    this->description = description;
 }

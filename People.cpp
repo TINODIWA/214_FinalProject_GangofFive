@@ -9,6 +9,7 @@
  *
  */
 #include "People.h"
+#include "CustomerCare.h"
 
 /**
  * @brief Construct a new People:: People object
@@ -41,7 +42,7 @@ People::People(const People* other) {
  *
  */
 People::~People() {
-  delete nursery;
+  nursery = NULL;
 }
 
 /**
@@ -86,4 +87,3 @@ void People::setName(const string& name) {
 void People::setNursery(Nursery* n) {
   this->nursery = n;
 }
-

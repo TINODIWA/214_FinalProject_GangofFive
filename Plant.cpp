@@ -10,6 +10,7 @@
  */
 
 #include "Plant.h"
+#include <algorithm>
 
 /**
  * @brief Construct a new Plant:: Plant object
@@ -138,7 +139,10 @@ void Plant::setAttention(int attention) {
  * @param water
  */
 void Plant::setWaterCare(char level) {
-  delete waterStrategy;
+  if (this->waterStrategy) {
+    delete this->waterStrategy;
+    this->waterStrategy = nullptr;
+  }
   this->waterStrategy = setCareStrategy(level);
 }
 
@@ -148,7 +152,10 @@ void Plant::setWaterCare(char level) {
  * @param sun
  */
 void Plant::setSunCare(char level) {
-  delete sunStrategy;
+  if (this->sunStrategy) {
+    delete this->sunStrategy;
+    this->sunStrategy = nullptr;
+  }
   this->sunStrategy = setCareStrategy(level);
 }
 
@@ -158,7 +165,10 @@ void Plant::setSunCare(char level) {
  * @param fertiliser
  */
 void Plant::setFertiliserCare(char level) {
-  delete fertiliserStrategy;
+  if (this->fertiliserStrategy) {
+    delete this->fertiliserStrategy;
+    this->fertiliserStrategy = nullptr;
+  }
   this->fertiliserStrategy = setCareStrategy(level);
 }
 
@@ -373,7 +383,11 @@ void Plant::updateWaterLevel(int newLevel) {
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::updateSunLevel(int newLevel) {
+<<<<<<< HEAD
   sun = newLevel;
+=======
+  // if (sun.size() >= 1) sun[0] = newLevel;
+>>>>>>> origin/Development
 }
 
 void Plant::transpire(int decreasedLevel) {
