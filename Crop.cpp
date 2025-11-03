@@ -1,7 +1,7 @@
 /**
  * @file Crop.cpp
  * @author Nathan Chisadza, Swelihle Makhathini
- * @brief
+ * @brief Implementation of the Crop class, which manages collections of plants in the garden using the Composite pattern
  * @version 0.1
  * @date 2025-10-29
  *
@@ -16,6 +16,7 @@
  *
  */
 Crop::Crop() : Garden() {}
+
 /**
  * @brief Destructor that deletes all plants in vector
  *
@@ -55,10 +56,18 @@ Crop::Crop(const Crop& other) : Garden(other) {
   }
 }
 
+/**
+ * @brief Add a garden to this crop
+ * @param p Pointer to the garden to add
+ */
 void Crop::add(Garden* p) {
   plants.push_back(p);
 }
 
+/**
+ * @brief Create an iterator for this crop
+ * @return Iterator pointer for traversing the crop
+ */
 Iterator* Crop::createIterator() {
   return new CropIterator(plants);
 }

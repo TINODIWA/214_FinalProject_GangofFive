@@ -1,7 +1,7 @@
 /**
  * @file Growing.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Swelihle Makhathini
+ * @brief Implementation of the Growing state class which represents a plant in its growth phase, handling transitions to mature or dying states
  * @version 0.1
  * @date 2025-10-29
  *

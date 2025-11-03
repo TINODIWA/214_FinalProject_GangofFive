@@ -1,7 +1,7 @@
 /**
  * @file PlantState.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Unathi Tshakalisa 
+ * @brief Implementation of the Plant state class State pattern
  * @version 0.1
  * @date 2025-10-29
  *

@@ -1,7 +1,7 @@
 /**
  * @file Plant.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Unathi Tshakalisa, Swelihle Makhathini, Ryan Liao
+ * @brief Implementation of the Plant class which manages plant lifecycle, state transitions, and various care strategies including water, sun, and fertilizer
  * @version 0.1
  * @date 2025-10-29
  *

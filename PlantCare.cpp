@@ -1,8 +1,8 @@
 
 /**
  * @file PlantCare.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Dominique Nigatu
+ * @brief Implementation of the PlantCare class for the plant care template method
  * @version 0.1
  * @date 2025-10-29
  *
@@ -11,29 +11,20 @@
  */
 #include "PlantCare.h"
 
+/**
+ * @brief Copy construct a new Low care level object
+ */
 PlantCare::PlantCare(const PlantCare& other) {}
 
-// int PlantCare::waterAlgorithm() {
-//   // TODO(user) - implement PlantCare::waterAlgorithm
-//   // throw "Not yet implemented";
-// }
-
-// int PlantCare::sunAlgorithm() {
-//   // TODO(user) - implement PlantCare::sunAlgorithm
-//   // throw "Not yet implemented";
-// }
-
-// int PlantCare::fertiliseAlgorithm() {
-//   // TODO(user) - implement PlantCare::fertiliseAlgorithm
-//   // throw "Not yet implemented";
-// }
-
+/**
+ * @brief Construct a new Low care level object
+ */
 PlantCare::PlantCare() {
-  //TODO
+  
 }
 
 PlantCare::~PlantCare() {
-  //TODO
+  
 }
 
 /**

@@ -1,7 +1,7 @@
 /**
  * @file GardenPlot.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Swelihle Makhathini
+ * @brief Implementation of the GardenPlot class, which manages the garden's structure and provides high-level operations for plant management
  * @version 0.1
  * @date 2025-11-02
  *
@@ -48,6 +48,11 @@ map<string, int> GardenPlot::viewAll() {
   map<string, int> all;
   return garden->summary(all);
 }
+
+/**
+ * @brief Get a summary of all available (non-dying, non-dead) plants
+ * @return Map of plant names to their quantities
+ */
 map<string, int> GardenPlot::viewAvailable() {
   Iterator* it = garden->createIterator();
   int PlantCount = 0;
@@ -87,8 +92,10 @@ void GardenPlot::transpire(int decreasedLevel) {
 }
 
 /**
- * @brief returns a vector of num of the passed in plants
- *
+ * @brief Get a specified number of plants by name
+ * @param name Name of the plants to retrieve
+ * @param num Number of plants to retrieve
+ * @return Vector of pointers to the retrieved plants
  */
 vector<Garden*> GardenPlot::get(string name, int num) {
   if (!garden) {

@@ -1,7 +1,7 @@
 /**
  * @file Management.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Unathi Tshakalisa, Nathan Chisadza, Dominique Nigatu
+ * @brief Implementation of the Management class which handles staff supervision, task assignment, and customer complaint resolution
  * @version 0.1
  * @date 2025-10-29
  *
@@ -37,6 +37,10 @@ std::string Management::jobDesc() {
   return Roles::jobDesc() + "\nManagement staff responsible for assigning tasks and operations.";
 }
 
+/**
+ * @brief Assign check inventory and plant inspection tasks
+ * @param group The nursery group to assign tasks for
+ */
 void Management::assignTasks(Nursery* group) {
   CheckInventory cmd1(this, group);
   cmd1.execute();
@@ -44,6 +48,10 @@ void Management::assignTasks(Nursery* group) {
   cmd2.execute();
 }
 
+/**
+ * @brief Hire a new staff member
+ * @param newStaff The staff member to hire
+ */
 void Management::hireStaff(Staff* newStaff) {
   Nursery* med = getNursery();
   if (!med || !newStaff) return;
@@ -52,6 +60,10 @@ void Management::hireStaff(Staff* newStaff) {
   cmd.execute();
 }
 
+/**
+ * @brief Fire an existing staff member
+ * @param exStaff The staff member to fire
+ */
 void Management::fireStaff(Staff* exStaff) {
   Nursery* med = getNursery();
   if (!med || !exStaff) return;
@@ -60,6 +72,11 @@ void Management::fireStaff(Staff* exStaff) {
   cmd.execute();
 }
 
+/**
+ * @brief Handle customer requests, particularly complaints
+ * @param req The customer request to handle
+ * @param customer The customer making the request
+ */
 void Management::handleCustomer(Request req, Customer* customer) {  // add complaints
   if (req.getRequest() == "Complaint") {
     std::cout << "\nI am " + name + " and I will be assisting you today.\nPlease enter your complaint below:"
@@ -85,6 +102,13 @@ void Management::handleCustomer(Request req, Customer* customer) {  // add compl
   }
 }
 
+/**
+ * @brief Receive and handle messages from other staff members
+ * @param m The message content
+ * @param from The sender of the message
+ * @param group The nursery group context
+ * @param type The type of message
+ */
 void Management::receive(string m, People* from, Nursery* group, string type) {
   std::cout << getName() << " (" << getType() << ") received [" << type << "]: " << m;
   if (from) std::cout << " from " << from->getName() << " (" << static_cast<Staff*>(from)->getType() << ")";
@@ -98,5 +122,14 @@ void Management::receive(string m, People* from, Nursery* group, string type) {
   }
 }
 
+/**
+ * @brief Update method for plant state changes
+ * @param p The plant that has been updated
+ */
 void Management::update(Plant* p) {}       // stubbed
+
+/**
+ * @brief Handle plant-related tasks
+ * @param p The plant to handle
+ */
 void Management::handlePlant(Plant* p) {}  // stubbed

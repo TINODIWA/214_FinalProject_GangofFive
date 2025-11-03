@@ -1,7 +1,7 @@
 /**
  * @file Director.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Swelihle Makhathini
+ * @brief Implementation of the Director class, which coordinates the garden construction process using the Builder pattern
  * @version 0.1
  * @date 2025-10-29
  *

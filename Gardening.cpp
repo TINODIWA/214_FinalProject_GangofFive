@@ -1,7 +1,7 @@
 /**
  * @file Gardening.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Unathi Tshkalisa, Nathan Chisadza, Dominique Nigatu, Ryan Liao
+ * @brief Implementation of the Gardening role class, which handles plant maintenance, customer advice, and plant care strategies
  * @version 0.1
  * @date 2025-10-29
  *
@@ -24,6 +24,9 @@
  */
 Gardening::Gardening(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
 
+/**
+ * @brief Destroy the Gardening object
+ */
 Gardening::~Gardening() {}
 
 /**
@@ -72,6 +75,11 @@ void Gardening::checkPlants() {
   }
 }
 
+/**
+ * @brief Handle customer requests for plant advice
+ * @param req The customer's request
+ * @param customer Pointer to the customer making the request
+ */
 void Gardening::handleCustomer(Request req, Customer* customer) {
   if (!customer) {
     std::cout << "Error: No customer assigned. Cannot proceed.\n";
@@ -171,6 +179,13 @@ void Gardening::handleCustomer(Request req, Customer* customer) {
   }
 }
 
+/**
+ * @brief Receive and handle messages from other staff members
+ * @param m The message content
+ * @param from Pointer to the sender
+ * @param group Pointer to the nursery group
+ * @param type The type of message
+ */
 void Gardening::receive(string m, People* from, Nursery* group, string type) {
   if (!(from && group)) return;
 
