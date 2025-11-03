@@ -75,44 +75,44 @@ int main() {
 
   GardenPlot plot = GardenPlot("plants.txt");
 
-  cout << "ALL PLANTS" << endl;
+  // cout << "ALL PLANTS" << endl;
 
-  for (auto p : plot.viewAll()) {
-    cout << p.first << "\t" << p.second << endl;
-  }
+  // for (auto p : plot.viewAll()) {
+  //   cout << p.first << "\t" << p.second << endl;
+  // }
 
-  cout << "\n AVAILABLE PLANTS" << endl;
-  for (auto p : plot.viewAvailable()) {
-    cout << p.first << "\t" << p.second << endl;
-  }
+  // cout << "\n AVAILABLE PLANTS" << endl;
+  // for (auto p : plot.viewAvailable()) {
+  //   cout << p.first << "\t" << p.second << endl;
+  // }
 
-  cout << "\nTESTING GETTING PLANTS FROM THE GARDEN - REMOVE\n" << endl;
-  vector<Garden*> buy = plot.get("Azalea", 4);
-  cout << "Order:\n";
+  // cout << "\nTESTING GETTING PLANTS FROM THE GARDEN - REMOVE\n" << endl;
+  // vector<Garden*> buy = plot.get("Azalea", 4);
+  // cout << "Order:\n";
 
-  for (int i = 0; i < buy.size(); i++) {
-    if (buy[i]) {
-      cout << buy[i]->print() << endl;
-      delete buy[i];
-    }
-  }
+  // for (int i = 0; i < buy.size(); i++) {
+  //   if (buy[i]) {
+  //     cout << buy[i]->print() << endl;
+  //     delete buy[i];
+  //   }
+  // }
 
-  cout << "------------------------------------\n";
+  // cout << "------------------------------------\n";
 
-  cout << endl;
-  cout << endl;
-  for (auto p : plot.viewAll()) {
-    cout << p.first << "\t" << p.second << endl;
-  }
+  // cout << endl;
+  // cout << endl;
+  // for (auto p : plot.viewAll()) {
+  //   cout << p.first << "\t" << p.second << endl;
+  // }
 
-  cout << "\nTESTING GETTING PLANT ADVICE\n" << endl;
-  cout << plot.get("Rosemary")->advice() << endl;
+  // cout << "\nTESTING GETTING PLANT ADVICE\n" << endl;
+  // cout << plot.get("Rosemary")->advice() << endl;
 
-  cout << "\nTESTING GETTING PA PLANT BY NAME - NO REMOVE\n" << endl;
-  Garden* ptr = plot.get("Oak");
+  // cout << "\nTESTING GETTING PA PLANT BY NAME - NO REMOVE\n" << endl;
+  // Garden* ptr = plot.get("Oak");
 
-  if (ptr) cout << "Got " << ptr->print() << endl;
-  else cout <<":(\n";
+  // if (ptr) cout << "Got " << ptr->print() << endl;
+  // else cout <<":(\n";
 
   cout << "\n==================TESTING CHAIN\n";
   Staff* base = new BaseStaff(nullptr, "Joy");
@@ -131,7 +131,7 @@ int main() {
 //   manager->setSuccessor(NULL);
 //   chain->handleCustomer(req,unathi);
 
-  Nursery* cc = new CustomerCare(garden);
+  Nursery* cc = new CustomerCare(&plot);
   cc->addStaff(base);
   cc->addStaff(gardener);
   cc->addStaff(sales);
@@ -152,5 +152,8 @@ int main() {
   delete gardener;
   delete sales;
   delete manager;
+  delete unathi;
+  delete cc;
+  delete garden;
   return 0;
 }

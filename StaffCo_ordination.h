@@ -16,7 +16,7 @@ using namespace std;
 class StaffCo_ordination : public Nursery {
  public:
   StaffCo_ordination();
-  StaffCo_ordination(Garden* g);
+  StaffCo_ordination(GardenPlot* g);
   virtual ~StaffCo_ordination();
 
   virtual void sendMessage(string m, People* from, string type);

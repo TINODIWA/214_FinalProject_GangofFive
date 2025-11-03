@@ -21,7 +21,7 @@ class CustomerCare : public Nursery {
  public:
   void notify(Request req, Customer* customer);  // I think this would functioin sa my setCollegues thing...
   CustomerCare();
-  CustomerCare(Garden* g);
+  CustomerCare(GardenPlot* g);
   virtual ~CustomerCare();
 
   virtual void addStaff(Staff* s);

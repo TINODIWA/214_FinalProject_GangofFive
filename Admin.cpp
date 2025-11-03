@@ -34,12 +34,12 @@ std::string Admin::jobDesc() {
 
 
 void Admin::updateInventory() {
-  Nursery* med = getNursery();
-  if (!med) return;
-  Garden* g = med->getGarden();
-  Crop* root = dynamic_cast<Crop*>(g);
-  if (!root) return;
-    root->removeDeadPlants();
+//   Nursery* med = getNursery();
+//   if (!med) return;
+//   GardenPlot* g = med->getGarden();
+//   Crop* root = dynamic_cast<Crop*>(g);
+//   if (!root) return;
+//     root->removeDeadPlants();
 }
 
 void Admin::handleCustomer(Request req, Customer* customer) {//stubbed

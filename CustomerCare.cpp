@@ -17,7 +17,7 @@
 
 CustomerCare::CustomerCare() : Nursery() {}
 
-CustomerCare::CustomerCare(Garden* g) : Nursery(g) {}
+CustomerCare::CustomerCare(GardenPlot* g) : Nursery(g) {}
 
 CustomerCare::~CustomerCare() {}
 

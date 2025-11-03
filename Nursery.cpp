@@ -14,12 +14,12 @@
 
 Nursery::Nursery() {}
 
-Nursery::Nursery(Garden* g) : garden(g) {}
+Nursery::Nursery(GardenPlot* g) : garden(g) {}
 
 Nursery::~Nursery() {}
 Nursery::Nursery(const Nursery& other) {
   // vector<vector<Plant*>>::const_iterator otherPlants = (other.garden).begin();
-  Garden* otherGarden = other.garden;
+  GardenPlot* otherGarden = other.garden;
   vector<Customer*>::const_iterator otherCustomer = (other.customers).begin();
   vector<Staff*>::const_iterator otherStaff = (other.staff).begin();
 }
@@ -29,7 +29,7 @@ void Nursery::start(bool sim) {
   // throw "Not yet implemented";
 }
 
-void Nursery::setGarden(Garden* g) {
+void Nursery::setGarden(GardenPlot* g) {
   if (g == NULL) return;
   if (garden == g) return;
   if (garden) {
@@ -38,7 +38,7 @@ void Nursery::setGarden(Garden* g) {
   garden = g;
 }
 
-Garden* Nursery::getGarden() {
+GardenPlot* Nursery::getGarden() {
   return garden;
 }
 

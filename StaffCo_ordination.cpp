@@ -18,7 +18,7 @@
  */
 StaffCo_ordination::StaffCo_ordination() : Nursery() {}
 
-StaffCo_ordination::StaffCo_ordination(Garden* g) : Nursery(g) {}
+StaffCo_ordination::StaffCo_ordination(GardenPlot* g) : Nursery(g) {}
 
 StaffCo_ordination::~StaffCo_ordination() {}
 
