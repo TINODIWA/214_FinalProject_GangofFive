@@ -12,20 +12,12 @@
 #include "Garden.h"
 #include "Iterator.h"
 
-int gID = 0;
-
 /**
  * @brief Construct a new Garden:: Garden object
  *
  */
-Garden::Garden() : id(-1) {}
+Garden::Garden(){}
 
-/**
- * @brief Construct a new Garden object
- *
- * @param id
- */
-Garden::Garden(int id) : id(gID++) {}
 /**
  * @brief Destroy the Garden:: Garden object
  *
@@ -80,15 +72,6 @@ string Garden::advice() {
   return "";
 }
 
-/**
- * @brief returns advice for a specific plant - stubbed
- *
- * @param name
- * @return string
- */
-string Garden::getAdvice(string name) {
-  return "";
-}
 /**
  * @brief return the plant with the passed in id
  *

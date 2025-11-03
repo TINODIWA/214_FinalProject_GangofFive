@@ -16,8 +16,7 @@
  *
  */
 Plant::Plant()
-    : Garden(id),
-      state(new Planted()),
+    : state(new Planted()),
       waterStrategy(nullptr),
       sunStrategy(nullptr),
       fertiliserStrategy(nullptr),

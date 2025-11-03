@@ -97,13 +97,6 @@ vector<Garden*> GardenPlot::get(string name, int num) {
 
   return garden->get(name, num);
 }
-/**
- * @brief return advice on how to care for the passed in plant
- *
- */
-string GardenPlot::getAdvice(string name) {
-  return garden->getAdvice(name);
-}
 
 /**
  * @brief get the plant with the passed in name

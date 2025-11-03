@@ -15,12 +15,8 @@
 using namespace std;
 
 class Garden {
- protected:
-  int id;
-
  public:
   Garden();
-  Garden(int id);
   virtual ~Garden();
   virtual Garden* clone() = 0;
   virtual void add(Garden* p);
@@ -30,7 +26,6 @@ class Garden {
   virtual map<string,int> summary(map<string,int>& sum);
   virtual string getState();
   virtual string advice();
-  virtual string getAdvice(string name);
   virtual  vector<Garden*> get(string name, int num);
   virtual Garden* get(string name);
   virtual bool operator==(string name);

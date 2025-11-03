@@ -229,30 +229,6 @@ vector<Garden*> Crop::get(string name, int num) {
 }
 
 /**
- * @brief returns advice on how to care for a plant
- *
- * @return string
- */
-string Crop::getAdvice(string name) {
-  Iterator* it = createIterator();
-  string advice = "";
-
-  while (!it->done()) {
-    if ((**it)->operator==(name)) {
-      advice = (**it)->advice();
-      break;
-    } else {
-      advice += (**it)->getAdvice(name);
-    }
-
-    ++(*it);
-  }
-
-  delete it;
-  return advice;
-}
-
-/**
  * @brief return the pointer to the first plant with the passed in name
  *
  * @param name

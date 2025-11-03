@@ -35,7 +35,6 @@ class Crop : public Garden {
   map<string, int> summary(map<string, int>& sum);
   bool done();
   Garden* next();
-  string getAdvice(string name);
   vector<Garden*> get(string name, int num);
   Garden* get(string name);
 };
