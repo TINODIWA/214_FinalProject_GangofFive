@@ -1,8 +1,8 @@
 
 /**
  * @file PlantCare.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Dominique Nigatu
+ * @brief Implementation of the PlantCare class for the plant care template method
  * @version 0.1
  * @date 2025-10-29
  *
@@ -11,34 +11,35 @@
  */
 #include "PlantCare.h"
 
+
+/**
+ * @brief Copy constructor for PlantCare
+ * @param other The PlantCare object to copy from
+ */
 PlantCare::PlantCare(const PlantCare& other) {}
 
-// int PlantCare::waterAlgorithm() {
-//   // TODO(user) - implement PlantCare::waterAlgorithm
-//   // throw "Not yet implemented";
-// }
 
-// int PlantCare::sunAlgorithm() {
-//   // TODO(user) - implement PlantCare::sunAlgorithm
-//   // throw "Not yet implemented";
-// }
-
-// int PlantCare::fertiliseAlgorithm() {
-//   // TODO(user) - implement PlantCare::fertiliseAlgorithm
-//   // throw "Not yet implemented";
-// }
-
+/**
+ * @brief Construct a new PlantCare object
+ */
 PlantCare::PlantCare() {
-  //TODO
+  
 }
 
+
+/**
+ * @brief Destroy the PlantCare object
+ */
 PlantCare::~PlantCare() {
-  //TODO
+  
 }
 
 /**
  * @brief Applies care to the plant based on current and target water levels and change direction.
- * @return Updated current water level after applying care.
+ * @param currWL Current water level
+ * @param WL Target water level
+ * @param changeDirection Direction of change (1 for increase, -1 for decrease)
+ * @return int Updated current water level after applying care
  */
 int PlantCare::apply(int currWL, int WL, int changeDirection) {
   if (!checkPlant(currWL, WL, changeDirection)) {   //returns currWL if no change is needed
@@ -71,7 +72,10 @@ int PlantCare::apply(int currWL, int WL, int changeDirection) {
 
 /**
  * @brief Checks if the plant needs care based on current and target water levels and change direction.
- * @return True if care is needed, false otherwise.
+ * @param currWL Current water level
+ * @param WL Target water level
+ * @param changeDirection Direction of change (1 for increase, -1 for decrease)
+ * @return bool True if care is needed, false otherwise
  */
 bool PlantCare::checkPlant(int currWL, int WL, int changeDirection) {
   if (changeDirection > 0) {  //where its inc

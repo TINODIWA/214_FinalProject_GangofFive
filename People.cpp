@@ -1,7 +1,7 @@
 /**
  * @file People.cpp
  * @author Nathan Chisadza, Unathi Tshakalisa
- * @brief
+ * @brief Implementation of the People class which serves as a base class for all persons in the nursery system, handling communication through mediator
  * @version 0.1
  * @date 2025-10-29
  *
@@ -9,6 +9,7 @@
  *
  */
 #include "People.h"
+#include "CustomerCare.h"
 
 /**
  * @brief Construct a new People:: People object
@@ -41,7 +42,7 @@ People::People(const People* other) {
  *
  */
 People::~People() {
-  delete nursery;
+  nursery = NULL;
 }
 
 /**
@@ -71,19 +72,34 @@ void People::send(string m, People* to, Nursery* group, string type) {
   }
 }
 
+/**
+ * @brief Get the name of the person
+ * @return string The person's name
+ */
 string People::getName() const {
   return name;
 }
 
+/**
+ * @brief Get the nursery mediator for this person
+ * @return Nursery* Pointer to the nursery mediator
+ */
 Nursery* People::getNursery() const {
   return nursery;
 }
 
+/**
+ * @brief Set the name of the person
+ * @param name The new name to set
+ */
 void People::setName(const string& name) {
   this->name = name;
 }
 
+/**
+ * @brief Set the nursery mediator for this person
+ * @param n Pointer to the new nursery mediator
+ */
 void People::setNursery(Nursery* n) {
   this->nursery = n;
 }
-

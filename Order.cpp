@@ -1,7 +1,7 @@
 /**
  * @file Order.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Unathi Tshakalisa, Swelihle Makhathini
+ * @brief Implementation of the Order class which manages customer orders including plant selections and payment processing
  * @version 0.1
  * @date 2025-10-29
  *
@@ -16,13 +16,31 @@
  */
 Order::Order() : customer(nullptr), paymentMethod(nullptr) {}
 
+Order::~Order(){
+    clearOrder();
+    delete paymentMethod;
+    paymentMethod = nullptr;
+}
 
+/**
+ * @brief Copy constructor for Order class
+ * @param other The Order object to copy from
+ */
+Order::Order(const Order &other){
+
+}
+
+/**
+ * @brief Construct a new Order with customer and staff
+ * @param customer Pointer to the customer placing the order
+ * @param staff Pointer to the staff member handling the order
+ */
 Order::Order(Customer *customer, Staff *staff): customer(customer),staff(staff){}
 /**
  * @brief purchase and order
  *
  */
-void Order::purchase()
+void Order::purchase(int day)
 {
 	cout << "Please select a payment method:\n";
 
@@ -31,7 +49,7 @@ void Order::purchase()
 
 	while (!valid)
 	{
-		cout << "** Please type the payment method exactly as displayed below**\n";
+		cout << "** Please enter the correct number from below**\n";
 		cout << "1. EFT\n";
 		cout << "2. Card\n";
 		cout << "3. Cash\n";
@@ -41,17 +59,17 @@ void Order::purchase()
 
 		if (choice == "")
 			continue;
-		if (choice == "EFT")
+		if (choice == "1")
 		{
 			paymentMethod = new EFT();
 			valid = true;
 		}
-		else if (choice == "Card")
+		else if (choice == "2")
 		{
 			paymentMethod = new Card();
 			valid = true;
 		}
-		else if (choice == "Cash")
+		else if (choice == "3")
 		{
 			paymentMethod = new Cash();
 			valid = true;
@@ -62,7 +80,9 @@ void Order::purchase()
 		}
 	}
 
-	paymentMethod->purchase(customer, plants, staff);
+	this->receipt = paymentMethod->purchase(customer, plants, staff);
+	cout<<"\nYour receipt: \n\t"<<receipt<<"\n\n"<<endl;
+	this->purchaseDate = day;
 }
 
 /**
@@ -118,4 +138,32 @@ void Order::setCustomer(Customer *c){
 	if(!c) return;
 
 	customer = c;
+}
+
+/**
+ * @brief Prints the details of a previously made order
+ * @return string containing the receipt and purchase date
+ */
+string Order::printOldOrder(){
+	stringstream ss ;
+	ss<< this->receipt << "\tPurchased on day: "<<this->purchaseDate;
+	return ss.str();
+}
+
+/**
+ * @brief Get the map of plants and their quantities in the order
+ * @return map<Plant *, int> Map of plant pointers to their quantities
+ */
+map<Plant *, int> Order::getPlants(){
+	return plants;
+}
+
+/**
+ * @brief Clears all plants from the order
+ */
+void Order::clearOrder() {
+	for (auto& pair : plants) {
+        delete pair.first;  
+    }
+    plants.clear();
 }

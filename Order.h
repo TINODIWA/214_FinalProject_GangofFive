@@ -14,6 +14,7 @@
 #include "EFT.h"
 #include "Card.h"
 #include "Cash.h"
+#include <sstream>
 
 using namespace std;
 
@@ -35,15 +36,12 @@ public:
 	Order(const Order &other);
 	void addPlant(Plant *p);
 	void removePlant(Plant *p);
-	void purchase();
+	void purchase(int day);
 	void setStaff(Staff* s);
 	void setCustomer(Customer* c);
-
-private:
-	void prepare();
-	void payment();
-	Order *package();
-
+	string printOldOrder();
+	map<Plant *, int> getPlants();
+	void clearOrder();
 };
 
 #endif  // ORDER_H_

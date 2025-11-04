@@ -9,6 +9,7 @@
 #include "People.h"
 #include "Request.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -16,14 +17,17 @@ class Order;
 
 class Customer : public People {
  private:
-  Order* order;
-  Request req;
+  vector<Order*> orderHistory;
+  //Request req;
 
  public:
   Customer(string name);
   ~Customer();
   Customer(const Customer* other);
-  void makeReq(Request* req);
+  void makeReq(Request req);
+  void addOrder(Order* order);
+  vector<Order*> getOrderHistory();
+  void receive(string m, People* from, Nursery* group, string type);
 };
 
 #endif  // CUSTOMER_H_

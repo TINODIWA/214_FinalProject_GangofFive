@@ -1,7 +1,7 @@
 /**
  * @file Plant.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Unathi Tshakalisa, Swelihle Makhathini, Ryan Liao
+ * @brief Implementation of the Plant class which manages plant lifecycle, state transitions, and various care strategies including water, sun, and fertilizer
  * @version 0.1
  * @date 2025-10-29
  *
@@ -10,16 +10,17 @@
  */
 
 #include "Plant.h"
+#include <algorithm>
 
 /**
  * @brief Construct a new Plant:: Plant object
  *
  */
-Plant::Plant() : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
+Plant::Plant()
+    : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullptr), fertiliserStrategy(nullptr), sun(0) {
   for (int i = 0; i < 2; i++) {
     water.push_back(0);
     fertiliser.push_back(0);
-    sun.push_back(0);
   }
 }
 
@@ -28,26 +29,25 @@ Plant::Plant() : state(new Planted()), waterStrategy(nullptr), sunStrategy(nullp
  *
  */
 Plant::~Plant() {
-  if(waterStrategy){
+  if (waterStrategy) {
     delete waterStrategy;
     waterStrategy = nullptr;
   }
 
-  if(sunStrategy){
+  if (sunStrategy) {
     delete sunStrategy;
     sunStrategy = nullptr;
   }
 
-  if(fertiliserStrategy){
+  if (fertiliserStrategy) {
     delete fertiliserStrategy;
     fertiliserStrategy = nullptr;
   }
 
-  if(state){
+  if (state) {
     delete state;
     state = nullptr;
   }
-
 }
 
 /**
@@ -65,7 +65,7 @@ Plant::Plant(const Plant& other) {
   days = other.days;
   price = other.price;
   attention = other.attention;
-  state = (other.state) ? other.state->clone() : nullptr;
+  state = other.state ? other.state->clone() : nullptr;
   waterStrategy = (other.waterStrategy) ? other.waterStrategy->clone() : nullptr;
   sunStrategy = (other.sunStrategy) ? other.sunStrategy->clone() : nullptr;
   fertiliserStrategy = (other.fertiliserStrategy) ? other.fertiliserStrategy->clone() : nullptr;
@@ -112,7 +112,7 @@ void Plant::setWater(int water) {
  * @param sun
  */
 void Plant::setSun(int sun) {
-  this->sun[1] = sun;
+  this->sun = sun;
 }
 
 /**
@@ -139,7 +139,10 @@ void Plant::setAttention(int attention) {
  * @param water
  */
 void Plant::setWaterCare(char level) {
-  delete waterStrategy;
+  if (this->waterStrategy) {
+    delete this->waterStrategy;
+    this->waterStrategy = nullptr;
+  }
   this->waterStrategy = setCareStrategy(level);
 }
 
@@ -149,7 +152,10 @@ void Plant::setWaterCare(char level) {
  * @param sun
  */
 void Plant::setSunCare(char level) {
-  delete sunStrategy;
+  if (this->sunStrategy) {
+    delete this->sunStrategy;
+    this->sunStrategy = nullptr;
+  }
   this->sunStrategy = setCareStrategy(level);
 }
 
@@ -159,7 +165,10 @@ void Plant::setSunCare(char level) {
  * @param fertiliser
  */
 void Plant::setFertiliserCare(char level) {
-  delete fertiliserStrategy;
+  if (this->fertiliserStrategy) {
+    delete this->fertiliserStrategy;
+    this->fertiliserStrategy = nullptr;
+  }
   this->fertiliserStrategy = setCareStrategy(level);
 }
 
@@ -179,7 +188,7 @@ PlantCare* Plant::setCareStrategy(char level) {
       break;
 
     case 'L':
-      //cout << "LOW set...great!!." << endl;
+      // cout << "LOW set...great!!." << endl;
       return new Low();
       break;
 
@@ -204,8 +213,18 @@ void Plant::setDays(vector<int> days) {
  *
  * @param price
  */
-void Plant::setPrice(int price) {
+void Plant::setPrice(float price) {
   this->price = price;
+}
+
+/**
+ * @brief Set the State object
+ *
+ * @param state
+ */
+
+void Plant::setState(PlantState* state) {
+  this->state = state;
 }
 
 /**
@@ -241,7 +260,7 @@ vector<int> Plant::getWater() const {
  * @return int
  */
 
-vector<int> Plant::getSun() const {
+int Plant::getSun() const {
   return sun;
 }
 
@@ -302,16 +321,16 @@ vector<int> Plant::getDays() const {
 /**
  * @brief returns the price of the plant
  *
- * @return int
+ * @return float
  */
-int Plant::getPrice() const {
+float Plant::getPrice() const {
   return price;
 }
 
 /**
  * @brief Attach an observer (Staff) to this Plant
  * Adds a Staff member to the list of observers that will be notified of state changes
- * 
+ *
  * @param s Pointer to Staff object to attach as observer
  */
 void Plant::attach(Staff* s) {
@@ -324,32 +343,40 @@ void Plant::attach(Staff* s) {
  * @brief Detach an observer (Staff) from this Plant
  * Removes a Staff member from the list of observers
  * Uses operator== to find matching Staff member
- * 
+ *
  * @param s Pointer to Staff object to detach
  */
-void Plant::detach(Staff* s) {
-  if (s == nullptr) 
-    return;
-  for (auto it = staff.begin(); it != staff.end(); ++it) {
-    if (*it != nullptr && **it == *s) {
-      staff.erase(it);
-      break;
-    }
-  }
-}
+// void Plant::detach(Staff* s) {
+//   if (s == nullptr) return;
+//   for (auto it = staff.begin(); it != staff.end(); ++it) {
+//     if (*it != nullptr && **it == *s) {
+//       staff.erase(it);
+//       break;
+//     }
+//   }
+// }
+// void Plant::detach(Staff* s) {
+//   if (s == nullptr) return;
+//   for (auto it = staff.begin(); it != staff.end(); ++it) {
+//     if (*it != nullptr && **it == *s) {
+//       staff.erase(it);
+//       break;
+//     }
+//   }
+// }
 
-/**
- * @brief Notify all attached observers of a state change
- * Calls update() on each Staff observer in the list
- * Part of the Observer design pattern implementation
- */
-void Plant::notify() {
-  for (Staff* observer : staff) {
-    if (observer != nullptr) {
-      observer->update(this);
-    }
-  }
-}
+// /**
+//  * @brief Notify all attached observers of a state change
+//  * Calls update() on each Staff observer in the list
+//  * Part of the Observer design pattern implementation
+//  */
+// void Plant::notify() {
+//   for (Staff* observer : staff) {
+//     if (observer != nullptr) {
+//       observer->update(this);
+//     }
+//   }
+// }
 
 /**
  * @brief updates daily water level
@@ -363,11 +390,13 @@ void Plant::updateWaterLevel(int newLevel) {
  * @param decrease attribute determined by Sun Strategy
  */
 void Plant::updateSunLevel(int newLevel) {
-  if (sun.size() >= 1) sun[0] = newLevel;
+  sun = newLevel;
 }
 
 void Plant::transpire(int decreasedLevel) {
-  this->water[0] = decreasedLevel;
+  this->water[0] = sunStrategy->apply(water[0], sun, -1);
+  this->fertiliser[0] = sunStrategy->apply(fertiliser[0], sun, -1);
+  state->handleChange(this);
 }
 
 /**
@@ -395,6 +424,14 @@ string Plant::getState() {
 }
 
 /**
+ * @brief returns the state objects
+ *
+ * @return PlantState*
+ */
+PlantState* Plant::currState() const {
+  return state;
+}
+/**
  * @brief Returns clone of the plant
  */
 Garden* Plant::clone() {
@@ -405,16 +442,11 @@ Garden* Plant::clone() {
  * @brief prints the plant
  *
  */
-void Plant::print() {
-  cout << left << setw(10) << this->name << "|";
+string Plant::print() {
+  stringstream ss;
+  ss << left << setw(10) << this->name << "|";
+  return ss.str();
 }
-
-/**
- * @brief stubbed - for the crop
- *
- * @param p
- */
-void Plant::add(Garden* p) {}
 
 /**
  * @brief advice on how to care for the plant
@@ -422,6 +454,33 @@ void Plant::add(Garden* p) {}
  * @return string
  */
 string Plant::advice() {
-  return "";
+  stringstream ss;
+
+  ss << "Advice on how to care for your " << name << "\n";
+
+  ss << "Water:\t" << water[1] << " ml/day\n";
+  ss << "Fertiliser:\t" << fertiliser[1] << "ml/day\n";
+
+  // not sure abt sun and attention yet
+
+  return ss.str();
 }
 
+/**
+ * @brief return if two plants are equal based on name
+ *
+ */
+bool Plant::operator==(string name) {
+  if (this->name == name) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * @brief changes the state of the plant
+ *
+ */
+void Plant::changeState() {
+  state->handleChange(this);
+}

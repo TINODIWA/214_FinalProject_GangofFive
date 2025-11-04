@@ -1,7 +1,7 @@
 /**
  * @file Staff.cpp
  * @author Nathan Chisadza, Dominiqu Nigatu
- * @brief
+ * @brief Implementation of the Staff class, representing staff members and their responsibilities in the nursery system
  * @version 0.1
  * @date 2025-10-29
  *
@@ -10,6 +10,7 @@
  */
 
 #include "Staff.h"
+#include "People.h"
 
 /**
  * @brief Construct a new Staff:: Staff object
@@ -53,20 +54,20 @@ void Staff::setSuccessor(Staff* succ) {
 }
 
 /**
- * @brief Handles customer requests by passing them to the successor if exists
+ * @brief stubbed for concrete staff
  *
  * @param req Customer request to handle
  */
-void Staff::handleCustomer(Request* req) {
-  if (this->successor) {
-    this->successor->handleCustomer(req);
-  }
+void Staff::handleCustomer(Request req, Customer* customer) {
+  // if (this->successor) {
+  //   this->successor->handleCustomer(req);
+  // }
 }
 
 /**
  * @brief Equality operator for Staff objects
  * Compares two Staff objects based on their names
- * 
+ *
  * @param other The Staff object to compare with
  * @return true if both Staff objects have the same name
  * @return false if the Staff objects have different names
@@ -77,4 +78,60 @@ bool Staff::operator==(const Staff& other) const {
   }
 
   return true;
+}
+
+
+/**
+ * @brief Read an integer from input within a specified range
+ * @param lo The lower bound (inclusive)
+ * @param hi The upper bound (inclusive)
+ * @param prompt The prompt to display to the user
+ * @param errPrompt The error prompt to display for invalid input
+ * @return int The validated integer input from the user
+ */
+int Staff::readIntInRange(int lo, int hi, const std::string& prompt, const std::string& errPrompt) {
+  int value;
+  std::cout << prompt;
+
+  for (;;) {
+    if ((std::cin >> value) && value >= lo && value <= hi) {
+      return value;
+    }
+
+    std::cin.clear();
+    std::cin.ignore(10000, '\n');
+    std::cout << errPrompt;
+  }
+}
+
+/**
+ * @brief Print the entire garden inventory in a formatted string
+ * @param inventory Map of plant names to their quantities
+ * @return string The formatted inventory string
+ */
+string Staff::printAll(map<std::string, int> inventory) {
+  std::ostringstream out;
+
+  if (inventory.empty()) {
+    out << "The garden inventory is currently empty.\n";
+    return out.str();
+  }
+
+  out << "Current Garden Inventory:\n";
+  out << std::left << std::setw(5) << "No." << std::setw(25) << "Plant Name"
+      << "Quantity\n";
+  out << std::string(45, '-') << "\n";
+
+  int index = 1;
+  for (std::map<std::string, int>::const_iterator it = inventory.begin(); it != inventory.end(); ++it) {
+    const std::string& plant = it->first;
+    int quantity = it->second;
+    out << std::left << std::setw(5) << (std::to_string(index) + ".") << std::setw(25) << plant << quantity << "\n";
+    ++index;
+  }
+
+  out << std::string(45, '-') << "\n";
+  out << "Total plant types: " << inventory.size() << "\n";
+
+  return out.str();
 }

@@ -16,12 +16,16 @@
  * @param s Staff being appointed to fulfill the command
  * @param m Staff coordination pointer for the command to go to correct ConcreteMediator
  */
-CheckInventory::CheckInventory(Staff* s, StaffCo_ordination* m) : Command(s, m) {}
+CheckInventory::CheckInventory(Staff* from, Nursery* m)
+  : Command(from, m, "Please check the Inventory", "CheckInventory") {}
 
 /**
  * @brief Execute the Check Inventory command
  * @return void
  */
 void CheckInventory::execute() {
-  mediator->sendMessage("Checking inventory status", appointed, "CheckInventory");
+  if (!mediator) return;
+  Staff* appointed = mediator->findStaffByType("BaseStaff: Admin");
+
+  if (appointed) mediator->sendMessage(msg, appointed, from, commandType);
 }

@@ -11,6 +11,8 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <algorithm>  
+#include <sstream>
 
 #include "Garden.h"
 #include "PlantCare.h"
@@ -19,7 +21,6 @@
 #include "Low.h"
 #include "PlantState.h"
 #include "Planted.h"
-#include "Staff.h"
 
 class Staff;
 
@@ -38,13 +39,13 @@ class Plant : public Garden {
   PlantState* state;
   vector<Staff*> staff;
   vector<int> days;  // <growing,mature>
-  int price;
+  float price;
   int attention;
   PlantCare* setCareStrategy(char level);
 
  public:
   Plant();
-  virtual ~Plant();
+  ~Plant();
   Plant(const Plant& other);
   void setName(string name);
   void setType(string type);
@@ -56,7 +57,8 @@ class Plant : public Garden {
   void setSunCare(char level);
   void setFertiliserCare(char level);
   void setDays(vector<int> days);
-  void setPrice(int price);
+  void setPrice(float price);
+  void setState(PlantState* state);
 
   string getName() const;
   string getType() const;
@@ -65,15 +67,15 @@ class Plant : public Garden {
   PlantCare* getSunCare() const;
   PlantCare* getFertiliserCare() const;
   vector<int> getDays() const;
-  int getPrice() const;
+  float getPrice() const;
   // vector[0] = current   vector[1] = required
   vector<int> getWater() const;
   int getSun() const;
   vector<int> getFertiliser() const;
 
   Garden* clone();
-  void print();
-  void add(Garden* p);
+  string print();
+  bool operator==(string name);
 
   // Observer functions
   void attach(Staff* s);
@@ -85,8 +87,10 @@ class Plant : public Garden {
   void updateSunLevel(int newLevel);
   void transpire(int decreasedLevel);
   void updateFertiliserLevel(int newLevel);
-	void updateDay();
-	string getState();
+  void updateDay();
+  string getState();
+  PlantState* currState() const;
+  void changeState();
 };
 
 #endif  // PLANT_H_

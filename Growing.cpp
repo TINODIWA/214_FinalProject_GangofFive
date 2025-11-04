@@ -1,7 +1,7 @@
 /**
  * @file Growing.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Swelihle Makhathini
+ * @brief Implementation of the Growing state class which represents a plant in its growth phase, handling transitions to mature or dying states
  * @version 0.1
  * @date 2025-10-29
  *
@@ -9,40 +9,46 @@
  *
  */
 #include "Growing.h"
+#include "Plant.h"
+#include "Dying.h"
+#include "Mature.h"
 
 /**
  * @brief Default constructor for the Growing state
  */
 Growing::Growing() {
-    // Constructor implementation
+  // Constructor implementation
 }
 
 /**
  * @brief Default destructor for the Growing state
  */
-Growing::~Growing(){}
+Growing::~Growing() {}
 
 /**
  * @brief Copy constructor for the Growing state
  * @param other Reference to another PlantState object to copy from
  */
 Growing::Growing(const PlantState& other) : PlantState(other) {
-    // Copy constructor implementation
+  // Copy constructor implementation
 }
 
 /**
  * @brief Handles the state transition from Growing to the next state
  */
-void Growing::handleChange() {
-    // State transition logic implementation
-}
+void Growing::handleChange(Plant* p) {
+  PlantState* curr = p->currState();
+  if (dying(p)) {
+    p->setState(new Dying());
+    p->currState()->setPrev(curr);
+    return;
+  }
 
-/**
- * @brief Creates a deep copy of the current Growing state
- * @return PlantState* Pointer to a new Growing state object
- */
-PlantState* Growing::clone() {
-    return new Growing(*this);
+  vector<int> days = p->getDays();
+  if (days[0] == days[2]) {
+    delete curr;
+    p->setState(new Mature());
+  }
 }
 
 /**
@@ -50,5 +56,13 @@ PlantState* Growing::clone() {
  * @return string The name of the current state ("Growing")
  */
 string Growing::getState() {
-    return "Growing";
+  return "Growing";
+}
+
+/**
+ * @brief clones the state of the plant
+ *
+ */
+PlantState* Growing::clone() {
+  return new Growing(*this);
 }

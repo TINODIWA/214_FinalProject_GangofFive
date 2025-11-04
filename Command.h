@@ -18,11 +18,9 @@ class Command {
   Nursery* mediator;
   string msg;
   string commandType;
-  Staff* appointed;
 
  public:
   Command(Staff* s, Nursery* m, string message, string cmdType);
-  void setAppointed(Staff* s);
   virtual ~Command();
   virtual void execute() = 0;
 };

@@ -1,8 +1,8 @@
 
 /**
  * @file Payment.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Swelihle Makhathini
+ * @brief Implementation of the Payment class which handles payment processing and receipt generation for plant orders
  * @version 0.1
  * @date 2025-10-29
  *
@@ -28,18 +28,32 @@ Payment::~Payment() {}
  *
  * @return string
  */
+/**
+ * @brief Process a purchase transaction
+ * @param customer The customer making the purchase
+ * @param plants Map of plants and their quantities being purchased
+ * @param staff Staff member handling the transaction
+ * @return string The transaction receipt
+ */
 string Payment::purchase(Customer* customer, map<Plant*, int> plants, Staff* staff) {
   prepare();
   payment();
   return receipt(customer, plants, staff);
 }
 
+/**
+ * @brief Generate a receipt for the purchase
+ * @param customer The customer who made the purchase
+ * @param plants Map of plants and their quantities purchased
+ * @param staff Staff member who handled the transaction
+ * @return string Formatted receipt as a string
+ */
 string Payment::receipt(Customer* customer, map<Plant*, int> plants, Staff* staff) {
   stringstream receipt;
 
   receipt << "Customer Copy\n";
   receipt << "---------------------------\n";
-  receipt << staff->getName() << "\n";
+  receipt << ((People*)staff)->getName() << "\n";
   receipt << "Customer: " << customer->getName() << "\n";
   receipt << "---------------------------\n";
   receipt << "Payment Method: " << getType() << "\n";
