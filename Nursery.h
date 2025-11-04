@@ -18,20 +18,28 @@ class People;
 using namespace std;
 
 class Nursery {
-public:
-    Nursery();
-    Nursery(Garden* g);
-    virtual ~Nursery();
-    Nursery(const Nursery& other);
-    void start(bool sim);
-    virtual void addStaff(Staff* s) = 0;
-    virtual void removeStaff(Staff* s) = 0;
-    virtual void addCustomer(Customer* c) = 0;
-    virtual void removeCustomer(Customer* c) = 0;
-    virtual void sendMessage(string m, People* from, string type) = 0;
-    virtual void sendMessage(string m, People* to, People* from, string type) = 0;
-    void setGarden(Garden* g);
-    Garden* getGarden();
+ public:
+  vector<string> complaints;
+  Nursery();
+  Nursery(GardenPlot* g);
+  virtual ~Nursery();
+  Nursery(const Nursery& other);
+  void start(bool sim);
+  virtual void addStaff(Staff* s) = 0;
+  virtual void removeStaff(Staff* s) = 0;
+  virtual void addCustomer(Customer* c) = 0;
+  virtual void removeCustomer(Customer* c) = 0;
+  virtual void sendMessage(string m, People* from, string type) = 0;
+  virtual void sendMessage(string m, People* to, People* from, string type) = 0;
+  void setGarden(GardenPlot* g);
+  GardenPlot* getGarden();
+  vector<Staff*> getStaff();
+  int getDay();
+  int updateDay();
+  virtual string getName() const = 0;
+  virtual void setChain();
+
+  Staff* findStaffByType(const string& type);
 
   protected:
     Garden* garden;

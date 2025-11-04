@@ -42,3 +42,46 @@ void Nursery::setGarden(Garden* g) {
 Garden* Nursery::getGarden() {
   return garden;
 }
+
+/**
+ * @brief Get all staff members in the nursery
+ * @return vector<Staff*> Vector of pointers to staff members
+ */
+vector<Staff*> Nursery::getStaff() {
+  return staff;
+}
+
+/**
+ * @brief Find a staff member by their type
+ * @param type The type of staff to find
+ * @return Staff* Pointer to the found staff member or NULL if not found
+ */
+Staff* Nursery::findStaffByType(const string& type) {
+  for (Staff* s : staff) {
+    if (s && s->getType().find(type) != string::npos) {
+      return s;
+    }
+  }
+  return NULL;
+}
+
+/**
+ * @brief Get the current day in the nursery
+ * @return int The current day
+ */
+int Nursery::getDay(){
+  return this->day;
+}
+
+/**
+ * @brief Update and advance the day in the nursery
+ * @return int The new day value
+ */
+int Nursery::updateDay(){
+  //logic to update plants etc etc.... and day pn nursery!!!
+}
+
+ /** @brief setting the chain for the customer care - stubbed
+ * 
+ */
+void Nursery::setChain(){}
