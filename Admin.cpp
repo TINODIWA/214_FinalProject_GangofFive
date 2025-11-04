@@ -46,12 +46,23 @@ std::string Admin::jobDesc() {
  * @brief Update the inventory by removing dead plants
  */
 void Admin::updateInventory() {
-//   Nursery* med = getNursery();
-//   if (!med) return;
-//   GardenPlot* g = med->getGarden();
-//   Crop* root = dynamic_cast<Crop*>(g);
-//   if (!root) return;
-//     root->removeDeadPlants();
+  Nursery* med = getNursery();
+  if (!med) return;
+  
+  GardenPlot* gardenPlot = med->getGarden();
+  if (!gardenPlot) return;
+  
+  Iterator* it = gardenPlot->access();
+  if (!it) return;
+  
+  for (Garden* current = it->first(); !it->done(); current = it->next()) {
+    Crop* crop = dynamic_cast<Crop*>(current);
+    if (crop) {
+      crop->removeDeadPlants();
+    }
+  }
+  
+  delete it;
 }
 
 /**
