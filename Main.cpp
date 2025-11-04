@@ -84,7 +84,7 @@ int main() {
   int days = 0;
   bool sim = true;
   while (sim) {
-    int numCustomer = rand() % 9;
+    int numCustomer = 1 + rand() % 9;
     for (int i = 0; i < 8; i++) {
       management->assignTasks(staff);
       
@@ -94,6 +94,7 @@ int main() {
         Customer* c = new Customer("Customer_" + to_string(i));
         customer->addCustomer(c);
         c->makeReq(Request("Enter"));
+        cout<<"RETURNED!!!\n";
       }
     }
     ++days;

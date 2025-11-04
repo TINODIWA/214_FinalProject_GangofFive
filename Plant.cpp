@@ -1,7 +1,8 @@
 /**
  * @file Plant.cpp
  * @author Unathi Tshakalisa, Swelihle Makhathini, Ryan Liao
- * @brief Implementation of the Plant class which manages plant lifecycle, state transitions, and various care strategies including water, sun, and fertilizer
+ * @brief Implementation of the Plant class which manages plant lifecycle, state transitions, and various care
+ * strategies including water, sun, and fertilizer
  * @version 0.1
  * @date 2025-10-29
  *
@@ -444,7 +445,7 @@ Garden* Plant::clone() {
  */
 string Plant::print() {
   stringstream ss;
-  ss << left << setw(10) << this->name << "|";
+  ss << left << setw(10) << this->name << "water: "<<this->water[0] << "fertiliser: "<<this->fertiliser[0]<<"|";
   return ss.str();
 }
 

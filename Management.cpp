@@ -1,7 +1,8 @@
 /**
  * @file Management.cpp
  * @author Unathi Tshakalisa, Nathan Chisadza, Dominique Nigatu
- * @brief Implementation of the Management class which handles staff supervision, task assignment, and customer complaint resolution
+ * @brief Implementation of the Management class which handles staff supervision, task assignment, and customer
+ * complaint resolution
  * @version 0.1
  * @date 2025-10-29
  *
@@ -44,6 +45,7 @@ std::string Management::jobDesc() {
 void Management::assignTasks(Nursery* group) {
   CheckInventory cmd1(this, group);
   cmd1.execute();
+
   CheckPlant cmd2(this, group);
   cmd2.execute();
 }
@@ -83,7 +85,8 @@ void Management::handleCustomer(Request req, Customer* customer) {  // add compl
               << std::endl;
 
     string complaint;
-    cin >> complaint;
+    cin.ignore( '\n');
+    getline(cin, complaint);
     nursery->complaints.push_back(complaint);
     std::cout << "\nI'm so sorry this was your experience.At GoF Nursery we value our customers feed back and so your "
                  "complaint has been added to our complaints log for improvement. \nRecent complaints:"
@@ -126,7 +129,7 @@ void Management::receive(string m, People* from, Nursery* group, string type) {
  * @brief Update method for plant state changes
  * @param p The plant that has been updated
  */
-void Management::update(Plant* p) {}       // stubbed
+void Management::update(Plant* p) {}  // stubbed
 
 /**
  * @brief Handle plant-related tasks
