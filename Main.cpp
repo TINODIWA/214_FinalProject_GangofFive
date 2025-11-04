@@ -42,40 +42,54 @@
 int main() {
   Director dir = Director(new CropBuilder(), new PlantBuilder());
 
-  GardenPlot* plot = new GardenPlot("plants.txt");
-  Nursery* staff = new StaffCo_ordination(plot);
-  Nursery* customer = new CustomerCare(plot);  // assuming chain of responsibility is instantiated here
+  GardenPlot plot = GardenPlot("plants.txt");
+  Nursery* staff = new StaffCo_ordination(&plot);
+  Nursery* customer = new CustomerCare(&plot);  // assuming chain of responsibility is instantiated here
 
   // instantiate staff
+  Staff* base = new BaseStaff(nullptr, "BaseStaff Ryan");
+
   Staff* baseStaff = new BaseStaff(nullptr, "Nathan");
-  Staff* staff_1 = new Sales(baseStaff);
+  Staff* sales = new Sales(baseStaff);
 
   Staff* baseStaff_2 = new BaseStaff(nullptr, "Unathi");
-  Staff* staff_2 = new Admin(baseStaff_2);
+  Staff* admin = new Admin(baseStaff_2);
 
   Staff* baseStaff_3 = new BaseStaff(nullptr, "Dominiqu");
-  Staff* staff_3 = new Management(baseStaff_3);
+  Management* management = new Management(baseStaff_3);
 
   Staff* staff_4 = new BaseStaff(nullptr, "Swey");
-  Staff* staff_5 = new Gardening(staff_4);
+  Gardening* gardener = new Gardening(staff_4);
 
-  staff->addStaff(staff_1);
-  staff->addStaff(staff_2);
-  staff->addStaff(staff_3);
-  staff->addStaff(staff_4);
+  Customer* alice = new Customer("Alice");
+  Customer* bob = new Customer("Bob");
 
-  customer->addStaff(staff_1);
-  customer->addStaff(staff_2);
-  customer->addStaff(staff_3);
-  customer->addStaff(staff_4);
+  staff->addStaff(base);
+  staff->addStaff(sales);
+  staff->addStaff(admin);
+  staff->addStaff(management);
+  staff->addStaff(gardener);
 
+  Request req = Request("Enter");
+  
+  customer->addStaff(base);
+  customer->addStaff(sales);
+  customer->addStaff(admin);
+  customer->addStaff(management);
+  customer->addStaff(gardener);
+  ((CustomerCare*)customer)->setChain();
+
+  // customer->addCustomer(alice);
+  // customer->addCustomer(bob);
   int days = 0;
   bool sim = true;
   while (sim) {
     int numCustomer = rand() % 9;
     for (int i = 0; i < 8; i++) {
-      // plot.transpire(/*decreasedLevel*/0);
-      // gardener.checkPlant();
+      management->assignTasks(staff);
+      
+      plot.transpire(0);
+      gardener->checkPlants();
       if (i % numCustomer == 0) {
         Customer* c = new Customer("Customer_" + to_string(i));
         customer->addCustomer(c);
@@ -95,7 +109,7 @@ int main() {
     //   // delete instantiated staff
   }
 
-  delete plot;
+  // delete plot;
   delete staff;
   delete customer;
 
