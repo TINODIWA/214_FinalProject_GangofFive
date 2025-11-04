@@ -22,7 +22,7 @@
 /**
  * @brief Construct a new Gardening object.
  */
-Gardening::Gardening(Staff* s, vector<Garden*>& plants) : Roles(s->getNursery(), s->getName(), s),plants(plants) {}
+Gardening::Gardening(Staff* s) : Roles(s->getNursery(), s->getName(), s){}
 
 /**
  * @brief Destroy the Gardening object

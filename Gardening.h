@@ -5,7 +5,7 @@
 
 class Gardening : public Roles {
  public:
-  Gardening(Staff* s, std::vector<Plant*>& plants);
+  Gardening(Staff* s);
   virtual ~Gardening();
   std::string getType() override;
   std::string jobDesc() override;
@@ -19,7 +19,7 @@ class Gardening : public Roles {
   virtual void receive(string m, People* from, Nursery* group, string type);
 
  private:
-  std::vector<Plant*>& plants;
+  std::vector<Plant*> plants;
 };
 
 #endif  // GARDENING_H_
