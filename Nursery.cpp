@@ -106,3 +106,9 @@ int Nursery::getDay(){
 int Nursery::updateDay(){
   //logic to update plants etc etc.... and day pn nursery!!!
 }
+
+/**
+ * @brief sets the chain of responsibiity - stubbed
+ * 
+ */
+void Nursery::setChain(){}

@@ -62,8 +62,8 @@ string Payment::receipt(Customer* customer, map<Plant*, int> plants, Staff* staf
   int total = 0;
   receipt << left << setw(10) << "Item";
   receipt << left << setw(5) << "QTY";
-  receipt << left << setw(2) << "Price(R)"<< "\n";
-  receipt <<"\n";
+  receipt << left << setw(2) << "Price(R)" << "\n";
+  receipt << "\n";
 
   map<Plant*, int>::iterator it = plants.begin();
   while (it != plants.end()) {
@@ -77,6 +77,22 @@ string Payment::receipt(Customer* customer, map<Plant*, int> plants, Staff* staf
 
   receipt << "\nTotal: R" << total << "\n";
   receipt << "---------------------------\n";
+
+  receipt << "A little advice on how to care for your plant(s)\n";
+
+  string type = (*plants.begin()).first->getName();
+  it = plants.begin();
+  receipt << (*it).first->advice();
+  ++it;
+
+  while (it != plants.end()) {
+    string name = (*it).first->getName();
+    if (name != type) {
+      receipt << (*it).first->advice()<<"\n";
+      type = name;
+    }
+    ++it;
+  }
 
   return receipt.str();
 }

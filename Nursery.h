@@ -38,7 +38,7 @@ class Nursery {
   int getDay();
   int updateDay();
   virtual string getName() const = 0;
-
+  virtual void setChain();
   Staff* findStaffByType(const string& type);
 
  protected:
