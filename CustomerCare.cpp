@@ -1,7 +1,7 @@
 /**
  * @file CustomerCare.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Unathi Tshakalisa
+ * @brief Implementation of the CustomerCare class, which mediates interactions between customers and staff in the nursery
  * @version 0.1
  * @date 2025-10-29
  *
@@ -15,12 +15,26 @@
 #include "Customer.h"
 #include "Request.h"
 
+/**
+ * @brief Construct a new CustomerCare object
+ */
 CustomerCare::CustomerCare() : Nursery() {}
 
+/**
+ * @brief Construct a new CustomerCare object with a garden plot
+ * @param g Pointer to the garden plot to manage
+ */
 CustomerCare::CustomerCare(GardenPlot* g) : Nursery(g) {}
 
+/**
+ * @brief Destroy the CustomerCare object
+ */
 CustomerCare::~CustomerCare() {}
 
+/**
+ * @brief Add a staff member to customer care
+ * @param s Pointer to the staff member to add
+ */
 void CustomerCare::addStaff(Staff* s) {
   if (s) {
     staff.push_back(s);
@@ -28,6 +42,10 @@ void CustomerCare::addStaff(Staff* s) {
   }
 }
 
+/**
+ * @brief Remove a staff member from customer care
+ * @param s Pointer to the staff member to remove
+ */
 void CustomerCare::removeStaff(Staff* s) {
   for (auto it = staff.begin(); it != staff.end(); ++it) {
     if (*it == s) {
@@ -37,6 +55,10 @@ void CustomerCare::removeStaff(Staff* s) {
   }
 }
 
+/**
+ * @brief Add a customer to customer care
+ * @param c Pointer to the customer to add
+ */
 void CustomerCare::addCustomer(Customer* c) {
   if (c) {
     customers.push_back(c);
@@ -44,6 +66,10 @@ void CustomerCare::addCustomer(Customer* c) {
   }
 }
 
+/**
+ * @brief Remove a customer from customer care
+ * @param c Pointer to the customer to remove
+ */
 void CustomerCare::removeCustomer(Customer* c) {
   for (auto it = customers.begin(); it != customers.end(); ++it) {
     if (*it == c) {
@@ -53,27 +79,41 @@ void CustomerCare::removeCustomer(Customer* c) {
   }
 }
 
+/**
+ * @brief Send a message to all staff members
+ * @param m The message to send
+ * @param from Pointer to the sender
+ * @param type Type of the message
+ */
 void CustomerCare::sendMessage(std::string m, People* from, std::string type) {
-  // Broadcast-like semantics aren’t typical for customer care; if it’s a request, kick off CoR.
-  // If a chain is configured, route as a request. Otherwise, notify all staff.
-  if (chainHead && type == "CustomerRequest") {
-    // We don't construct Request here to avoid guessing constructors; provide routeRequest API instead.
-    // As a fallback, notify staff of the message.
-  }
   for (Staff* s : staff) {
     if (s) s->receive(m, from, this, type);
   }
 }
 
+/**
+ * @brief Send a message to a specific person
+ * @param m The message to send
+ * @param to Pointer to the recipient
+ * @param from Pointer to the sender
+ * @param type Type of the message
+ */
 void CustomerCare::sendMessage(std::string m, People* to, People* from, std::string type) {
   if (!to) return;
   to->receive(m, from, this, type);
 }
 
+/**
+ * @brief Get the name of the customer care department
+ * @return The department name as a string
+ */
 string CustomerCare::getName() const {
   return "CustomerCare";
 }
 
+/**
+ * @brief Set up the chain of responsibility for handling customer requests
+ */
 void CustomerCare::setChain() {
   Staff* base = this->findStaffByType("BaseStaff");
   Staff* gardener = this->findStaffByType("Gardening");
@@ -87,6 +127,11 @@ void CustomerCare::setChain() {
   manager->setSuccessor(NULL);
 }
 
+/**
+ * @brief Process a customer request through the chain of responsibility
+ * @param req The request to process
+ * @param customer Pointer to the customer making the request
+ */
 void CustomerCare::notify(Request req, Customer* customer) {
   // setChain(),
   if (chainHead) {

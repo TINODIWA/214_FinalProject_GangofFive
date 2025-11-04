@@ -2,7 +2,8 @@
 /**
  * @file Customer.cpp
  * @author Unathi Tshakalisa
- * @brief
+ * @brief Implementation of the Customer class, which manages customer interactions and order history in the nursery
+ * system
  * @version 0.1
  * @date 2025-10-29
  *
@@ -68,7 +69,11 @@ void Customer::addOrder(Order* order) {
   this->orderHistory.push_back(order);
 }
 
-vector<Order*> Customer::getOrderHistory(){
+/**
+ * @brief Get the customer's order history
+ * @return Vector of pointers to the customer's previous orders
+ */
+vector<Order*> Customer::getOrderHistory() {
   return this->orderHistory;
 }
 
@@ -80,4 +85,6 @@ vector<Order*> Customer::getOrderHistory(){
  * @param type Type of the message
  * @return void
  */
-void Customer::receive(string m, People* from, Nursery* group, string type) {}
+void Customer::receive(string m, People* from, Nursery* group, string type) {
+  cout << "\nMessage sent from " << from->getName() << ":\t" << m << endl;
+}

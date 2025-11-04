@@ -16,4 +16,9 @@
  *
  */
 Builder::Builder() {}
+
+/**
+ * @brief Destructs Builder object
+ *
+ */
 Builder::~Builder() {}

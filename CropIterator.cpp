@@ -1,7 +1,7 @@
 /**
  * @file CropIterator.cpp
  * @author Swelihle Makhathini
- * @brief
+ * @brief Implementation of the CropIterator class, which provides iteration functionality over a collection of Garden objects
  * @version 0.1
  * @date 2025-11-03
  *
@@ -12,9 +12,8 @@
 #include "CropIterator.h"
 
 /**
- * @brief Construct a new Crop Iterator:: Crop Iterator object
- *
- * @param p
+ * @brief Construct a new CropIterator object
+ * @param p Reference to the vector of Garden pointers to iterate over
  */
 CropIterator::CropIterator(vector<Garden*>& p) : plants(p), curr(p.begin()) {}
 
@@ -25,16 +24,14 @@ CropIterator::CropIterator(vector<Garden*>& p) : plants(p), curr(p.begin()) {}
 CropIterator::~CropIterator() {}
 
 /**
- * @brief Construct a new Crop Iterator:: Crop Iterator object
- *
- * @param other
+ * @brief Copy construct a new CropIterator object
+ * @param other The iterator to copy from
  */
 CropIterator::CropIterator(const CropIterator& other) : Iterator(other), plants(other.plants) {}
 
 /**
- * @brief returns the first element and resets the current index to the beginning
- *
- * @return Garden*
+ * @brief Get the first element and reset the iterator position
+ * @return Pointer to the first Garden object, or nullptr if empty
  */
 Garden* CropIterator::first() {
   curr = plants.begin();
@@ -42,9 +39,8 @@ Garden* CropIterator::first() {
 }
 
 /**
- * @brief returns the next object and updates current
- *
- * @return Garden*
+ * @brief Get the next element and advance the iterator
+ * @return Pointer to the next Garden object, or nullptr if at end
  */
 Garden* CropIterator::next() {
   if (done()) return nullptr;
@@ -56,28 +52,24 @@ Garden* CropIterator::next() {
 }
 
 /**
- * @brief has the end of the vector been reached
- *
- * @return true
- * @return false
+ * @brief Check if iteration is complete
+ * @return true if at end of collection, false otherwise
  */
 bool CropIterator::done() {
   return curr == plants.end();
 }
 
 /**
- * @brief returns the current element being pointed to
- *
- * @return Garden*
+ * @brief Get the current element without advancing
+ * @return Pointer to the current Garden object
  */
 Garden* CropIterator::current() {
   return *curr;
 }
 
 /**
- * @brief increments the iterator
- *
- * @return Iterator*
+ * @brief Advance the iterator to the next element
+ * @return Pointer to this iterator
  */
 Iterator* CropIterator::operator++() {
   ++curr;
@@ -85,9 +77,8 @@ Iterator* CropIterator::operator++() {
 }
 
 /**
- * @brief removes the current element being pointed
- *
- * @return Garden*
+ * @brief Remove and return the current element
+ * @return Pointer to the removed Garden object, or nullptr if invalid
  */
 Garden* CropIterator::remove() {
   if (!plants.empty() && curr != plants.end()) {
@@ -100,10 +91,9 @@ Garden* CropIterator::remove() {
 }
 
 /**
- * @brief return the number of elements in the crop
- * 
+ * @brief Get the number of elements in the collection
+ * @return The number of elements in the crop
  */
-
- int CropIterator::size(){
+int CropIterator::size(){
   return static_cast<int>(plants.size());
  }

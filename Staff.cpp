@@ -1,7 +1,7 @@
 /**
  * @file Staff.cpp
  * @author Nathan Chisadza, Dominiqu Nigatu
- * @brief
+ * @brief Implementation of the Staff class, representing staff members and their responsibilities in the nursery system
  * @version 0.1
  * @date 2025-10-29
  *
@@ -80,6 +80,15 @@ bool Staff::operator==(const Staff& other) const {
   return true;
 }
 
+
+/**
+ * @brief Read an integer from input within a specified range
+ * @param lo The lower bound (inclusive)
+ * @param hi The upper bound (inclusive)
+ * @param prompt The prompt to display to the user
+ * @param errPrompt The error prompt to display for invalid input
+ * @return int The validated integer input from the user
+ */
 int Staff::readIntInRange(int lo, int hi, const std::string& prompt, const std::string& errPrompt) {
   int value;
   std::cout << prompt;
@@ -95,6 +104,11 @@ int Staff::readIntInRange(int lo, int hi, const std::string& prompt, const std::
   }
 }
 
+/**
+ * @brief Print the entire garden inventory in a formatted string
+ * @param inventory Map of plant names to their quantities
+ * @return string The formatted inventory string
+ */
 string Staff::printAll(map<std::string, int> inventory) {
   std::ostringstream out;
 

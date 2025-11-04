@@ -1,7 +1,7 @@
 /**
  * @file Garden.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Swelihle Makhathini
+ * @brief Implementation of the Garden class, which serves as the component interface in the Composite pattern for managing plant collections
  * @version 0.1
  * @date 2025-10-30
  *
@@ -98,9 +98,12 @@ bool Garden::operator==(string name) {
  * @brief returns the plant with the passed in name - stubbed
  *
  */
-
 Garden* Garden::get(string name) {
   return nullptr;
 }
 
+/**
+ * @brief Update garden element state based on elapsed time
+ * @param days Number of days elapsed
+ */
 void Garden::changeState(int days) {}

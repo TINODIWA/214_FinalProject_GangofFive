@@ -1,6 +1,6 @@
 /**
  * @file EFT.cpp
- * @author your name (you@domain.com)
+ * @author Swelihle Makhathini
  * @brief
  * @version 0.1
  * @date 2025-10-29

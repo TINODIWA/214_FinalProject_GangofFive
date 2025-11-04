@@ -1,7 +1,7 @@
 /**
  * @file Dead.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Swelihle Makhathini
+ * @brief Implementation of the Dead state class, representing the final state in a plant's lifecycle using the State pattern
  * @version 0.1
  * @date 2025-10-29
  *

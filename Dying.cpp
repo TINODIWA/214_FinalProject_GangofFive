@@ -1,7 +1,7 @@
 /**
  * @file Dying.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Swelihle Makhathini
+ * @brief Implementation of the Dying state class, which manages the critical transition phase between healthy and dead states in the plant lifecycle
  * @version 0.1
  * @date 2025-10-29
  *

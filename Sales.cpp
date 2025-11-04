@@ -1,7 +1,7 @@
 /**
  * @file Sales.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Unathi Tshakalisa, Nathan Chisadza 
+ * @brief Implementation of the Sales class, responsible for handling customer orders and repurchases in the nursery system
  * @version 0.1
  * @date 2025-10-29
  *
@@ -15,10 +15,24 @@
 #include "Customer.h"
 #include "Order.h"
 
+
+/**
+ * @brief Construct a new Sales object
+ * @param s Pointer to the staff member
+ */
 Sales::Sales(Staff* s) : Roles(s->getNursery(), s->getName(), s) {}
 
+
+/**
+ * @brief Destroy the Sales object
+ */
 Sales::~Sales() {}
 
+
+/**
+ * @brief Get the type of staff role
+ * @return string The type of staff role
+ */
 string Sales::getType() {
   return Roles::getType() + ": Sales";
 }
@@ -30,6 +44,11 @@ std::string Sales::jobDesc() {
   return Roles::jobDesc() + "\nAdditionally, Sales staff are responsible for assisting customers with their purchases.";
 }
 
+/**
+ * @brief Handle customer requests for orders and repurchases
+ * @param req The customer request
+ * @param customer Pointer to the customer
+ */
 void Sales::handleCustomer(Request req, Customer* customer) {
   if (!customer) {
     std::cout << "Error: No customer assigned. Cannot proceed.\n";
@@ -217,11 +236,29 @@ void Sales::handleCustomer(Request req, Customer* customer) {
   }
 }
 
+
+/**
+ * @brief Receive and handle messages from other staff members
+ * @param m The message content
+ * @param from The sender of the message
+ * @param group The nursery group context
+ * @param type The type of message
+ */
 void Sales::receive(string m, People* from, Nursery* group, string type) {
   if (!(from || group)) return;
   std::cout << "[Sales::receive] from: " << (from ? from->getName() : std::string("unknown")) << ", type: " << type
             << ", msg: " << m << std::endl;
 }
 
-void Sales::update(Plant* p) {}       // stubbed
-void Sales::handlePlant(Plant* p) {}  // stubbed
+
+/**
+ * @brief Update method for plant state changes (stub)
+ * @param p Pointer to the plant that has been updated
+ */
+void Sales::update(Plant* p) {} // stubbed
+
+/**
+ * @brief Handle plant-related tasks (stub)
+ * @param p Pointer to the plant to handle
+ */
+void Sales::handlePlant(Plant* p) {} // stubbed

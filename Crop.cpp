@@ -1,7 +1,7 @@
 /**
  * @file Crop.cpp
  * @author Nathan Chisadza, Swelihle Makhathini
- * @brief
+ * @brief Implementation of the Crop class, which manages collections of plants in the garden using the Composite pattern
  * @version 0.1
  * @date 2025-10-29
  *
@@ -16,6 +16,7 @@
  *
  */
 Crop::Crop() : Garden() {}
+
 /**
  * @brief Destructor that deletes all plants in vector
  *
@@ -55,10 +56,18 @@ Crop::Crop(const Crop& other) : Garden(other) {
   }
 }
 
+/**
+ * @brief Add a garden to this crop
+ * @param p Pointer to the garden to add
+ */
 void Crop::add(Garden* p) {
   plants.push_back(p);
 }
 
+/**
+ * @brief Create an iterator for this crop
+ * @return Iterator pointer for traversing the crop
+ */
 Iterator* Crop::createIterator() {
   return new CropIterator(plants);
 }
@@ -103,33 +112,19 @@ string Crop::print() {
   return crop.str();
 }
 
-// void Crop::removeDeadPlants() {
-// need to change this later to use iterator pattern
+void Crop::removeDeadPlants() {
+  Iterator* it = createIterator();
 
-// iterate in reverse to safely erase while iterating
-// for (int i = (int)plants.size() - 1; i >= 0; --i) {
-//   Garden* child = plants[i];
-//   if (!child) continue;
-
-//   // If child is a Plant, check its state
-//   Plant* asPlant = dynamic_cast<Plant*>(child);
-//   if (asPlant) {
-//     string state = asPlant->getState();
-//     if (state.find("Dead") != string::npos) {
-//       // remove dead plant
-//       delete asPlant;
-//       plants.erase(plants.begin() + i);
-//       continue;
-//     }
-//   }
-
-//   // If child is a Crop (composite), recurse
-//   Crop* asCrop = dynamic_cast<Crop*>(child);
-//   if (asCrop) {
-//     asCrop->removeDeadPlants();
-//   }
-// }
-//}
+  while (!it->done()) {
+    if ((**it)->getState() == "Dead") {
+      Garden* rem = it->remove();
+      delete rem;
+    } else {
+      ++(*it);
+    }
+  }
+  delete it;
+}
 
 /**
  * @brief summary of the number of plants and what plant

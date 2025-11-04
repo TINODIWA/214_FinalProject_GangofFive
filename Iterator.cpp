@@ -1,7 +1,7 @@
 /**
  * @file Iterator.cpp
  * @author Swelihle Makhathini
- * @brief
+ * @brief Implementation of the Iterator class which provides traversal functionality for Garden objects
  * @version 0.1
  * @date 2025-10-31
  *

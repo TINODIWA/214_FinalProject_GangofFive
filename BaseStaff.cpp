@@ -1,7 +1,7 @@
 /**
  * @file BaseStaff.cpp
  * @author Nathan Chisadza, Unathi Tshakalisa, Dominiqu Nigatu
- * @brief
+ * @brief Defines Implementation for BaseStaff.cpp
  * @version 0.1
  * @date 2025-10-29
  *
@@ -13,31 +13,68 @@
 #include "CustomerCare.h"
 #include "Customer.h"
 
+/**
+ * @brief Construct a new Base Staff object
+ */
 BaseStaff::BaseStaff() : Staff() {}
 
+/**
+ * @brief Construct a new Base Staff object
+ * @param n The nursery where the staff member works
+ * @param name The name of the staff member
+ */
 BaseStaff::BaseStaff(Nursery* n, std::string name) : Staff(n, name) {}
 
+/**
+ * @brief Destroy the Base Staff object
+ */
 BaseStaff::~BaseStaff() {}
 
+/**
+ * @brief Get the job description for this staff role
+ * @return The job description as a string
+ */
 std::string BaseStaff::jobDesc() {
   return "Base staff member responsible for general tasks such as greeting customers and showing customers the plants.";
 }
 
 /**
- * @brief Get the staff type for this object.
+ * @brief Get the staff type for this object
+ * @return The staff type as a string
  */
 std::string BaseStaff::getType() {
   return "BaseStaff";
 }
 
+/**
+ * @brief Receive a message from another staff member or group
+ * @param m The message content
+ * @param from The sender of the message
+ * @param group The nursery group involved
+ * @param type The type of message
+ */
 void BaseStaff::receive(std::string m, People* from, Nursery* group, std::string type) {
   std::cout << "[BaseStaff::receive] from: " << (from ? from->getName() : std::string("unknown")) << ", type: " << type
             << ", msg: " << m << std::endl;
 }
 
+/**
+ * @brief Update the staff member's state based on plant changes
+ * @param p The plant that triggered the update
+ */
 void BaseStaff::update(Plant* p) {}       // stubbed
+
+/**
+ * @brief Handle plant-related tasks
+ * @param p The plant to handle
+ */
 void BaseStaff::handlePlant(Plant* p) {}  // stubbed
 
+/**
+ * @brief Handle a customer request
+ * @param req The request to handle
+ * @param customer The customer making the request
+ */
 void BaseStaff::handleCustomer(Request req, Customer* customer) {
   if (!customer) {
     std::cout << "Error: No customer assigned. Cannot proceed.\n";

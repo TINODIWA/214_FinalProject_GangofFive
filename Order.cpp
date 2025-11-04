@@ -1,7 +1,7 @@
 /**
  * @file Order.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Unathi Tshakalisa, Swelihle Makhathini
+ * @brief Implementation of the Order class which manages customer orders including plant selections and payment processing
  * @version 0.1
  * @date 2025-10-29
  *
@@ -22,10 +22,19 @@ Order::~Order(){
     paymentMethod = nullptr;
 }
 
+/**
+ * @brief Copy constructor for Order class
+ * @param other The Order object to copy from
+ */
 Order::Order(const Order &other){
 
 }
 
+/**
+ * @brief Construct a new Order with customer and staff
+ * @param customer Pointer to the customer placing the order
+ * @param staff Pointer to the staff member handling the order
+ */
 Order::Order(Customer *customer, Staff *staff): customer(customer),staff(staff){}
 /**
  * @brief purchase and order
@@ -131,12 +140,20 @@ void Order::setCustomer(Customer *c){
 	customer = c;
 }
 
+/**
+ * @brief Prints the details of a previously made order
+ * @return string containing the receipt and purchase date
+ */
 string Order::printOldOrder(){
 	stringstream ss ;
 	ss<< this->receipt << "\tPurchased on day: "<<this->purchaseDate;
 	return ss.str();
 }
 
+/**
+ * @brief Get the map of plants and their quantities in the order
+ * @return map<Plant *, int> Map of plant pointers to their quantities
+ */
 map<Plant *, int> Order::getPlants(){
 	return plants;
 }

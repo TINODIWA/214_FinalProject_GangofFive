@@ -1,7 +1,7 @@
 /**
  * @file Mature.cpp
- * @author your name (you@domain.com)
- * @brief
+ * @author Swelihle Makhathini
+ * @brief Implementation of the Mature state class which represents a fully grown plant that can either maintain its state or transition to dying/dead states
  * @version 0.1
  * @date 2025-10-29
  *

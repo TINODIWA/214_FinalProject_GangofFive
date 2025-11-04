@@ -36,6 +36,7 @@ class Nursery {
   GardenPlot* getGarden();
   vector<Staff*> getStaff();
   int getDay();
+  int updateDay();
   virtual string getName() const = 0;
 
   Staff* findStaffByType(const string& type);
